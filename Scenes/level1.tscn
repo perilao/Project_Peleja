@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bty36mo4in5rp"]
+
+[ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="1_4hvuo"]
+[ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_c5erv"]
+[ext_resource type="Texture2D" uid="uid://y41x58bo37v6" path="res://icon.svg" id="2_vly50"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4hvuo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vly50"]
+size = Vector3(15.771484, 0.65771484, 15.305115)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vly50"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5erv"]
+albedo_texture = ExtResource("2_vly50")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c5erv"]
+material = SubResource("StandardMaterial3D_c5erv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5erv"]
+size = Vector3(1.9183044, 1, 2.1784668)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyd6k"]
+albedo_color = Color(1, 0.36078432, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y4dr7"]
+material = SubResource("StandardMaterial3D_lyd6k")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_didp7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2a60c"]
+size = Vector3(2.1831818, 1, 2.067627)
+
+[node name="Level" type="Node3D" unique_id=216904473]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1788385229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1305332, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=227274387]
+transform = Transform3D(15, 0, 0, 0, 0.3, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("BoxMesh_4hvuo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1749894358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10644531, -0.17114258, -0.19857788)
+shape = SubResource("BoxShape3D_vly50")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=521803744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.283529, 0)
+script = ExtResource("1_4hvuo")
+SPEED = 8.0
+
+[node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1633857439]
+shape = SubResource("CapsuleShape3D_vly50")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Player" unique_id=681098721]
+mesh = SubResource("CapsuleMesh_c5erv")
+
+[node name="Area3DPlayer" type="Area3D" parent="Player" unique_id=647275965]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3DPlayer" unique_id=1145317089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04258728, -0.10188365, -0.028442383)
+shape = SubResource("BoxShape3D_c5erv")
+
+[node name="Lights" type="Node3D" parent="." unique_id=1217819647]
+
+[node name="GlobalLight" type="DirectionalLight3D" parent="Lights" unique_id=810045888]
+transform = Transform3D(1, 0, 0, 0, 0.054078843, 0.99853665, 0, -0.99853665, 0.054078843, 0, 7.264682, 0)
+
+[node name="Events" type="Node3D" parent="." unique_id=882248993]
+
+[node name="Event_Test" type="StaticBody3D" parent="Events" unique_id=947495497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.058762, -0.45370805, 0)
+script = ExtResource("1_c5erv")
+
+[node name="timer_geral" type="Timer" parent="Events/Event_Test" unique_id=1620859804]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test" unique_id=1179542805]
+mesh = SubResource("BoxMesh_y4dr7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test" unique_id=776255347]
+shape = SubResource("BoxShape3D_didp7")
+
+[node name="Area3D" type="Area3D" parent="Events/Event_Test" unique_id=939770732]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test/Area3D" unique_id=2026489330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.01574707)
+shape = SubResource("BoxShape3D_2a60c")
+
+[node name="Itens" type="Node3D" parent="." unique_id=1727326629]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1340857480]
+transform = Transform3D(1, 0, 0, 0, 0.78910553, 0.6142577, 0, -0.6142577, 0.78910553, 0, 7.8302784, 7.1372232)
+
+[connection signal="timeout" from="Events/Event_Test/timer_geral" to="Events/Event_Test" method="_on_timer_geral_timeout"]
+[connection signal="area_entered" from="Events/Event_Test/Area3D" to="Events/Event_Test" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Events/Event_Test/Area3D" to="Events/Event_Test" method="_on_area_3d_area_exited"]
