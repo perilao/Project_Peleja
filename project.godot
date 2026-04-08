@@ -8,6 +8,11 @@
 
 config_version=5
 
+[Projeto Terceiro Periodo - Peleja]
+
+config/ninetailsrabbit.interaction_kit_3d/interactables_collision_layer=6
+config/ninetailsrabbit.interaction_kit_3d/grabbables_collision_layer=7
+
 [application]
 
 config/name="Projeto Terceiro Periodo - Peleja"
@@ -18,6 +23,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[global_group]
+
+pickable=""
 
 [input]
 
