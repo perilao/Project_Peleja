@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="1_4hvuo"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="2_c5erv"]
+[ext_resource type="Script" uid="uid://cyi68ujmuouiy" path="res://Scripts/ItemStock.gd" id="4_lyd6k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4hvuo"]
 
@@ -23,6 +24,9 @@ material = SubResource("StandardMaterial3D_c5erv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5erv"]
 size = Vector3(1.9183044, 1, 2.1784668)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2a60c"]
+resource_local_to_scene = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4dr7"]
 albedo_color = Color(0.29300392, 0.8046373, 1.1551381e-06, 1)
 
@@ -33,6 +37,9 @@ material = SubResource("StandardMaterial3D_y4dr7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bs12r"]
 size = Vector3(2.1831818, 1, 2.067627)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4iphx"]
+resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_didp7"]
 albedo_color = Color(0, 0.39215687, 0.9411765, 1)
@@ -45,19 +52,46 @@ material = SubResource("StandardMaterial3D_didp7")
 [sub_resource type="BoxShape3D" id="BoxShape3D_2a60c"]
 size = Vector3(2.1831818, 1, 2.067627)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jgkgd"]
+resource_local_to_scene = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyd6k"]
 albedo_color = Color(1, 0.36078432, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y4dr7"]
 material = SubResource("StandardMaterial3D_lyd6k")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_c5erv"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lyd6k"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iphx"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jgkgd"]
+material = SubResource("StandardMaterial3D_4iphx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4dr7"]
 size = Vector3(1, 2.3309937, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lyd6k"]
 size = Vector3(3, 2, 3)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y4dr7"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs12r"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rqhku"]
+material = SubResource("StandardMaterial3D_bs12r")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cpkqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1mwp"]
+albedo_color = Color(0, 0.58431375, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u1b78"]
+material = SubResource("StandardMaterial3D_d1mwp")
 
 [node name="Level" type="Node3D" unique_id=216904473]
 
@@ -115,7 +149,7 @@ collision_mask = 3
 collide_with_areas = true
 
 [node name="Hand" type="Node3D" parent="Player" unique_id=1779971978]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045068502, 0.7314187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045068502, 1.0334932)
 
 [node name="Lights" type="Node3D" parent="." unique_id=1217819647]
 
@@ -124,10 +158,12 @@ transform = Transform3D(1, 0, 0, 0, 0.054078843, 0.99853665, 0, -0.99853665, 0.0
 
 [node name="Events" type="Node3D" parent="." unique_id=882248993]
 
-[node name="Event_Test" type="StaticBody3D" parent="Events" unique_id=947495497]
+[node name="Event_Test" type="StaticBody3D" parent="Events" unique_id=947495497 groups=["event"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021697998, -0.45370805, -6.447383)
+physics_material_override = SubResource("PhysicsMaterial_2a60c")
 script = ExtResource("1_c5erv")
-event_name = "Janela Cima"
+event_name = "cima"
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test" unique_id=1620859804]
 wait_time = 20.0
@@ -146,11 +182,13 @@ shape = SubResource("BoxShape3D_jgkgd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.01574707)
 shape = SubResource("BoxShape3D_bs12r")
 
-[node name="Event_Test2" type="StaticBody3D" parent="Events" unique_id=2068765976]
+[node name="Event_Test2" type="StaticBody3D" parent="Events" unique_id=2068765976 groups=["event"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96681, -0.453709, -0.32267904)
+physics_material_override = SubResource("PhysicsMaterial_4iphx")
 script = ExtResource("1_c5erv")
 event_time = 8.0
-event_name = "Porta"
+event_name = "lado"
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test2" unique_id=364387740]
 wait_time = 20.0
@@ -169,11 +207,13 @@ shape = SubResource("BoxShape3D_didp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.01574707)
 shape = SubResource("BoxShape3D_2a60c")
 
-[node name="Event_Test3" type="StaticBody3D" parent="Events" unique_id=731781417]
+[node name="Event_Test3" type="StaticBody3D" parent="Events" unique_id=731781417 groups=["event"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07677364, -0.4537071, 6.9915075)
+physics_material_override = SubResource("PhysicsMaterial_jgkgd")
 script = ExtResource("1_c5erv")
 event_time = 12.0
-event_name = "Janela Baixo"
+event_name = "baixo"
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test3" unique_id=586107918]
 wait_time = 20.0
@@ -195,77 +235,101 @@ shape = SubResource("BoxShape3D_2a60c")
 [node name="Itens" type="Node3D" parent="." unique_id=1727326629]
 
 [node name="Item1" type="Node3D" parent="Itens" unique_id=184148444 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 3.136985, 0.28116977, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 groups=["pickable"]]
+[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_lyd6k")
 gravity_scale = 15.0
 lock_rotation = true
 freeze = true
+script = ExtResource("4_lyd6k")
+item_type = "baixo"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Itens/Item1/RigidBody3D" unique_id=89069681]
-mesh = SubResource("CylinderMesh_c5erv")
+[node name="meshitem1" type="MeshInstance3D" parent="Itens/Item1/item1_rb" unique_id=89069681 groups=["pickable"]]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_jgkgd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/Item1/RigidBody3D" unique_id=2114434136]
+[node name="collisionitem1" type="CollisionShape3D" parent="Itens/Item1/item1_rb" unique_id=2114434136 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
 shape = SubResource("BoxShape3D_y4dr7")
 
-[node name="Area3D" type="Area3D" parent="Itens/Item1/RigidBody3D" unique_id=1889360065]
+[node name="areaitem1" type="Area3D" parent="Itens/Item1/item1_rb" unique_id=1889360065 groups=["pickable"]]
+unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/Item1/RigidBody3D/Area3D" unique_id=166390897]
+[node name="shapeareaitem1" type="CollisionShape3D" parent="Itens/Item1/item1_rb/areaitem1" unique_id=166390897 groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_lyd6k")
 
 [node name="Item2" type="Node3D" parent="Itens" unique_id=1356729877 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -4.0009546, 0.28116977, -3.4612598)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Itens/Item2" unique_id=931839844 groups=["pickable"]]
+[node name="item2_rb" type="RigidBody3D" parent="Itens/Item2" unique_id=931839844 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_y4dr7")
 gravity_scale = 15.0
 lock_rotation = true
 freeze = true
+script = ExtResource("4_lyd6k")
+item_type = "cima"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Itens/Item2/RigidBody3D" unique_id=1475696613]
-mesh = SubResource("CylinderMesh_c5erv")
+[node name="meshitem2" type="MeshInstance3D" parent="Itens/Item2/item2_rb" unique_id=1475696613 groups=["pickable"]]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_rqhku")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/Item2/RigidBody3D" unique_id=625869789]
+[node name="collisionitem2" type="CollisionShape3D" parent="Itens/Item2/item2_rb" unique_id=625869789 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
 shape = SubResource("BoxShape3D_y4dr7")
 
-[node name="Area3D" type="Area3D" parent="Itens/Item2/RigidBody3D" unique_id=1279469273]
+[node name="areaitem2" type="Area3D" parent="Itens/Item2/item2_rb" unique_id=1279469273 groups=["pickable"]]
+unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/Item2/RigidBody3D/Area3D" unique_id=24901679]
+[node name="shapeareaitem2" type="CollisionShape3D" parent="Itens/Item2/item2_rb/areaitem2" unique_id=24901679 groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_lyd6k")
 
 [node name="Item3" type="Node3D" parent="Itens" unique_id=1671405017 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.28116977, 6.6562176)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Itens/Item3" unique_id=1627086658 groups=["pickable"]]
+[node name="item3_rb" type="RigidBody3D" parent="Itens/Item3" unique_id=1627086658 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_cpkqv")
 gravity_scale = 15.0
 lock_rotation = true
 freeze = true
+script = ExtResource("4_lyd6k")
+item_type = "lado"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Itens/Item3/RigidBody3D" unique_id=1410532934]
-mesh = SubResource("CylinderMesh_c5erv")
+[node name="meshitem3" type="MeshInstance3D" parent="Itens/Item3/item3_rb" unique_id=1410532934 groups=["pickable"]]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_u1b78")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/Item3/RigidBody3D" unique_id=1770522680]
+[node name="colissionitem3" type="CollisionShape3D" parent="Itens/Item3/item3_rb" unique_id=1770522680 groups=["pickable"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
 shape = SubResource("BoxShape3D_y4dr7")
 
-[node name="Area3D" type="Area3D" parent="Itens/Item3/RigidBody3D" unique_id=1793492733]
+[node name="areaitem3" type="Area3D" parent="Itens/Item3/item3_rb" unique_id=1793492733 groups=["pickable"]]
+unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/Item3/RigidBody3D/Area3D" unique_id=918366927]
+[node name="colissionitem3" type="CollisionShape3D" parent="Itens/Item3/item3_rb/areaitem3" unique_id=918366927 groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_lyd6k")
 

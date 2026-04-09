@@ -49,7 +49,7 @@ func grab_object(obj):
 	original_position = hold_object.global_position
 	original_rotation = hold_object.global_rotation
 	original_layer = obj.collision_layer
-	obj.collision_layer = 0
+	obj.collision_layer = 2
 	if hold_object is RigidBody3D:
 		hold_object.freeze = true
 		player_has_item = true

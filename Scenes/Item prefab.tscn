@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cixy4fp88pgn3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bi0g4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c5erv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4dr7"]
+size = Vector3(1, 2.3309937, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyd6k"]
+size = Vector3(3, 2, 3)
+
+[node name="Item1" type="Node3D" unique_id=1371017101 groups=["pickable"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=857792174 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_bi0g4")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1990217233]
+mesh = SubResource("CylinderMesh_c5erv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=2140851034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("BoxShape3D_y4dr7")
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D" unique_id=1220363854]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D" unique_id=896498039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_lyd6k")

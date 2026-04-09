@@ -17,7 +17,9 @@ config/ninetailsrabbit.interaction_kit_3d/grabbables_collision_layer=7
 
 config/name="Projeto Terceiro Periodo - Peleja"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://b4pkv27bvh6pe"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=3000
 
 [display]
 
@@ -27,6 +29,7 @@ window/size/viewport_height=720
 [global_group]
 
 pickable=""
+event=""
 
 [input]
 

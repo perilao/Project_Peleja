@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bxs6lf7qri31q"]
+
+[ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_teanp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2a60c"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4dr7"]
+albedo_color = Color(0.29300392, 0.8046373, 1.1551381e-06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5erv"]
+material = SubResource("StandardMaterial3D_y4dr7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgkgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bs12r"]
+size = Vector3(2.1831818, 1, 2.067627)
+
+[node name="Event_Test" type="StaticBody3D" unique_id=2061009950]
+physics_material_override = SubResource("PhysicsMaterial_2a60c")
+script = ExtResource("1_teanp")
+event_name = "Janela Cima"
+
+[node name="timer_geral" type="Timer" parent="." unique_id=2050088905]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1844500790]
+mesh = SubResource("BoxMesh_c5erv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=649451053]
+shape = SubResource("BoxShape3D_jgkgd")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1246309677]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=399296900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.01574707)
+shape = SubResource("BoxShape3D_bs12r")
+
+[connection signal="timeout" from="timer_geral" to="." method="_on_timer_geral_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
