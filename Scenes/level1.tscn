@@ -249,7 +249,14 @@ gravity_scale = 15.0
 lock_rotation = true
 freeze = true
 script = ExtResource("4_lyd6k")
-item_type = "baixo"
+
+[node name="Label3D" type="Label3D" parent="Itens/Item1/item1_rb" unique_id=952430070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1774085, 0.20284319, 0)
+top_level = true
+pixel_size = 0.03
+offset = Vector2(0, 2)
+billboard = 1
+text = "3"
 
 [node name="meshitem1" type="MeshInstance3D" parent="Itens/Item1/item1_rb" unique_id=89069681 groups=["pickable"]]
 unique_name_in_owner = true
@@ -282,7 +289,15 @@ gravity_scale = 15.0
 lock_rotation = true
 freeze = true
 script = ExtResource("4_lyd6k")
-item_type = "cima"
+uses = 7
+
+[node name="Label3D" type="Label3D" parent="Itens/Item2/item2_rb" unique_id=55412237]
+transform = Transform3D(0.99999964, 0, -0.0008726645, 0, 1, 0, 0.0008726645, 0, 0.99999964, -4.2360106, 0.20953095, -3.5452728)
+top_level = true
+pixel_size = 0.03
+offset = Vector2(0, 2)
+billboard = 1
+text = "7"
 
 [node name="meshitem2" type="MeshInstance3D" parent="Itens/Item2/item2_rb" unique_id=1475696613 groups=["pickable"]]
 unique_name_in_owner = true
@@ -315,7 +330,15 @@ gravity_scale = 15.0
 lock_rotation = true
 freeze = true
 script = ExtResource("4_lyd6k")
-item_type = "lado"
+uses = 5
+
+[node name="Label3D" type="Label3D" parent="Itens/Item3/item3_rb" unique_id=431487255]
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.39683145, 6.6562176)
+top_level = true
+pixel_size = 0.03
+offset = Vector2(0, 2)
+billboard = 1
+text = "5"
 
 [node name="meshitem3" type="MeshInstance3D" parent="Itens/Item3/item3_rb" unique_id=1410532934 groups=["pickable"]]
 unique_name_in_owner = true
