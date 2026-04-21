@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="2_c5erv"]
 [ext_resource type="Script" uid="uid://cyi68ujmuouiy" path="res://Scripts/ItemStock.gd" id="4_lyd6k"]
+[ext_resource type="Script" uid="uid://cba3ptsmi50ac" path="res://ExitDoor.gd" id="5_y4dr7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4hvuo"]
 
@@ -93,6 +94,20 @@ albedo_color = Color(0, 0.58431375, 1, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_u1b78"]
 material = SubResource("StandardMaterial3D_d1mwp")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a60c"]
+albedo_color = Color(1, 0.40784314, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4iphx"]
+material = SubResource("StandardMaterial3D_2a60c")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqhku"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cpkqv"]
+size = Vector3(0.7267761, 1, 2.7504883)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4dr7"]
+bg_color = Color(1, 0.30980393, 0.34117648, 1)
+
 [node name="Level" type="Node3D" unique_id=216904473]
 
 [node name="Template Scenario" type="Node3D" parent="." unique_id=141801175]
@@ -146,7 +161,6 @@ shape = SubResource("BoxShape3D_c5erv")
 [node name="Look" type="RayCast3D" parent="Player" unique_id=954906679]
 transform = Transform3D(26.11, 0, 0, 0, -6.775265e-08, 1, 0, -1.55, -4.371139e-08, 0, -0.45299864, 0.4193852)
 collision_mask = 3
-collide_with_areas = true
 
 [node name="Hand" type="Node3D" parent="Player" unique_id=1779971978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045068502, 1.0334932)
@@ -249,6 +263,7 @@ gravity_scale = 15.0
 lock_rotation = true
 freeze = true
 script = ExtResource("4_lyd6k")
+item_type = "baixo"
 
 [node name="Label3D" type="Label3D" parent="Itens/Item1/item1_rb" unique_id=952430070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1774085, 0.20284319, 0)
@@ -289,6 +304,7 @@ gravity_scale = 15.0
 lock_rotation = true
 freeze = true
 script = ExtResource("4_lyd6k")
+item_type = "cima"
 uses = 7
 
 [node name="Label3D" type="Label3D" parent="Itens/Item2/item2_rb" unique_id=55412237]
@@ -330,6 +346,7 @@ gravity_scale = 15.0
 lock_rotation = true
 freeze = true
 script = ExtResource("4_lyd6k")
+item_type = "lado"
 uses = 5
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3/item3_rb" unique_id=431487255]
@@ -359,6 +376,32 @@ shape = SubResource("BoxShape3D_lyd6k")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1340857480]
 transform = Transform3D(1, 0, 0, 0, 0.72747344, 0.6861359, 0, -0.6861359, 0.72747344, -0.36141247, 6.8803983, 9.405532)
 
+[node name="Exit_Door" type="StaticBody3D" parent="." unique_id=130820807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8265095, 0, 0)
+script = ExtResource("5_y4dr7")
+middle_bar = 50
+
+[node name="exit_door_mesh" type="MeshInstance3D" parent="Exit_Door" unique_id=101627789]
+transform = Transform3D(0.11, 0, 0, 0, 4.43, 0, 0, 0, 1.95, 1.5999999, 1.2296345, 0)
+mesh = SubResource("BoxMesh_4iphx")
+
+[node name="Exit_door_collision" type="CollisionShape3D" parent="Exit_Door" unique_id=19007557]
+transform = Transform3D(0.11, 0, 0, 0, 4.43, 0, 0, 0, 1.95, 1.5999999, 1.2296345, 0)
+shape = SubResource("BoxShape3D_rqhku")
+
+[node name="exit_door_area" type="Area3D" parent="Exit_Door" unique_id=1067401791]
+
+[node name="exit_door_collision_area" type="CollisionShape3D" parent="Exit_Door/exit_door_area" unique_id=523870083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1501617, 0, -0.051757813)
+shape = SubResource("BoxShape3D_cpkqv")
+
+[node name="ProgressBar" type="ProgressBar" parent="Exit_Door" unique_id=1624202014]
+offset_left = 967.0
+offset_top = 151.0
+offset_right = 1145.0
+offset_bottom = 173.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_y4dr7")
+
 [connection signal="timeout" from="Events/Event_Test/timer_geral" to="Events/Event_Test" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_Test/Area3D" to="Events/Event_Test" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Events/Event_Test/Area3D" to="Events/Event_Test" method="_on_area_3d_area_exited"]
@@ -368,3 +411,5 @@ transform = Transform3D(1, 0, 0, 0, 0.72747344, 0.6861359, 0, -0.6861359, 0.7274
 [connection signal="timeout" from="Events/Event_Test3/timer_geral" to="Events/Event_Test3" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_Test3/Area3D" to="Events/Event_Test3" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Events/Event_Test3/Area3D" to="Events/Event_Test3" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_entered"]
+[connection signal="body_exited" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_exited"]

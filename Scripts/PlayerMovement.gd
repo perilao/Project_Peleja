@@ -13,29 +13,17 @@ var original_layer = 1
 var player_has_item = false
 var original_position: Vector3
 var original_rotation: Vector3
+var block_input := false
 
 
 func _physics_process(delta: float) -> void:
-	
+	if block_input:
+		return
 	# GRAVIDADE
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# INPUT E DIREÇÃO
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
-
-	# MOVIMENTAÇÃO
-	if direction.length() > 0:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-
-		# ROTAÇÃO
-		var target_angle = atan2(direction.x, direction.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, ROTATION_SPEED * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	player_movement(delta)
 
 	# INTERAÇÃO (GRAB OU COLETA)
 	if Input.is_action_just_pressed("ui_grab"):
@@ -79,6 +67,25 @@ func grab_object(obj):
 
 	player_has_item = true
 
+func player_movement(delta):
+	#BLOCK INPUT
+	if block_input:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+		return
+	# INPUT E DIREÇÃO
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
+	# MOVIMENTAÇÃO
+	if direction.length() > 0:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	# ROTAÇÃO
+		var target_angle = atan2(direction.x, direction.z)
+		rotation.y = lerp_angle(rotation.y, target_angle, ROTATION_SPEED * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 func release_object():
 	if hold_object:
@@ -90,12 +97,8 @@ func release_object():
 			hold_object.freeze = false
 		
 		player_has_item = false
-		hold_object = null
+		hold_object = null 
 
-
-# =========================
-# SISTEMA DE COLETA (NOVO)
-# =========================
 func collect_item(obj):
 	print("Item coletado!")
 	
