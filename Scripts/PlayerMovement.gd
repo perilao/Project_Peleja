@@ -57,14 +57,10 @@ func grab_object(obj):
 	original_rotation = hold_object.global_rotation
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2
-
-	# AQUI VOLTA A DIMINUIR O CONTADOR
 	if obj.has_method("use_item"):
 		obj.use_item()
-
 	if hold_object is RigidBody3D:
 		hold_object.freeze = true
-
 	player_has_item = true
 
 func player_movement(delta):
@@ -87,8 +83,11 @@ func player_movement(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-func release_object():
+func release_object(consumed: bool = false):
 	if hold_object:
+		var obj = hold_object
+		if hold_object.has_method("return_use") and !consumed and obj.was_used:
+			hold_object.return_use()
 		hold_object.global_position = original_position 
 		hold_object.global_rotation = original_rotation
 		hold_object.collision_layer = original_layer
@@ -98,6 +97,10 @@ func release_object():
 		
 		player_has_item = false
 		hold_object = null 
+		
+		if consumed and obj.uses <= 0:
+			await get_tree().process_frame
+			obj.queue_free()
 
 func collect_item(obj):
 	print("Item coletado!")

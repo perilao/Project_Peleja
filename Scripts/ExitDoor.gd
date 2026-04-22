@@ -26,11 +26,12 @@ func progress_bar_finished():
 	progress_bar.value = progress_bar.max_value
 	print("Voce Conseguiu!")
 	player.block_input = false
-	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Scenes/Win_Screen.tscn")
+	#await get_tree().create_timer(1.0).timeout
 	
-	if is_instance_valid(progress_bar):
-		progress_bar.queue_free()
-		progress_bar = null
+	#if is_instance_valid(progress_bar):
+		#progress_bar.queue_free()
+		#progress_bar = null
 
 func _on_exit_door_area_body_entered(_body: Node3D) -> void:
 	player_in_exit = true

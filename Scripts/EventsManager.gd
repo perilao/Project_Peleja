@@ -22,7 +22,8 @@ func _process(_delta):
 			if object != null and object.is_in_group("pickable"):
 				if object.item_type == self.event_name:
 					timer_geral.start()
-					player.release_object()
+					object.use_item()
+					player.release_object(true)
 					print("Sucesso! Porta ", event_name, " resetada.")
 					hasPrinted = false
 				else:
