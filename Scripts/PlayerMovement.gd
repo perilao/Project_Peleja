@@ -4,7 +4,8 @@ extends CharacterBody3D
 @export var SPEED = 5.0
 @export var ROTATION_SPEED = 10.0
 
-@onready var player_raycast: RayCast3D = $Look
+@onready var item_2_rb: RigidBody3D = %item2_rb
+@onready var player_raycast: ShapeCast3D = $Look
 @onready var hand: Node3D = $Hand
 @onready var player_area: Area3D = $Area3DPlayer
 
@@ -19,46 +20,30 @@ var block_input := false
 func _physics_process(delta: float) -> void:
 	if block_input:
 		return
-	# GRAVIDADE
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	player_movement(delta)
-
-	# INTERAÇÃO (GRAB OU COLETA)
 	if Input.is_action_just_pressed("ui_grab"):
-		
-		# SE ESTÁ SEGURANDO → SOLTA
 		if hold_object:
 			release_object()
-		
-		# SE NÃO ESTÁ SEGURANDO → TENTA INTERAGIR
 		else:
 			if player_raycast.is_colliding():
-				var object = player_raycast.get_collider()
-
+				var object = player_raycast.get_collider(0)
 				if object.is_in_group("pickable"):
 					grab_object(object)
-
 	# SEGURAR OBJETO NA MÃO
 	if hold_object:
 		hold_object.global_position = hand.global_position
 		hold_object.global_rotation = hand.global_rotation
-
 	move_and_slide()
-
-
-# =========================
-# SISTEMA DE GRAB (INALTERADO)
-# =========================
 func grab_object(obj):
 	hold_object = obj
 	original_position = hold_object.global_position
 	original_rotation = hold_object.global_rotation
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2
-	if obj.has_method("use_item"):
-		obj.use_item()
+	if obj.has_method("lock_move_z"):
+		obj.lock_move_z()
 	if hold_object is RigidBody3D:
 		hold_object.freeze = true
 	player_has_item = true
@@ -86,14 +71,18 @@ func player_movement(delta):
 func release_object(consumed: bool = false):
 	if hold_object:
 		var obj = hold_object
-		if hold_object.has_method("return_use") and !consumed and obj.was_used:
-			hold_object.return_use()
-		hold_object.global_position = original_position 
-		hold_object.global_rotation = original_rotation
-		hold_object.collision_layer = original_layer
-		
-		if hold_object is RigidBody3D:
-			hold_object.freeze = false
+		if !consumed:
+			if obj.has_method("return_use") and obj.was_used:
+				obj.return_use()
+		else:
+			obj.was_used = false
+		obj.global_position = original_position 
+		obj.global_rotation = original_rotation
+		obj.collision_layer = original_layer
+		if obj.has_method("release_move_z"):
+			obj.release_move_z()
+		if obj is RigidBody3D:
+			obj.freeze = false
 		
 		player_has_item = false
 		hold_object = null 
@@ -104,6 +93,4 @@ func release_object(consumed: bool = false):
 
 func collect_item(obj):
 	print("Item coletado!")
-	
-	# aqui depois você pode adicionar contador
 	obj.queue_free()

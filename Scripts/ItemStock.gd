@@ -1,12 +1,15 @@
 extends RigidBody3D
 
 @export var item_type: String = ""
-@export var uses: int = 3
+@export var max_uses: int = 3
+var uses: int = 3
 var was_used := false
+
 @onready var label: Label3D = get_node_or_null("Label3D")
 
 
 func _ready():
+	uses = max_uses
 	update_label()
 
 func use_item():

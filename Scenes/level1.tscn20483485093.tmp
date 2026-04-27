@@ -24,9 +24,6 @@ material = SubResource("StandardMaterial3D_c5erv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5erv"]
 size = Vector3(1.9183044, 1, 2.1784668)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lyd6k"]
-size = Vector3(0.02, 0.5, 0.715)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2a60c"]
 resource_local_to_scene = true
 
@@ -139,27 +136,24 @@ func use_item():
 	uses -= 1
 	was_used = true
 	update_label()
+	if move_horizontal:
+		original_player_speed = player.SPEED
+		player.SPEED = current_player_speed
+		player.axis_lock_linear_z = true
 	print(\"Usos:\", uses)
 
 func return_use():
 	uses += 1
 	was_used = false
 	update_label()
+	if move_horizontal:
+		player.SPEED = original_player_speed
+		player.axis_lock_linear_z = false
 	print(\"Usos:\", uses)
 
 func update_label():
 	if label != null:
 		label.text = str(uses)
-		
-func lock_move_z():
-	if move_horizontal:
-		original_player_speed = player.SPEED
-		player.SPEED = current_player_speed
-		player.axis_lock_linear_z = true
-func release_move_z():
-	if move_horizontal:
-		player.SPEED = original_player_speed
-		player.axis_lock_linear_z = false
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs12r"]
@@ -351,7 +345,6 @@ shape = SubResource("BoxShape3D_4iphx")
 [node name="Player" type="CharacterBody3D" parent="." unique_id=521803744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13417459, 0)
 script = ExtResource("1_4hvuo")
-ROTATION_SPEED = 7.0
 
 [node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1633857439]
 shape = SubResource("CapsuleShape3D_vly50")
@@ -366,9 +359,10 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04258728, -0.10188365, -0.028442383)
 shape = SubResource("BoxShape3D_c5erv")
 
-[node name="Look" type="ShapeCast3D" parent="Player" unique_id=2089404177]
-transform = Transform3D(26.11, 0, 0, 0, -6.775265e-08, 1, 0, -1.55, -4.371139e-08, 0, -0.15978289, -0.5908737)
-shape = SubResource("BoxShape3D_lyd6k")
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=1047087468]
+
+[node name="Look" type="RayCast3D" parent="Player" unique_id=954906679]
+transform = Transform3D(26.11, 0, 0, 0, -6.775265e-08, 1, 0, -1.55, -4.371139e-08, 0, -0.45299864, 0.4193852)
 collision_mask = 3
 
 [node name="Hand" type="Node3D" parent="Player" unique_id=1779971978]
