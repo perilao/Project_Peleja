@@ -20,7 +20,7 @@ run/main_scene="uid://bty36mo4in5rp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://b4pkv27bvh6pe"
 config/icon="res://Assets/2D Assets/icon.svg"
-boot_splash/minimum_display_time=3000
+boot_splash/minimum_display_time=1500
 
 [display]
 
@@ -31,8 +31,10 @@ window/size/viewport_height=720
 
 folder_colors={
 "res://Assets/": "teal",
+"res://Materials/": "red",
 "res://Scenes/": "blue",
-"res://Scripts/": "purple"
+"res://Scripts/": "purple",
+"res://Shaders/": "pink"
 }
 
 [global_group]

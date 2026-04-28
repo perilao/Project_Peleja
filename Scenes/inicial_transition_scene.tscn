@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c51ueu6na11lw"]
+
+[ext_resource type="Shader" path="res://Shaders/inicial_transition_shader.gdshader" id="1_bxr5n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7112"]
+shader = ExtResource("1_bxr5n")
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/player = Vector2(0.5, 0.5)
+shader_parameter/progress = 1.0
+shader_parameter/pixel_size = 50.0
+shader_parameter/circle_size = 1.5
+shader_parameter/curtains = 1.0
+shader_parameter/type = 0
+
+[sub_resource type="Animation" id="Animation_bxr5n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_k7112"]
+resource_name = "transition_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 0.27739242),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3qipj"]
+resource_name = "transition_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qipj"]
+_data = {
+&"RESET": SubResource("Animation_bxr5n"),
+&"transition_in": SubResource("Animation_k7112"),
+&"transition_out": SubResource("Animation_3qipj")
+}
+
+[node name="inicial transition" type="CanvasLayer" unique_id=1636605980]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=858436238]
+material = SubResource("ShaderMaterial_k7112")
+anchors_preset = -1
+anchor_right = 0.0953125
+anchor_bottom = 0.10277778
+offset_right = 1156.0
+offset_bottom = 649.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+color = Color(0.015995625, 0.040422313, 0.08688743, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect" unique_id=1030309259]
+libraries/ = SubResource("AnimationLibrary_3qipj")

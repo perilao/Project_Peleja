@@ -6,7 +6,9 @@ var player_in_exit := false
 #EXIT BAR
 @onready var progress_bar: ProgressBar = $ProgressBar
 @export var middle_bar = 0
-
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
 
 func _process(_delta: float) -> void:
 	#RETURN IF THE BAR IS QUEUE_FREE()
@@ -39,5 +41,7 @@ func progress_bar_finished():
 #AREA ENTERED
 func _on_exit_door_area_body_entered(_body: Node3D) -> void:
 	player_in_exit = true
+	mesh.material_overlay = outline_material
 func _on_exit_door_area_body_exited(_body: Node3D) -> void:
 	player_in_exit = false
+	mesh.material_overlay = null

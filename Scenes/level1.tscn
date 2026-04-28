@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://bty36mo4in5rp"]
 
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="1_4hvuo"]
+[ext_resource type="Script" uid="uid://dbn6o52hfeuwr" path="res://Scenes/Phase_1_manager.gd" id="1_4iphx"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://Assets/2D Assets/AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="2_c5erv"]
+[ext_resource type="Material" uid="uid://drfh00vfi7tq3" path="res://Materials/outline material.tres" id="4_y4dr7"]
 [ext_resource type="Script" uid="uid://cba3ptsmi50ac" path="res://Scripts/ExitDoor.gd" id="5_y4dr7"]
+[ext_resource type="Material" uid="uid://bi4rladxwr5qe" path="res://Materials/door_material_test.tres" id="6_didp7"]
+[ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="8_jgkgd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
+albedo_color = Color(0.7607843, 0.57254905, 0.54509807, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4hvuo"]
+material = SubResource("StandardMaterial3D_jgkgd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vly50"]
 size = Vector3(15.771484, 0.65771484, 15.305115)
@@ -22,7 +30,7 @@ albedo_texture = ExtResource("2_c5erv")
 material = SubResource("StandardMaterial3D_c5erv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5erv"]
-size = Vector3(1.9183044, 1, 2.1784668)
+size = Vector3(1.1577988, 1, 1.3045349)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lyd6k"]
 size = Vector3(0.02, 0.5, 0.715)
@@ -76,7 +84,10 @@ script/source = "extends RigidBody3D
 var uses: int = 3
 var was_used := false
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
-
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
+@onready var player_area = $\"../../../Player/Area3DPlayer\"
 
 func _ready():
 	uses = max_uses
@@ -104,6 +115,13 @@ func update_label():
 	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
+
+func _on_areaitem_1_area_entered(_area: Area3D) -> void:
+	if player_area:
+		mesh.material_overlay = outline_material
+func _on_areaitem_1_area_exited(_area: Area3D) -> void:
+	if player_area:
+		mesh.material_overlay = null
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iphx"]
@@ -136,6 +154,9 @@ var was_used := false
 @export var move_horizontal: bool = false
 var original_player_speed: float = 0.0
 
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
 
 func _ready():
 	original_player_speed = player.SPEED
@@ -172,6 +193,14 @@ func release_move_z():
 	if move_horizontal:
 		player.SPEED = original_player_speed
 		player.axis_lock_linear_z = false
+
+
+func _on_areaitem_2_area_entered(_area: Area3D) -> void:
+	mesh.material_overlay = outline_material
+
+
+func _on_areaitem_2_area_exited(_area: Area3D) -> void:
+	mesh.material_overlay = null
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs12r"]
@@ -197,7 +226,9 @@ script/source = "extends RigidBody3D
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
 var was_used := false
 
-
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
 
 func _ready():
 	update_label()
@@ -222,6 +253,14 @@ func update_label():
 	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
+
+
+func _on_areaitem_3_area_entered(_area: Area3D) -> void:
+	mesh.material_overlay = outline_material
+
+
+func _on_areaitem_3_area_exited(_area: Area3D) -> void:
+	mesh.material_overlay = null
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1mwp"]
@@ -247,7 +286,9 @@ script/source = "extends RigidBody3D
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
 var was_used := false
 
-
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
 
 func _ready():
 	update_label()
@@ -272,6 +313,13 @@ func update_label():
 	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
+
+
+func _on_areaitem_3_1_area_entered(_area: Area3D) -> void:
+	mesh.material_overlay = outline_material
+
+func _on_areaitem_3_1_area_exited(_area: Area3D) -> void:
+	mesh.material_overlay = null
 "
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rxhxl"]
@@ -294,7 +342,9 @@ script/source = "extends RigidBody3D
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
 var was_used := false
 
-
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
 
 func _ready():
 	update_label()
@@ -319,6 +369,13 @@ func update_label():
 	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
+
+
+func _on_areaitem_3_2_area_entered(_area: Area3D) -> void:
+	mesh.material_overlay = outline_material
+
+func _on_areaitem_3_2_area_exited(_area: Area3D) -> void:
+	mesh.material_overlay = null
 "
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x7ktg"]
@@ -330,10 +387,58 @@ size = Vector3(1, 2.3309937, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2s1u"]
 size = Vector3(3, 2, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a60c"]
-albedo_color = Color(1, 0.40784314, 0, 1)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bs12r"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4iphx"]
+[sub_resource type="GDScript" id="GDScript_rqhku"]
+script/source = "extends RigidBody3D
+
+#ITEM PROPERTIES
+@export var item_type: String = \"\"
+@export var uses: int = 3
+@onready var label: Label3D = get_node_or_null(\"Label3D\")
+var was_used := false
+
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
+
+func _ready():
+	update_label()
+
+func use_item():
+	#USE ITEM LABEL LOGIC
+	if uses <= 0:
+		return
+	uses -= 1
+	was_used = true
+	update_label()
+	print(\"Usos:\", uses)
+
+func return_use():
+	#RETURN ITEM AND ADD COUNTER
+	uses += 1
+	was_used = false
+	update_label()
+	print(\"Usos:\", uses)
+
+func update_label():
+	#UPDATE THE COUNTER
+	if label != null:
+		label.text = str(uses)
+
+
+func _on_areaitem_3_3_area_entered(_area: Area3D) -> void:
+	mesh.material_overlay = outline_material
+
+func _on_areaitem_3_3_area_exited(_area: Area3D) -> void:
+	mesh.material_overlay = null
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a60c"]
+shading_mode = 0
+albedo_color = Color(0.89411765, 0.63529414, 0.3647059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_didp7"]
 material = SubResource("StandardMaterial3D_2a60c")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqhku"]
@@ -345,6 +450,7 @@ size = Vector3(0.7267761, 1, 2.7504883)
 bg_color = Color(1, 0.30980393, 0.34117648, 1)
 
 [node name="Level" type="Node3D" unique_id=216904473]
+script = ExtResource("1_4iphx")
 
 [node name="Template Scenario" type="Node3D" parent="." unique_id=141801175]
 
@@ -390,7 +496,7 @@ mesh = SubResource("CapsuleMesh_c5erv")
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3DPlayer" unique_id=1145317089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04258728, -0.10188365, -0.028442383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072444916, -0.10188365, 0.032485962)
 shape = SubResource("BoxShape3D_c5erv")
 
 [node name="Look" type="ShapeCast3D" parent="Player" unique_id=2089404177]
@@ -399,7 +505,7 @@ shape = SubResource("BoxShape3D_lyd6k")
 collision_mask = 3
 
 [node name="Hand" type="Node3D" parent="Player" unique_id=1779971978]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045068502, 1.0334932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045068502, 0.7903601)
 
 [node name="Lights" type="Node3D" parent="." unique_id=1217819647]
 
@@ -414,6 +520,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021697998, -0.45370805, -6.
 physics_material_override = SubResource("PhysicsMaterial_2a60c")
 script = ExtResource("1_c5erv")
 event_name = "cima"
+outline_material = ExtResource("4_y4dr7")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test" unique_id=1620859804]
 wait_time = 20.0
@@ -439,6 +546,7 @@ physics_material_override = SubResource("PhysicsMaterial_4iphx")
 script = ExtResource("1_c5erv")
 event_time = 8.0
 event_name = "lado"
+outline_material = ExtResource("4_y4dr7")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test2" unique_id=364387740]
 wait_time = 20.0
@@ -464,6 +572,7 @@ physics_material_override = SubResource("PhysicsMaterial_jgkgd")
 script = ExtResource("1_c5erv")
 event_time = 12.0
 event_name = "baixo"
+outline_material = ExtResource("4_y4dr7")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test3" unique_id=586107918]
 wait_time = 20.0
@@ -488,7 +597,7 @@ shape = SubResource("BoxShape3D_2a60c")
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 3.136985, 0.28116977, 0)
 
-[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 groups=["pickable"]]
+[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
@@ -500,9 +609,11 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_y4dr7")
 item_type = "baixo"
+mesh = NodePath("meshitem1")
+outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item1/item1_rb" unique_id=952430070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1774085, 0.20284319, 0)
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 3.147, 0.718, 0)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -529,7 +640,7 @@ shape = SubResource("BoxShape3D_wwu6c")
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -4.0009546, 0.28116977, -6.3201814)
 
-[node name="item2_rb" type="RigidBody3D" parent="Itens/Item2" unique_id=931839844 groups=["pickable"]]
+[node name="item2_rb" type="RigidBody3D" parent="Itens/Item2" unique_id=931839844 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
@@ -543,6 +654,8 @@ script = SubResource("GDScript_esggg")
 item_type = "cima"
 current_player_speed = 2
 move_horizontal = true
+mesh = NodePath("meshitem2")
+outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item2/item2_rb" unique_id=55412237]
 transform = Transform3D(0.99999964, 0, -0.0008726645, 0, 1, 0, 0.0008726645, 0, 0.99999964, -4.2360106, 0.20953095, -7.656682)
@@ -572,7 +685,7 @@ shape = SubResource("BoxShape3D_af2a1")
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -5.001334, 0.28116977, 6.6562176)
 
-[node name="item3_rb" type="RigidBody3D" parent="Itens/Item3" unique_id=1627086658 groups=["pickable"]]
+[node name="item3_rb" type="RigidBody3D" parent="Itens/Item3" unique_id=1627086658 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35114, -1.6726398, 0)
 collision_layer = 3
@@ -584,6 +697,9 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_2a60c")
 item_type = "lado"
+uses = 1
+mesh = NodePath("meshitem3")
+outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3/item3_rb" unique_id=431487255 groups=["pickable"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.1607127, 0.39683145, 6.6562176)
@@ -613,7 +729,7 @@ shape = SubResource("BoxShape3D_u1b78")
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.28116977, 5.0318813)
 
-[node name="item3_1_rb" type="RigidBody3D" parent="Itens/Item3_1" unique_id=1578757200 groups=["pickable"]]
+[node name="item3_1_rb" type="RigidBody3D" parent="Itens/Item3_1" unique_id=1578757200 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
 axis_lock_linear_x = true
@@ -624,6 +740,9 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_tlxhh")
 item_type = "lado"
+uses = 1
+mesh = NodePath("meshitem3_1")
+outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_1/item3_1_rb" unique_id=1195298961]
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.39683145, 5.0660996)
@@ -650,7 +769,7 @@ shape = SubResource("BoxShape3D_fg80b")
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.28116977, 3.335803)
 
-[node name="item3_2_rb" type="RigidBody3D" parent="Itens/Item3_2" unique_id=358822844 groups=["pickable"]]
+[node name="item3_2_rb" type="RigidBody3D" parent="Itens/Item3_2" unique_id=358822844 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
 axis_lock_linear_x = true
@@ -661,6 +780,9 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_pmaet")
 item_type = "lado"
+uses = 1
+mesh = NodePath("meshitem3_2")
+outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_2/item3_2_rb" unique_id=418884349]
 transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.39683145, 3.4309864)
@@ -685,22 +807,25 @@ shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Item3_3" type="Node3D" parent="Itens" unique_id=1094631574 groups=["pickable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.28116977, 1.9150324)
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.28116977, 1.6491444)
 
-[node name="item3_3_rb" type="RigidBody3D" parent="Itens/Item3_3" unique_id=1808130349 groups=["pickable"]]
+[node name="item3_3_rb" type="RigidBody3D" parent="Itens/Item3_3" unique_id=1808130349 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
 collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_z = true
-physics_material_override = SubResource("PhysicsMaterial_icduq")
+physics_material_override = SubResource("PhysicsMaterial_bs12r")
 gravity_scale = 15.0
 lock_rotation = true
 freeze = true
-script = SubResource("GDScript_pmaet")
+script = SubResource("GDScript_rqhku")
 item_type = "lado"
+uses = 1
+mesh = NodePath("meshitem3_3")
+outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_3/item3_3_rb" unique_id=453919882]
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.39683145, 1.9697015)
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -6.2889237, 0.39683145, 1.6206467)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -723,14 +848,16 @@ shape = SubResource("BoxShape3D_g2s1u")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1340857480]
 transform = Transform3D(1, 0, 0, 0, 0.72747344, 0.6861359, 0, -0.6861359, 0.72747344, -0.36141247, 6.8803983, 9.405532)
 
-[node name="Exit_Door" type="StaticBody3D" parent="." unique_id=130820807]
+[node name="Exit_Door" type="StaticBody3D" parent="." unique_id=130820807 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8265095, 0, 0)
 script = ExtResource("5_y4dr7")
 middle_bar = 50
+mesh = NodePath("exit_door_mesh")
+outline_material = ExtResource("6_didp7")
 
 [node name="exit_door_mesh" type="MeshInstance3D" parent="Exit_Door" unique_id=101627789]
 transform = Transform3D(0.11, 0, 0, 0, 4.43, 0, 0, 0, 1.95, 1.5999999, 1.2296345, 0)
-mesh = SubResource("BoxMesh_4iphx")
+mesh = SubResource("BoxMesh_didp7")
 
 [node name="Exit_door_collision" type="CollisionShape3D" parent="Exit_Door" unique_id=19007557]
 transform = Transform3D(0.11, 0, 0, 0, 4.43, 0, 0, 0, 1.95, 1.5999999, 1.2296345, 0)
@@ -749,6 +876,8 @@ offset_right = 1145.0
 offset_bottom = 173.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_y4dr7")
 
+[node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("8_jgkgd")]
+
 [connection signal="timeout" from="Events/Event_Test/timer_geral" to="Events/Event_Test" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_Test/Area3D" to="Events/Event_Test" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Events/Event_Test/Area3D" to="Events/Event_Test" method="_on_area_3d_area_exited"]
@@ -758,5 +887,17 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_y4dr7")
 [connection signal="timeout" from="Events/Event_Test3/timer_geral" to="Events/Event_Test3" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_Test3/Area3D" to="Events/Event_Test3" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Events/Event_Test3/Area3D" to="Events/Event_Test3" method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Itens/Item1/item1_rb/areaitem1" to="Itens/Item1/item1_rb" method="_on_areaitem_1_area_entered"]
+[connection signal="area_exited" from="Itens/Item1/item1_rb/areaitem1" to="Itens/Item1/item1_rb" method="_on_areaitem_1_area_exited"]
+[connection signal="area_entered" from="Itens/Item2/item2_rb/areaitem2" to="Itens/Item2/item2_rb" method="_on_areaitem_2_area_entered"]
+[connection signal="area_exited" from="Itens/Item2/item2_rb/areaitem2" to="Itens/Item2/item2_rb" method="_on_areaitem_2_area_exited"]
+[connection signal="area_entered" from="Itens/Item3/item3_rb/areaitem3" to="Itens/Item3/item3_rb" method="_on_areaitem_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item3/item3_rb/areaitem3" to="Itens/Item3/item3_rb" method="_on_areaitem_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item3_1/item3_1_rb/areaitem3_1" to="Itens/Item3_1/item3_1_rb" method="_on_areaitem_3_1_area_entered"]
+[connection signal="area_exited" from="Itens/Item3_1/item3_1_rb/areaitem3_1" to="Itens/Item3_1/item3_1_rb" method="_on_areaitem_3_1_area_exited"]
+[connection signal="area_entered" from="Itens/Item3_2/item3_2_rb/areaitem3_2" to="Itens/Item3_2/item3_2_rb" method="_on_areaitem_3_2_area_entered"]
+[connection signal="area_exited" from="Itens/Item3_2/item3_2_rb/areaitem3_2" to="Itens/Item3_2/item3_2_rb" method="_on_areaitem_3_2_area_exited"]
+[connection signal="area_entered" from="Itens/Item3_3/item3_3_rb/areaitem3_3" to="Itens/Item3_3/item3_3_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item3_3/item3_3_rb/areaitem3_3" to="Itens/Item3_3/item3_3_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="body_entered" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_entered"]
 [connection signal="body_exited" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_exited"]

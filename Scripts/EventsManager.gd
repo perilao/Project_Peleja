@@ -10,16 +10,22 @@ extends StaticBody3D
 @onready var player: CharacterBody3D = $"../../Player"
 var isOnArea = false
 
+#OUTLINE SHADERS
+@onready var mesh: MeshInstance3D = $MeshInstance3D
+@export var outline_material: Material
+var Event_Color: Color
 var hasPrinted = false
 
 
 func _ready() -> void:
+	Event_Color = mesh.get_active_material(0).albedo_color
 	hasPrinted = false
 	isOnArea = false
 func _process(_delta):
 #CONTADOR
 	#CHANGE STATE AFTER CERTAIN TIME
 	if timer_geral.time_left <= event_time and hasPrinted == false:
+		mesh.get_active_material(0).albedo_color = Color.RED
 		print("Faltam ", event_time, " segundos!", event_name)
 		hasPrinted = true
 	#INTERACTION OBJECT/EVENT
@@ -31,6 +37,7 @@ func _process(_delta):
 					timer_geral.start()
 					object.use_item()
 					player.release_object(true)
+					mesh.get_active_material(0).albedo_color = Event_Color
 					print("Sucesso! Porta ", event_name, " resetada.")
 					hasPrinted = false
 				else:
@@ -42,5 +49,7 @@ func _on_timer_geral_timeout() -> void:
 #AREAS
 func _on_area_3d_area_entered(_area: Area3D) -> void:
 	isOnArea = true
+	#mesh.material_override = outline_material
 func _on_area_3d_area_exited(_area: Area3D) -> void:
 	isOnArea = false
+	#mesh.material_override = null

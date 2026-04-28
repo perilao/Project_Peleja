@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://b2barvhlsseal"]
 
 [ext_resource type="Texture2D" uid="uid://bf0w5gurb6vbp" path="res://Assets/2D Assets/HFlCBdEbMAEluJB.png" id="1_ngbr3"]
+[ext_resource type="Texture2D" uid="uid://15mfqius0gf8" path="res://Assets/2D Assets/image_1777347668224.png" id="1_w4wo0"]
 
 [node name="Node2D" type="Node2D" unique_id=1407988974]
 
 [node name="Win" type="Sprite2D" parent="." unique_id=1367725264]
-position = Vector2(640.99994, 362.75)
-scale = Vector2(3.0093892, 1.2731237)
+position = Vector2(639.49994, 364)
+scale = Vector2(2.702083, 2.711111)
+texture = ExtResource("1_w4wo0")
+
+[node name="HFlCBdEbMaEluJb" type="Sprite2D" parent="." unique_id=1692418614]
+position = Vector2(21, 38)
+scale = Vector2(0.035602156, 0.035602156)
 texture = ExtResource("1_ngbr3")
