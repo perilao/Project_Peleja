@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2barvhlsseal"]
 
-[ext_resource type="Texture2D" uid="uid://bf0w5gurb6vbp" path="res://HFlCBdEbMAEluJB.png" id="1_ngbr3"]
+[ext_resource type="Texture2D" uid="uid://bf0w5gurb6vbp" path="res://Assets/2D Assets/HFlCBdEbMAEluJB.png" id="1_ngbr3"]
 
 [node name="Node2D" type="Node2D" unique_id=1407988974]
 

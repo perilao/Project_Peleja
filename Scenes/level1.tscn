@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="1_4hvuo"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_c5erv"]
-[ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="2_c5erv"]
+[ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://Assets/2D Assets/AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="2_c5erv"]
 [ext_resource type="Script" uid="uid://cba3ptsmi50ac" path="res://Scripts/ExitDoor.gd" id="5_y4dr7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4hvuo"]
@@ -70,6 +70,7 @@ resource_local_to_scene = true
 [sub_resource type="GDScript" id="GDScript_y4dr7"]
 script/source = "extends RigidBody3D
 
+#ITEM PROPERTIES
 @export var item_type: String = \"\"
 @export var max_uses: int = 3
 var uses: int = 3
@@ -83,6 +84,7 @@ func _ready():
 	update_label()
 
 func use_item():
+	#USE ITEM LABEL LOGIC
 	if uses <= 0:
 		return
 	uses -= 1
@@ -91,6 +93,7 @@ func use_item():
 	print(\"Usos:\", uses)
 
 func return_use():
+	#RETURN ITEM AND ADD COUNTER
 	uses += 1
 	was_used = false
 	update_label()
@@ -98,6 +101,7 @@ func return_use():
 	print(\"Usos:\", uses)
 
 func update_label():
+	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
 "
@@ -120,20 +124,25 @@ resource_local_to_scene = true
 [sub_resource type="GDScript" id="GDScript_esggg"]
 script/source = "extends RigidBody3D
 
+#ITEM PROPERTIES
 @export var item_type: String = \"\"
 @export var uses: int = 3
-var was_used := false
-@export var move_horizontal: bool = false
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
+var was_used := false
+
+#PLAYER REFERENCES
 @onready var player: CharacterBody3D = $\"../../../Player\"
 @export var current_player_speed = 0
+@export var move_horizontal: bool = false
 var original_player_speed: float = 0.0
+
 
 func _ready():
 	original_player_speed = player.SPEED
 	update_label()
 
 func use_item():
+	#USE ITEM LABEL LOGIC
 	if uses <= 0:
 		return
 	uses -= 1
@@ -142,15 +151,18 @@ func use_item():
 	print(\"Usos:\", uses)
 
 func return_use():
+	#RETURN ITEM AND ADD COUNTER
 	uses += 1
 	was_used = false
 	update_label()
 	print(\"Usos:\", uses)
 
 func update_label():
+	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
-		
+
+#LOCK PLAYER MOVEMENT LOGIC
 func lock_move_z():
 	if move_horizontal:
 		original_player_speed = player.SPEED
@@ -179,16 +191,19 @@ size = Vector3(3, 2, 3)
 [sub_resource type="GDScript" id="GDScript_2a60c"]
 script/source = "extends RigidBody3D
 
+#ITEM PROPERTIES
 @export var item_type: String = \"\"
 @export var uses: int = 3
-var was_used := false
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
+var was_used := false
+
 
 
 func _ready():
 	update_label()
 
 func use_item():
+	#USE ITEM LABEL LOGIC
 	if uses <= 0:
 		return
 	uses -= 1
@@ -197,12 +212,14 @@ func use_item():
 	print(\"Usos:\", uses)
 
 func return_use():
+	#RETURN ITEM AND ADD COUNTER
 	uses += 1
 	was_used = false
 	update_label()
 	print(\"Usos:\", uses)
 
 func update_label():
+	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
 "
@@ -224,16 +241,19 @@ size = Vector3(3, 2, 3)
 [sub_resource type="GDScript" id="GDScript_tlxhh"]
 script/source = "extends RigidBody3D
 
+#ITEM PROPERTIES
 @export var item_type: String = \"\"
 @export var uses: int = 3
-var was_used := false
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
+var was_used := false
+
 
 
 func _ready():
 	update_label()
 
 func use_item():
+	#USE ITEM LABEL LOGIC
 	if uses <= 0:
 		return
 	uses -= 1
@@ -242,12 +262,14 @@ func use_item():
 	print(\"Usos:\", uses)
 
 func return_use():
+	#RETURN ITEM AND ADD COUNTER
 	uses += 1
 	was_used = false
 	update_label()
 	print(\"Usos:\", uses)
 
 func update_label():
+	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
 "
@@ -266,16 +288,19 @@ size = Vector3(3, 2, 3)
 [sub_resource type="GDScript" id="GDScript_pmaet"]
 script/source = "extends RigidBody3D
 
+#ITEM PROPERTIES
 @export var item_type: String = \"\"
 @export var uses: int = 3
-var was_used := false
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
+var was_used := false
+
 
 
 func _ready():
 	update_label()
 
 func use_item():
+	#USE ITEM LABEL LOGIC
 	if uses <= 0:
 		return
 	uses -= 1
@@ -284,12 +309,14 @@ func use_item():
 	print(\"Usos:\", uses)
 
 func return_use():
+	#RETURN ITEM AND ADD COUNTER
 	uses += 1
 	was_used = false
 	update_label()
 	print(\"Usos:\", uses)
 
 func update_label():
+	#UPDATE THE COUNTER
 	if label != null:
 		label.text = str(uses)
 "
@@ -514,8 +541,8 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_esggg")
 item_type = "cima"
-move_horizontal = true
 current_player_speed = 2
+move_horizontal = true
 
 [node name="Label3D" type="Label3D" parent="Itens/Item2/item2_rb" unique_id=55412237]
 transform = Transform3D(0.99999964, 0, -0.0008726645, 0, 1, 0, 0.0008726645, 0, 0.99999964, -4.2360106, 0.20953095, -7.656682)

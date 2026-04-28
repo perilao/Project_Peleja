@@ -1,21 +1,28 @@
 extends StaticBody3D
 
+#TIMER PROPERTIES
 @export var event_time := 4.0
 @onready var timer_geral: Timer = $timer_geral
+#EVENT
 @export var event_name : String = ""
-@onready var player: CharacterBody3D = $"../../Player"
 @onready var event = get_tree().get_nodes_in_group("event")
-var hasPrinted = false
+#PLAYER
+@onready var player: CharacterBody3D = $"../../Player"
 var isOnArea = false
+
+var hasPrinted = false
+
 
 func _ready() -> void:
 	hasPrinted = false
 	isOnArea = false
 func _process(_delta):
 #CONTADOR
-	if timer_geral.time_left <= event_time and hasPrinted == false: #TROCA DE ESTADO DEPOIS DE CERTO TEMPO
+	#CHANGE STATE AFTER CERTAIN TIME
+	if timer_geral.time_left <= event_time and hasPrinted == false:
 		print("Faltam ", event_time, " segundos!", event_name)
 		hasPrinted = true
+	#INTERACTION OBJECT/EVENT
 	if Input.is_action_just_pressed("ui_interact"):
 		if timer_geral.time_left <= event_time and isOnArea: 
 			var object = player.hold_object
@@ -28,8 +35,11 @@ func _process(_delta):
 					hasPrinted = false
 				else:
 					print("Item errado! Você tem '", object.item_type, "' mas esta porta precisa de '", event_name, "'")
-func _on_timer_geral_timeout() -> void: #DERROTA DO PLAYER
+func _on_timer_geral_timeout() -> void:
+	#PLAYER DEFEAT LOGIC
 	get_tree().quit() 
+
+#AREAS
 func _on_area_3d_area_entered(_area: Area3D) -> void:
 	isOnArea = true
 func _on_area_3d_area_exited(_area: Area3D) -> void:

@@ -1,28 +1,31 @@
 extends CharacterBody3D 
 
-# VARIAVEIS
+#PLAYER
 @export var SPEED = 5.0
 @export var ROTATION_SPEED = 10.0
-
-@onready var item_2_rb: RigidBody3D = %item2_rb
-@onready var player_raycast: ShapeCast3D = $Look
 @onready var hand: Node3D = $Hand
 @onready var player_area: Area3D = $Area3DPlayer
-
-var hold_object: Node3D = null
-var original_layer = 1
+@onready var player_raycast: ShapeCast3D = $Look
+#ITEM GRAB
 var player_has_item = false
+var original_layer = 1
 var original_position: Vector3
 var original_rotation: Vector3
+#ITENS
+@onready var item_2_rb: RigidBody3D = %item2_rb
+var hold_object: Node3D = null
 var block_input := false
 
 
 func _physics_process(delta: float) -> void:
+	#BLOCK PLAYER MOVEMENT
 	if block_input:
 		return
+	#GET GRAVITY
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	player_movement(delta)
+	#GRAB OBJECT
 	if Input.is_action_just_pressed("ui_grab"):
 		if hold_object:
 			release_object()
@@ -31,11 +34,11 @@ func _physics_process(delta: float) -> void:
 				var object = player_raycast.get_collider(0)
 				if object.is_in_group("pickable"):
 					grab_object(object)
-	# SEGURAR OBJETO NA MÃO
 	if hold_object:
 		hold_object.global_position = hand.global_position
 		hold_object.global_rotation = hand.global_rotation
 	move_and_slide()
+
 func grab_object(obj):
 	hold_object = obj
 	original_position = hold_object.global_position
@@ -54,14 +57,14 @@ func player_movement(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		return
-	# INPUT E DIREÇÃO
+	#INPUT & DIRECTION
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
-	# MOVIMENTAÇÃO
+	#MOVEMENT
 	if direction.length() > 0:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-	# ROTAÇÃO
+	#PLAYER ROTATION
 		var target_angle = atan2(direction.x, direction.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, ROTATION_SPEED * delta)
 	else:
@@ -69,6 +72,7 @@ func player_movement(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 func release_object(consumed: bool = false):
+	#RELEASE OBJECT TRIGGER
 	if hold_object:
 		var obj = hold_object
 		if !consumed:
@@ -76,17 +80,18 @@ func release_object(consumed: bool = false):
 				obj.return_use()
 		else:
 			obj.was_used = false
+		#RETURN OBJECT ORIGINAL POSITION
 		obj.global_position = original_position 
 		obj.global_rotation = original_rotation
 		obj.collision_layer = original_layer
+		#RELEASE MOVEMENT IN Z POSITION
 		if obj.has_method("release_move_z"):
 			obj.release_move_z()
 		if obj is RigidBody3D:
 			obj.freeze = false
-		
 		player_has_item = false
 		hold_object = null 
-		
+		#DELETES THE LAST ITEM
 		if consumed and obj.uses <= 0:
 			await get_tree().process_frame
 			obj.queue_free()
