@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://bty36mo4in5rp"]
 
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="1_4hvuo"]
-[ext_resource type="Script" uid="uid://dbn6o52hfeuwr" path="res://Scenes/Phase_1_manager.gd" id="1_4iphx"]
+[ext_resource type="Script" uid="uid://dbn6o52hfeuwr" path="res://Scripts/Phase_1_manager.gd" id="1_4iphx"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://Assets/2D Assets/AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="2_c5erv"]
 [ext_resource type="Material" uid="uid://drfh00vfi7tq3" path="res://Materials/outline material.tres" id="4_y4dr7"]
 [ext_resource type="Script" uid="uid://cba3ptsmi50ac" path="res://Scripts/ExitDoor.gd" id="5_y4dr7"]
+[ext_resource type="Texture2D" uid="uid://c2asgawxf05sb" path="res://Assets/3D Assets/textures/Material Base Color.003.png" id="6_cpkqv"]
 [ext_resource type="Material" uid="uid://bi4rladxwr5qe" path="res://Materials/door_material_test.tres" id="6_didp7"]
+[ext_resource type="PackedScene" uid="uid://nhg34k3e5yhb" path="res://plane_002.tscn" id="6_esggg"]
+[ext_resource type="Texture2D" uid="uid://sxtwbm4ccan5" path="res://Assets/3D Assets/textures/Material.001 Base Color.005.png" id="6_rqhku"]
 [ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="8_jgkgd"]
+[ext_resource type="PackedScene" uid="uid://ba2nrv1kon0o5" path="res://Assets/3D Assets/poltrona.blend" id="13_af2a1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 albedo_color = Color(0.7607843, 0.57254905, 0.54509807, 1)
@@ -39,7 +43,8 @@ size = Vector3(0.02, 0.5, 0.715)
 resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4dr7"]
-albedo_color = Color(0.29300392, 0.8046373, 1.1551381e-06, 1)
+albedo_color = Color(0.29411766, 1, 0, 1)
+albedo_texture = ExtResource("6_cpkqv")
 
 [sub_resource type="BoxMesh" id="BoxMesh_c5erv"]
 material = SubResource("StandardMaterial3D_y4dr7")
@@ -53,7 +58,8 @@ size = Vector3(2.1831818, 1, 2.067627)
 resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_didp7"]
-albedo_color = Color(0, 0.39215687, 0.9411765, 1)
+albedo_color = Color(0, 0.6582939, 0.9404367, 1)
+albedo_texture = ExtResource("6_cpkqv")
 
 [sub_resource type="BoxMesh" id="BoxMesh_2a60c"]
 material = SubResource("StandardMaterial3D_didp7")
@@ -385,7 +391,7 @@ material = SubResource("StandardMaterial3D_d1mwp")
 size = Vector3(1, 2.3309937, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2s1u"]
-size = Vector3(3, 2, 3)
+size = Vector3(1.496582, 2, 1.2630615)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bs12r"]
 
@@ -434,9 +440,62 @@ func _on_areaitem_3_3_area_exited(_area: Area3D) -> void:
 	mesh.material_overlay = null
 "
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rqhku"]
+
+[sub_resource type="GDScript" id="GDScript_cpkqv"]
+script/source = "extends RigidBody3D
+
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
+#GRAB
+var is_held := false
+
+func _ready():
+	freeze = false
+	gravity_scale = 0.0
+
+func set_held(held: bool):
+	is_held = held
+	if held:
+		gravity_scale = 0.0
+	else:
+		var current_pos = global_position
+		gravity_scale = 1.0
+		await get_tree().physics_frame
+		if linear_velocity.length() < 0.1:
+			global_position = current_pos
+
+func _physics_process(_delta):
+	if not is_held and not freeze:
+		if linear_velocity.length() < 0.1:
+			linear_velocity = Vector3.ZERO
+			angular_velocity = Vector3.ZERO
+			gravity_scale = 10.0
+
+func _on_areaitem_3_3_area_entered(_area: Area3D) -> void:
+	mesh.material_overlay = outline_material
+
+func _on_areaitem_3_3_area_exited(_area: Area3D) -> void:
+	mesh.material_overlay = null
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqhku"]
+albedo_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cpkqv"]
+material = SubResource("StandardMaterial3D_rqhku")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u1b78"]
+points = PackedVector3Array(0, 1, 0.5, 0.04900857, 1, 0.49759236, 0.09754516, 1, 0.49039263, 0.14514233, 1, 0.47847018, 0.19134171, 1, 0.46193975, 0.23569837, 1, 0.44096065, 0.27778512, 1, 0.4157348, 0.31719664, 1, 0.38650522, 0.35355338, 1, 0.35355338, 0.38650522, 1, 0.31719664, 0.4157348, 1, 0.27778512, 0.44096065, 1, 0.23569837, 0.46193975, 1, 0.19134171, 0.47847018, 1, 0.14514233, 0.49039263, 1, 0.09754516, 0.49759236, 1, 0.04900857, 0.5, 1, 3.061516e-17, 0.49759236, 1, -0.04900857, 0.49039263, 1, -0.09754516, 0.47847018, 1, -0.14514233, 0.46193975, 1, -0.19134171, 0.44096065, 1, -0.23569837, 0.4157348, 1, -0.27778512, 0.38650522, 1, -0.31719664, 0.35355338, 1, -0.35355338, 0.31719664, 1, -0.38650522, 0.27778512, 1, -0.4157348, 0.23569837, 1, -0.44096065, 0.19134171, 1, -0.46193975, 0.14514233, 1, -0.47847018, 0.09754516, 1, -0.49039263, 0.04900857, 1, -0.49759236, 6.123032e-17, 1, -0.5, -0.04900857, 1, -0.49759236, -0.09754516, 1, -0.49039263, -0.14514233, 1, -0.47847018, -0.19134171, 1, -0.46193975, -0.23569837, 1, -0.44096065, -0.27778512, 1, -0.4157348, -0.31719664, 1, -0.38650522, -0.35355338, 1, -0.35355338, -0.38650522, 1, -0.31719664, -0.4157348, 1, -0.27778512, -0.44096065, 1, -0.23569837, -0.46193975, 1, -0.19134171, -0.47847018, 1, -0.14514233, -0.49039263, 1, -0.09754516, -0.49759236, 1, -0.04900857, -0.5, 1, -9.1845477e-17, -0.49759236, 1, 0.04900857, -0.49039263, 1, 0.09754516, -0.47847018, 1, 0.14514233, -0.46193975, 1, 0.19134171, -0.44096065, 1, 0.23569837, -0.4157348, 1, 0.27778512, -0.38650522, 1, 0.31719664, -0.35355338, 1, 0.35355338, -0.31719664, 1, 0.38650522, -0.27778512, 1, 0.4157348, -0.23569837, 1, 0.44096065, -0.19134171, 1, 0.46193975, -0.14514233, 1, 0.47847018, -0.09754516, 1, 0.49039263, -0.04900857, 1, 0.49759236, 0, 1, 0.5, 0, 0.6, 0.5, 0.04900857, 0.6, 0.49759236, 0.09754516, 0.6, 0.49039263, 0.14514233, 0.6, 0.47847018, 0.19134171, 0.6, 0.46193975, 0.23569837, 0.6, 0.44096065, 0.27778512, 0.6, 0.4157348, 0.31719664, 0.6, 0.38650522, 0.35355338, 0.6, 0.35355338, 0.38650522, 0.6, 0.31719664, 0.4157348, 0.6, 0.27778512, 0.44096065, 0.6, 0.23569837, 0.46193975, 0.6, 0.19134171, 0.47847018, 0.6, 0.14514233, 0.49039263, 0.6, 0.09754516, 0.49759236, 0.6, 0.04900857, 0.5, 0.6, 3.061516e-17, 0.49759236, 0.6, -0.04900857, 0.49039263, 0.6, -0.09754516, 0.47847018, 0.6, -0.14514233, 0.46193975, 0.6, -0.19134171, 0.44096065, 0.6, -0.23569837, 0.4157348, 0.6, -0.27778512, 0.38650522, 0.6, -0.31719664, 0.35355338, 0.6, -0.35355338, 0.31719664, 0.6, -0.38650522, 0.27778512, 0.6, -0.4157348, 0.23569837, 0.6, -0.44096065, 0.19134171, 0.6, -0.46193975, 0.14514233, 0.6, -0.47847018, 0.09754516, 0.6, -0.49039263, 0.04900857, 0.6, -0.49759236, 6.123032e-17, 0.6, -0.5, -0.04900857, 0.6, -0.49759236, -0.09754516, 0.6, -0.49039263, -0.14514233, 0.6, -0.47847018, -0.19134171, 0.6, -0.46193975, -0.23569837, 0.6, -0.44096065, -0.27778512, 0.6, -0.4157348, -0.31719664, 0.6, -0.38650522, -0.35355338, 0.6, -0.35355338, -0.38650522, 0.6, -0.31719664, -0.4157348, 0.6, -0.27778512, -0.44096065, 0.6, -0.23569837, -0.46193975, 0.6, -0.19134171, -0.47847018, 0.6, -0.14514233, -0.49039263, 0.6, -0.09754516, -0.49759236, 0.6, -0.04900857, -0.5, 0.6, -9.1845477e-17, -0.49759236, 0.6, 0.04900857, -0.49039263, 0.6, 0.09754516, -0.47847018, 0.6, 0.14514233, -0.46193975, 0.6, 0.19134171, -0.44096065, 0.6, 0.23569837, -0.4157348, 0.6, 0.27778512, -0.38650522, 0.6, 0.31719664, -0.35355338, 0.6, 0.35355338, -0.31719664, 0.6, 0.38650522, -0.27778512, 0.6, 0.4157348, -0.23569837, 0.6, 0.44096065, -0.19134171, 0.6, 0.46193975, -0.14514233, 0.6, 0.47847018, -0.09754516, 0.6, 0.49039263, -0.04900857, 0.6, 0.49759236, 0, 0.6, 0.5, 0, 0.19999999, 0.5, 0.04900857, 0.19999999, 0.49759236, 0.09754516, 0.19999999, 0.49039263, 0.14514233, 0.19999999, 0.47847018, 0.19134171, 0.19999999, 0.46193975, 0.23569837, 0.19999999, 0.44096065, 0.27778512, 0.19999999, 0.4157348, 0.31719664, 0.19999999, 0.38650522, 0.35355338, 0.19999999, 0.35355338, 0.38650522, 0.19999999, 0.31719664, 0.4157348, 0.19999999, 0.27778512, 0.44096065, 0.19999999, 0.23569837, 0.46193975, 0.19999999, 0.19134171, 0.47847018, 0.19999999, 0.14514233, 0.49039263, 0.19999999, 0.09754516, 0.49759236, 0.19999999, 0.04900857, 0.5, 0.19999999, 3.061516e-17, 0.49759236, 0.19999999, -0.04900857, 0.49039263, 0.19999999, -0.09754516, 0.47847018, 0.19999999, -0.14514233, 0.46193975, 0.19999999, -0.19134171, 0.44096065, 0.19999999, -0.23569837, 0.4157348, 0.19999999, -0.27778512, 0.38650522, 0.19999999, -0.31719664, 0.35355338, 0.19999999, -0.35355338, 0.31719664, 0.19999999, -0.38650522, 0.27778512, 0.19999999, -0.4157348, 0.23569837, 0.19999999, -0.44096065, 0.19134171, 0.19999999, -0.46193975, 0.14514233, 0.19999999, -0.47847018, 0.09754516, 0.19999999, -0.49039263, 0.04900857, 0.19999999, -0.49759236, 6.123032e-17, 0.19999999, -0.5, -0.04900857, 0.19999999, -0.49759236, -0.09754516, 0.19999999, -0.49039263, -0.14514233, 0.19999999, -0.47847018, -0.19134171, 0.19999999, -0.46193975, -0.23569837, 0.19999999, -0.44096065, -0.27778512, 0.19999999, -0.4157348, -0.31719664, 0.19999999, -0.38650522, -0.35355338, 0.19999999, -0.35355338, -0.38650522, 0.19999999, -0.31719664, -0.4157348, 0.19999999, -0.27778512, -0.44096065, 0.19999999, -0.23569837, -0.46193975, 0.19999999, -0.19134171, -0.47847018, 0.19999999, -0.14514233, -0.49039263, 0.19999999, -0.09754516, -0.49759236, 0.19999999, -0.04900857, -0.5, 0.19999999, -9.1845477e-17, -0.49759236, 0.19999999, 0.04900857, -0.49039263, 0.19999999, 0.09754516, -0.47847018, 0.19999999, 0.14514233, -0.46193975, 0.19999999, 0.19134171, -0.44096065, 0.19999999, 0.23569837, -0.4157348, 0.19999999, 0.27778512, -0.38650522, 0.19999999, 0.31719664, -0.35355338, 0.19999999, 0.35355338, -0.31719664, 0.19999999, 0.38650522, -0.27778512, 0.19999999, 0.4157348, -0.23569837, 0.19999999, 0.44096065, -0.19134171, 0.19999999, 0.46193975, -0.14514233, 0.19999999, 0.47847018, -0.09754516, 0.19999999, 0.49039263, -0.04900857, 0.19999999, 0.49759236, 0, 0.19999999, 0.5, 0, -0.20000005, 0.5, 0.04900857, -0.20000005, 0.49759236, 0.09754516, -0.20000005, 0.49039263, 0.14514233, -0.20000005, 0.47847018, 0.19134171, -0.20000005, 0.46193975, 0.23569837, -0.20000005, 0.44096065, 0.27778512, -0.20000005, 0.4157348, 0.31719664, -0.20000005, 0.38650522, 0.35355338, -0.20000005, 0.35355338, 0.38650522, -0.20000005, 0.31719664, 0.4157348, -0.20000005, 0.27778512, 0.44096065, -0.20000005, 0.23569837, 0.46193975, -0.20000005, 0.19134171, 0.47847018, -0.20000005, 0.14514233, 0.49039263, -0.20000005, 0.09754516, 0.49759236, -0.20000005, 0.04900857, 0.5, -0.20000005, 3.061516e-17, 0.49759236, -0.20000005, -0.04900857, 0.49039263, -0.20000005, -0.09754516, 0.47847018, -0.20000005, -0.14514233, 0.46193975, -0.20000005, -0.19134171, 0.44096065, -0.20000005, -0.23569837, 0.4157348, -0.20000005, -0.27778512, 0.38650522, -0.20000005, -0.31719664, 0.35355338, -0.20000005, -0.35355338, 0.31719664, -0.20000005, -0.38650522, 0.27778512, -0.20000005, -0.4157348, 0.23569837, -0.20000005, -0.44096065, 0.19134171, -0.20000005, -0.46193975, 0.14514233, -0.20000005, -0.47847018, 0.09754516, -0.20000005, -0.49039263, 0.04900857, -0.20000005, -0.49759236, 6.123032e-17, -0.20000005, -0.5, -0.04900857, -0.20000005, -0.49759236, -0.09754516, -0.20000005, -0.49039263, -0.14514233, -0.20000005, -0.47847018, -0.19134171, -0.20000005, -0.46193975, -0.23569837, -0.20000005, -0.44096065, -0.27778512, -0.20000005, -0.4157348, -0.31719664, -0.20000005, -0.38650522, -0.35355338, -0.20000005, -0.35355338, -0.38650522, -0.20000005, -0.31719664, -0.4157348, -0.20000005, -0.27778512, -0.44096065, -0.20000005, -0.23569837, -0.46193975, -0.20000005, -0.19134171, -0.47847018, -0.20000005, -0.14514233, -0.49039263, -0.20000005, -0.09754516, -0.49759236, -0.20000005, -0.04900857, -0.5, -0.20000005, -9.1845477e-17, -0.49759236, -0.20000005, 0.04900857, -0.49039263, -0.20000005, 0.09754516, -0.47847018, -0.20000005, 0.14514233, -0.46193975, -0.20000005, 0.19134171, -0.44096065, -0.20000005, 0.23569837, -0.4157348, -0.20000005, 0.27778512, -0.38650522, -0.20000005, 0.31719664, -0.35355338, -0.20000005, 0.35355338, -0.31719664, -0.20000005, 0.38650522, -0.27778512, -0.20000005, 0.4157348, -0.23569837, -0.20000005, 0.44096065, -0.19134171, -0.20000005, 0.46193975, -0.14514233, -0.20000005, 0.47847018, -0.09754516, -0.20000005, 0.49039263, -0.04900857, -0.20000005, 0.49759236, 0, -0.20000005, 0.5, 0, -0.6, 0.5, 0.04900857, -0.6, 0.49759236, 0.09754516, -0.6, 0.49039263, 0.14514233, -0.6, 0.47847018, 0.19134171, -0.6, 0.46193975, 0.23569837, -0.6, 0.44096065, 0.27778512, -0.6, 0.4157348, 0.31719664, -0.6, 0.38650522, 0.35355338, -0.6, 0.35355338, 0.38650522, -0.6, 0.31719664, 0.4157348, -0.6, 0.27778512, 0.44096065, -0.6, 0.23569837, 0.46193975, -0.6, 0.19134171, 0.47847018, -0.6, 0.14514233, 0.49039263, -0.6, 0.09754516, 0.49759236, -0.6, 0.04900857, 0.5, -0.6, 3.061516e-17, 0.49759236, -0.6, -0.04900857, 0.49039263, -0.6, -0.09754516, 0.47847018, -0.6, -0.14514233, 0.46193975, -0.6, -0.19134171, 0.44096065, -0.6, -0.23569837, 0.4157348, -0.6, -0.27778512, 0.38650522, -0.6, -0.31719664, 0.35355338, -0.6, -0.35355338, 0.31719664, -0.6, -0.38650522, 0.27778512, -0.6, -0.4157348, 0.23569837, -0.6, -0.44096065, 0.19134171, -0.6, -0.46193975, 0.14514233, -0.6, -0.47847018, 0.09754516, -0.6, -0.49039263, 0.04900857, -0.6, -0.49759236, 6.123032e-17, -0.6, -0.5, -0.04900857, -0.6, -0.49759236, -0.09754516, -0.6, -0.49039263, -0.14514233, -0.6, -0.47847018, -0.19134171, -0.6, -0.46193975, -0.23569837, -0.6, -0.44096065, -0.27778512, -0.6, -0.4157348, -0.31719664, -0.6, -0.38650522, -0.35355338, -0.6, -0.35355338, -0.38650522, -0.6, -0.31719664, -0.4157348, -0.6, -0.27778512, -0.44096065, -0.6, -0.23569837, -0.46193975, -0.6, -0.19134171, -0.47847018, -0.6, -0.14514233, -0.49039263, -0.6, -0.09754516, -0.49759236, -0.6, -0.04900857, -0.5, -0.6, -9.1845477e-17, -0.49759236, -0.6, 0.04900857, -0.49039263, -0.6, 0.09754516, -0.47847018, -0.6, 0.14514233, -0.46193975, -0.6, 0.19134171, -0.44096065, -0.6, 0.23569837, -0.4157348, -0.6, 0.27778512, -0.38650522, -0.6, 0.31719664, -0.35355338, -0.6, 0.35355338, -0.31719664, -0.6, 0.38650522, -0.27778512, -0.6, 0.4157348, -0.23569837, -0.6, 0.44096065, -0.19134171, -0.6, 0.46193975, -0.14514233, -0.6, 0.47847018, -0.09754516, -0.6, 0.49039263, -0.04900857, -0.6, 0.49759236, 0, -0.6, 0.5, 0, -1, 0.5, 0.04900857, -1, 0.49759236, 0.09754516, -1, 0.49039263, 0.14514233, -1, 0.47847018, 0.19134171, -1, 0.46193975, 0.23569837, -1, 0.44096065, 0.27778512, -1, 0.4157348, 0.31719664, -1, 0.38650522, 0.35355338, -1, 0.35355338, 0.38650522, -1, 0.31719664, 0.4157348, -1, 0.27778512, 0.44096065, -1, 0.23569837, 0.46193975, -1, 0.19134171, 0.47847018, -1, 0.14514233, 0.49039263, -1, 0.09754516, 0.49759236, -1, 0.04900857, 0.5, -1, 3.061516e-17, 0.49759236, -1, -0.04900857, 0.49039263, -1, -0.09754516, 0.47847018, -1, -0.14514233, 0.46193975, -1, -0.19134171, 0.44096065, -1, -0.23569837, 0.4157348, -1, -0.27778512, 0.38650522, -1, -0.31719664, 0.35355338, -1, -0.35355338, 0.31719664, -1, -0.38650522, 0.27778512, -1, -0.4157348, 0.23569837, -1, -0.44096065, 0.19134171, -1, -0.46193975, 0.14514233, -1, -0.47847018, 0.09754516, -1, -0.49039263, 0.04900857, -1, -0.49759236, 6.123032e-17, -1, -0.5, -0.04900857, -1, -0.49759236, -0.09754516, -1, -0.49039263, -0.14514233, -1, -0.47847018, -0.19134171, -1, -0.46193975, -0.23569837, -1, -0.44096065, -0.27778512, -1, -0.4157348, -0.31719664, -1, -0.38650522, -0.35355338, -1, -0.35355338, -0.38650522, -1, -0.31719664, -0.4157348, -1, -0.27778512, -0.44096065, -1, -0.23569837, -0.46193975, -1, -0.19134171, -0.47847018, -1, -0.14514233, -0.49039263, -1, -0.09754516, -0.49759236, -1, -0.04900857, -0.5, -1, -9.1845477e-17, -0.49759236, -1, 0.04900857, -0.49039263, -1, 0.09754516, -0.47847018, -1, 0.14514233, -0.46193975, -1, 0.19134171, -0.44096065, -1, 0.23569837, -0.4157348, -1, 0.27778512, -0.38650522, -1, 0.31719664, -0.35355338, -1, 0.35355338, -0.31719664, -1, 0.38650522, -0.27778512, -1, 0.4157348, -0.23569837, -1, 0.44096065, -0.19134171, -1, 0.46193975, -0.14514233, -1, 0.47847018, -0.09754516, -1, 0.49039263, -0.04900857, -1, 0.49759236, 0, -1, 0.5, 0, 1, 0, 0, 1, 0.5, 0.04900857, 1, 0.49759236, 0.09754516, 1, 0.49039263, 0.14514233, 1, 0.47847018, 0.19134171, 1, 0.46193975, 0.23569837, 1, 0.44096065, 0.27778512, 1, 0.4157348, 0.31719664, 1, 0.38650522, 0.35355338, 1, 0.35355338, 0.38650522, 1, 0.31719664, 0.4157348, 1, 0.27778512, 0.44096065, 1, 0.23569837, 0.46193975, 1, 0.19134171, 0.47847018, 1, 0.14514233, 0.49039263, 1, 0.09754516, 0.49759236, 1, 0.04900857, 0.5, 1, 3.061516e-17, 0.49759236, 1, -0.04900857, 0.49039263, 1, -0.09754516, 0.47847018, 1, -0.14514233, 0.46193975, 1, -0.19134171, 0.44096065, 1, -0.23569837, 0.4157348, 1, -0.27778512, 0.38650522, 1, -0.31719664, 0.35355338, 1, -0.35355338, 0.31719664, 1, -0.38650522, 0.27778512, 1, -0.4157348, 0.23569837, 1, -0.44096065, 0.19134171, 1, -0.46193975, 0.14514233, 1, -0.47847018, 0.09754516, 1, -0.49039263, 0.04900857, 1, -0.49759236, 6.123032e-17, 1, -0.5, -0.04900857, 1, -0.49759236, -0.09754516, 1, -0.49039263, -0.14514233, 1, -0.47847018, -0.19134171, 1, -0.46193975, -0.23569837, 1, -0.44096065, -0.27778512, 1, -0.4157348, -0.31719664, 1, -0.38650522, -0.35355338, 1, -0.35355338, -0.38650522, 1, -0.31719664, -0.4157348, 1, -0.27778512, -0.44096065, 1, -0.23569837, -0.46193975, 1, -0.19134171, -0.47847018, 1, -0.14514233, -0.49039263, 1, -0.09754516, -0.49759236, 1, -0.04900857, -0.5, 1, -9.1845477e-17, -0.49759236, 1, 0.04900857, -0.49039263, 1, 0.09754516, -0.47847018, 1, 0.14514233, -0.46193975, 1, 0.19134171, -0.44096065, 1, 0.23569837, -0.4157348, 1, 0.27778512, -0.38650522, 1, 0.31719664, -0.35355338, 1, 0.35355338, -0.31719664, 1, 0.38650522, -0.27778512, 1, 0.4157348, -0.23569837, 1, 0.44096065, -0.19134171, 1, 0.46193975, -0.14514233, 1, 0.47847018, -0.09754516, 1, 0.49039263, -0.04900857, 1, 0.49759236, 0, 1, 0.5, 0, -1, 0, 0, -1, 0.5, 0.04900857, -1, 0.49759236, 0.09754516, -1, 0.49039263, 0.14514233, -1, 0.47847018, 0.19134171, -1, 0.46193975, 0.23569837, -1, 0.44096065, 0.27778512, -1, 0.4157348, 0.31719664, -1, 0.38650522, 0.35355338, -1, 0.35355338, 0.38650522, -1, 0.31719664, 0.4157348, -1, 0.27778512, 0.44096065, -1, 0.23569837, 0.46193975, -1, 0.19134171, 0.47847018, -1, 0.14514233, 0.49039263, -1, 0.09754516, 0.49759236, -1, 0.04900857, 0.5, -1, 3.061516e-17, 0.49759236, -1, -0.04900857, 0.49039263, -1, -0.09754516, 0.47847018, -1, -0.14514233, 0.46193975, -1, -0.19134171, 0.44096065, -1, -0.23569837, 0.4157348, -1, -0.27778512, 0.38650522, -1, -0.31719664, 0.35355338, -1, -0.35355338, 0.31719664, -1, -0.38650522, 0.27778512, -1, -0.4157348, 0.23569837, -1, -0.44096065, 0.19134171, -1, -0.46193975, 0.14514233, -1, -0.47847018, 0.09754516, -1, -0.49039263, 0.04900857, -1, -0.49759236, 6.123032e-17, -1, -0.5, -0.04900857, -1, -0.49759236, -0.09754516, -1, -0.49039263, -0.14514233, -1, -0.47847018, -0.19134171, -1, -0.46193975, -0.23569837, -1, -0.44096065, -0.27778512, -1, -0.4157348, -0.31719664, -1, -0.38650522, -0.35355338, -1, -0.35355338, -0.38650522, -1, -0.31719664, -0.4157348, -1, -0.27778512, -0.44096065, -1, -0.23569837, -0.46193975, -1, -0.19134171, -0.47847018, -1, -0.14514233, -0.49039263, -1, -0.09754516, -0.49759236, -1, -0.04900857, -0.5, -1, -9.1845477e-17, -0.49759236, -1, 0.04900857, -0.49039263, -1, 0.09754516, -0.47847018, -1, 0.14514233, -0.46193975, -1, 0.19134171, -0.44096065, -1, 0.23569837, -0.4157348, -1, 0.27778512, -0.38650522, -1, 0.31719664, -0.35355338, -1, 0.35355338, -0.31719664, -1, 0.38650522, -0.27778512, -1, 0.4157348, -0.23569837, -1, 0.44096065, -0.19134171, -1, 0.46193975, -0.14514233, -1, 0.47847018, -0.09754516, -1, 0.49039263, -0.04900857, -1, 0.49759236, 0, -1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yymuf"]
+size = Vector3(25.013153, 20.218018, 26.666931)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a60c"]
 shading_mode = 0
 albedo_color = Color(0.89411765, 0.63529414, 0.3647059, 1)
+albedo_texture = ExtResource("6_rqhku")
 
 [sub_resource type="BoxMesh" id="BoxMesh_didp7"]
 material = SubResource("StandardMaterial3D_2a60c")
@@ -463,22 +522,27 @@ mesh = SubResource("BoxMesh_4hvuo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Template Scenario/Floor" unique_id=1749894358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10644531, -0.17114258, -0.19857788)
+visible = false
 shape = SubResource("BoxShape3D_vly50")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Template Scenario/Floor" unique_id=315199621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7.5005)
+visible = false
 shape = SubResource("BoxShape3D_4iphx")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Template Scenario/Floor" unique_id=1343800699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 7.4995)
+visible = false
 shape = SubResource("BoxShape3D_4iphx")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Template Scenario/Floor" unique_id=1980045555]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.228583, 2.5, -0.42799044)
+visible = false
 shape = SubResource("BoxShape3D_4iphx")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Template Scenario/Floor" unique_id=657404942]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.477604, 2.5, 0.114062786)
+visible = false
 shape = SubResource("BoxShape3D_4iphx")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=521803744]
@@ -500,8 +564,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072444916, -0.10188365, 0.
 shape = SubResource("BoxShape3D_c5erv")
 
 [node name="Look" type="ShapeCast3D" parent="Player" unique_id=2089404177]
-transform = Transform3D(26.11, 0, 0, 0, -6.775265e-08, 1, 0, -1.55, -4.371139e-08, 0, -0.15978289, -0.5908737)
+transform = Transform3D(64.235, 0, 0, 0, -1.6667153e-07, 2.46, 0, -3.813, -1.0753001e-07, 0, 0, 0)
 shape = SubResource("BoxShape3D_lyd6k")
+target_position = Vector3(0, 0, 0)
 collision_mask = 3
 
 [node name="Hand" type="Node3D" parent="Player" unique_id=1779971978]
@@ -528,6 +593,7 @@ one_shot = true
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test" unique_id=1179542805]
+transform = Transform3D(1.73, 0, 0, 0, 3.56, 0, 0, 0, 0.135, 0, 1.3023827, -0.95296097)
 mesh = SubResource("BoxMesh_c5erv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test" unique_id=776255347]
@@ -554,6 +620,7 @@ one_shot = true
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test2" unique_id=1260441239]
+transform = Transform3D(0.185, 0, 0, 0, 3.895, 0, 0, 0, 1.885, -0.40824175, 1.5445249, 0)
 mesh = SubResource("BoxMesh_2a60c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test2" unique_id=1159388203]
@@ -580,6 +647,7 @@ one_shot = true
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test3" unique_id=1979006198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.355, 0, 0, 0.2998743)
 mesh = SubResource("BoxMesh_y4dr7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test3" unique_id=1057740147]
@@ -595,7 +663,7 @@ shape = SubResource("BoxShape3D_2a60c")
 
 [node name="Item1" type="Node3D" parent="Itens" unique_id=184148444 groups=["pickable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 3.136985, 0.28116977, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 2.523883, 0.28116977, 0)
 
 [node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 unique_name_in_owner = true
@@ -609,19 +677,23 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_y4dr7")
 item_type = "baixo"
-mesh = NodePath("meshitem1")
+mesh = NodePath("Plane_002")
 outline_material = ExtResource("4_y4dr7")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item1/item1_rb" unique_id=952430070]
-transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 3.147, 0.718, 0)
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 3.147, 0.33379632, -1.0188317)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "3"
 
+[node name="Plane_002" parent="Itens/Item1/item1_rb" unique_id=640970923 instance=ExtResource("6_esggg")]
+transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.558, 0, -4.371139e-08, 0, -0.5, -0.06915331, 0.28019887, 0.0393579)
+
 [node name="meshitem1" type="MeshInstance3D" parent="Itens/Item1/item1_rb" unique_id=89069681 groups=["pickable"]]
 unique_name_in_owner = true
+visible = false
 mesh = SubResource("CylinderMesh_didp7")
 
 [node name="collisionitem1" type="CollisionShape3D" parent="Itens/Item1/item1_rb" unique_id=2114434136 groups=["pickable"]]
@@ -845,13 +917,153 @@ shape = SubResource("BoxShape3D_164vy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_g2s1u")
 
+[node name="Item_Movable" type="Node3D" parent="Itens" unique_id=881950107 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 5.5914955, 0.28116977, 0.32509696)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable" unique_id=1186896220 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("meshitemMovable")
+outline_material = ExtResource("4_y4dr7")
+
+[node name="meshitemMovable" type="MeshInstance3D" parent="Itens/Item_Movable/itemMovable_rb" unique_id=1642271315 groups=["movable"]]
+mesh = SubResource("CylinderMesh_cpkqv")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable/itemMovable_rb" unique_id=80464403 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("ConvexPolygonShape3D_u1b78")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable/itemMovable_rb" unique_id=478553082 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable/itemMovable_rb/areaitemMovable" unique_id=1318711310 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010498047, 0.5, 0.02557373)
+shape = SubResource("BoxShape3D_g2s1u")
+
+[node name="Item_Movable2" type="Node3D" parent="Itens" unique_id=121387637 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 5.652961, 0.28116977, -0.945693)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable2" unique_id=480661209 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("meshitemMovable")
+outline_material = ExtResource("4_y4dr7")
+
+[node name="meshitemMovable" type="MeshInstance3D" parent="Itens/Item_Movable2/itemMovable_rb" unique_id=148813594 groups=["movable"]]
+mesh = SubResource("CylinderMesh_cpkqv")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable2/itemMovable_rb" unique_id=1285939391 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("ConvexPolygonShape3D_u1b78")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable2/itemMovable_rb" unique_id=504344608 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable2/itemMovable_rb/areaitemMovable" unique_id=1876531931 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010498047, 0.5, 0.02557373)
+shape = SubResource("BoxShape3D_g2s1u")
+
+[node name="Item_Movable3" type="Node3D" parent="Itens" unique_id=1526112724 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 6.6841655, 0.28116977, -2.0057423)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable3" unique_id=1807655572 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("meshitemMovable")
+outline_material = ExtResource("4_y4dr7")
+
+[node name="meshitemMovable" type="MeshInstance3D" parent="Itens/Item_Movable3/itemMovable_rb" unique_id=521154329 groups=["movable"]]
+mesh = SubResource("CylinderMesh_cpkqv")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable3/itemMovable_rb" unique_id=183387230 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("ConvexPolygonShape3D_u1b78")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable3/itemMovable_rb" unique_id=106230717 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable3/itemMovable_rb/areaitemMovable" unique_id=521674348 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010498047, 0.5, 0.02557373)
+shape = SubResource("BoxShape3D_g2s1u")
+
+[node name="Item_Movable4" type="Node3D" parent="Itens" unique_id=961782428 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 6.2635236, 0.28116977, 1.7047526)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable4" unique_id=221982221 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("meshitemMovable")
+outline_material = ExtResource("4_y4dr7")
+
+[node name="meshitemMovable" type="MeshInstance3D" parent="Itens/Item_Movable4/itemMovable_rb" unique_id=1496815680 groups=["movable"]]
+mesh = SubResource("CylinderMesh_cpkqv")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable4/itemMovable_rb" unique_id=1210185117 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("ConvexPolygonShape3D_u1b78")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable4/itemMovable_rb" unique_id=532933826 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable4/itemMovable_rb/areaitemMovable" unique_id=1924637946 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010498047, 0.5, 0.02557373)
+shape = SubResource("BoxShape3D_g2s1u")
+
+[node name="Model Organization" type="Node" parent="." unique_id=1511237609]
+
+[node name="poltrona" parent="Model Organization" unique_id=249627863 instance=ExtResource("13_af2a1")]
+transform = Transform3D(0.056309275, 0, -0.056826625, 0, 0.08, 0, 0.056826625, 0, 0.056309275, -2.1504912, -0.33417797, -1.5207782)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Model Organization/poltrona" unique_id=728757414]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model Organization/poltrona/RigidBody3D" unique_id=1601477819]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, -5.7791367, 5.005248, 1.2181616)
+shape = SubResource("BoxShape3D_yymuf")
+
+[node name="poltrona2" parent="Model Organization" unique_id=1969425891 instance=ExtResource("13_af2a1")]
+transform = Transform3D(-0.046312883, 0, 0.065231256, 0, 0.08, 0, -0.065231256, 0, -0.046312883, 2.3948226, -0.33417797, 3.2397194)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Model Organization/poltrona2" unique_id=56112117]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model Organization/poltrona2/RigidBody3D" unique_id=485987221]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, -5.7791367, 5.005248, 1.2181616)
+shape = SubResource("BoxShape3D_yymuf")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1340857480]
 transform = Transform3D(1, 0, 0, 0, 0.72747344, 0.6861359, 0, -0.6861359, 0.72747344, -0.36141247, 6.8803983, 9.405532)
 
 [node name="Exit_Door" type="StaticBody3D" parent="." unique_id=130820807 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8265095, 0, 0)
 script = ExtResource("5_y4dr7")
-middle_bar = 50
+middle_bar = 250
 mesh = NodePath("exit_door_mesh")
 outline_material = ExtResource("6_didp7")
 
@@ -875,6 +1087,7 @@ offset_top = 151.0
 offset_right = 1145.0
 offset_bottom = 173.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_y4dr7")
+max_value = 500.0
 
 [node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("8_jgkgd")]
 
@@ -899,5 +1112,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_y4dr7")
 [connection signal="area_exited" from="Itens/Item3_2/item3_2_rb/areaitem3_2" to="Itens/Item3_2/item3_2_rb" method="_on_areaitem_3_2_area_exited"]
 [connection signal="area_entered" from="Itens/Item3_3/item3_3_rb/areaitem3_3" to="Itens/Item3_3/item3_3_rb" method="_on_areaitem_3_3_area_entered"]
 [connection signal="area_exited" from="Itens/Item3_3/item3_3_rb/areaitem3_3" to="Itens/Item3_3/item3_3_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable2/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable2/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable2/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable2/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable3/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable3/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable3/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable3/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable4/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable4/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable4/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable4/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="body_entered" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_entered"]
 [connection signal="body_exited" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_exited"]

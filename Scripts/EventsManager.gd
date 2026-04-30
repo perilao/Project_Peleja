@@ -44,8 +44,7 @@ func _process(_delta):
 					print("Item errado! Você tem '", object.item_type, "' mas esta porta precisa de '", event_name, "'")
 func _on_timer_geral_timeout() -> void:
 	#PLAYER DEFEAT LOGIC
-	get_tree().quit() 
-
+	get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
 #AREAS
 func _on_area_3d_area_entered(_area: Area3D) -> void:
 	isOnArea = true

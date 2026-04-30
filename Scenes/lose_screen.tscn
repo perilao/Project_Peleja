@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cp18xcsfryfwi"]
+
+[ext_resource type="Script" uid="uid://dpnktxbfdv0sf" path="res://Scenes/lose_screen_manager.gd" id="1_s2rrh"]
+
+[node name="Lose Screen" type="Control" unique_id=1992811942]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s2rrh")
+
+[node name="Restart" type="Button" parent="." unique_id=1369788742]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 388.0
+offset_right = 795.0
+offset_bottom = 480.0
+text = "Restart"
+
+[node name="Label" type="Label" parent="." unique_id=695609068]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 158.0
+offset_right = 976.0
+offset_bottom = 353.0
+theme_override_font_sizes/font_size = 100
+text = "Você Ganhou!"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

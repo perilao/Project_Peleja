@@ -15,6 +15,7 @@ var original_rotation: Vector3
 @onready var item_2_rb: RigidBody3D = %item2_rb
 var hold_object: Node3D = null
 var block_input := false
+var release_distance := 2.0
 
 
 func _physics_process(delta: float) -> void:
@@ -28,11 +29,22 @@ func _physics_process(delta: float) -> void:
 	#GRAB OBJECT
 	if Input.is_action_just_pressed("ui_grab"):
 		if hold_object:
-			release_object()
+			if hold_object.is_in_group("movable"):
+				var area: Area3D = null
+				for child in hold_object.get_children():
+					if child is Area3D:
+						area = child
+						break
+				if area and area.get_overlapping_bodies().size() <= 1 and area.get_overlapping_areas().size() <= 1:
+					release_object()
+			else:
+				var dist = global_position.distance_to(original_position)
+				if dist <= release_distance:
+					release_object()
 		else:
 			if player_raycast.is_colliding():
 				var object = player_raycast.get_collider(0)
-				if object.is_in_group("pickable"):
+				if object.is_in_group("pickable") or object.is_in_group("movable"):
 					grab_object(object)
 	if hold_object:
 		hold_object.global_position = hand.global_position
@@ -41,14 +53,19 @@ func _physics_process(delta: float) -> void:
 
 func grab_object(obj):
 	hold_object = obj
-	original_position = hold_object.global_position
-	original_rotation = hold_object.global_rotation
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2
+
+	if obj.is_in_group("movable"):
+		if obj.has_method("set_held"):
+			obj.set_held(true)
+	else:
+		original_position = hold_object.global_position
+		original_rotation = hold_object.global_rotation
 	if obj.has_method("lock_move_z"):
 		obj.lock_move_z()
 	if hold_object is RigidBody3D:
-		hold_object.freeze = true
+		hold_object.freeze = false
 	player_has_item = true
 
 func player_movement(delta):
@@ -78,10 +95,20 @@ func release_object(consumed: bool = false):
 		if !consumed:
 			if obj.has_method("return_use") and obj.was_used:
 				obj.return_use()
+			if obj.is_in_group("movable"):
+				obj.collision_layer = original_layer
+				if obj.has_method("set_held"): 
+					obj.set_held(false)
+				player_has_item = false
+				hold_object = null
+				return 
+			else:
+				obj.global_position = original_position
+				obj.global_rotation = original_rotation
 		else:
 			obj.was_used = false
 		#RETURN OBJECT ORIGINAL POSITION
-		obj.global_position = original_position 
+		obj.global_position = original_position
 		obj.global_rotation = original_rotation
 		obj.collision_layer = original_layer
 		#RELEASE MOVEMENT IN Z POSITION
