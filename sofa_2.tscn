@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://o5qmadcfaqy0"]
-
-[ext_resource type="PackedScene" uid="uid://bndqp1dj2g88d" path="res://Assets/3D Assets/sofa 2.blend" id="1_gd2q4"]
-
-[node name="sofa 2" unique_id=241998882 instance=ExtResource("1_gd2q4")]

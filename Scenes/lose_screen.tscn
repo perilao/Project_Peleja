@@ -23,9 +23,9 @@ text = "Restart"
 layout_mode = 0
 offset_left = 309.0
 offset_top = 158.0
-offset_right = 976.0
-offset_bottom = 353.0
+offset_right = 971.0
+offset_bottom = 435.0
 theme_override_font_sizes/font_size = 100
-text = "Você Ganhou!"
+text = "Você Perdeu:("
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
