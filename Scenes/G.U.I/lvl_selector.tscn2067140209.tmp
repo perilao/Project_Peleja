@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://debcutky4frgh"]
+
+[ext_resource type="Script" uid="uid://ryof2qt4410a" path="res://Scripts/lvl_selector.gd" id="1_6ry5l"]
+[ext_resource type="Texture2D" uid="uid://bxcc8bt0lv03k" path="res://Assets/Buttons/framedeportabranco.png" id="2_ldf8s"]
+[ext_resource type="Texture2D" uid="uid://dslmy2oxmknw0" path="res://Assets/Buttons/cadeadoclaro.png" id="3_rbbqw"]
+
+[node name="Node2D" type="Node2D" unique_id=1983303683]
+script = ExtResource("1_6ry5l")
+
+[node name="Frame_lvl1" type="Sprite2D" parent="." unique_id=1308378818]
+position = Vector2(266.125, 390.44168)
+scale = Vector2(0.45404175, 0.45404175)
+texture = ExtResource("2_ldf8s")
+
+[node name="Frame_lvl2" type="Sprite2D" parent="." unique_id=116800979]
+position = Vector2(581, 391)
+scale = Vector2(0.45404175, 0.45404175)
+texture = ExtResource("2_ldf8s")
+
+[node name="Frame_lvl3" type="Sprite2D" parent="." unique_id=1685811117]
+position = Vector2(891, 391.00003)
+scale = Vector2(0.45404175, 0.45404175)
+texture = ExtResource("2_ldf8s")
+
+[node name="Label" type="Label" parent="." unique_id=145713516]
+offset_left = 423.00003
+offset_top = 38.000004
+offset_right = 527.0
+offset_bottom = 61.000004
+scale = Vector2(3.11, 3.11)
+text = "LEVEL SELECT"
+
+[node name="Completed_lvl_1" type="ColorRect" parent="." unique_id=747278460]
+offset_left = 147.12502
+offset_top = 208.44165
+offset_right = 389.0
+offset_bottom = 648.44165
+color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+
+[node name="Playable_lvl1" type="ColorRect" parent="." unique_id=1742029730]
+offset_left = 147.12502
+offset_top = 208.44165
+offset_right = 389.0
+offset_bottom = 648.44165
+color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+
+[node name="Completed_lvl_2" type="ColorRect" parent="." unique_id=456756647]
+offset_left = 461.0
+offset_top = 208.0
+offset_right = 702.875
+offset_bottom = 648.0
+color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+
+[node name="Playable_lvl2" type="ColorRect" parent="." unique_id=116311811]
+offset_left = 461.0
+offset_top = 208.0
+offset_right = 702.875
+offset_bottom = 648.0
+color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+
+[node name="Locked_lvl2" type="ColorRect" parent="." unique_id=322980395]
+offset_left = 461.0
+offset_top = 208.0
+offset_right = 702.875
+offset_bottom = 648.0
+color = Color(0, 0.039215688, 0.10980392, 1)
+
+[node name="Completed_lvl_3" type="ColorRect" parent="." unique_id=1341072440]
+offset_left = 772.0
+offset_top = 208.0
+offset_right = 1013.875
+offset_bottom = 648.0
+color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+
+[node name="Playable_lvl3" type="ColorRect" parent="." unique_id=190049342]
+offset_left = 772.0
+offset_top = 208.0
+offset_right = 1013.875
+offset_bottom = 648.0
+color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+
+[node name="Locked_lvl3" type="ColorRect" parent="." unique_id=1426013767]
+offset_left = 772.0
+offset_top = 208.0
+offset_right = 1013.875
+offset_bottom = 648.0
+color = Color(0, 0.039215688, 0.10980392, 1)
+
+[node name="Lock_lvl2" type="Sprite2D" parent="." unique_id=673309806]
+position = Vector2(580, 423)
+scale = Vector2(0.26539588, 0.26539588)
+texture = ExtResource("3_rbbqw")
+
+[node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
+position = Vector2(892.00006, 423)
+scale = Vector2(0.26539588, 0.26539588)
+texture = ExtResource("3_rbbqw")
+
+[node name="Button" type="Button" parent="." unique_id=1826991966]
+unique_name_in_owner = true
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 131.0
+offset_top = 166.0
+offset_right = 145.03687
+offset_bottom = 508.85718
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(19.52, 1.4)
+size_flags_horizontal = 4
+flat = true
+
+[node name="Button2" type="Button" parent="." unique_id=435372775]
+unique_name_in_owner = true
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 448.0
+offset_top = 166.0
+offset_right = 461.78076
+offset_bottom = 508.85718
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(19.52, 1.4)
+size_flags_horizontal = 4
+flat = true
+
+[node name="Button3" type="Button" parent="." unique_id=1594534015]
+unique_name_in_owner = true
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 755.0
+offset_top = 166.0
+offset_right = 769.03687
+offset_bottom = 508.85718
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(19.52, 1.4)
+size_flags_horizontal = 4
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
