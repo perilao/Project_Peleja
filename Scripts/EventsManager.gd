@@ -3,6 +3,7 @@ extends StaticBody3D
 #TIMER PROPERTIES
 @export var event_time := 4.0
 @onready var timer_geral: Timer = $timer_geral
+var original_wait_time: float
 #EVENT
 @export var event_name : String = ""
 @onready var event = get_tree().get_nodes_in_group("event")
@@ -21,6 +22,10 @@ func _ready() -> void:
 	Event_Color = mesh.get_active_material(0).albedo_color
 	hasPrinted = false
 	isOnArea = false
+	if timer_geral.is_in_group("start_opened"):
+		original_wait_time = timer_geral.wait_time
+		timer_geral.wait_time = event_time
+		timer_geral.start() 
 func _process(_delta):
 #CONTADOR
 	#CHANGE STATE AFTER CERTAIN TIME
@@ -34,6 +39,7 @@ func _process(_delta):
 			var object = player.hold_object
 			if object != null and object.is_in_group("pickable"):
 				if object.item_type == self.event_name:
+					timer_geral.wait_time = original_wait_time
 					timer_geral.start()
 					object.use_item()
 					player.release_object(true)

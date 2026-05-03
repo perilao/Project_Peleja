@@ -5,7 +5,9 @@ extends Node
 var player_in_exit := false
 #EXIT BAR
 @onready var progress_bar: ProgressBar = $ProgressBar
-@export var middle_bar = 0
+@export var second_stage = 0
+@export var third_stage = 0
+@export var fourth_stage = 0
 #OUTLINE SHADERS
 @export var mesh: MeshInstance3D
 @export var outline_material: Material
@@ -24,11 +26,15 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_released("ui_interact"):
 			player.block_input = false
 			if progress_bar.value < progress_bar.max_value:
-				if progress_bar.value >= middle_bar and progress_bar.value <= progress_bar.max_value:
-					progress_bar.value = middle_bar
+				if progress_bar.value >= fourth_stage:
+					progress_bar.value = fourth_stage
+				elif progress_bar.value >= third_stage:
+					progress_bar.value = third_stage
+				elif progress_bar.value >= second_stage:
+					progress_bar.value = second_stage
 				else:
 					progress_bar.value = progress_bar.min_value
-		if progress_bar.value == progress_bar.max_value:
+		if progress_bar.value >= progress_bar.max_value:
 			progress_bar_finished()
 
 func progress_bar_finished():

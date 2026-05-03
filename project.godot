@@ -42,6 +42,7 @@ folder_colors={
 pickable=""
 event=""
 movable=""
+start_opened=""
 
 [input]
 
