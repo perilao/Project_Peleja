@@ -1928,7 +1928,7 @@ transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -4.793487, -0.457
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -4.793487, -0.4579672, 6.049202)
 
 [node name="Poltrona (Obstaculo)3" parent="Props" unique_id=2068079789 instance=ExtResource("16_684ly")]
-transform = Transform3D(0.0005696956, 0, 0.00082185585, 0, 0.001, 0, -0.00082185585, 0, 0.0005696956, 11.58852, -0.4579672, 2.1276045)
+transform = Transform3D(0.0005696956, 0, 0.00082185585, 0, 0.001, 0, -0.00082185585, 0, 0.0005696956, 6.2364893, -0.4579672, 4.8801947)
 
 [node name="Poltrona (Obstaculo)4" parent="Props" unique_id=1023019171 instance=ExtResource("16_684ly")]
 transform = Transform3D(0.0005696956, 0, 0.00082185585, 0, 0.001, 0, -0.00082185585, 0, 0.0005696956, 11.476667, -0.4579672, -3.5152073)
