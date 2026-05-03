@@ -39,11 +39,12 @@ func _process(_delta: float) -> void:
 
 func progress_bar_finished():
 	#TRIGGER THE EXIT FINAL
+	LevelCore.lvl2_completed = true
 	progress_bar.value = progress_bar.max_value
 	print("Voce Conseguiu!")
 	player.block_input = false
-	get_tree().change_scene_to_file("res://Scenes/Win_Screen.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/G.U.I/lvl_selector.tscn")
+	
 #AREA ENTERED
 func _on_exit_door_area_body_entered(_body: Node3D) -> void:
 	player_in_exit = true

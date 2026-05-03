@@ -1,29 +1,29 @@
 [gd_scene format=3 uid="uid://yph8snnoxdo4"]
 
-[ext_resource type="Script" uid="uid://cptefflkuvqkd" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
-[ext_resource type="Texture2D" uid="uid://b2nldcgtwujfu" path="res://Assets/Buttons/Tac/UI/START BUTTON.png" id="4_yhxw7"]
-[ext_resource type="Texture2D" uid="uid://dnweytwbea21m" path="res://Assets/Buttons/Tac/UI/START BUTTON PRESSIONED.png" id="5_16hvj"]
-[ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="5_n45e2"]
-[ext_resource type="Texture2D" uid="uid://b13pxl3rv00c1" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON.png" id="5_trj04"]
-[ext_resource type="Texture2D" uid="uid://b5xt4qctb1eak" path="res://Assets/Buttons/Tac/UI/OPTIONS BUTTON.png" id="5_yhxw7"]
-[ext_resource type="Texture2D" uid="uid://darwdnr6j387o" path="res://Assets/Buttons/Tac/UI/OPTIONS BUTTON PRESSIONED.png" id="6_16hvj"]
-[ext_resource type="Texture2D" uid="uid://ct3o5sihgkbn5" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON PRESSIONED.png" id="8_vr1f0"]
-[ext_resource type="Texture2D" uid="uid://b4pkv27bvh6pe" path="res://Assets/2D Assets/1000036726.png" id="9_16hvj"]
-[ext_resource type="Texture2D" uid="uid://fka6ca4hiy77" path="res://Assets/2D Assets/fundosemhud.png" id="10_vr1f0"]
+[ext_resource type="Script" uid="uid://cptefflkuvqkd" path="res://Scripts/main_menu.gd" id="1_44aiy"]
+[ext_resource type="Texture2D" uid="uid://fka6ca4hiy77" path="res://Assets/2D Assets/fundosemhud.png" id="2_r6hvg"]
+[ext_resource type="Texture2D" uid="uid://b4pkv27bvh6pe" path="res://Assets/2D Assets/1000036726.png" id="3_cofh4"]
+[ext_resource type="Texture2D" uid="uid://dnweytwbea21m" path="res://Assets/Buttons/Tac/UI/START BUTTON PRESSIONED.png" id="4_irs5p"]
+[ext_resource type="Texture2D" uid="uid://b2nldcgtwujfu" path="res://Assets/Buttons/Tac/UI/START BUTTON.png" id="5_mt0mm"]
+[ext_resource type="Texture2D" uid="uid://darwdnr6j387o" path="res://Assets/Buttons/Tac/UI/OPTIONS BUTTON PRESSIONED.png" id="6_xuxnm"]
+[ext_resource type="Texture2D" uid="uid://b5xt4qctb1eak" path="res://Assets/Buttons/Tac/UI/OPTIONS BUTTON.png" id="7_wd0pk"]
+[ext_resource type="Texture2D" uid="uid://ct3o5sihgkbn5" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON PRESSIONED.png" id="8_aa7ff"]
+[ext_resource type="Texture2D" uid="uid://b13pxl3rv00c1" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON.png" id="9_j5vqt"]
+[ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="10_y3km0"]
 
 [node name="main menu" type="CanvasLayer" unique_id=1887178084]
-script = ExtResource("1_ce3w2")
+script = ExtResource("1_44aiy")
 
 [node name="Fundosemhud" type="Sprite2D" parent="." unique_id=1921642910]
 modulate = Color(0.39710915, 0.39710915, 0.39710915, 1)
 position = Vector2(642, 400)
 scale = Vector2(0.19473264, 0.19473267)
-texture = ExtResource("10_vr1f0")
+texture = ExtResource("2_r6hvg")
 
 [node name="1000036726" type="Sprite2D" parent="." unique_id=1376343797]
 position = Vector2(621.00006, 212)
 scale = Vector2(0.29115453, 0.29115453)
-texture = ExtResource("9_16hvj")
+texture = ExtResource("3_cofh4")
 
 [node name="Button Manager" type="Control" parent="." unique_id=55270483]
 layout_mode = 3
@@ -43,8 +43,8 @@ scale = Vector2(2.03, 2.03)
 toggle_mode = true
 button_pressed = true
 action_mode = 0
-texture_normal = ExtResource("5_16hvj")
-texture_pressed = ExtResource("4_yhxw7")
+texture_normal = ExtResource("4_irs5p")
+texture_pressed = ExtResource("5_mt0mm")
 
 [node name="options" type="TextureButton" parent="Button Manager" unique_id=1061847799]
 layout_mode = 0
@@ -57,8 +57,8 @@ disabled = true
 toggle_mode = true
 button_pressed = true
 action_mode = 0
-texture_normal = ExtResource("6_16hvj")
-texture_pressed = ExtResource("5_yhxw7")
+texture_normal = ExtResource("6_xuxnm")
+texture_pressed = ExtResource("7_wd0pk")
 
 [node name="quit" type="TextureButton" parent="Button Manager" unique_id=1401457388]
 layout_mode = 0
@@ -70,10 +70,11 @@ scale = Vector2(2.03, 2.03)
 toggle_mode = true
 button_pressed = true
 action_mode = 0
-texture_normal = ExtResource("8_vr1f0")
-texture_pressed = ExtResource("5_trj04")
+texture_normal = ExtResource("8_aa7ff")
+texture_pressed = ExtResource("9_j5vqt")
 
-[node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("5_n45e2")]
+[node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("10_y3km0")]
+visible = false
 
 [connection signal="pressed" from="Button Manager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/options" to="." method="_on_options_pressed"]

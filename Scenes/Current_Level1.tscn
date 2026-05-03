@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://p764aghxtvm8" path="res://Assets/3D Assets/Texturas/Textura armario.png" id="8_cud0u"]
 [ext_resource type="Texture2D" uid="uid://brmfatgrkob3j" path="res://Assets/3D Assets/Texturas/Textura cadeira 2.png" id="9_bv3xk"]
 [ext_resource type="Texture2D" uid="uid://b4xc6lrcc1yfs" path="res://Assets/3D Assets/Texturas/Textura cadeira 1.png" id="10_1rgox"]
-[ext_resource type="Script" uid="uid://cba3ptsmi50ac" path="res://Scripts/ExitDoor.gd" id="11_4wigo"]
 [ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="12_sqkj2"]
 [ext_resource type="Texture2D" uid="uid://2yerkmoe32j" path="res://Assets/3D Assets/Texturas/Textura banquinho.png" id="13_0wgr0"]
 [ext_resource type="Texture2D" uid="uid://delk6mt17e8gk" path="res://Assets/3D Assets/Texturas/Mesa de centro.png" id="14_j5hao"]
@@ -842,6 +841,63 @@ shadow_mesh = SubResource("ArrayMesh_tw3gb")
 [sub_resource type="BoxShape3D" id="BoxShape3D_abf53"]
 size = Vector3(1.8241577, 1.8060913, 1.8823242)
 
+[sub_resource type="GDScript" id="GDScript_h2cb4"]
+script/source = "extends Node
+
+#PLAYER
+@onready var player: CharacterBody3D = $\"../Player\"
+var player_in_exit := false
+#EXIT BAR
+@onready var progress_bar: ProgressBar = $ProgressBar
+@export var second_stage = 0
+@export var third_stage = 0
+@export var fourth_stage = 0
+#OUTLINE SHADERS
+@export var mesh: MeshInstance3D
+@export var outline_material: Material
+
+func _process(_delta: float) -> void:
+	#RETURN IF THE BAR IS QUEUE_FREE()
+	if progress_bar == null:
+		return
+#PROGRESS BAR LOGIC
+	#INCREASES THE BAR PROGRESS AND BLOCK PLAYER_INPUT
+	if player_in_exit:
+		if Input.is_action_pressed(\"ui_interact\"):
+			progress_bar.value += 1
+			player.block_input = true
+		#STOP THE BAR PROGRESS
+		if Input.is_action_just_released(\"ui_interact\"):
+			player.block_input = false
+			if progress_bar.value < progress_bar.max_value:
+				if progress_bar.value >= fourth_stage:
+					progress_bar.value = fourth_stage
+				elif progress_bar.value >= third_stage:
+					progress_bar.value = third_stage
+				elif progress_bar.value >= second_stage:
+					progress_bar.value = second_stage
+				else:
+					progress_bar.value = progress_bar.min_value
+		if progress_bar.value >= progress_bar.max_value:
+			progress_bar_finished()
+
+func progress_bar_finished():
+	#TRIGGER THE EXIT FINAL
+	LevelCore.lvl1_completed = true
+	progress_bar.value = progress_bar.max_value
+	print(\"Voce Conseguiu!\")
+	player.block_input = false
+	get_tree().change_scene_to_file(\"res://Scenes/G.U.I/lvl_selector.tscn\")
+	
+#AREA ENTERED
+func _on_exit_door_area_body_entered(_body: Node3D) -> void:
+	player_in_exit = true
+	mesh.material_overlay = outline_material
+func _on_exit_door_area_body_exited(_body: Node3D) -> void:
+	player_in_exit = false
+	mesh.material_overlay = null
+"
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_buvuc"]
 _surfaces = [{
 "aabb": AABB(-969.76013, 49.646423, -122.908295, 1992.456, 739.7042, 57.688957),
@@ -1270,7 +1326,7 @@ script = ExtResource("1_niuiw")
 transform = Transform3D(2.27886, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1305332, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Template Scenario/Floor" unique_id=227274387]
-transform = Transform3D(15, 0, 0, 0, 0.3, 0, 0, 0, 15, 0, 0, 0)
+transform = Transform3D(14.999999, 0, 0, 0, 0.3, 0, 0, 0, 15, 0, 0, 0)
 mesh = SubResource("BoxMesh_4hvuo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Template Scenario/Floor" unique_id=1749894358]
@@ -1788,7 +1844,7 @@ shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Item_Movable" type="Node3D" parent="Itens" unique_id=881950107 groups=["movable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 6.1284475, 0.28116977, -0.94296455)
+transform = Transform3D(0.38829824, 0, 0.3149992, 0, 0.45, 0, -0.3149992, 0, 0.38829824, 14.448604, 0.28116977, -1.50881)
 
 [node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable" unique_id=1186896220 node_paths=PackedStringArray("mesh") groups=["movable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -1817,9 +1873,40 @@ shape = SubResource("BoxShape3D_niuiw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17697906, 1.0430298, 1.4088244)
 shape = SubResource("BoxShape3D_grqgb")
 
+[node name="Item_Movable5" type="Node3D" parent="Itens" unique_id=1178456237 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.45647767, 0, -0.20402981, 0, 0.44999996, 0, 0.20402981, 0, 0.45647767, 14.642192, 0.28116977, -5.91273)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable5" unique_id=498188210 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("MesaDeCentro (Movel)")
+outline_material = ExtResource("5_n3qit")
+
+[node name="MesaDeCentro (Movel)" type="MeshInstance3D" parent="Itens/Item_Movable5/itemMovable_rb" unique_id=1291129633]
+transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.27628517, 1.0478182, 2.2710838)
+mesh = SubResource("ArrayMesh_ocmlb")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable5/itemMovable_rb" unique_id=1526695221 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21350098, 0.9152832, 1.4054642)
+shape = SubResource("BoxShape3D_niuiw")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable5/itemMovable_rb" unique_id=2080548309 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable5/itemMovable_rb/areaitemMovable" unique_id=69696220 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17697906, 1.0430298, 1.4088244)
+shape = SubResource("BoxShape3D_grqgb")
+
 [node name="Item_Movable2" type="Node3D" parent="Itens" unique_id=121387637 groups=["movable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -0.36332798, 0.28116977, -2.4008114)
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 12.566958, 0.28116977, -2.9017649)
 
 [node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable2" unique_id=480661209 node_paths=PackedStringArray("mesh") groups=["movable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -1853,7 +1940,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7732429, 0.63411, 0, -0.63411, 0.7732429, 
 
 [node name="Exit_Door" type="StaticBody3D" parent="." unique_id=130820807 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.207879, 0, -3.304131)
-script = ExtResource("11_4wigo")
+script = SubResource("GDScript_h2cb4")
 second_stage = 750
 third_stage = 1500
 fourth_stage = 3000
@@ -1922,16 +2009,16 @@ visible = false
 mesh = SubResource("ArrayMesh_pmaet")
 
 [node name="Poltrona (Obstaculo)" parent="Props" unique_id=1822714137 instance=ExtResource("16_684ly")]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -4.793487, -0.4579672, 2.6860685)
+transform = Transform3D(0.00079593866, 0, -0.0006053774, 0, 0.001, 0, 0.0006053774, 0, 0.00079593866, -2.914741, -0.4579672, 2.3841276)
 
 [node name="Poltrona (Obstaculo)2" parent="Props" unique_id=1670835853 instance=ExtResource("16_684ly")]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -4.793487, -0.4579672, 6.049202)
+transform = Transform3D(0.0009945928, 0, 0.00010385149, 0, 0.001, 0, -0.00010385149, 0, 0.0009945928, -4.793487, -0.4579672, 5.3782206)
 
 [node name="Poltrona (Obstaculo)3" parent="Props" unique_id=2068079789 instance=ExtResource("16_684ly")]
-transform = Transform3D(0.0005696956, 0, 0.00082185585, 0, 0.001, 0, -0.00082185585, 0, 0.0005696956, 6.2364893, -0.4579672, 4.8801947)
+transform = Transform3D(-0.0009940981, 0, -0.00010848534, 0, 0.001, 0, 0.00010848534, 0, -0.0009940981, 6.2364893, -0.4579672, 5.5847254)
 
 [node name="Poltrona (Obstaculo)4" parent="Props" unique_id=1023019171 instance=ExtResource("16_684ly")]
-transform = Transform3D(0.0005696956, 0, 0.00082185585, 0, 0.001, 0, -0.00082185585, 0, 0.0005696956, 11.476667, -0.4579672, -3.5152073)
+transform = Transform3D(0.0005696956, 0, 0.00082185585, 0, 0.001, 0, -0.00082185585, 0, 0.0005696956, 12.952284, -0.4579672, 1.6177931)
 
 [node name="Prateleira" type="MeshInstance3D" parent="Props" unique_id=1025278081]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, -0.09603119)
@@ -1979,6 +2066,8 @@ mesh = ExtResource("20_7p1e7")
 [connection signal="area_exited" from="Itens/Item3_5/item3_3_rb/areaitem3_3" to="Itens/Item3_5/item3_3_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="area_entered" from="Itens/Item_Movable/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
 [connection signal="area_exited" from="Itens/Item_Movable/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable5/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable5/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable5/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable5/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="area_entered" from="Itens/Item_Movable2/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable2/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
 [connection signal="area_exited" from="Itens/Item_Movable2/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable2/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="body_entered" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_entered"]

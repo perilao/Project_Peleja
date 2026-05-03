@@ -22,6 +22,10 @@ boot_splash/image="uid://b4pkv27bvh6pe"
 config/icon="res://Assets/2D Assets/icon.svg"
 boot_splash/minimum_display_time=1500
 
+[autoload]
+
+LevelCore="*uid://dmqsa0gqybgcu"
+
 [display]
 
 window/size/viewport_width=1280
