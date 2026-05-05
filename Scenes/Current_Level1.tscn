@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbn6o52hfeuwr" path="res://Scripts/Phase_1_manager.gd" id="1_niuiw"]
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="2_grqgb"]
-[ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://Assets/2D Assets/AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="3_abf53"]
+[ext_resource type="Texture2D" uid="uid://dvdgeiq611upm" path="res://Assets/2D Assets/test images/AamnL9U7pxpc4R-fPX6XPuz-3J0IGzXo.png" id="3_abf53"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="4_x7y7a"]
 [ext_resource type="Material" uid="uid://drfh00vfi7tq3" path="res://Materials/outline material.tres" id="5_n3qit"]
 [ext_resource type="Texture2D" uid="uid://bkuuwfqprrurt" path="res://Assets/3D Assets/Texturas/Textura porta 1.png" id="6_adlhc"]
@@ -10,14 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://p764aghxtvm8" path="res://Assets/3D Assets/Texturas/Textura armario.png" id="8_cud0u"]
 [ext_resource type="Texture2D" uid="uid://brmfatgrkob3j" path="res://Assets/3D Assets/Texturas/Textura cadeira 2.png" id="9_bv3xk"]
 [ext_resource type="Texture2D" uid="uid://b4xc6lrcc1yfs" path="res://Assets/3D Assets/Texturas/Textura cadeira 1.png" id="10_1rgox"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="12_cud0u"]
 [ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="12_sqkj2"]
 [ext_resource type="Texture2D" uid="uid://2yerkmoe32j" path="res://Assets/3D Assets/Texturas/Textura banquinho.png" id="13_0wgr0"]
 [ext_resource type="Texture2D" uid="uid://delk6mt17e8gk" path="res://Assets/3D Assets/Texturas/Mesa de centro.png" id="14_j5hao"]
+[ext_resource type="Texture2D" uid="uid://la5j7gr5cscv" path="res://Assets/2D Assets/progress bar/under.png" id="15_adlhc"]
 [ext_resource type="PackedScene" uid="uid://bx6hs7pqmuemy" path="res://Assets/Prefabs 3D/mesa_(obstaculo).tscn" id="15_k70y7"]
 [ext_resource type="PackedScene" uid="uid://ctsm3lhkr8vih" path="res://Assets/Prefabs 3D/poltrona_(obstaculo).tscn" id="16_684ly"]
 [ext_resource type="Texture2D" uid="uid://ddurjesrvshuq" path="res://Assets/3D Assets/Texturas/Textura poltrona.png" id="16_niuiw"]
+[ext_resource type="Texture2D" uid="uid://5xi4u4385qsj" path="res://Assets/2D Assets/progress bar/over.png" id="16_thgey"]
 [ext_resource type="Texture2D" uid="uid://lev24p4unyyq" path="res://Assets/3D Assets/Texturas/Textura prateleira.png" id="17_3vc4b"]
+[ext_resource type="Texture2D" uid="uid://bx43kq6bhwrrf" path="res://Assets/2D Assets/progress bar/progress.png" id="17_cud0u"]
 [ext_resource type="Texture2D" uid="uid://bo3kqfvgkdhyf" path="res://Assets/3D Assets/Texturas/Textura cantinho de reza.png" id="18_e5fwq"]
+[ext_resource type="Texture2D" uid="uid://rcoookjdcok0" path="res://Assets/2D Assets/progress bar/marcaçao.png" id="18_thgey"]
 [ext_resource type="Texture2D" uid="uid://diukm3cmbifl" path="res://Assets/3D Assets/Texturas/Textura tabua de madeira.png" id="19_h2cb4"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
 [ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
@@ -1450,7 +1455,7 @@ script/source = "extends Node
 @onready var player: CharacterBody3D = $\"../Player\"
 var player_in_exit := false
 #EXIT BAR
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: TextureProgressBar = $ProgressBar
 @export var second_stage = 0
 @export var third_stage = 0
 @export var fourth_stage = 0
@@ -1827,9 +1832,6 @@ shadow_mesh = SubResource("ArrayMesh_j5hao")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cpkqv"]
 size = Vector3(0.7267761, 1, 2.7504883)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4dr7"]
-bg_color = Color(1, 0.30980393, 0.34117648, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wigo"]
 shading_mode = 0
@@ -2414,6 +2416,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "3"
+font = ExtResource("12_cud0u")
 
 [node name="meshitem1" type="MeshInstance3D" parent="Itens/Item1/item1_rb" unique_id=89069681 groups=["pickable"]]
 unique_name_in_owner = true
@@ -2461,6 +2464,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "7"
+font = ExtResource("12_cud0u")
 
 [node name="meshitem2" type="MeshInstance3D" parent="Itens/Item2/item2_rb" unique_id=1043028126]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.27830648, 3.8109105, -0.5505419)
@@ -2505,6 +2509,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "5"
+font = ExtResource("12_cud0u")
 
 [node name="Cadeira_3" type="MeshInstance3D" parent="Itens/Item3/item3_rb" unique_id=1005717022]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, -0.06760025, 1.0478182, 0.04332161)
@@ -2553,6 +2558,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "5"
+font = ExtResource("12_cud0u")
 
 [node name="Cadeira_3_1" type="MeshInstance3D" parent="Itens/Item3_1/item3_1_rb" unique_id=1789135962]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, 0.0584116)
@@ -2598,6 +2604,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "5"
+font = ExtResource("12_cud0u")
 
 [node name="Cadeira_3_2" type="MeshInstance3D" parent="Itens/Item3_2/item3_2_rb" unique_id=2046294870]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, 0.0880394)
@@ -2643,6 +2650,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "5"
+font = ExtResource("12_cud0u")
 
 [node name="Cadeira_3_3" type="MeshInstance3D" parent="Itens/Item3_3/item3_3_rb" unique_id=493289916]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, -0.024554968)
@@ -2688,6 +2696,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "5"
+font = ExtResource("12_cud0u")
 
 [node name="Cadeira_3_3" type="MeshInstance3D" parent="Itens/Item3_4/item3_3_rb" unique_id=386605237]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, -0.024554968)
@@ -2733,6 +2742,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 text = "5"
+font = ExtResource("12_cud0u")
 
 [node name="Cadeira_3_3" type="MeshInstance3D" parent="Itens/Item3_5/item3_3_rb" unique_id=1623504322]
 transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, -0.024554968)
@@ -2876,14 +2886,43 @@ shape = SubResource("BoxShape3D_rqhku")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1501617, 0, -0.051757813)
 shape = SubResource("BoxShape3D_cpkqv")
 
-[node name="ProgressBar" type="ProgressBar" parent="Exit_Door" unique_id=1624202014]
-offset_left = 926.0
-offset_top = 301.0
-offset_right = 1104.0
-offset_bottom = 328.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_y4dr7")
+[node name="ProgressBar" type="TextureProgressBar" parent="Exit_Door" unique_id=314782672]
+anchors_preset = -1
+anchor_left = -0.07210649
+anchor_top = -0.019444445
+anchor_right = 0.26435184
+anchor_bottom = 0.26574075
+offset_left = 1558.4445
+offset_top = 310.00003
+offset_right = 1736.4445
+offset_bottom = 337.0
+scale = Vector2(0.325, 0.325)
+size_flags_horizontal = 4
 max_value = 5000.0
+texture_under = ExtResource("15_adlhc")
+texture_over = ExtResource("16_thgey")
+texture_progress = ExtResource("17_cud0u")
 metadata/_edit_use_anchors_ = true
+
+[node name="Marcaçao" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=311353331]
+position = Vector2(120.93025, 55.813957)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("18_thgey")
+
+[node name="Marcaçao2" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=1320977399]
+position = Vector2(244.18607, 55.813957)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("18_thgey")
+
+[node name="Marcaçao3" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=259074941]
+position = Vector2(493.0232, 55.813965)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("18_thgey")
+
+[node name="Marcaçao4" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=222743620]
+position = Vector2(690.69775, 55.813965)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("18_thgey")
 
 [node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("12_sqkj2")]
 

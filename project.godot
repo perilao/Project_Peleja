@@ -19,7 +19,7 @@ config/name="Projeto Terceiro Periodo - Peleja"
 run/main_scene="uid://bty36mo4in5rp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://b4pkv27bvh6pe"
-config/icon="res://Assets/2D Assets/icon.svg"
+config/icon="res://Assets/2D Assets/test images/icon.svg"
 boot_splash/minimum_display_time=1500
 
 [autoload]
@@ -30,14 +30,15 @@ LevelCore="*uid://dmqsa0gqybgcu"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 
 [file_customization]
 
 folder_colors={
 "res://Assets/": "teal",
+"res://Fonts/": "orange",
 "res://Materials/": "red",
 "res://Scenes/": "blue",
 "res://Scripts/": "purple",
