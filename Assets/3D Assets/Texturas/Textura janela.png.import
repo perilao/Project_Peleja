@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drh67em14oow7"
-path.s3tc="res://.godot/imported/Textura sofa.png-9f5e7e80123a6a021eeb2090b7343920.s3tc.ctex"
+uid="uid://c8fg5r7rgmxsf"
+path.s3tc="res://.godot/imported/Textura janela.png-c30769e26d15bcdbba3184b11b00e29f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/3D Assets/Texturas/Textura sofa.png"
-dest_files=["res://.godot/imported/Textura sofa.png-9f5e7e80123a6a021eeb2090b7343920.s3tc.ctex"]
+source_file="res://Assets/3D Assets/Texturas/Textura janela.png"
+dest_files=["res://.godot/imported/Textura janela.png-c30769e26d15bcdbba3184b11b00e29f.s3tc.ctex"]
 
 [params]
 
