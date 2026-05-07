@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5xi4u4385qsj"
-path="res://.godot/imported/over.png-5e433ea75f4f1a53c657dbcfb2f3549d.ctex"
+uid="uid://cle8ns4yxq7xs"
+path="res://.godot/imported/opçõesclaro.png-30572e8d2df61206f14f3c1a84efd2c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D Assets/progress bar/over.png"
-dest_files=["res://.godot/imported/over.png-5e433ea75f4f1a53c657dbcfb2f3549d.ctex"]
+source_file="res://Assets/2D Assets/buttons/opções/opçõesclaro.png"
+dest_files=["res://.godot/imported/opçõesclaro.png-30572e8d2df61206f14f3c1a84efd2c1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://la5j7gr5cscv"
-path="res://.godot/imported/under.png-dd40d8d2b518b9294e651ce63cf0fe2c.ctex"
+uid="uid://bmjj453nesxpl"
+path="res://.godot/imported/menuclaro.png-b943e8df068ef6654eb861dc5e2407b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D Assets/progress bar/under.png"
-dest_files=["res://.godot/imported/under.png-dd40d8d2b518b9294e651ce63cf0fe2c.ctex"]
+source_file="res://Assets/2D Assets/buttons/menu/menuclaro.png"
+dest_files=["res://.godot/imported/menuclaro.png-b943e8df068ef6654eb861dc5e2407b3.ctex"]
 
 [params]
 

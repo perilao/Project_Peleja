@@ -51,6 +51,7 @@ pickable=""
 event=""
 movable=""
 start_opened=""
+pushable=""
 
 [input]
 

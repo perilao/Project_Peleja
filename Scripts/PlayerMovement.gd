@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var hand: Node3D = $Hand
 @onready var player_area: Area3D = $Area3DPlayer
 @onready var player_raycast: ShapeCast3D = $Look
+var lock_z := false
 #ITEM GRAB
 var player_has_item = false
 var original_layer = 1
@@ -16,6 +17,7 @@ var original_rotation: Vector3
 var hold_object: Node3D = null
 var block_input := false
 var release_distance := 2.0
+var hold_rotation_offset: Vector3
 
 
 func _physics_process(delta: float) -> void:
@@ -46,16 +48,21 @@ func _physics_process(delta: float) -> void:
 				var object = player_raycast.get_collider(0)
 				if object.is_in_group("pickable") or object.is_in_group("movable"):
 					grab_object(object)
+				elif object.is_in_group("pushable"):
+					object.start_push()
 	if hold_object:
 		hold_object.global_position = hand.global_position
-		hold_object.global_rotation = hand.global_rotation
+		hold_object.global_rotation = hand.global_rotation + hold_rotation_offset
 	move_and_slide()
 
 func grab_object(obj):
 	hold_object = obj
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2
-
+	hold_rotation_offset = obj.global_rotation - hand.global_rotation
+	if obj.is_in_group("pushable"):
+		obj.start_push()
+		return
 	if obj.is_in_group("movable"):
 		if obj.has_method("set_held"):
 			obj.set_held(true)
@@ -78,6 +85,8 @@ func player_movement(delta):
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 	#MOVEMENT
+	if lock_z:
+		direction.z = 0.0
 	if direction.length() > 0:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -98,7 +107,7 @@ func release_object(consumed: bool = false):
 			if obj.is_in_group("movable"):
 				obj.collision_layer = original_layer
 				if obj.has_method("set_held"): 
-					obj.set_held(false)
+					obj.set_held(false)	
 				player_has_item = false
 				hold_object = null
 				return 
