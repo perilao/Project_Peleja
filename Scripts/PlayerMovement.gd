@@ -6,12 +6,15 @@ extends CharacterBody3D
 @onready var hand: Node3D = $Hand
 @onready var player_area: Area3D = $Area3DPlayer
 @onready var player_raycast: ShapeCast3D = $Look
+var lock_rotation := false
+var locked_rotation_y: float
 var lock_z := false
 #ITEM GRAB
 var player_has_item = false
 var original_layer = 1
 var original_position: Vector3
 var original_rotation: Vector3
+var cant_grab = false
 #ITENS
 @onready var item_2_rb: RigidBody3D = %item2_rb
 var hold_object: Node3D = null
@@ -48,7 +51,7 @@ func _physics_process(delta: float) -> void:
 				var object = player_raycast.get_collider(0)
 				if object.is_in_group("pickable") or object.is_in_group("movable"):
 					grab_object(object)
-				elif object.is_in_group("pushable"):
+				elif object.is_in_group("pushable") and cant_grab == false:
 					object.start_push()
 	if hold_object:
 		hold_object.global_position = hand.global_position
@@ -90,6 +93,11 @@ func player_movement(delta):
 	if direction.length() > 0:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if !lock_rotation:
+			var target_angle = atan2(direction.x, direction.z)
+			rotation.y = lerp_angle(rotation.y, target_angle, ROTATION_SPEED * delta)
+		else:
+			rotation.y = locked_rotation_y
 	#PLAYER ROTATION
 		var target_angle = atan2(direction.x, direction.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, ROTATION_SPEED * delta)

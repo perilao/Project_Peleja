@@ -7,6 +7,7 @@ var original_wait_time: float
 #EVENT
 @export var event_name : String = ""
 @onready var event = get_tree().get_nodes_in_group("event")
+#@onready var cima = $"../../../Itens/Item2/item2_rb"
 #PLAYER
 @onready var player: CharacterBody3D = $"../../Player"
 var isOnArea = false
@@ -42,6 +43,7 @@ func _process(_delta):
 					timer_geral.wait_time = original_wait_time
 					timer_geral.start()
 					object.use_item()
+					
 					player.release_object(true)
 					mesh.get_active_material(0).albedo_color = Event_Color
 					print("Sucesso! Porta ", event_name, " resetada.")
