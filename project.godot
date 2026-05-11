@@ -22,6 +22,10 @@ boot_splash/image="uid://b4pkv27bvh6pe"
 config/icon="res://Assets/2D Assets/test images/icon.svg"
 boot_splash/minimum_display_time=1500
 
+[audio]
+
+buses/default_bus_layout="uid://bffy14ltxnwdu"
+
 [autoload]
 
 LevelCore="*uid://dmqsa0gqybgcu"
