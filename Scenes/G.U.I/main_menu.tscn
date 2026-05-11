@@ -1,87 +1,94 @@
 [gd_scene format=3 uid="uid://yph8snnoxdo4"]
 
 [ext_resource type="Script" uid="uid://cptefflkuvqkd" path="res://Scripts/main_menu.gd" id="1_44aiy"]
-[ext_resource type="Texture2D" uid="uid://fka6ca4hiy77" path="res://Assets/2D Assets/fundosemhud.png" id="2_r6hvg"]
-[ext_resource type="Texture2D" uid="uid://b4pkv27bvh6pe" path="res://Assets/2D Assets/1000036726.png" id="3_cofh4"]
-[ext_resource type="Texture2D" uid="uid://dnweytwbea21m" path="res://Assets/Buttons/Tac/UI/START BUTTON PRESSIONED.png" id="4_irs5p"]
-[ext_resource type="Texture2D" uid="uid://b2nldcgtwujfu" path="res://Assets/Buttons/Tac/UI/START BUTTON.png" id="5_mt0mm"]
-[ext_resource type="Texture2D" uid="uid://darwdnr6j387o" path="res://Assets/Buttons/Tac/UI/OPTIONS BUTTON PRESSIONED.png" id="6_xuxnm"]
-[ext_resource type="Texture2D" uid="uid://b5xt4qctb1eak" path="res://Assets/Buttons/Tac/UI/OPTIONS BUTTON.png" id="7_wd0pk"]
-[ext_resource type="Texture2D" uid="uid://ct3o5sihgkbn5" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON PRESSIONED.png" id="8_aa7ff"]
-[ext_resource type="Texture2D" uid="uid://b13pxl3rv00c1" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON.png" id="9_j5vqt"]
+[ext_resource type="Texture2D" uid="uid://d24w8tu0oxcf5" path="res://Assets/2D Assets/logo-com-fundo.png" id="3_u2t8f"]
+[ext_resource type="Texture2D" uid="uid://il0uyjd4j4g" path="res://Assets/2D Assets/buttons/jogar/jogarnormal.png" id="4_irs5p"]
+[ext_resource type="Texture2D" uid="uid://dobodxliy3pd0" path="res://Assets/2D Assets/buttons/jogar/jogarescuro.png" id="5_mt0mm"]
+[ext_resource type="Texture2D" uid="uid://dy0b4773u282b" path="res://Assets/2D Assets/fundosemhud3M2.png" id="6_6u8oi"]
+[ext_resource type="Texture2D" uid="uid://6tgnwehg2jfs" path="res://Assets/2D Assets/buttons/jogar/jogarclaro.png" id="6_xuxnm"]
+[ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="7_wd0pk"]
+[ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="8_aa7ff"]
+[ext_resource type="Texture2D" uid="uid://cle8ns4yxq7xs" path="res://Assets/2D Assets/buttons/opções/opçõesclaro.png" id="9_j5vqt"]
+[ext_resource type="Texture2D" uid="uid://dm5kwbtkawusu" path="res://Assets/2D Assets/buttons/sair/sairnormal.png" id="10_7yksk"]
 [ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="10_y3km0"]
-<<<<<<< Updated upstream
-=======
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
 [ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_mt0mm"]
 [ext_resource type="Texture2D" uid="uid://doev15orrptgh" path="res://Assets/2D Assets/buttons/test/normal.png" id="15_wd0pk"]
 [ext_resource type="Texture2D" uid="uid://dq53ip7yb6evy" path="res://Assets/2D Assets/buttons/test/hover.png" id="16_aa7ff"]
->>>>>>> Stashed changes
+[ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
+[ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
 
 [node name="main menu" type="CanvasLayer" unique_id=1887178084]
 script = ExtResource("1_44aiy")
 
-[node name="Fundosemhud" type="Sprite2D" parent="." unique_id=1921642910]
-modulate = Color(0.39710915, 0.39710915, 0.39710915, 1)
-position = Vector2(642, 400)
-scale = Vector2(0.19473264, 0.19473267)
-texture = ExtResource("2_r6hvg")
+[node name="background" type="TextureRect" parent="." unique_id=88932056]
+offset_top = -41.0
+offset_right = 1922.9304
+offset_bottom = 1182.0
+texture = ExtResource("6_6u8oi")
+expand_mode = 1
 
-[node name="1000036726" type="Sprite2D" parent="." unique_id=1376343797]
-position = Vector2(621.00006, 212)
-scale = Vector2(0.29115453, 0.29115453)
-texture = ExtResource("3_cofh4")
+[node name="ColorRect" type="ColorRect" parent="background" unique_id=503436677]
+layout_mode = 0
+offset_right = 1923.0
+offset_bottom = 1226.0
+color = Color(0, 0, 0, 0.10980392)
+
+[node name="LogoComFundo" type="Sprite2D" parent="." unique_id=204736811]
+position = Vector2(918.00006, 257)
+scale = Vector2(0.43425006, 0.43425006)
+texture = ExtResource("3_u2t8f")
 
 [node name="Button Manager" type="Control" parent="." unique_id=55270483]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.45833334
+anchor_bottom = 0.9324074
 offset_left = 479.0
-offset_top = -13.0
+offset_top = 5.0
 offset_right = 519.0
-offset_bottom = 27.0
+offset_bottom = 45.0
+metadata/_edit_use_anchors_ = true
 
 [node name="start" type="TextureButton" parent="Button Manager" unique_id=161687345]
-layout_mode = 0
-offset_left = 61.000004
-offset_top = 377.00003
-offset_right = 125.0
-offset_bottom = 410.00003
-scale = Vector2(2.03, 2.03)
-toggle_mode = true
-button_pressed = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -141.3201
+anchor_top = -76.62796
+anchor_right = -140.5288
+anchor_bottom = -76.17906
+offset_left = 130339.49
+offset_top = 80781.48
+offset_right = 130403.49
+offset_bottom = 80814.48
+scale = Vector2(0.27, 0.27)
 action_mode = 0
 texture_normal = ExtResource("4_irs5p")
 texture_pressed = ExtResource("5_mt0mm")
+texture_hover = ExtResource("6_xuxnm")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="options" type="TextureButton" parent="Button Manager" unique_id=1061847799]
-layout_mode = 0
-offset_left = 60.000004
-offset_top = 455.00003
-offset_right = 124.03941
-offset_bottom = 487.51236
-scale = Vector2(2.03, 2.03)
-disabled = true
-toggle_mode = true
-button_pressed = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -141.6945
+anchor_top = -67.64012
+anchor_right = -140.90323
+anchor_bottom = -67.19076
+offset_left = 130681.94
+offset_top = 71515.21
+offset_right = 130745.98
+offset_bottom = 71547.73
+scale = Vector2(0.27, 0.27)
 action_mode = 0
-texture_normal = ExtResource("6_xuxnm")
-texture_pressed = ExtResource("7_wd0pk")
+texture_normal = ExtResource("7_wd0pk")
+texture_pressed = ExtResource("8_aa7ff")
+texture_hover = ExtResource("9_j5vqt")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="quit" type="TextureButton" parent="Button Manager" unique_id=1401457388]
-<<<<<<< Updated upstream
-layout_mode = 0
-offset_left = 60.0
-offset_top = 535.00006
-offset_right = 124.0
-offset_bottom = 567.00006
-scale = Vector2(2.03, 2.03)
-toggle_mode = true
-button_pressed = true
-action_mode = 0
-texture_normal = ExtResource("8_aa7ff")
-texture_pressed = ExtResource("9_j5vqt")
-=======
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -135.42273
@@ -100,7 +107,23 @@ texture_normal = ExtResource("10_7yksk")
 texture_pressed = ExtResource("11_fidfd")
 texture_hover = ExtResource("12_l4reb")
 metadata/_edit_use_anchors_ = true
->>>>>>> Stashed changes
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -135.19121
+anchor_top = -56.893044
+anchor_right = -135.42273
+anchor_bottom = -57.038223
+offset_left = 124697.914
+offset_top = 60415.016
+offset_right = 125702.914
+offset_bottom = 61070.02
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("10_7yksk")
+texture_pressed = ExtResource("11_fidfd")
+texture_hover = ExtResource("12_l4reb")
 
 [node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("10_y3km0")]
 visible = false

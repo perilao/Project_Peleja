@@ -8,27 +8,10 @@
 [node name="Node2D" type="Node2D" unique_id=1983303683]
 script = ExtResource("1_6ry5l")
 
-<<<<<<< Updated upstream
-[node name="Frame_lvl1" type="Sprite2D" parent="." unique_id=1308378818]
-position = Vector2(325.125, 465.44168)
-scale = Vector2(0.45404175, 0.45404175)
-texture = ExtResource("2_ldf8s")
-
-[node name="Frame_lvl2" type="Sprite2D" parent="." unique_id=116800979]
-position = Vector2(640, 466)
-scale = Vector2(0.45404175, 0.45404175)
-texture = ExtResource("2_ldf8s")
-
-[node name="Frame_lvl3" type="Sprite2D" parent="." unique_id=1685811117]
-position = Vector2(950, 466.00003)
-scale = Vector2(0.45404175, 0.45404175)
-texture = ExtResource("2_ldf8s")
-=======
 [node name="BG" type="Sprite2D" parent="." unique_id=1368316828]
 position = Vector2(963.777, 541.625)
 scale = Vector2(1.156, 1.156)
 texture = ExtResource("2_q5bk7")
->>>>>>> Stashed changes
 
 [node name="Label" type="Label" parent="." unique_id=145713516]
 anchors_preset = 8
@@ -42,18 +25,7 @@ offset_right = 11545.0
 offset_bottom = 1822.0
 grow_horizontal = 2
 grow_vertical = 2
-<<<<<<< Updated upstream
-scale = Vector2(0.05, 0.05)
-theme_override_fonts/font = null
-theme_override_font_sizes/font_size = 1255
-text = "LEVEL SELECT"
 
-[node name="Completed_lvl_1" type="ColorRect" parent="." unique_id=747278460]
-offset_left = 206.12509
-offset_top = 283.44165
-offset_right = 448.0
-offset_bottom = 723.44165
-=======
 scale = Vector2(0.07309969, 0.07309969)
 theme_override_colors/font_color = Color(1, 0.99215686, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("3_q5bk7")
@@ -68,124 +40,131 @@ offset_top = 392.0
 offset_right = 453.37488
 offset_bottom = 832.0
 scale = Vector2(1.5631133, 1.5609951)
->>>>>>> Stashed changes
+
+offset_left = 531.8712
+offset_top = 612.44165
+offset_right = 773.7461
+offset_bottom = 1052.4417
+scale = Vector2(0.964084, 1)
 color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Playable_lvl1" type="ColorRect" parent="." unique_id=1742029730]
-<<<<<<< Updated upstream
-offset_left = 206.12509
-offset_top = 283.44165
-offset_right = 448.0
-offset_bottom = 723.44165
-=======
+
 offset_left = 211.5
 offset_top = 392.0
 offset_right = 453.37488
 offset_bottom = 832.0
 scale = Vector2(1.5631133, 1.5609951)
->>>>>>> Stashed changes
+
+offset_left = 531.8712
+offset_top = 612.44165
+offset_right = 773.7461
+offset_bottom = 1052.4417
+scale = Vector2(0.964084, 1)
 color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Completed_lvl_2" type="ColorRect" parent="." unique_id=456756647]
-<<<<<<< Updated upstream
-offset_left = 520.0
-offset_top = 283.0
-offset_right = 761.875
-offset_bottom = 723.0
-=======
+
 offset_left = 767.0
 offset_top = 395.0
 offset_right = 1008.875
 offset_bottom = 835.0
 scale = Vector2(1.57, 1.597)
->>>>>>> Stashed changes
+
+offset_left = 845.7461
+offset_top = 612.0
+offset_right = 1087.6211
+offset_bottom = 1052.0
+scale = Vector2(0.964084, 1)
 color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Playable_lvl2" type="ColorRect" parent="." unique_id=116311811]
-<<<<<<< Updated upstream
-offset_left = 520.0
-offset_top = 283.0
-offset_right = 761.875
-offset_bottom = 723.0
-=======
+
 offset_left = 767.0
 offset_top = 392.0
 offset_right = 1008.875
 offset_bottom = 832.0
 scale = Vector2(1.57, 1.597)
->>>>>>> Stashed changes
-color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+
+offset_left = 845.7461
+offset_top = 612.0
+offset_right = 1087.6211
+offset_bottom = 1052.0
+scale = Vector2(0.964084, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Locked_lvl2" type="ColorRect" parent="." unique_id=322980395]
-<<<<<<< Updated upstream
-offset_left = 520.0
-offset_top = 283.0
-offset_right = 761.875
-offset_bottom = 723.0
-=======
+
 offset_left = 767.0
 offset_top = 392.0
 offset_right = 1008.875
 offset_bottom = 832.0
 scale = Vector2(1.57, 1.595)
->>>>>>> Stashed changes
+
+offset_left = 845.7461
+offset_top = 612.0
+offset_right = 1087.6211
+offset_bottom = 1052.0
+scale = Vector2(0.964084, 1)
+
 color = Color(0, 0.039215688, 0.10980392, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Completed_lvl_3" type="ColorRect" parent="." unique_id=1341072440]
-<<<<<<< Updated upstream
-offset_left = 831.0
-offset_top = 283.0
-offset_right = 1072.875
-offset_bottom = 723.0
-=======
+
 offset_left = 1341.0
 offset_top = 392.0
 offset_right = 1582.875
 offset_bottom = 832.0
 scale = Vector2(1.57, 1.629)
->>>>>>> Stashed changes
+
+offset_left = 1156.7461
+offset_top = 612.0
+offset_right = 1398.6211
+offset_bottom = 1052.0
+scale = Vector2(0.964084, 1)
+
 color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Playable_lvl3" type="ColorRect" parent="." unique_id=190049342]
-<<<<<<< Updated upstream
-offset_left = 831.0
-offset_top = 283.0
-offset_right = 1072.875
-offset_bottom = 723.0
-=======
+
 offset_left = 1341.0
 offset_top = 392.0
 offset_right = 1582.875
 offset_bottom = 832.0
 scale = Vector2(1.57, 1.629)
->>>>>>> Stashed changes
+
+offset_left = 1156.7461
+offset_top = 612.0
+offset_right = 1398.6211
+offset_bottom = 1052.0
+scale = Vector2(0.964084, 1)
+
 color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Locked_lvl3" type="ColorRect" parent="." unique_id=1426013767]
-<<<<<<< Updated upstream
-offset_left = 831.0
-offset_top = 283.0
-offset_right = 1072.875
-offset_bottom = 723.0
-=======
+
 offset_left = 1341.0
 offset_top = 392.0
 offset_right = 1582.875
 offset_bottom = 832.0
 scale = Vector2(1.57, 1.629)
->>>>>>> Stashed changes
+
+offset_left = 1156.7461
+offset_top = 612.0
+offset_right = 1398.6211
+offset_bottom = 1052.0
+scale = Vector2(0.964084, 1)
+
 color = Color(0, 0.039215688, 0.10980392, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Lock_lvl2" type="Sprite2D" parent="." unique_id=673309806]
-<<<<<<< Updated upstream
-position = Vector2(639, 498)
-scale = Vector2(0.26539588, 0.26539588)
-texture = ExtResource("3_rbbqw")
-
-[node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
-position = Vector2(951.00006, 498)
-scale = Vector2(0.26539588, 0.26539588)
-=======
 position = Vector2(960, 720)
 scale = Vector2(0.39934552, 0.41422275)
 texture = ExtResource("3_rbbqw")
@@ -193,7 +172,15 @@ texture = ExtResource("3_rbbqw")
 [node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
 position = Vector2(1536, 720.00006)
 scale = Vector2(0.37672818, 0.3907628)
->>>>>>> Stashed changes
+
+position = Vector2(964.746, 826.9999)
+scale = Vector2(0.25586393, 0.26539588)
+texture = ExtResource("3_rbbqw")
+
+[node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
+position = Vector2(1276.746, 826.9999)
+scale = Vector2(0.25586393, 0.26539588)
+
 texture = ExtResource("3_rbbqw")
 
 [node name="Button" type="Button" parent="." unique_id=1826991966]
@@ -202,15 +189,6 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-<<<<<<< Updated upstream
-offset_left = 190.00008
-offset_top = 241.0
-offset_right = 204.03694
-offset_bottom = 583.8572
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(19.52, 1.4)
-=======
 offset_left = 188.0
 offset_top = 329.0
 offset_right = 202.03687
@@ -218,9 +196,17 @@ offset_bottom = 671.8572
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(30.162437, 2.2241135)
->>>>>>> Stashed changes
+
+offset_left = 515.7462
+offset_top = 570.0
+offset_right = 529.7831
+offset_bottom = 912.8572
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(18.81892, 1.4)
 size_flags_horizontal = 4
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="." unique_id=435372775]
 unique_name_in_owner = true
@@ -228,22 +214,23 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-<<<<<<< Updated upstream
-offset_left = 507.0
-offset_top = 241.0
-offset_right = 520.78076
-offset_bottom = 583.8572
-=======
+
 offset_left = 760.0
 offset_top = 1168.0
 offset_right = 773.78076
 offset_bottom = 1510.8572
->>>>>>> Stashed changes
+
+offset_left = 832.7461
+offset_top = 570.0
+offset_right = 846.52686
+offset_bottom = 912.8572
+
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(19.52, 1.4)
+scale = Vector2(18.81892, 1.4)
 size_flags_horizontal = 4
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Button3" type="Button" parent="." unique_id=1594534015]
 unique_name_in_owner = true
@@ -251,16 +238,14 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-<<<<<<< Updated upstream
-offset_left = 814.0
-offset_top = 241.0
-offset_right = 828.03687
-offset_bottom = 583.8572
+offset_left = 1139.7461
+offset_top = 570.0
+offset_right = 1153.783
+offset_bottom = 912.8572
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(19.52, 1.4)
+scale = Vector2(18.81892, 1.4)
 size_flags_horizontal = 4
-=======
 offset_left = 1744.0
 offset_top = 329.0
 offset_right = 1758.0369
@@ -269,8 +254,8 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-30.470373, 2.2121608)
 size_flags_horizontal = 0
->>>>>>> Stashed changes
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

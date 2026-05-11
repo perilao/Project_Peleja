@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c51ueu6na11lw"]
 
-[ext_resource type="Shader" path="res://Shaders/inicial_transition_shader.gdshader" id="1_bxr5n"]
+[ext_resource type="Shader" uid="uid://dfntywrf7asqx" path="res://Shaders/inicial_transition_shader.gdshader" id="1_bxr5n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7112"]
 shader = ExtResource("1_bxr5n")
@@ -72,10 +72,12 @@ _data = {
 [node name="ColorRect" type="ColorRect" parent="." unique_id=858436238]
 material = SubResource("ShaderMaterial_k7112")
 anchors_preset = -1
-anchor_right = 0.0953125
-anchor_bottom = 0.10277778
-offset_right = 1156.0
-offset_bottom = 649.0
+anchor_right = 0.4189855
+anchor_bottom = 0.43333334
+offset_left = -26.0
+offset_top = -6.0
+offset_right = 1130.0
+offset_bottom = 643.0
 size_flags_horizontal = 2
 size_flags_vertical = 6
 color = Color(0.015995625, 0.040422313, 0.08688743, 1)
