@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var transition = get_node("inicial transition/ColorRect")
 @onready var animation = get_node("inicial transition/ColorRect/AnimationPlayer")
 @onready var inicial_transition: CanvasLayer = $"inicial transition"
+@onready var button_manager: Control = $"Button Manager"
+@onready var options_menu: Node = $"options menu"
 
 
 func _ready() -> void:
@@ -12,6 +14,7 @@ func _ready() -> void:
 	
 	await animation.animation_finished
 	inicial_transition.hide()
+
 func _on_start_pressed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	inicial_transition.show()
@@ -23,4 +26,9 @@ func _on_quit_pressed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	get_tree().quit()
 func _on_options_pressed() -> void:
-	pass #Botão de menu vai aqui
+	button_manager.visible = false
+	options_menu.visible = true
+	
+func _on_back_5_pressed() -> void:
+	button_manager.visible = true
+	options_menu.visible = false

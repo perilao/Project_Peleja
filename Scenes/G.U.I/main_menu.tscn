@@ -10,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://ct3o5sihgkbn5" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON PRESSIONED.png" id="8_aa7ff"]
 [ext_resource type="Texture2D" uid="uid://b13pxl3rv00c1" path="res://Assets/Buttons/Tac/UI/QUIT BUTTON.png" id="9_j5vqt"]
 [ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="10_y3km0"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
+[ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
+[ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_mt0mm"]
+[ext_resource type="Texture2D" uid="uid://doev15orrptgh" path="res://Assets/2D Assets/buttons/test/normal.png" id="15_wd0pk"]
+[ext_resource type="Texture2D" uid="uid://dq53ip7yb6evy" path="res://Assets/2D Assets/buttons/test/hover.png" id="16_aa7ff"]
+>>>>>>> Stashed changes
 
 [node name="main menu" type="CanvasLayer" unique_id=1887178084]
 script = ExtResource("1_44aiy")
@@ -61,6 +69,7 @@ texture_normal = ExtResource("6_xuxnm")
 texture_pressed = ExtResource("7_wd0pk")
 
 [node name="quit" type="TextureButton" parent="Button Manager" unique_id=1401457388]
+<<<<<<< Updated upstream
 layout_mode = 0
 offset_left = 60.0
 offset_top = 535.00006
@@ -72,10 +81,45 @@ button_pressed = true
 action_mode = 0
 texture_normal = ExtResource("8_aa7ff")
 texture_pressed = ExtResource("9_j5vqt")
+=======
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -135.42273
+anchor_top = -57.038223
+anchor_right = -135.42273
+anchor_bottom = -57.038223
+offset_left = 124909.914
+offset_top = 60554.02
+offset_right = 125914.914
+offset_bottom = 61209.023
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("10_7yksk")
+texture_pressed = ExtResource("11_fidfd")
+texture_hover = ExtResource("12_l4reb")
+metadata/_edit_use_anchors_ = true
+>>>>>>> Stashed changes
 
 [node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("10_y3km0")]
 visible = false
 
+[node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_mt0mm")]
+visible = false
+
+[node name="back5" type="TextureButton" parent="options menu" unique_id=796359102]
+offset_left = 496.0
+offset_top = 328.0
+offset_right = 592.0
+offset_bottom = 390.0
+texture_normal = ExtResource("15_wd0pk")
+texture_hover = ExtResource("16_aa7ff")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="Button Manager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button Manager/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="options menu/back5" to="." method="_on_back_5_pressed"]
+[connection signal="pressed" from="options menu/back5" to="options menu" method="_on_back_5_pressed"]
