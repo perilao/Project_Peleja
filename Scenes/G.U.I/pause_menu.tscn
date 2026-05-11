@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://vrt00gs5s1p1"]
+
+[ext_resource type="Script" uid="uid://fcebubk2mvme" path="res://Scripts/pause_menu.gd" id="1_uwxim"]
+[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://pause_menu.gdshader" id="2_cwg05"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="3_le8lw"]
+[ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="4_yc0kh"]
+[ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="5_ubel8"]
+[ext_resource type="Texture2D" uid="uid://cle8ns4yxq7xs" path="res://Assets/2D Assets/buttons/opções/opçõesclaro.png" id="6_s4ix4"]
+[ext_resource type="Texture2D" uid="uid://bg0ajujornvg1" path="res://Assets/2D Assets/buttons/menu/menunormal.png" id="7_k3ok6"]
+[ext_resource type="Texture2D" uid="uid://b1sy84v2l160j" path="res://Assets/2D Assets/buttons/menu/menuescuro.png" id="8_j4xux"]
+[ext_resource type="Texture2D" uid="uid://bmjj453nesxpl" path="res://Assets/2D Assets/buttons/menu/menuclaro.png" id="9_fabqd"]
+[ext_resource type="Texture2D" uid="uid://dm5kwbtkawusu" path="res://Assets/2D Assets/buttons/sair/sairnormal.png" id="10_ydd0h"]
+[ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_jtidm"]
+[ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_cx814"]
+[ext_resource type="PackedScene" uid="uid://8f8n4ydi6qpm" path="res://Scenes/G.U.I/options_menu.tscn" id="13_a3rqg"]
+[ext_resource type="Texture2D" uid="uid://drsrgcw5f777j" path="res://Assets/Buttons/moldurabotao2.png" id="14_cwg05"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
+shader = ExtResource("2_cwg05")
+shader_parameter/amount = 3.0000001425
+
+[node name="Node2D" type="Node2D" unique_id=1331683831]
+script = ExtResource("1_uwxim")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1550640404]
+material = SubResource("ShaderMaterial_nwcfo")
+offset_left = -80.0
+offset_top = -128.0
+offset_right = 2327.0
+offset_bottom = 1167.0
+
+[node name="PausePanel" type="Panel" parent="." unique_id=2111284769]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 479.0
+offset_top = 312.0
+offset_right = 1335.0
+offset_bottom = 984.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel" unique_id=639744018]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 176.0
+offset_right = 1102.0
+offset_bottom = 1693.0
+scale = Vector2(0.27, 0.27)
+size_flags_horizontal = 3
+size_flags_vertical = 6
+alignment = 1
+
+[node name="options" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=141334623]
+layout_mode = 2
+texture_normal = ExtResource("4_yc0kh")
+texture_pressed = ExtResource("5_ubel8")
+texture_hover = ExtResource("6_s4ix4")
+stretch_mode = 0
+
+[node name="menu" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=735275439]
+layout_mode = 2
+texture_normal = ExtResource("7_k3ok6")
+texture_pressed = ExtResource("8_j4xux")
+texture_hover = ExtResource("9_fabqd")
+stretch_mode = 0
+
+[node name="quit" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=1185806339]
+layout_mode = 2
+texture_normal = ExtResource("10_ydd0h")
+texture_pressed = ExtResource("11_jtidm")
+texture_hover = ExtResource("12_cx814")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PausePanel" unique_id=211795038]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 40.0
+offset_right = 1018.0
+offset_bottom = 190.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_le8lw")
+theme_override_font_sizes/font_size = 150
+text = "Jogo Pausado"
+horizontal_alignment = 1
+
+[node name="options menu" parent="." unique_id=187140479 instance=ExtResource("13_a3rqg")]
+visible = false
+
+[node name="back4" type="TextureButton" parent="." unique_id=1605812270]
+visible = false
+offset_left = 480.0
+offset_top = 312.0
+offset_right = 1485.0
+offset_bottom = 967.0
+scale = Vector2(0.09035035, 0.09364314)
+texture_normal = ExtResource("14_cwg05")
+
+[connection signal="pressed" from="PausePanel/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="back4" to="." method="_on_back_4_pressed"]

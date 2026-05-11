@@ -29,6 +29,7 @@ buses/default_bus_layout="uid://bffy14ltxnwdu"
 [autoload]
 
 LevelCore="*uid://dmqsa0gqybgcu"
+PauseMenu="*uid://fcebubk2mvme"
 
 [display]
 

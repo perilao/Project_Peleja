@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var inicial_transition: CanvasLayer = $"inicial transition"
 @onready var button_manager: Control = $"Button Manager"
 @onready var options_menu: Node = $"options menu"
+@onready var back_5: TextureButton = $back5
 
 
 func _ready() -> void:
@@ -27,8 +28,10 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 func _on_options_pressed() -> void:
 	button_manager.visible = false
+	back_5.visible = true
 	options_menu.visible = true
 	
 func _on_back_5_pressed() -> void:
 	button_manager.visible = true
+	back_5.visibility_layer = false
 	options_menu.visible = false
