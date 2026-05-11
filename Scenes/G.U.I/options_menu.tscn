@@ -2,9 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cjpo7fw622hyg" path="res://Scripts/options_menu.gd" id="1_m372f"]
 [ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="2_mxr4w"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/som/somclaro.png" id="4_w58iw"]
+[ext_resource type="Texture2D" uid="uid://d1wulb6ym6k5t" path="res://Assets/2D Assets/buttons/som/somnormal.png" id="3_o8uqq"]
+[ext_resource type="Texture2D" uid="uid://dftdqbivvb3ol" path="res://Assets/2D Assets/buttons/som/somescuro.png" id="4_kgihd"]
+[ext_resource type="Texture2D" uid="uid://chnd61xi5nyj4" path="res://Assets/2D Assets/buttons/som/somclaro.png" id="4_w58iw"]
+[ext_resource type="Texture2D" uid="uid://cnq01h3prxhc8" path="res://Assets/2D Assets/buttons/controles/controlesnormal.png" id="6_2tdof"]
+[ext_resource type="Texture2D" uid="uid://bcjawjpckx2m7" path="res://Assets/2D Assets/buttons/controles/controlesescuro.png" id="7_u8b1d"]
+[ext_resource type="Texture2D" uid="uid://clrfgu18o8ytp" path="res://Assets/2D Assets/buttons/controles/controlesclaro.png" id="8_x37d2"]
+[ext_resource type="Texture2D" uid="uid://d3d8bo0haajnl" path="res://Assets/2D Assets/buttons/créditos/creditosnormal.png" id="9_xjsmc"]
+[ext_resource type="Texture2D" uid="uid://e7s6g1j14wox" path="res://Assets/2D Assets/buttons/créditos/creditosescuro.png" id="10_gyawl"]
 [ext_resource type="Script" uid="uid://cw6i8rg2gcpkk" path="res://Scripts/audio_control.gd" id="11_mxr4w"]
-[ext_resource type="Texture2D" uid="uid://drsrgcw5f777j" path="res://Assets/Buttons/moldurabotao2.png" id="12_w58iw"]
+[ext_resource type="Texture2D" uid="uid://b484gkxtgar0c" path="res://Assets/2D Assets/buttons/créditos/creditosclaro.png" id="11_ye2x4"]
+[ext_resource type="Texture2D" uid="uid://cqpw01ui5plsq" path="res://Assets/2D Assets/buttons/salvar/salvarnormal.png" id="13_kq836"]
+[ext_resource type="Texture2D" uid="uid://pknadvuhrs3y" path="res://Assets/2D Assets/buttons/salvar/salvareacuro.png" id="14_2hfgc"]
+[ext_resource type="Texture2D" uid="uid://gvyv4uju8dmh" path="res://Assets/2D Assets/buttons/salvar/salvarclaro.png" id="15_heqql"]
+[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="16_p2x7m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m372f"]
 
@@ -63,6 +74,8 @@ offset_right = 1120.5
 offset_bottom = 822.5
 scale = Vector2(0.27, 0.27)
 action_mode = 0
+texture_normal = ExtResource("3_o8uqq")
+texture_pressed = ExtResource("4_kgihd")
 texture_hover = ExtResource("4_w58iw")
 stretch_mode = 0
 
@@ -79,6 +92,9 @@ offset_right = 1120.5
 offset_bottom = 989.5
 scale = Vector2(0.27, 0.27)
 action_mode = 0
+texture_normal = ExtResource("6_2tdof")
+texture_pressed = ExtResource("7_u8b1d")
+texture_hover = ExtResource("8_x37d2")
 stretch_mode = 0
 
 [node name="credits" type="TextureButton" parent="OptionsManager" unique_id=19976080]
@@ -94,6 +110,9 @@ offset_right = 1120.5
 offset_bottom = 1156.5
 scale = Vector2(0.27, 0.27)
 action_mode = 0
+texture_normal = ExtResource("9_xjsmc")
+texture_pressed = ExtResource("10_gyawl")
+texture_hover = ExtResource("11_ye2x4")
 stretch_mode = 0
 
 [node name="SoundManager" type="Control" parent="." unique_id=452170670]
@@ -205,7 +224,9 @@ offset_right = 123670.86
 offset_bottom = 52888.75
 scale = Vector2(0.27, 0.27)
 action_mode = 0
-texture_hover = ExtResource("4_w58iw")
+texture_normal = ExtResource("13_kq836")
+texture_pressed = ExtResource("14_2hfgc")
+texture_hover = ExtResource("15_heqql")
 stretch_mode = 0
 
 [node name="back" type="TextureButton" parent="SoundManager" unique_id=239859338]
@@ -221,7 +242,7 @@ offset_right = 122916.87
 offset_bottom = 52107.79
 scale = Vector2(0.27, 0.27)
 action_mode = 0
-texture_normal = ExtResource("12_w58iw")
+texture_normal = ExtResource("16_p2x7m")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -252,6 +273,7 @@ offset_left = 17.0
 offset_top = 323.0
 offset_right = 113.0
 offset_bottom = 385.0
+texture_normal = ExtResource("16_p2x7m")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -281,6 +303,7 @@ layout_mode = 0
 offset_left = -96.0
 offset_top = -99.0
 offset_bottom = -37.0
+texture_normal = ExtResource("16_p2x7m")
 ignore_texture_size = true
 stretch_mode = 0
 
