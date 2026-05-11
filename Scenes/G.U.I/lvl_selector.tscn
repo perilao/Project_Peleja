@@ -25,7 +25,6 @@ offset_right = 11545.0
 offset_bottom = 1822.0
 grow_horizontal = 2
 grow_vertical = 2
-
 scale = Vector2(0.07309969, 0.07309969)
 theme_override_colors/font_color = Color(1, 0.99215686, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("3_q5bk7")
@@ -35,12 +34,6 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Completed_lvl_1" type="ColorRect" parent="." unique_id=747278460]
-offset_left = 211.5
-offset_top = 392.0
-offset_right = 453.37488
-offset_bottom = 832.0
-scale = Vector2(1.5631133, 1.5609951)
-
 offset_left = 531.8712
 offset_top = 612.44165
 offset_right = 773.7461
@@ -50,13 +43,6 @@ color = Color(0.11372549, 0.70980394, 0.03529412, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Playable_lvl1" type="ColorRect" parent="." unique_id=1742029730]
-
-offset_left = 211.5
-offset_top = 392.0
-offset_right = 453.37488
-offset_bottom = 832.0
-scale = Vector2(1.5631133, 1.5609951)
-
 offset_left = 531.8712
 offset_top = 612.44165
 offset_right = 773.7461
@@ -66,13 +52,6 @@ color = Color(0.90286136, 0.12995538, 0.18218237, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Completed_lvl_2" type="ColorRect" parent="." unique_id=456756647]
-
-offset_left = 767.0
-offset_top = 395.0
-offset_right = 1008.875
-offset_bottom = 835.0
-scale = Vector2(1.57, 1.597)
-
 offset_left = 845.7461
 offset_top = 612.0
 offset_right = 1087.6211
@@ -82,13 +61,6 @@ color = Color(0.11372549, 0.70980394, 0.03529412, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Playable_lvl2" type="ColorRect" parent="." unique_id=116311811]
-
-offset_left = 767.0
-offset_top = 392.0
-offset_right = 1008.875
-offset_bottom = 832.0
-scale = Vector2(1.57, 1.597)
-
 offset_left = 845.7461
 offset_top = 612.0
 offset_right = 1087.6211
@@ -97,70 +69,38 @@ scale = Vector2(0.964084, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Locked_lvl2" type="ColorRect" parent="." unique_id=322980395]
-
-offset_left = 767.0
-offset_top = 392.0
-offset_right = 1008.875
-offset_bottom = 832.0
-scale = Vector2(1.57, 1.595)
-
 offset_left = 845.7461
 offset_top = 612.0
 offset_right = 1087.6211
 offset_bottom = 1052.0
 scale = Vector2(0.964084, 1)
-
 color = Color(0, 0.039215688, 0.10980392, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Completed_lvl_3" type="ColorRect" parent="." unique_id=1341072440]
-
-offset_left = 1341.0
-offset_top = 392.0
-offset_right = 1582.875
-offset_bottom = 832.0
-scale = Vector2(1.57, 1.629)
-
 offset_left = 1156.7461
 offset_top = 612.0
 offset_right = 1398.6211
 offset_bottom = 1052.0
 scale = Vector2(0.964084, 1)
-
 color = Color(0.11372549, 0.70980394, 0.03529412, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Playable_lvl3" type="ColorRect" parent="." unique_id=190049342]
-
-offset_left = 1341.0
-offset_top = 392.0
-offset_right = 1582.875
-offset_bottom = 832.0
-scale = Vector2(1.57, 1.629)
-
 offset_left = 1156.7461
 offset_top = 612.0
 offset_right = 1398.6211
 offset_bottom = 1052.0
 scale = Vector2(0.964084, 1)
-
 color = Color(0.90286136, 0.12995538, 0.18218237, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Locked_lvl3" type="ColorRect" parent="." unique_id=1426013767]
-
-offset_left = 1341.0
-offset_top = 392.0
-offset_right = 1582.875
-offset_bottom = 832.0
-scale = Vector2(1.57, 1.629)
-
 offset_left = 1156.7461
 offset_top = 612.0
 offset_right = 1398.6211
 offset_bottom = 1052.0
 scale = Vector2(0.964084, 1)
-
 color = Color(0, 0.039215688, 0.10980392, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -170,17 +110,13 @@ scale = Vector2(0.39934552, 0.41422275)
 texture = ExtResource("3_rbbqw")
 
 [node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
-position = Vector2(1536, 720.00006)
-scale = Vector2(0.37672818, 0.3907628)
-
 position = Vector2(964.746, 826.9999)
 scale = Vector2(0.25586393, 0.26539588)
 texture = ExtResource("3_rbbqw")
 
-[node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
+[node name="Lock_lvl4" type="Sprite2D" parent="." unique_id=132893714]
 position = Vector2(1276.746, 826.9999)
 scale = Vector2(0.25586393, 0.26539588)
-
 texture = ExtResource("3_rbbqw")
 
 [node name="Button" type="Button" parent="." unique_id=1826991966]
@@ -189,14 +125,6 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 188.0
-offset_top = 329.0
-offset_right = 202.03687
-offset_bottom = 671.8572
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(30.162437, 2.2241135)
-
 offset_left = 515.7462
 offset_top = 570.0
 offset_right = 529.7831
@@ -214,17 +142,10 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-
-offset_left = 760.0
-offset_top = 1168.0
-offset_right = 773.78076
-offset_bottom = 1510.8572
-
 offset_left = 832.7461
 offset_top = 570.0
 offset_right = 846.52686
 offset_bottom = 912.8572
-
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(18.81892, 1.4)
@@ -238,14 +159,6 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 1139.7461
-offset_top = 570.0
-offset_right = 1153.783
-offset_bottom = 912.8572
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(18.81892, 1.4)
-size_flags_horizontal = 4
 offset_left = 1744.0
 offset_top = 329.0
 offset_right = 1758.0369

@@ -14,10 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
 [ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_mt0mm"]
-[ext_resource type="Texture2D" uid="uid://doev15orrptgh" path="res://Assets/2D Assets/buttons/test/normal.png" id="15_wd0pk"]
-[ext_resource type="Texture2D" uid="uid://dq53ip7yb6evy" path="res://Assets/2D Assets/buttons/test/hover.png" id="16_aa7ff"]
-[ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
-[ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
+[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="15_xuxnm"]
 
 [node name="main menu" type="CanvasLayer" unique_id=1887178084]
 script = ExtResource("1_44aiy")
@@ -36,6 +33,7 @@ offset_bottom = 1226.0
 color = Color(0, 0, 0, 0.10980392)
 
 [node name="LogoComFundo" type="Sprite2D" parent="." unique_id=204736811]
+texture_filter = 4
 position = Vector2(918.00006, 257)
 scale = Vector2(0.43425006, 0.43425006)
 texture = ExtResource("3_u2t8f")
@@ -53,10 +51,10 @@ metadata/_edit_use_anchors_ = true
 [node name="start" type="TextureButton" parent="Button Manager" unique_id=161687345]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -141.3201
-anchor_top = -76.62796
-anchor_right = -140.5288
-anchor_bottom = -76.17906
+anchor_left = -141.32445
+anchor_top = -76.64038
+anchor_right = -140.53314
+anchor_bottom = -76.191475
 offset_left = 130339.49
 offset_top = 80781.48
 offset_right = 130403.49
@@ -72,10 +70,10 @@ metadata/_edit_use_anchors_ = true
 [node name="options" type="TextureButton" parent="Button Manager" unique_id=1061847799]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -141.6945
-anchor_top = -67.64012
-anchor_right = -140.90323
-anchor_bottom = -67.19076
+anchor_left = -141.69667
+anchor_top = -67.6449
+anchor_right = -140.9054
+anchor_bottom = -67.19553
 offset_left = 130681.94
 offset_top = 71515.21
 offset_right = 130745.98
@@ -90,35 +88,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="quit" type="TextureButton" parent="Button Manager" unique_id=1401457388]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -135.42273
-anchor_top = -57.038223
-anchor_right = -135.42273
-anchor_bottom = -57.038223
-offset_left = 124909.914
-offset_top = 60554.02
-offset_right = 125914.914
-offset_bottom = 61209.023
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.27, 0.27)
-action_mode = 0
-texture_normal = ExtResource("10_7yksk")
-texture_pressed = ExtResource("11_fidfd")
-texture_hover = ExtResource("12_l4reb")
-metadata/_edit_use_anchors_ = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -135.19121
-anchor_top = -56.893044
-anchor_right = -135.42273
-anchor_bottom = -57.038223
-offset_left = 124697.914
-offset_top = 60415.016
-offset_right = 125702.914
-offset_bottom = 61070.02
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 321.0
+offset_top = 843.0
+offset_right = 1113.0
+offset_bottom = 1346.0
 scale = Vector2(0.27, 0.27)
 action_mode = 0
 texture_normal = ExtResource("10_7yksk")
@@ -136,8 +109,7 @@ offset_left = 496.0
 offset_top = 328.0
 offset_right = 592.0
 offset_bottom = 390.0
-texture_normal = ExtResource("15_wd0pk")
-texture_hover = ExtResource("16_aa7ff")
+texture_normal = ExtResource("15_xuxnm")
 ignore_texture_size = true
 stretch_mode = 0
 
