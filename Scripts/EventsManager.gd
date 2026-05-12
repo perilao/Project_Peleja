@@ -22,8 +22,8 @@ var Event_Color: Color
 
 func _ready() -> void:
 	Event_Color = mesh.get_active_material(0).albedo_color
-	if animation_player:
-		animation_player.play("open")
+	#if animation_player:
+		#animation_player.play("open")
 	isOnArea = false
 	if timer_geral.is_in_group("start_opened"):
 		original_wait_time = timer_geral.wait_time

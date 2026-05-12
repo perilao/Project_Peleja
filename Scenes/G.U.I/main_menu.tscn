@@ -104,7 +104,7 @@ visible = false
 [node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_mt0mm")]
 visible = false
 
-[node name="back5" type="TextureButton" parent="options menu" unique_id=796359102]
+[node name="back5" type="TextureButton" parent="." unique_id=796359102]
 offset_left = 496.0
 offset_top = 328.0
 offset_right = 592.0
@@ -116,5 +116,5 @@ stretch_mode = 0
 [connection signal="pressed" from="Button Manager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button Manager/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="options menu/back5" to="." method="_on_back_5_pressed"]
-[connection signal="pressed" from="options menu/back5" to="options menu" method="_on_back_5_pressed"]
+[connection signal="pressed" from="back5" to="." method="_on_back_5_pressed"]
+[connection signal="pressed" from="back5" to="options menu" method="_on_back_5_pressed"]

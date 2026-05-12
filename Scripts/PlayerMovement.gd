@@ -21,6 +21,8 @@ var hold_object: Node3D = null
 var block_input := false
 var release_distance := 2.0
 var hold_rotation_offset: Vector3
+#AUDIO
+@onready var walk_audio: AudioStreamPlayer3D = $"../Audio/Walk"
 
 
 func _physics_process(delta: float) -> void:
@@ -93,6 +95,7 @@ func player_movement(delta):
 	if direction.length() > 0:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		
 		if !lock_rotation:
 			var target_angle_ = atan2(direction.x, direction.z)
 			rotation.y = lerp_angle(rotation.y, target_angle_, ROTATION_SPEED * delta)
@@ -104,6 +107,7 @@ func player_movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		walk_audio.play()
 
 func release_object(consumed: bool = false):
 	#RELEASE OBJECT TRIGGER
