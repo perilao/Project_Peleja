@@ -94,8 +94,8 @@ func player_movement(delta):
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		if !lock_rotation:
-			var target_angle = atan2(direction.x, direction.z)
-			rotation.y = lerp_angle(rotation.y, target_angle, ROTATION_SPEED * delta)
+			var target_angle_ = atan2(direction.x, direction.z)
+			rotation.y = lerp_angle(rotation.y, target_angle_, ROTATION_SPEED * delta)
 		else:
 			rotation.y = locked_rotation_y
 	#PLAYER ROTATION

@@ -16,12 +16,14 @@ var isOnArea = false
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @export var outline_material: Material
 var Event_Color: Color
-var hasPrinted = false
+#ANIMATION CONTROLLER
+@export var animation_player: AnimationPlayer
 
 
 func _ready() -> void:
 	Event_Color = mesh.get_active_material(0).albedo_color
-	hasPrinted = false
+	if animation_player:
+		animation_player.play("open")
 	isOnArea = false
 	if timer_geral.is_in_group("start_opened"):
 		original_wait_time = timer_geral.wait_time
@@ -30,10 +32,13 @@ func _ready() -> void:
 func _process(_delta):
 #CONTADOR
 	#CHANGE STATE AFTER CERTAIN TIME
-	if timer_geral.time_left <= event_time and hasPrinted == false:
-		mesh.get_active_material(0).albedo_color = Color.RED
-		print("Faltam ", event_time, " segundos!", event_name)
-		hasPrinted = true
+	if timer_geral.time_left <= event_time:
+		#mesh.get_active_material(0).albedo_color = Color.RED
+		if animation_player:
+			animation_player.play("open")
+	if timer_geral.time_left >= event_time and timer_geral.time_left < 25.0:
+		if animation_player:
+			animation_player.play("broken")
 	#INTERACTION OBJECT/EVENT
 	if Input.is_action_just_pressed("ui_interact"):
 		if timer_geral.time_left <= event_time and isOnArea: 
@@ -43,11 +48,10 @@ func _process(_delta):
 					timer_geral.wait_time = original_wait_time
 					timer_geral.start()
 					object.use_item()
-					
 					player.release_object(true)
 					mesh.get_active_material(0).albedo_color = Event_Color
-					print("Sucesso! Porta ", event_name, " resetada.")
-					hasPrinted = false
+					if animation_player:
+						animation_player.play("blocked")
 				else:
 					print("Item errado! Você tem '", object.item_type, "' mas esta porta precisa de '", event_name, "'")
 func _on_timer_geral_timeout() -> void:

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://p764aghxtvm8" path="res://Assets/3D Assets/Texturas/Textura armario.png" id="9_cpkqv"]
 [ext_resource type="Texture2D" uid="uid://2yerkmoe32j" path="res://Assets/3D Assets/Texturas/Textura banquinho.png" id="10_d1mwp"]
 [ext_resource type="Texture2D" uid="uid://brmfatgrkob3j" path="res://Assets/3D Assets/Texturas/Textura cadeira 2.png" id="11_u1b78"]
-[ext_resource type="ArrayMesh" uid="uid://csvc6m4pbj2fj" path="res://Assets/3D Assets/Saída.obj" id="12_af2a1"]
+[ext_resource type="ArrayMesh" uid="uid://csvc6m4pbj2fj" path="res://Assets/3D Assets/Objects/Saída.obj" id="12_af2a1"]
 [ext_resource type="Texture2D" uid="uid://b4xc6lrcc1yfs" path="res://Assets/3D Assets/Texturas/Textura cadeira 1.png" id="12_bdr3p"]
 [ext_resource type="Texture2D" uid="uid://delk6mt17e8gk" path="res://Assets/3D Assets/Texturas/Mesa de centro.png" id="13_wwu6c"]
 [ext_resource type="Texture2D" uid="uid://bkuuwfqprrurt" path="res://Assets/3D Assets/Texturas/Textura porta 1.png" id="15_esggg"]

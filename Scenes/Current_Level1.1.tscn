@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://lev24p4unyyq" path="res://Assets/3D Assets/Texturas/Textura prateleira.png" id="16_w81rf"]
 [ext_resource type="Texture2D" uid="uid://bo3kqfvgkdhyf" path="res://Assets/3D Assets/Texturas/Textura cantinho de reza.png" id="17_r42dt"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="18_kcmrj"]
-[ext_resource type="ArrayMesh" uid="uid://csvc6m4pbj2fj" path="res://Assets/3D Assets/Saída.obj" id="19_vcme0"]
+[ext_resource type="ArrayMesh" uid="uid://csvc6m4pbj2fj" path="res://Assets/3D Assets/Objects/Saída.obj" id="19_vcme0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 albedo_color = Color(0, 0, 0, 1)

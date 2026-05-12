@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://b7c1eeou3h8vo"]
 
 [ext_resource type="Script" uid="uid://dbn6o52hfeuwr" path="res://Scripts/Phase_1_manager.gd" id="1_niuiw"]
+[ext_resource type="Texture2D" uid="uid://x5bjum2wkade" path="res://Assets/3D Assets/Texturas/chão.png" id="2_0wgr0"]
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="2_grqgb"]
-[ext_resource type="Texture2D" uid="uid://br4srm78nvijh" path="res://Assets/3D Assets/Texturas/chão de terra.png" id="2_sqkj2"]
 [ext_resource type="Texture2D" uid="uid://bif3e5tvgvtwj" path="res://Assets/3D Assets/Texturas/Textura telha.png" id="3_0wgr0"]
 [ext_resource type="Texture2D" uid="uid://wiwuwa4a4o2q" path="res://Assets/3D Assets/Texturas/Textura joaquim.png" id="3_bv3xk"]
 [ext_resource type="Texture2D" uid="uid://boxigw3huxnlr" path="res://Assets/3D Assets/Texturas/outside ground test.jpg" id="3_j5hao"]
@@ -35,7 +35,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 shading_mode = 0
-albedo_texture = ExtResource("2_sqkj2")
+albedo_texture = ExtResource("2_0wgr0")
 uv1_scale = Vector3(8.81, 13.447, 4.218)
 uv1_triplanar = true
 texture_filter = 5
@@ -761,18 +761,23 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dgq47")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4kff"]
+shading_mode = 0
 albedo_texture = ExtResource("9_bv3xk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oclih"]
+shading_mode = 0
 albedo_texture = ExtResource("10_1rgox")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm318"]
+shading_mode = 0
 albedo_texture = ExtResource("7_thgey")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bp45w"]
+shading_mode = 0
 albedo_texture = ExtResource("7_thgey")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gu4si"]
+shading_mode = 0
 albedo_texture = ExtResource("6_adlhc")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2gfjl"]
@@ -901,9 +906,177 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2gfjl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_didp7"]
+size = Vector3(2.3979492, 1, 2.2557373)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2a60c"]
-size = Vector3(2.1831818, 1, 1.6690674)
+size = Vector3(3.4363174, 1, 3.3036194)
+
+[sub_resource type="Animation" id="Animation_0wgr0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaBarricada:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaQuebradaBarricada:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j5hao"]
+resource_name = "blocked"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaBarricada:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaQuebradaBarricada:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k70y7"]
+resource_name = "broken"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortaQuebradaBarricada:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaBarricada:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_684ly"]
+resource_name = "open"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaBarricada:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaQuebradaBarricada:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3vc4b"]
+_data = {
+&"RESET": SubResource("Animation_0wgr0"),
+&"blocked": SubResource("Animation_j5hao"),
+&"broken": SubResource("Animation_k70y7"),
+&"open": SubResource("Animation_684ly")
+}
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jgkgd"]
 resource_local_to_scene = true
@@ -2851,7 +3024,7 @@ shape = SubResource("BoxShape3D_jgkgd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.01574707)
 shape = SubResource("BoxShape3D_bs12r")
 
-[node name="Event_Test1" type="StaticBody3D" parent="Events" unique_id=2068765976 groups=["event"]]
+[node name="Event_Test1" type="StaticBody3D" parent="Events" unique_id=2068765976 node_paths=PackedStringArray("animation_player") groups=["event"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.621342, -0.453709, 3.7000413)
 physics_material_override = SubResource("PhysicsMaterial_4iphx")
@@ -2859,6 +3032,7 @@ script = ExtResource("4_x7y7a")
 event_time = 20.0
 event_name = "lado"
 outline_material = ExtResource("5_n3qit")
+animation_player = NodePath("DoorAnimation")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test1" unique_id=364387740 groups=["start_opened"]]
 wait_time = 40.0
@@ -2871,7 +3045,6 @@ mesh = SubResource("ArrayMesh_grqgb")
 
 [node name="PortaBarricada" type="MeshInstance3D" parent="Events/Event_Test1" unique_id=1565689806]
 transform = Transform3D(-0.0009999999, 0, -1.3463108e-10, 0, 0.0015400001, 0, 8.742277e-11, 0, -0.0015400001, -0.284626, 1.0963376, 0.21208382)
-visible = false
 mesh = SubResource("ArrayMesh_164vy")
 
 [node name="PortaQuebradaBarricada" type="MeshInstance3D" parent="Events/Event_Test1" unique_id=1382298467]
@@ -2880,13 +3053,18 @@ visible = false
 mesh = SubResource("ArrayMesh_v8cr2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test1" unique_id=1159388203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6989746, 0, 0.12445068)
 shape = SubResource("BoxShape3D_didp7")
 
 [node name="Area3D" type="Area3D" parent="Events/Event_Test1" unique_id=1573260108]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test1/Area3D" unique_id=493340587]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.01574707)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60526276, 0, -0.038497925)
 shape = SubResource("BoxShape3D_2a60c")
+
+[node name="DoorAnimation" type="AnimationPlayer" parent="Events/Event_Test1" unique_id=466381979]
+libraries/ = SubResource("AnimationLibrary_3vc4b")
+autoplay = &"open"
 
 [node name="Event_Test2" type="StaticBody3D" parent="Events" unique_id=731781417 groups=["event"]]
 unique_name_in_owner = true

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ryof2qt4410a" path="res://Scripts/lvl_selector.gd" id="1_6ry5l"]
 [ext_resource type="Texture2D" uid="uid://ucdoe641bctc" path="res://Assets/2D Assets/image.png" id="2_q5bk7"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="3_q5bk7"]
 [ext_resource type="Texture2D" uid="uid://dslmy2oxmknw0" path="res://Assets/2D Assets/cadeadoclaro.png" id="3_rbbqw"]
 
 [node name="Node2D" type="Node2D" unique_id=1983303683]
@@ -18,15 +19,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -276.0
-offset_top = -116.0
-offset_right = 7874.0
-offset_bottom = 1594.0
+offset_left = 544.0
+offset_top = 120.0
+offset_right = 16681.0
+offset_bottom = 2934.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
-theme_override_font_sizes/font_size = 1255
-text = "LEVEL SELECT"
+theme_override_fonts/font = ExtResource("3_q5bk7")
+theme_override_font_sizes/font_size = 2605
+text = "Seletor de Nivel"
 metadata/_edit_use_anchors_ = true
 
 [node name="Completed_lvl_1" type="ColorRect" parent="." unique_id=747278460]
