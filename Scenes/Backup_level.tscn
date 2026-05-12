@@ -1264,6 +1264,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wc672")
 
+[sub_resource type="BoxMesh" id="BoxMesh_wbjq7"]
+
 [node name="Level" type="Node3D" unique_id=216904473]
 script = ExtResource("1_4iphx")
 
@@ -1908,6 +1910,10 @@ mesh = SubResource("ArrayMesh_daeh6")
 transform = Transform3D(-6.9238844e-11, 0, 0.001, 0, 0.0015600002, 0, -0.0015840002, 0, -4.371139e-11, 3.977355, 1.2757242, -0.27877286)
 visible = false
 mesh = ExtResource("12_af2a1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1691141334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06526, 2.575842, 5.0860324)
+mesh = SubResource("BoxMesh_wbjq7")
 
 [connection signal="timeout" from="Events/Event_1/timer_geral" to="Events/Event_1" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_1/Area3D" to="Events/Event_1" method="_on_area_3d_area_entered"]
