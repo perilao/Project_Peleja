@@ -29,9 +29,10 @@
 [ext_resource type="Texture2D" uid="uid://rcoookjdcok0" path="res://Assets/2D Assets/progress bar/marcaçao.png" id="18_thgey"]
 [ext_resource type="Texture2D" uid="uid://diukm3cmbifl" path="res://Assets/3D Assets/Texturas/Textura tabua de madeira.png" id="19_h2cb4"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
-[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
 [ext_resource type="Texture2D" uid="uid://c8fg5r7rgmxsf" path="res://Assets/3D Assets/Texturas/Textura janela.png" id="22_abf53"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
+[ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="33_j5hao"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 shading_mode = 0
@@ -3800,6 +3801,9 @@ mesh = SubResource("ArrayMesh_k4ydw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/CadeiraQuebrada/StaticBody3D" unique_id=1930710623]
 transform = Transform3D(1, 0, 5.9604645e-08, 0, 0.99996066, 0, -5.9604645e-08, 0, 1, -0.57910156, 0.3838439, 1.2943535)
 shape = SubResource("BoxShape3D_be7bx")
+
+[node name="PauseMenu" parent="." unique_id=1331683831 instance=ExtResource("33_j5hao")]
+visible = false
 
 [connection signal="timeout" from="Events/Event_Test3/timer_geral" to="Events/Event_Test3" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_Test3/Area3D" to="Events/Event_Test3" method="_on_area_3d_area_entered"]
