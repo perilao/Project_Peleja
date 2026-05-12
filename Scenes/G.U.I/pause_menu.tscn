@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vrt00gs5s1p1"]
 
 [ext_resource type="Script" uid="uid://fcebubk2mvme" path="res://Scripts/pause_menu.gd" id="1_uwxim"]
-[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://pause_menu.gdshader" id="2_cwg05"]
+[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://Shaders/pause_menu.gdshader" id="2_cwg05"]
 [ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="3_le8lw"]
 [ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="4_yc0kh"]
 [ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="5_ubel8"]
@@ -12,22 +12,41 @@
 [ext_resource type="Texture2D" uid="uid://dm5kwbtkawusu" path="res://Assets/2D Assets/buttons/sair/sairnormal.png" id="10_ydd0h"]
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_jtidm"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_cx814"]
-[ext_resource type="PackedScene" uid="uid://8f8n4ydi6qpm" path="res://Scenes/G.U.I/options_menu.tscn" id="13_a3rqg"]
-[ext_resource type="Texture2D" uid="uid://drsrgcw5f777j" path="res://Assets/Buttons/moldurabotao2.png" id="14_cwg05"]
+[ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="13_a3rqg"]
+[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="14_le8lw"]
+[ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="15_yc0kh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
 shader = ExtResource("2_cwg05")
 shader_parameter/amount = 3.0000001425
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le8lw"]
+bg_color = Color(0.09803922, 0.09411765, 0.07450981, 1)
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_width_bottom = 11
+border_color = Color(1, 0.9882353, 0.88235295, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc0kh"]
+bg_color = Color(1, 0.9882353, 0.88235295, 1)
+draw_center = false
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_width_bottom = 11
+border_color = Color(1, 0.9882353, 0.88235295, 1)
 
 [node name="Node2D" type="Node2D" unique_id=1331683831]
 script = ExtResource("1_uwxim")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1550640404]
 material = SubResource("ShaderMaterial_nwcfo")
-offset_left = -80.0
-offset_top = -128.0
-offset_right = 2327.0
-offset_bottom = 1167.0
+offset_left = -317.0
+offset_top = -63.0
+offset_right = 2090.0
+offset_bottom = 1232.0
 
 [node name="PausePanel" type="Panel" parent="." unique_id=2111284769]
 self_modulate = Color(0, 0, 0, 1)
@@ -35,6 +54,28 @@ offset_left = 479.0
 offset_top = 312.0
 offset_right = 1335.0
 offset_bottom = 984.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_le8lw")
+
+[node name="Panel" type="Panel" parent="PausePanel" unique_id=2098028590]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 849.0
+offset_bottom = 664.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yc0kh")
+
+[node name="Label" type="Label" parent="PausePanel" unique_id=211795038]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 40.0
+offset_right = 1018.0
+offset_bottom = 190.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.88235295, 1)
+theme_override_fonts/font = ExtResource("3_le8lw")
+theme_override_font_sizes/font_size = 150
+text = "Jogo Pausado"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PausePanel" unique_id=639744018]
 layout_mode = 0
@@ -68,29 +109,20 @@ texture_pressed = ExtResource("11_jtidm")
 texture_hover = ExtResource("12_cx814")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="PausePanel" unique_id=211795038]
-layout_mode = 0
-offset_left = 217.0
-offset_top = 40.0
-offset_right = 1018.0
-offset_bottom = 190.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("3_le8lw")
-theme_override_font_sizes/font_size = 150
-text = "Jogo Pausado"
-horizontal_alignment = 1
-
 [node name="options menu" parent="." unique_id=187140479 instance=ExtResource("13_a3rqg")]
 visible = false
 
 [node name="back4" type="TextureButton" parent="." unique_id=1605812270]
 visible = false
-offset_left = 480.0
-offset_top = 312.0
-offset_right = 1485.0
-offset_bottom = 967.0
+offset_left = 499.0
+offset_top = 340.0
+offset_right = 1528.3267
+offset_bottom = 927.33594
 scale = Vector2(0.09035035, 0.09364314)
-texture_normal = ExtResource("14_cwg05")
+texture_normal = ExtResource("14_le8lw")
+texture_pressed = ExtResource("15_yc0kh")
+texture_hover = ExtResource("14_le8lw")
+stretch_mode = 0
 
 [connection signal="pressed" from="PausePanel/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PausePanel/VBoxContainer/menu" to="." method="_on_menu_pressed"]

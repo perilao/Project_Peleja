@@ -15,7 +15,32 @@
 [ext_resource type="Texture2D" uid="uid://cqpw01ui5plsq" path="res://Assets/2D Assets/buttons/salvar/salvarnormal.png" id="13_kq836"]
 [ext_resource type="Texture2D" uid="uid://pknadvuhrs3y" path="res://Assets/2D Assets/buttons/salvar/salvareacuro.png" id="14_2hfgc"]
 [ext_resource type="Texture2D" uid="uid://gvyv4uju8dmh" path="res://Assets/2D Assets/buttons/salvar/salvarclaro.png" id="15_heqql"]
+[ext_resource type="Texture2D" uid="uid://vtw6cxx77omq" path="res://Assets/2D Assets/UI Controls/controledopeleja.png" id="16_4oks2"]
 [ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="16_p2x7m"]
+[ext_resource type="Texture2D" uid="uid://b5jsx233dvmnh" path="res://Assets/2D Assets/UI Controls/botaoE.png" id="17_mch1e"]
+[ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="17_ye2x4"]
+[ext_resource type="Texture2D" uid="uid://4ohgxsn3ous8" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="18_kq836"]
+[ext_resource type="Texture2D" uid="uid://u80jf57c3m45" path="res://Assets/2D Assets/UI Controls/espaco.png" id="18_p254p"]
+[ext_resource type="Texture2D" uid="uid://dyddku1mhhhe5" path="res://Assets/2D Assets/UI Controls/Wsad.png" id="19_63vsv"]
+[ext_resource type="Texture2D" uid="uid://djx3yn337nn0t" path="res://Assets/2D Assets/UI Controls/setaa.png" id="20_6twxh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oks2"]
+bg_color = Color(0.09803922, 0.09411765, 0.07450981, 1)
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_width_bottom = 11
+border_color = Color(1, 0.9882353, 0.88235295, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mch1e"]
+bg_color = Color(1, 0.9882353, 0.88235295, 1)
+draw_center = false
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_width_bottom = 11
+border_color = Color(1, 0.9882353, 0.88235295, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m372f"]
 
@@ -36,6 +61,15 @@ offset_left = 479.0
 offset_top = 312.0
 offset_right = 1335.0
 offset_bottom = 984.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4oks2")
+
+[node name="Panel" type="Panel" parent="OptionsPanel" unique_id=806774818]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 849.0
+offset_bottom = 664.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mch1e")
 
 [node name="OptionsManager" type="Control" parent="." unique_id=55270483]
 material = SubResource("CanvasItemMaterial_m372f")
@@ -56,6 +90,7 @@ offset_top = 207.5
 offset_right = 798.5
 offset_bottom = 357.5
 scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
 theme_override_fonts/font = ExtResource("2_mxr4w")
 theme_override_font_sizes/font_size = 150
 text = "Opções"
@@ -229,23 +264,6 @@ texture_pressed = ExtResource("14_2hfgc")
 texture_hover = ExtResource("15_heqql")
 stretch_mode = 0
 
-[node name="back" type="TextureButton" parent="SoundManager" unique_id=239859338]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -141.31575
-anchor_top = -76.71679
-anchor_right = -140.52444
-anchor_bottom = -76.26788
-offset_left = 123251.336
-offset_top = 52183.418
-offset_right = 122916.87
-offset_bottom = 52107.79
-scale = Vector2(0.27, 0.27)
-action_mode = 0
-texture_normal = ExtResource("16_p2x7m")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="ControlsManager" type="Control" parent="." unique_id=1179126475]
 visible = false
 layout_mode = 3
@@ -262,20 +280,36 @@ offset_top = 347.0
 offset_right = 865.0
 offset_bottom = 497.0
 scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
 theme_override_fonts/font = ExtResource("2_mxr4w")
 theme_override_font_sizes/font_size = 150
 text = "Controles"
 horizontal_alignment = 1
 
-[node name="back2" type="TextureButton" parent="ControlsManager" unique_id=1883083909]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 323.0
-offset_right = 113.0
-offset_bottom = 385.0
-texture_normal = ExtResource("16_p2x7m")
-ignore_texture_size = true
-stretch_mode = 0
+[node name="Controledopeleja" type="Sprite2D" parent="ControlsManager" unique_id=2001892491]
+position = Vector2(417, 563)
+scale = Vector2(0.55694765, 0.5569476)
+texture = ExtResource("16_4oks2")
+
+[node name="BotaoE" type="Sprite2D" parent="ControlsManager" unique_id=801253912]
+position = Vector2(441, 811)
+scale = Vector2(0.067722544, 0.067722544)
+texture = ExtResource("17_mch1e")
+
+[node name="Espaco" type="Sprite2D" parent="ControlsManager" unique_id=1947641441]
+position = Vector2(664.99994, 819.00006)
+scale = Vector2(0.13848406, 0.13848406)
+texture = ExtResource("18_p254p")
+
+[node name="Wsad" type="Sprite2D" parent="ControlsManager" unique_id=1652225193]
+position = Vector2(137.25513, 798.98535)
+scale = Vector2(0.18063788, 0.18063788)
+texture = ExtResource("19_63vsv")
+
+[node name="Setaa" type="Sprite2D" parent="ControlsManager" unique_id=1000127115]
+position = Vector2(281, 875.00006)
+scale = Vector2(0.1790837, 0.17908372)
+texture = ExtResource("20_6twxh")
 
 [node name="CreditsManager" type="Control" parent="." unique_id=523895874]
 visible = false
@@ -293,17 +327,45 @@ offset_top = -75.0
 offset_right = 697.0
 offset_bottom = 75.0
 scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
 theme_override_fonts/font = ExtResource("2_mxr4w")
 theme_override_font_sizes/font_size = 150
 text = "Créditos"
 horizontal_alignment = 1
 
-[node name="back3" type="TextureButton" parent="CreditsManager" unique_id=246944028]
+[node name="Label" type="Label" parent="CreditsManager" unique_id=423396478]
 layout_mode = 0
-offset_left = -96.0
-offset_top = -99.0
-offset_bottom = -37.0
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 1040.0
+offset_bottom = 888.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 91
+text = "GIOVANNA ANDRADE
+
+ JOÃO VITOR ANDRADE
+
+ JÚLIO CESAR GOMES
+
+LAURA JULIANE SIMÕES 
+
+PEDRO IGOR NASCIMENTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="back" type="TextureButton" parent="." unique_id=2112502898]
+visible = false
+offset_left = 496.0
+offset_top = 400.00003
+offset_right = 1192.2961
+offset_bottom = 785.18506
+scale = Vector2(0.135, 0.135)
 texture_normal = ExtResource("16_p2x7m")
+texture_pressed = ExtResource("17_ye2x4")
+texture_hover = ExtResource("18_kq836")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -314,7 +376,4 @@ stretch_mode = 0
 [connection signal="mouse_exited" from="SoundManager/VBoxContainer/MusicSlider" to="SoundManager" method="_on_music_slider_mouse_exited"]
 [connection signal="mouse_exited" from="SoundManager/VBoxContainer/SFXSlider" to="SoundManager" method="_on_sfx_slider_mouse_exited"]
 [connection signal="pressed" from="SoundManager/save" to="SoundManager" method="_on_save_pressed"]
-[connection signal="pressed" from="SoundManager/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="SoundManager/back" to="SoundManager" method="_on_back_pressed"]
-[connection signal="pressed" from="ControlsManager/back2" to="." method="_on_back_2_pressed"]
-[connection signal="pressed" from="CreditsManager/back3" to="." method="_on_back_3_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

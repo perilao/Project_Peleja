@@ -26,6 +26,7 @@ offset_bottom = 2934.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.88235295, 1)
 theme_override_fonts/font = ExtResource("3_q5bk7")
 theme_override_font_sizes/font_size = 2605
 text = "Seletor de Nivel"
