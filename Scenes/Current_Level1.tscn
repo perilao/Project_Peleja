@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://bx6hs7pqmuemy" path="res://Assets/Prefabs 3D/mesa_(obstaculo).tscn" id="15_k70y7"]
 [ext_resource type="PackedScene" uid="uid://ctsm3lhkr8vih" path="res://Assets/Prefabs 3D/poltrona_(obstaculo).tscn" id="16_684ly"]
 [ext_resource type="Texture2D" uid="uid://dulimpoapok3d" path="res://Assets/2D Assets/progress bar/2.0/preenchimentopreto.png" id="16_cud0u"]
-[ext_resource type="Texture2D" uid="uid://ddurjesrvshuq" path="res://Assets/3D Assets/Texturas/Textura poltrona.png" id="16_niuiw"]
 [ext_resource type="Texture2D" uid="uid://lev24p4unyyq" path="res://Assets/3D Assets/Texturas/Textura prateleira.png" id="17_3vc4b"]
 [ext_resource type="Texture2D" uid="uid://cxnmpaqr7du5f" path="res://Assets/2D Assets/progress bar/2.0/borda.png" id="17_bv3xk"]
 [ext_resource type="Texture2D" uid="uid://bc4ar0l126ire" path="res://Assets/2D Assets/progress bar/2.0/preenchimentovermelho.png" id="18_1rgox"]
@@ -31,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
 [ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
 [ext_resource type="Texture2D" uid="uid://c8fg5r7rgmxsf" path="res://Assets/3D Assets/Texturas/Textura janela.png" id="22_abf53"]
+[ext_resource type="Texture2D" uid="uid://cmqk1j7gvawx2" path="res://Assets/3D Assets/Texturas/Textura poltrona 2.png" id="27_684ly"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
 [ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="33_j5hao"]
 [ext_resource type="AudioStream" uid="uid://cpm4mkbsotcjj" path="res://Audio/I_cant_sleep_why.mp3" id="34_k70y7"]
@@ -2658,6 +2658,7 @@ script/source = "extends RigidBody3D
 var uses: int = 3
 var was_used := false
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
+
 #OUTLINE SHADERS
 @export var mesh: MeshInstance3D
 @export var outline_material: Material
@@ -2758,7 +2759,8 @@ script/source = "extends RigidBody3D
 @export var uses: int = 3
 @onready var label: Label3D = get_node_or_null(\"Label3D\")
 var was_used := false
-
+var release_distance = 2
+var original_position: Vector3
 #PLAYER REFERENCES
 @onready var player: CharacterBody3D = $\"../../../Player\"
 @export var current_player_speed = 0
@@ -2792,10 +2794,17 @@ var return_speed: float = 1.0
 func _ready():
 	freeze = true
 	lock_rotation = true
+	original_position = global_position
 	original_x = global_position.x
 	original_y = global_position.y
 	original_z = global_position.z
 	update_label()
+
+func _input(event):
+	if event.is_action_pressed(\"ui_grab\"):
+		if is_being_pushed:
+			cancel_push()
+			get_viewport().set_input_as_handled()
 func _physics_process(delta):
 	if is_being_pushed and !push_complete:
 		global_position.z = original_z
@@ -2805,7 +2814,6 @@ func _physics_process(delta):
 		if diference < 0.3:
 			push_complete = true
 			finish_push()
-			
 	if is_returning:
 		var target = Vector3(original_x, original_y, original_z)
 		global_position = global_position.move_toward(target, return_speed * delta)
@@ -2816,22 +2824,26 @@ func _physics_process(delta):
 			push_complete = false
 			player.cant_grab = false
 			use_item()
-
+		
 func _process(_delta):
 	if push_complete and !is_returning:
 		if timer_geral.time_left <= return_start_time and timer_geral.time_left > evento.event_time:
 			start_return()
-
 func start_return():
 	is_returning = true
 	freeze = false
 	lock_rotation = true
+	if player:
+		player.cant_grab = false 
+	
 	var distance = abs(global_position.x - original_x)
 	return_speed = distance / return_duration
 
 func start_push():
-	if timer_geral.time_left > evento.event_time:
+	if is_being_pushed:
 		return
+	is_returning = false
+	push_complete = false
 	is_being_pushed = true
 	freeze = false
 	lock_rotation = true
@@ -2845,6 +2857,24 @@ func start_push():
 	player.lock_rotation = true
 	player.player_has_item = true
 
+func cancel_push():
+	var dist = global_position.distance_to(original_position)
+	if dist <= release_distance:
+		is_being_pushed = false
+		freeze = true 
+		if player:
+			player.axis_lock_linear_z = false
+			player.lock_z = false
+			player.SPEED = original_player_speed
+			player.lock_rotation = false
+			player.player_has_item = false
+			player.cant_grab = true
+			if \"block_input\" in player:
+				player.block_input = false
+		global_position = Vector3(original_x, original_y, original_z)
+		await get_tree().create_timer(0.2).timeout
+		if player:
+			player.cant_grab = false
 func finish_push():
 	is_being_pushed = false
 	freeze = false
@@ -3749,7 +3779,7 @@ size = Vector3(0.7267761, 1, 2.7504883)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wigo"]
 shading_mode = 0
-albedo_texture = ExtResource("16_niuiw")
+albedo_texture = ExtResource("27_684ly")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3d4hm"]
 _surfaces = [{
@@ -3766,7 +3796,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_sqkj2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_e5fwq"]
 _surfaces = [{
 "aabb": AABB(-1606.5736, -511.73657, -1161.1377, 2079, 2002.0004, 2464.0002),
 "attribute_data": PackedByteArray("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"),
@@ -5318,7 +5348,7 @@ transform = Transform3D(0.72876537, 0, 0.6847632, 0, 0.99999994, 0, -0.6847632, 
 
 [node name="Poltrona (Obstaculo)3" parent="Static obstacles" unique_id=2068079789 instance=ExtResource("16_684ly")]
 transform = Transform3D(-0.7255664, 0, -0.6881521, 0, 0.99999994, 0, 0.6881521, 0, -0.7255664, 9221.386, 0, -2992.4678)
-mesh = SubResource("ArrayMesh_sqkj2")
+mesh = SubResource("ArrayMesh_e5fwq")
 
 [node name="Poltrona (Obstaculo)4" parent="Static obstacles" unique_id=1023019171 instance=ExtResource("16_684ly")]
 transform = Transform3D(-0.04409018, 0, 0.99902743, 0, 0.99999994, 0, -0.99902743, 0, -0.04409018, 12165.254, 0, -10215.491)
@@ -5374,7 +5404,7 @@ visible = false
 mesh = SubResource("ArrayMesh_4wigo")
 
 [node name="Sofa" parent="Props" unique_id=1786631366 instance=ExtResource("21_grqgb")]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -2.7967472, -0.3782509, -12.935018)
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -2.7967472, -0.3782509, -26.768955)
 visible = false
 
 [node name="Janela" type="MeshInstance3D" parent="Props" unique_id=903917824]

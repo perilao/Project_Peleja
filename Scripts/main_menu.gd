@@ -33,5 +33,5 @@ func _on_options_pressed() -> void:
 	
 func _on_back_5_pressed() -> void:
 	button_manager.visible = true
-	back_5.visibility_layer = false
+	back_5.visible = false
 	options_menu.visible = false
