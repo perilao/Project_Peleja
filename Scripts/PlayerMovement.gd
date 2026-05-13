@@ -23,6 +23,8 @@ var release_distance := 2.0
 var hold_rotation_offset: Vector3
 #AUDIO
 @onready var walk_audio: AudioStreamPlayer3D = $"../Audio/Walk"
+#ANIMATION
+@onready var animation: AnimationPlayer = $"animações 3/AnimationPlayer"
 
 
 func _physics_process(delta: float) -> void:
@@ -58,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	if hold_object:
 		hold_object.global_position = hand.global_position
 		hold_object.global_rotation = hand.global_rotation + hold_rotation_offset
+	animation_controller()
 	move_and_slide()
 
 func grab_object(obj):
@@ -71,6 +74,7 @@ func grab_object(obj):
 	if obj.is_in_group("movable"):
 		if obj.has_method("set_held"):
 			obj.set_held(true)
+		original_rotation = hold_object.global_rotation
 	else:
 		original_position = hold_object.global_position
 		original_rotation = hold_object.global_rotation
@@ -107,7 +111,7 @@ func player_movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		walk_audio.play()
+		#walk_audio.play()
 
 func release_object(consumed: bool = false):
 	#RELEASE OBJECT TRIGGER
@@ -147,3 +151,15 @@ func release_object(consumed: bool = false):
 func collect_item(obj):
 	print("Item coletado!")
 	obj.queue_free()
+
+func animation_controller():
+	if velocity.x or velocity.z != 0:
+		if player_has_item:
+			animation.play("grab_run")
+		else:
+			animation.play("run")
+	else:
+		if player_has_item:
+			animation.play("idle_grab")
+		else:
+			animation.play("idle")

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wiwuwa4a4o2q"
-path.s3tc="res://.godot/imported/Textura joaquim.png-0b60bb0e9d584b352b7cdd4ce6320b6e.s3tc.ctex"
+path.s3tc="res://.godot/imported/Textura joaquim.png-bfb1cd0fd5207ea1daa749dddbc02e90.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/3D Assets/Texturas/Textura joaquim.png"
-dest_files=["res://.godot/imported/Textura joaquim.png-0b60bb0e9d584b352b7cdd4ce6320b6e.s3tc.ctex"]
+source_file="res://Assets/3D Assets/Player/Textura joaquim.png"
+dest_files=["res://.godot/imported/Textura joaquim.png-bfb1cd0fd5207ea1daa749dddbc02e90.s3tc.ctex"]
 
 [params]
 

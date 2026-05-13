@@ -9,7 +9,7 @@ var paused = false
 func _ready() -> void:
 	animation.play("transition_out")
 	music_level.play()
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		PauseMenu()
 func PauseMenu():
