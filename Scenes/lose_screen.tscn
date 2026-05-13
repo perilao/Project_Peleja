@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cp18xcsfryfwi"]
 
 [ext_resource type="Script" uid="uid://dpnktxbfdv0sf" path="res://Scripts/lose_screen_manager.gd" id="1_s2rrh"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="2_38ql5"]
+[ext_resource type="Texture2D" uid="uid://bg0ajujornvg1" path="res://Assets/2D Assets/buttons/menu/menunormal.png" id="3_ak4yb"]
+[ext_resource type="Texture2D" uid="uid://b1sy84v2l160j" path="res://Assets/2D Assets/buttons/menu/menuescuro.png" id="4_1oqbe"]
+[ext_resource type="Texture2D" uid="uid://bmjj453nesxpl" path="res://Assets/2D Assets/buttons/menu/menuclaro.png" id="5_7r1e1"]
+[ext_resource type="Texture2D" uid="uid://drsrgcw5f777j" path="res://Assets/Buttons/moldurabotao2.png" id="6_ak4yb"]
 
 [node name="Lose Screen" type="Control" unique_id=1992811942]
 layout_mode = 3
@@ -11,21 +16,48 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s2rrh")
 
-[node name="Restart" type="Button" parent="." unique_id=1369788742]
-layout_mode = 0
-offset_left = 463.0
-offset_top = 388.0
-offset_right = 795.0
-offset_bottom = 480.0
-text = "Restart"
-
 [node name="Label" type="Label" parent="." unique_id=695609068]
-layout_mode = 0
-offset_left = 309.0
-offset_top = 158.0
-offset_right = 971.0
-offset_bottom = 435.0
-theme_override_font_sizes/font_size = 100
-text = "Você Perdeu:("
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -436.0
+offset_right = 1268.0
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_38ql5")
+theme_override_font_sizes/font_size = 305
+text = "Você foi pego!"
 
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[node name="menu" type="TextureButton" parent="." unique_id=1672825116]
+layout_mode = 0
+offset_left = 840.00006
+offset_top = 640.0
+offset_right = 1632.0
+offset_bottom = 1143.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("3_ak4yb")
+texture_pressed = ExtResource("4_1oqbe")
+texture_hover = ExtResource("5_7r1e1")
+stretch_mode = 0
+
+[node name="restart" type="TextureButton" parent="." unique_id=130400141]
+layout_mode = 0
+offset_left = 808.00006
+offset_top = 456.00003
+offset_right = 1813.0
+offset_bottom = 1111.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("6_ak4yb")
+texture_pressed = ExtResource("4_1oqbe")
+texture_hover = ExtResource("5_7r1e1")
+stretch_mode = 0
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
