@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vrt00gs5s1p1"]
 
 [ext_resource type="Script" uid="uid://fcebubk2mvme" path="res://Scripts/pause_menu.gd" id="1_uwxim"]
-[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://Shaders/pause_menu.gdshader" id="2_cwg05"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_cwg05"]
 [ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="3_le8lw"]
 [ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="4_yc0kh"]
 [ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="5_ubel8"]
@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_jtidm"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_cx814"]
 [ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="13_a3rqg"]
-[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="14_le8lw"]
+[ext_resource type="Texture2D" uid="uid://cb2elsycij4lt" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="14_yc0kh"]
 [ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="15_yc0kh"]
+[ext_resource type="Texture2D" uid="uid://4ohgxsn3ous8" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="16_ubel8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
 shader = ExtResource("2_cwg05")
@@ -119,9 +120,9 @@ offset_top = 340.0
 offset_right = 1528.3267
 offset_bottom = 927.33594
 scale = Vector2(0.09035035, 0.09364314)
-texture_normal = ExtResource("14_le8lw")
+texture_normal = ExtResource("14_yc0kh")
 texture_pressed = ExtResource("15_yc0kh")
-texture_hover = ExtResource("14_le8lw")
+texture_hover = ExtResource("16_ubel8")
 stretch_mode = 0
 
 [connection signal="pressed" from="PausePanel/VBoxContainer/options" to="." method="_on_options_pressed"]

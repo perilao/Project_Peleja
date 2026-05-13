@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ucdoe641bctc" path="res://Assets/2D Assets/image.png" id="2_q5bk7"]
 [ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="3_q5bk7"]
 [ext_resource type="Texture2D" uid="uid://dslmy2oxmknw0" path="res://Assets/2D Assets/cadeadoclaro.png" id="3_rbbqw"]
+[ext_resource type="Texture2D" uid="uid://cb2elsycij4lt" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="5_o44xh"]
+[ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="6_t28lr"]
+[ext_resource type="Texture2D" uid="uid://4ohgxsn3ous8" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="7_5okd7"]
 
 [node name="Node2D" type="Node2D" unique_id=1983303683]
 script = ExtResource("1_6ry5l")
@@ -165,6 +168,18 @@ size_flags_horizontal = 0
 flat = true
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureButton" type="TextureButton" parent="." unique_id=900254535]
+offset_left = 15.999999
+offset_top = 16.000006
+offset_right = 1023.7136
+offset_bottom = 655.99994
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("5_o44xh")
+texture_pressed = ExtResource("6_t28lr")
+texture_hover = ExtResource("7_5okd7")
+stretch_mode = 0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

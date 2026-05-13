@@ -10,19 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://clrfgu18o8ytp" path="res://Assets/2D Assets/buttons/controles/controlesclaro.png" id="8_x37d2"]
 [ext_resource type="Texture2D" uid="uid://d3d8bo0haajnl" path="res://Assets/2D Assets/buttons/créditos/creditosnormal.png" id="9_xjsmc"]
 [ext_resource type="Texture2D" uid="uid://e7s6g1j14wox" path="res://Assets/2D Assets/buttons/créditos/creditosescuro.png" id="10_gyawl"]
-[ext_resource type="Script" uid="uid://cw6i8rg2gcpkk" path="res://Scripts/audio_control.gd" id="11_mxr4w"]
+[ext_resource type="Script" path="res://Scripts/audio_control.gd" id="11_mxr4w"]
 [ext_resource type="Texture2D" uid="uid://b484gkxtgar0c" path="res://Assets/2D Assets/buttons/créditos/creditosclaro.png" id="11_ye2x4"]
 [ext_resource type="Texture2D" uid="uid://cqpw01ui5plsq" path="res://Assets/2D Assets/buttons/salvar/salvarnormal.png" id="13_kq836"]
 [ext_resource type="Texture2D" uid="uid://pknadvuhrs3y" path="res://Assets/2D Assets/buttons/salvar/salvareacuro.png" id="14_2hfgc"]
 [ext_resource type="Texture2D" uid="uid://gvyv4uju8dmh" path="res://Assets/2D Assets/buttons/salvar/salvarclaro.png" id="15_heqql"]
 [ext_resource type="Texture2D" uid="uid://vtw6cxx77omq" path="res://Assets/2D Assets/UI Controls/controledopeleja.png" id="16_4oks2"]
-[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="16_p2x7m"]
 [ext_resource type="Texture2D" uid="uid://b5jsx233dvmnh" path="res://Assets/2D Assets/UI Controls/botaoE.png" id="17_mch1e"]
 [ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="17_ye2x4"]
 [ext_resource type="Texture2D" uid="uid://4ohgxsn3ous8" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="18_kq836"]
 [ext_resource type="Texture2D" uid="uid://u80jf57c3m45" path="res://Assets/2D Assets/UI Controls/espaco.png" id="18_p254p"]
 [ext_resource type="Texture2D" uid="uid://dyddku1mhhhe5" path="res://Assets/2D Assets/UI Controls/Wsad.png" id="19_63vsv"]
 [ext_resource type="Texture2D" uid="uid://djx3yn337nn0t" path="res://Assets/2D Assets/UI Controls/setaa.png" id="20_6twxh"]
+[ext_resource type="Texture2D" uid="uid://cb2elsycij4lt" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="21_4oks2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oks2"]
 bg_color = Color(0.09803922, 0.09411765, 0.07450981, 1)
@@ -363,7 +363,7 @@ offset_top = 400.00003
 offset_right = 1192.2961
 offset_bottom = 785.18506
 scale = Vector2(0.135, 0.135)
-texture_normal = ExtResource("16_p2x7m")
+texture_normal = ExtResource("21_4oks2")
 texture_pressed = ExtResource("17_ye2x4")
 texture_hover = ExtResource("18_kq836")
 ignore_texture_size = true

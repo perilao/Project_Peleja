@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://tbtlg5laewd6"]
+[gd_scene format=3 uid="uid://yph8snnoxdo4"]
 
 [ext_resource type="Script" uid="uid://cptefflkuvqkd" path="res://Scripts/main_menu.gd" id="1_44aiy"]
 [ext_resource type="Texture2D" uid="uid://d24w8tu0oxcf5" path="res://Assets/2D Assets/logo-com-fundo.png" id="3_u2t8f"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
 [ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_mt0mm"]
-[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="15_xuxnm"]
+[ext_resource type="Texture2D" uid="uid://cb2elsycij4lt" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="15_aa7ff"]
 [ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="16_aa7ff"]
 [ext_resource type="Texture2D" uid="uid://4ohgxsn3ous8" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="17_j5vqt"]
 
@@ -112,7 +112,7 @@ offset_left = 499.0
 offset_top = 340.0
 offset_right = 590.35486
 offset_bottom = 399.0
-texture_normal = ExtResource("15_xuxnm")
+texture_normal = ExtResource("15_aa7ff")
 texture_pressed = ExtResource("16_aa7ff")
 texture_hover = ExtResource("17_j5vqt")
 ignore_texture_size = true
