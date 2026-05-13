@@ -7,21 +7,25 @@ extends Node
 @onready var back: TextureButton = $back
 
 func _on_sound_pressed() -> void:
+	SoundControl.button_click.play()
 	options_manager.visible =  false
 	sound_manager.visible = true
 	back.visible = true
 
 func _on_controls_pressed() -> void:
+	SoundControl.button_click.play()
 	options_manager.visible =  false
 	controls_manager.visible = true
 	back.visible = true
 
 func _on_credits_pressed() -> void:
+	SoundControl.button_click.play()
 	options_manager.visible = false
 	credits_manager.visible = true
 	back.visible = true
 	
 func _on_back_pressed() -> void:
+	SoundControl.button_click.play()
 	options_manager.visible =  true
 	sound_manager.visible = false
 	controls_manager.visible = false

@@ -33,8 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://b0b036e8uhem7" path="res://Assets/3D Assets/Texturas/Textura poltrona 3.png" id="28_e5fwq"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
 [ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="33_j5hao"]
-[ext_resource type="AudioStream" uid="uid://cpm4mkbsotcjj" path="res://Audio/I_cant_sleep_why.mp3" id="34_k70y7"]
-[ext_resource type="AudioStream" uid="uid://dd17ydw2wo01n" path="res://Audio/marreta.mp3" id="35_684ly"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 shading_mode = 0
@@ -5561,17 +5559,6 @@ shape = SubResource("BoxShape3D_be7bx")
 
 [node name="PauseMenu" parent="." unique_id=1331683831 instance=ExtResource("33_j5hao")]
 visible = false
-
-[node name="Audio" type="Node3D" parent="." unique_id=1244179118]
-
-[node name="Music Level" type="AudioStreamPlayer3D" parent="Audio" unique_id=2133686142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.202939, 0)
-stream = ExtResource("34_k70y7")
-bus = &"Music"
-
-[node name="Walk" type="AudioStreamPlayer3D" parent="Audio" unique_id=1756350235]
-stream = ExtResource("35_684ly")
-bus = &"SFX"
 
 [connection signal="timeout" from="Events/Event_Test3/timer_geral" to="Events/Event_Test3" method="_on_timer_geral_timeout"]
 [connection signal="area_entered" from="Events/Event_Test3/Area3D" to="Events/Event_Test3" method="_on_area_3d_area_entered"]

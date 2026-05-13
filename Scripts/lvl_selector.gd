@@ -37,19 +37,23 @@ func _ready() -> void:
 		
 #BUTTONS
 func _on_button_pressed() -> void:
+	SoundControl.button_click.play()
 	get_tree().change_scene_to_file("res://Scenes/Current_Level1.tscn")
 	
 func _on_button_2_pressed() -> void:
+	SoundControl.button_click.play()
 	if LevelCore.lvl1_completed == true:
 		get_tree().change_scene_to_file("res://Scenes/Backup_level.tscn")
 	else:
 		null
 		
 func _on_button_3_pressed() -> void:
+	SoundControl.button_click.play()
 	if LevelCore.lvl2_completed == true:
 		get_tree().change_scene_to_file("res://LVL/lvl3.tscn")
 	else:
 		null
 
 func _on_texture_button_pressed() -> void:
+	SoundControl.button_click.play()
 	get_tree().change_scene_to_file("res://Scenes/G.U.I/main_menu.tscn")
