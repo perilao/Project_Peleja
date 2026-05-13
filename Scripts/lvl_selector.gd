@@ -13,7 +13,6 @@ extends Node2D
 
 
 func _ready() -> void:
-	
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	
 	if LevelCore.lvl1_completed == true:
@@ -39,11 +38,13 @@ func _ready() -> void:
 #BUTTONS
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Current_Level1.tscn")
+	
 func _on_button_2_pressed() -> void:
 	if LevelCore.lvl1_completed == true:
 		get_tree().change_scene_to_file("res://Scenes/Backup_level.tscn")
 	else:
 		null
+		
 func _on_button_3_pressed() -> void:
 	if LevelCore.lvl2_completed == true:
 		get_tree().change_scene_to_file("res://LVL/lvl3.tscn")

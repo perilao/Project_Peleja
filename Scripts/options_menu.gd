@@ -5,7 +5,6 @@ extends Node
 @onready var controls_manager: Control = $ControlsManager
 @onready var credits_manager: Control = $CreditsManager
 @onready var back: TextureButton = $back
-		
 
 func _on_sound_pressed() -> void:
 	options_manager.visible =  false

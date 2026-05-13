@@ -69,7 +69,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func grab_object(obj):
-	print("pegou em: ", obj.global_position - global_position)
 	hold_object = obj
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2

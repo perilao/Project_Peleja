@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x5bjum2wkade"
-path.s3tc="res://.godot/imported/chão.png-fdaadd04371f8fd4d1dd5b828a964168.s3tc.ctex"
+uid="uid://bd6ua5olvcjig"
+path.s3tc="res://.godot/imported/chão 3.png-0d8c0a2f65400baffa49947cb6e96a3a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/3D Assets/Texturas/chão.png"
-dest_files=["res://.godot/imported/chão.png-fdaadd04371f8fd4d1dd5b828a964168.s3tc.ctex"]
+source_file="res://Assets/3D Assets/Texturas/chão 3.png"
+dest_files=["res://.godot/imported/chão 3.png-0d8c0a2f65400baffa49947cb6e96a3a.s3tc.ctex"]
 
 [params]
 

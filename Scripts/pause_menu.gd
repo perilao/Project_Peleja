@@ -5,7 +5,7 @@ extends Node2D
 @onready var back_4: TextureButton = $back4
 
 func _on_quit_pressed() -> void:
-		get_tree().quit()
+	get_tree().quit()
 
 func _on_options_pressed() -> void:
 	pause_panel.visible = false

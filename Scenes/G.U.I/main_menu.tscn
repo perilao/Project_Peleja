@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="8_aa7ff"]
 [ext_resource type="Texture2D" uid="uid://cle8ns4yxq7xs" path="res://Assets/2D Assets/buttons/opções/opçõesclaro.png" id="9_j5vqt"]
 [ext_resource type="Texture2D" uid="uid://dm5kwbtkawusu" path="res://Assets/2D Assets/buttons/sair/sairnormal.png" id="10_7yksk"]
-[ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="10_y3km0"]
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
 [ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_mt0mm"]
@@ -99,9 +98,6 @@ action_mode = 0
 texture_normal = ExtResource("10_7yksk")
 texture_pressed = ExtResource("11_fidfd")
 texture_hover = ExtResource("12_l4reb")
-
-[node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("10_y3km0")]
-visible = false
 
 [node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_mt0mm")]
 visible = false

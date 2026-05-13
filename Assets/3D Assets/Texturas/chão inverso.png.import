@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br4srm78nvijh"
-path.s3tc="res://.godot/imported/chão de terra.png-08cfac1752e785349e00f157281aa8b3.s3tc.ctex"
+uid="uid://b56qpyu1ovvqd"
+path.s3tc="res://.godot/imported/chão inverso.png-935fc157d5ecbb4efc553275e02d8100.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/3D Assets/Texturas/chão de terra.png"
-dest_files=["res://.godot/imported/chão de terra.png-08cfac1752e785349e00f157281aa8b3.s3tc.ctex"]
+source_file="res://Assets/3D Assets/Texturas/chão inverso.png"
+dest_files=["res://.godot/imported/chão inverso.png-935fc157d5ecbb4efc553275e02d8100.s3tc.ctex"]
 
 [params]
 
