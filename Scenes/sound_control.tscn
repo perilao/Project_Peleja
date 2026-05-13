@@ -1,22 +1,85 @@
-[gd_scene format=3 uid="uid://d25415mo87o4b"]
+[gd_scene format=3 uid="uid://c7oyk8a7i8ept"]
 
 [ext_resource type="Script" uid="uid://b46p5i4fx7n85" path="res://Scripts/sound_control.gd" id="1_lbq8v"]
-[ext_resource type="AudioStream" uid="uid://cpm4mkbsotcjj" path="res://Audio/I_cant_sleep_why.mp3" id="3_peth4"]
+[ext_resource type="AudioStream" uid="uid://bt1l4jbbhv5hg" path="res://Audio/(LV1_JOGO)Nothing_can_stop_me_now.wav" id="2_8a5wv"]
+[ext_resource type="AudioStream" uid="uid://cgaem3p6w4uok" path="res://Audio/(LV2_JOGO)teeth_grinding.wav" id="3_3edyf"]
+[ext_resource type="AudioStream" uid="uid://darny4fnbx82r" path="res://Audio/(MENU)I_cant_sleep_why.wav" id="4_3stay"]
 [ext_resource type="AudioStream" uid="uid://cus0at0uhnsg" path="res://Audio/tabuaquebrando.wav" id="4_pce7d"]
 [ext_resource type="AudioStream" uid="uid://ntwk170pyg44" path="res://Audio/item.wav" id="5_453nn"]
+[ext_resource type="AudioStream" uid="uid://n7ii1bds4y2h" path="res://Audio/((SOMDOJOGO)soltar.wav" id="7_mnw6p"]
+[ext_resource type="AudioStream" uid="uid://r5vosk2v0jtj" path="res://Audio/(SOMDOJOGO)tira_tabua.wav" id="8_bwvrp"]
+[ext_resource type="AudioStream" uid="uid://dnl4luh8nq12y" path="res://Audio/(SOMDOJOGO)_Batidademarreta.wav" id="9_0cqnf"]
+[ext_resource type="AudioStream" uid="uid://bu0odm4ol4vdp" path="res://Audio/(SOMDOJOGO)_cadeirasendomexida.wav" id="10_jkhxn"]
+[ext_resource type="AudioStream" uid="uid://cnpxeuvt8m730" path="res://Audio/(SOMDOJOGO)_troca_de_cena.wav" id="11_8gx1c"]
+[ext_resource type="AudioStream" uid="uid://b3m53tjr3fagh" path="res://Audio/(SOMDOJOGO)_click.wav" id="12_mw2o2"]
+[ext_resource type="AudioStream" uid="uid://5w3v1qswg5aa" path="res://Audio/(SOMDOJOGO)_passos.wav" id="13_ukwat"]
 
 [node name="SoundControl" type="Node" unique_id=1252754409]
 script = ExtResource("1_lbq8v")
 
-[node name="marreta" type="AudioStreamPlayer" parent="." unique_id=1265368795]
+[node name="lvl1_bgm" type="AudioStreamPlayer" parent="." unique_id=1265368795]
+stream = ExtResource("2_8a5wv")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="lvl2_bgm" type="AudioStreamPlayer" parent="." unique_id=1468440968]
+stream = ExtResource("3_3edyf")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="menu_bgm" type="AudioStreamPlayer" parent="." unique_id=326817231]
+stream = ExtResource("4_3stay")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="item_break" type="AudioStreamPlayer" parent="." unique_id=1676031891]
 stream = ExtResource("4_pce7d")
+volume_db = -14.0
 bus = &"SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1468440968]
-stream = ExtResource("3_peth4")
-
-[node name="tabuaquebrando" type="AudioStreamPlayer" parent="." unique_id=1676031891]
-stream = ExtResource("4_pce7d")
-
-[node name="item" type="AudioStreamPlayer" parent="." unique_id=1226873149]
+[node name="item_grab" type="AudioStreamPlayer" parent="." unique_id=1226873149]
 stream = ExtResource("5_453nn")
+volume_db = -14.0
+pitch_scale = 1.15
+bus = &"SFX"
+
+[node name="item_drop" type="AudioStreamPlayer" parent="." unique_id=1239170981]
+stream = ExtResource("7_mnw6p")
+volume_db = -14.0
+pitch_scale = 1.15
+bus = &"SFX"
+
+[node name="exit_remove" type="AudioStreamPlayer" parent="." unique_id=1446423606]
+stream = ExtResource("8_bwvrp")
+volume_db = -14.0
+pitch_scale = 1.15
+bus = &"SFX"
+
+[node name="lose" type="AudioStreamPlayer" parent="." unique_id=1512794411]
+stream = ExtResource("9_0cqnf")
+volume_db = -14.0
+bus = &"SFX"
+
+[node name="chair_moving" type="AudioStreamPlayer" parent="." unique_id=294799037]
+stream = ExtResource("10_jkhxn")
+volume_db = -14.0
+pitch_scale = 1.15
+bus = &"SFX"
+
+[node name="scene_change" type="AudioStreamPlayer" parent="." unique_id=1782085146]
+stream = ExtResource("11_8gx1c")
+volume_db = -14.0
+pitch_scale = 1.15
+bus = &"SFX"
+
+[node name="button_click" type="AudioStreamPlayer" parent="." unique_id=636828819]
+stream = ExtResource("12_mw2o2")
+volume_db = -14.0
+pitch_scale = 1.25
+bus = &"SFX"
+
+[node name="walk" type="AudioStreamPlayer" parent="." unique_id=2108579887]
+stream = ExtResource("13_ukwat")
+volume_db = -14.0
+pitch_scale = 1.3
+bus = &"SFX"
