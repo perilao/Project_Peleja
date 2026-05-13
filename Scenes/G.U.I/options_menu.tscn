@@ -1,125 +1,320 @@
 [gd_scene format=3 uid="uid://ceym6gyxn0fvw"]
 
-[ext_resource type="Script" uid="uid://cptefflkuvqkd" path="res://Scripts/main_menu.gd" id="1_gyawl"]
-[ext_resource type="Texture2D" uid="uid://dy0b4773u282b" path="res://Assets/2D Assets/fundosemhud3M2.png" id="2_ye2x4"]
-[ext_resource type="Texture2D" uid="uid://d24w8tu0oxcf5" path="res://Assets/2D Assets/logo-com-fundo.png" id="3_kq836"]
-[ext_resource type="Texture2D" uid="uid://il0uyjd4j4g" path="res://Assets/2D Assets/buttons/jogar/jogarnormal.png" id="4_2hfgc"]
-[ext_resource type="Texture2D" uid="uid://dobodxliy3pd0" path="res://Assets/2D Assets/buttons/jogar/jogarescuro.png" id="5_heqql"]
-[ext_resource type="Texture2D" uid="uid://6tgnwehg2jfs" path="res://Assets/2D Assets/buttons/jogar/jogarclaro.png" id="6_p2x7m"]
-[ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="7_4oks2"]
-[ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="8_mch1e"]
-[ext_resource type="Texture2D" uid="uid://cle8ns4yxq7xs" path="res://Assets/2D Assets/buttons/opções/opçõesclaro.png" id="9_p254p"]
-[ext_resource type="Texture2D" uid="uid://dm5kwbtkawusu" path="res://Assets/2D Assets/buttons/sair/sairnormal.png" id="10_63vsv"]
-[ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_6twxh"]
-[ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_b3s3n"]
-[ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="13_bldqa"]
-[ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="17_2b27u"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="17_ye2x4"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="18_kq836"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="21_4oks2"]
+[ext_resource type="Script" uid="uid://cjpo7fw622hyg" path="res://Scripts/options_menu.gd" id="1_m372f"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="2_mxr4w"]
+[ext_resource type="Texture2D" uid="uid://d1wulb6ym6k5t" path="res://Assets/2D Assets/buttons/som/somnormal.png" id="3_o8uqq"]
+[ext_resource type="Texture2D" uid="uid://dftdqbivvb3ol" path="res://Assets/2D Assets/buttons/som/somescuro.png" id="4_kgihd"]
+[ext_resource type="Texture2D" uid="uid://chnd61xi5nyj4" path="res://Assets/2D Assets/buttons/som/somclaro.png" id="4_w58iw"]
+[ext_resource type="Texture2D" uid="uid://cnq01h3prxhc8" path="res://Assets/2D Assets/buttons/controles/controlesnormal.png" id="6_2tdof"]
+[ext_resource type="Texture2D" uid="uid://bcjawjpckx2m7" path="res://Assets/2D Assets/buttons/controles/controlesescuro.png" id="7_u8b1d"]
+[ext_resource type="Texture2D" uid="uid://clrfgu18o8ytp" path="res://Assets/2D Assets/buttons/controles/controlesclaro.png" id="8_x37d2"]
+[ext_resource type="Texture2D" uid="uid://d3d8bo0haajnl" path="res://Assets/2D Assets/buttons/créditos/creditosnormal.png" id="9_xjsmc"]
+[ext_resource type="Texture2D" uid="uid://e7s6g1j14wox" path="res://Assets/2D Assets/buttons/créditos/creditosescuro.png" id="10_gyawl"]
+[ext_resource type="Script" uid="uid://cw6i8rg2gcpkk" path="res://Scripts/audio_control.gd" id="11_mxr4w"]
+[ext_resource type="Texture2D" uid="uid://b484gkxtgar0c" path="res://Assets/2D Assets/buttons/créditos/creditosclaro.png" id="11_ye2x4"]
+[ext_resource type="Texture2D" uid="uid://cqpw01ui5plsq" path="res://Assets/2D Assets/buttons/salvar/salvarnormal.png" id="13_kq836"]
+[ext_resource type="Texture2D" uid="uid://pknadvuhrs3y" path="res://Assets/2D Assets/buttons/salvar/salvareacuro.png" id="14_2hfgc"]
+[ext_resource type="Texture2D" uid="uid://gvyv4uju8dmh" path="res://Assets/2D Assets/buttons/salvar/salvarclaro.png" id="15_heqql"]
+[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="16_p2x7m"]
 
-[node name="main menu" type="CanvasLayer" unique_id=1887178084]
-script = ExtResource("1_gyawl")
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m372f"]
 
-[node name="background" type="TextureRect" parent="." unique_id=88932056]
-offset_top = -41.0
-offset_right = 1922.9304
-offset_bottom = 1182.0
-texture = ExtResource("2_ye2x4")
-expand_mode = 1
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mxr4w"]
+color = Color(0.8980392, 0.8862745, 0.8, 1)
+thickness = 30
 
-[node name="ColorRect" type="ColorRect" parent="background" unique_id=503436677]
-layout_mode = 0
-offset_right = 1923.0
-offset_bottom = 1226.0
-color = Color(0, 0, 0, 0.10980392)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_m372f"]
+color = Color(1, 0.35686275, 0.32156864, 1)
+thickness = 30
 
-[node name="LogoComFundo" type="Sprite2D" parent="." unique_id=204736811]
-texture_filter = 4
-position = Vector2(918.00006, 257)
-scale = Vector2(0.43425006, 0.43425006)
-texture = ExtResource("3_kq836")
+[node name="options menu" type="Node2D" unique_id=187140479]
+script = ExtResource("1_m372f")
 
-[node name="Button Manager" type="Control" parent="." unique_id=55270483]
+[node name="OptionsPanel" type="Panel" parent="." unique_id=1509714651]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 479.0
+offset_top = 312.0
+offset_right = 1335.0
+offset_bottom = 984.0
+
+[node name="OptionsManager" type="Control" parent="." unique_id=55270483]
+material = SubResource("CanvasItemMaterial_m372f")
 layout_mode = 3
 anchor_right = 0.45833334
 anchor_bottom = 0.9324074
 offset_left = 479.0
-offset_top = 5.0
-offset_right = 519.0
-offset_bottom = 45.0
-metadata/_edit_use_anchors_ = true
+offset_top = 312.0
+offset_right = 464.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="start" type="TextureButton" parent="Button Manager" unique_id=161687345]
+[node name="Label" type="Label" parent="OptionsManager" unique_id=1324245813]
+layout_mode = 0
+offset_left = 328.5
+offset_top = 207.5
+offset_right = 798.5
+offset_bottom = 357.5
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Opções"
+horizontal_alignment = 1
+
+[node name="sound" type="TextureButton" parent="OptionsManager" unique_id=1742680722]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -141.32445
-anchor_top = -76.64038
-anchor_right = -140.53314
-anchor_bottom = -76.191475
-offset_left = 130339.49
-offset_top = 80781.48
-offset_right = 130403.49
-offset_bottom = 80814.48
+anchor_left = -141.31575
+anchor_top = -76.71679
+anchor_right = -140.52444
+anchor_bottom = -76.26788
+offset_left = 328.5
+offset_top = 319.5
+offset_right = 1120.5
+offset_bottom = 822.5
 scale = Vector2(0.27, 0.27)
 action_mode = 0
-texture_normal = ExtResource("4_2hfgc")
-texture_pressed = ExtResource("5_heqql")
-texture_hover = ExtResource("6_p2x7m")
+texture_normal = ExtResource("3_o8uqq")
+texture_pressed = ExtResource("4_kgihd")
+texture_hover = ExtResource("4_w58iw")
 stretch_mode = 0
-metadata/_edit_use_anchors_ = true
 
-[node name="options" type="TextureButton" parent="Button Manager" unique_id=1061847799]
+[node name="controls" type="TextureButton" parent="OptionsManager" unique_id=550644292]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -141.69667
-anchor_top = -67.6449
-anchor_right = -140.9054
-anchor_bottom = -67.19553
-offset_left = 130681.94
-offset_top = 71515.21
-offset_right = 130745.98
-offset_bottom = 71547.73
+anchor_left = -141.31575
+anchor_top = -76.71679
+anchor_right = -140.52444
+anchor_bottom = -76.26788
+offset_left = 328.5
+offset_top = 486.5
+offset_right = 1120.5
+offset_bottom = 989.5
 scale = Vector2(0.27, 0.27)
 action_mode = 0
-texture_normal = ExtResource("7_4oks2")
-texture_pressed = ExtResource("8_mch1e")
-texture_hover = ExtResource("9_p254p")
+texture_normal = ExtResource("6_2tdof")
+texture_pressed = ExtResource("7_u8b1d")
+texture_hover = ExtResource("8_x37d2")
 stretch_mode = 0
-metadata/_edit_use_anchors_ = true
 
-[node name="quit" type="TextureButton" parent="Button Manager" unique_id=1401457388]
+[node name="credits" type="TextureButton" parent="OptionsManager" unique_id=19976080]
 layout_mode = 1
-offset_left = 321.0
-offset_top = 843.0
-offset_right = 1113.0
-offset_bottom = 1346.0
+anchors_preset = -1
+anchor_left = -141.31575
+anchor_top = -76.71679
+anchor_right = -140.52444
+anchor_bottom = -76.26788
+offset_left = 328.5
+offset_top = 653.5
+offset_right = 1120.5
+offset_bottom = 1156.5
 scale = Vector2(0.27, 0.27)
 action_mode = 0
-texture_normal = ExtResource("10_63vsv")
-texture_pressed = ExtResource("11_6twxh")
-texture_hover = ExtResource("12_b3s3n")
+texture_normal = ExtResource("9_xjsmc")
+texture_pressed = ExtResource("10_gyawl")
+texture_hover = ExtResource("11_ye2x4")
+stretch_mode = 0
 
-[node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("13_bldqa")]
+[node name="SoundManager" type="Control" parent="." unique_id=452170670]
 visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 472.0
+offset_top = 312.0
+offset_right = 1344.0
+offset_bottom = 992.0
+script = ExtResource("11_mxr4w")
 
-[node name="options menu" parent="." unique_id=505198992 instance=ExtResource("17_2b27u")]
-visible = false
+[node name="Label2" type="Label" parent="SoundManager" unique_id=293752702]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 40.0
+offset_right = 798.0
+offset_bottom = 190.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Som"
+horizontal_alignment = 1
 
-[node name="back5" type="TextureButton" parent="." unique_id=796359102]
-visible = false
-offset_left = 499.0
-offset_top = 340.0
-offset_right = 590.35486
-offset_bottom = 399.0
-texture_normal = ExtResource("21_4oks2")
-texture_pressed = ExtResource("17_ye2x4")
-texture_hover = ExtResource("18_kq836")
+[node name="VBoxContainer" type="VBoxContainer" parent="SoundManager" unique_id=719703763]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 152.0
+offset_right = 744.0
+offset_bottom = 560.0
+
+[node name="MasterSlider" type="HSlider" parent="SoundManager/VBoxContainer" unique_id=2004335387]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_mxr4w")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_m372f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_m372f")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label3" type="Label" parent="SoundManager/VBoxContainer/MasterSlider" unique_id=1031718361]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 200.0
+offset_bottom = 84.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 90
+text = "Geral"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="SoundManager/VBoxContainer" unique_id=1548788321]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_mxr4w")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_m372f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_m372f")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label5" type="Label" parent="SoundManager/VBoxContainer/MusicSlider" unique_id=448099063]
+layout_mode = 0
+offset_top = -14.0
+offset_right = 200.0
+offset_bottom = 86.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 90
+text = "Música"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="SoundManager/VBoxContainer" unique_id=52187408]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_mxr4w")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_m372f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_m372f")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label4" type="Label" parent="SoundManager/VBoxContainer/SFXSlider" unique_id=960877066]
+layout_mode = 0
+offset_top = -13.0
+offset_right = 200.0
+offset_bottom = 87.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0.9882353, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 90
+text = "Efeitos Sonoros"
+horizontal_alignment = 1
+
+[node name="save" type="TextureButton" parent="SoundManager" unique_id=768420236]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -141.31575
+anchor_top = -76.71679
+anchor_right = -140.52444
+anchor_bottom = -76.26788
+offset_left = 123563.336
+offset_top = 52687.418
+offset_right = 123670.86
+offset_bottom = 52888.75
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("13_kq836")
+texture_pressed = ExtResource("14_2hfgc")
+texture_hover = ExtResource("15_heqql")
+stretch_mode = 0
+
+[node name="back" type="TextureButton" parent="SoundManager" unique_id=239859338]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -141.31575
+anchor_top = -76.71679
+anchor_right = -140.52444
+anchor_bottom = -76.26788
+offset_left = 123251.336
+offset_top = 52183.418
+offset_right = 122916.87
+offset_bottom = 52107.79
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("16_p2x7m")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="pressed" from="Button Manager/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Button Manager/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Button Manager/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="back5" to="." method="_on_back_5_pressed"]
-[connection signal="pressed" from="back5" to="options menu" method="_on_back_5_pressed"]
+[node name="ControlsManager" type="Control" parent="." unique_id=1179126475]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 479.0
+offset_top = 5.0
+offset_right = 519.0
+offset_bottom = 45.0
+
+[node name="Label3" type="Label" parent="ControlsManager" unique_id=912289994]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 347.0
+offset_right = 865.0
+offset_bottom = 497.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Controles"
+horizontal_alignment = 1
+
+[node name="back2" type="TextureButton" parent="ControlsManager" unique_id=1883083909]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 323.0
+offset_right = 113.0
+offset_bottom = 385.0
+texture_normal = ExtResource("16_p2x7m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CreditsManager" type="Control" parent="." unique_id=523895874]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 592.0
+offset_top = 427.0
+offset_right = 1216.0
+offset_bottom = 969.0
+
+[node name="Label4" type="Label" parent="CreditsManager" unique_id=766277474]
+layout_mode = 0
+offset_left = 208.0
+offset_top = -75.0
+offset_right = 697.0
+offset_bottom = 75.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Créditos"
+horizontal_alignment = 1
+
+[node name="back3" type="TextureButton" parent="CreditsManager" unique_id=246944028]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -99.0
+offset_bottom = -37.0
+texture_normal = ExtResource("16_p2x7m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="OptionsManager/sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="OptionsManager/controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="OptionsManager/credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_exited" from="SoundManager/VBoxContainer/MasterSlider" to="SoundManager" method="_on_master_slider_mouse_exited"]
+[connection signal="mouse_exited" from="SoundManager/VBoxContainer/MusicSlider" to="SoundManager" method="_on_music_slider_mouse_exited"]
+[connection signal="mouse_exited" from="SoundManager/VBoxContainer/SFXSlider" to="SoundManager" method="_on_sfx_slider_mouse_exited"]
+[connection signal="pressed" from="SoundManager/save" to="SoundManager" method="_on_save_pressed"]
+[connection signal="pressed" from="SoundManager/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="SoundManager/back" to="SoundManager" method="_on_back_pressed"]
+[connection signal="pressed" from="ControlsManager/back2" to="." method="_on_back_2_pressed"]
+[connection signal="pressed" from="CreditsManager/back3" to="." method="_on_back_3_pressed"]

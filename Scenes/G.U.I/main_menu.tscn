@@ -14,9 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_fidfd"]
 [ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_l4reb"]
 [ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_mt0mm"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="15_aa7ff"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="16_aa7ff"]
-[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="17_j5vqt"]
+[ext_resource type="Texture2D" uid="uid://bo3q54gm3nmyw" path="res://Assets/2D Assets/buttons/voltar/Seta.png" id="15_xuxnm"]
 
 [node name="main menu" type="CanvasLayer" unique_id=1887178084]
 script = ExtResource("1_44aiy")
@@ -106,20 +104,17 @@ visible = false
 [node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_mt0mm")]
 visible = false
 
-[node name="back5" type="TextureButton" parent="." unique_id=796359102]
-visible = false
-offset_left = 499.0
-offset_top = 340.0
-offset_right = 590.35486
-offset_bottom = 399.0
-texture_normal = ExtResource("15_aa7ff")
-texture_pressed = ExtResource("16_aa7ff")
-texture_hover = ExtResource("17_j5vqt")
+[node name="back5" type="TextureButton" parent="options menu" unique_id=796359102]
+offset_left = 496.0
+offset_top = 328.0
+offset_right = 592.0
+offset_bottom = 390.0
+texture_normal = ExtResource("15_xuxnm")
 ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="pressed" from="Button Manager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button Manager/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="back5" to="." method="_on_back_5_pressed"]
-[connection signal="pressed" from="back5" to="options menu" method="_on_back_5_pressed"]
+[connection signal="pressed" from="options menu/back5" to="." method="_on_back_5_pressed"]
+[connection signal="pressed" from="options menu/back5" to="options menu" method="_on_back_5_pressed"]
