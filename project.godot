@@ -30,6 +30,7 @@ buses/default_bus_layout="uid://bffy14ltxnwdu"
 
 LevelCore="*uid://dmqsa0gqybgcu"
 PauseMenu="*uid://fcebubk2mvme"
+SoundControl="*uid://b46p5i4fx7n85"
 
 [display]
 
