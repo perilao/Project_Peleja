@@ -1,167 +1,125 @@
 [gd_scene format=3 uid="uid://b6148agcofyh2"]
 
-[ext_resource type="Script" uid="uid://ryof2qt4410a" path="res://Scripts/lvl_selector.gd" id="1_6ry5l"]
-[ext_resource type="Texture2D" uid="uid://ucdoe641bctc" path="res://Assets/2D Assets/image.png" id="2_q5bk7"]
-[ext_resource type="Texture2D" uid="uid://dslmy2oxmknw0" path="res://Assets/2D Assets/cadeadoclaro.png" id="3_rbbqw"]
+[ext_resource type="Script" uid="uid://cptefflkuvqkd" path="res://Scripts/main_menu.gd" id="1_7lelq"]
+[ext_resource type="Texture2D" uid="uid://dy0b4773u282b" path="res://Assets/2D Assets/fundosemhud3M2.png" id="2_w5amy"]
+[ext_resource type="Texture2D" uid="uid://d24w8tu0oxcf5" path="res://Assets/2D Assets/logo-com-fundo.png" id="3_4k368"]
+[ext_resource type="Texture2D" uid="uid://il0uyjd4j4g" path="res://Assets/2D Assets/buttons/jogar/jogarnormal.png" id="4_g4n2s"]
+[ext_resource type="Texture2D" uid="uid://dobodxliy3pd0" path="res://Assets/2D Assets/buttons/jogar/jogarescuro.png" id="5_5cjfv"]
+[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="5_o44xh"]
+[ext_resource type="Texture2D" uid="uid://6tgnwehg2jfs" path="res://Assets/2D Assets/buttons/jogar/jogarclaro.png" id="6_05yge"]
+[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="6_t28lr"]
+[ext_resource type="Texture2D" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="7_5okd7"]
+[ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="7_xoybk"]
+[ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="8_6asiv"]
+[ext_resource type="Texture2D" uid="uid://cle8ns4yxq7xs" path="res://Assets/2D Assets/buttons/opções/opçõesclaro.png" id="9_wmnas"]
+[ext_resource type="Texture2D" uid="uid://dm5kwbtkawusu" path="res://Assets/2D Assets/buttons/sair/sairnormal.png" id="10_q1006"]
+[ext_resource type="Texture2D" uid="uid://bedomaxxp72ap" path="res://Assets/2D Assets/buttons/sair/sairescuro.png" id="11_hvu1v"]
+[ext_resource type="Texture2D" uid="uid://bryloknctgc0f" path="res://Assets/2D Assets/buttons/sair/sairclaro.png" id="12_cds3y"]
+[ext_resource type="PackedScene" uid="uid://c51ueu6na11lw" path="res://Scenes/inicial_transition_scene.tscn" id="13_qu1si"]
+[ext_resource type="PackedScene" uid="uid://ceym6gyxn0fvw" path="res://Scenes/G.U.I/options_menu.tscn" id="14_jq0r3"]
 
-[node name="Node2D" type="Node2D" unique_id=1983303683]
-script = ExtResource("1_6ry5l")
+[node name="main menu" type="CanvasLayer" unique_id=1887178084]
+script = ExtResource("1_7lelq")
 
-[node name="BG" type="Sprite2D" parent="." unique_id=1534580801]
-position = Vector2(963.77673, 541.62506)
-scale = Vector2(1.1560833, 1.1560833)
-texture = ExtResource("2_q5bk7")
+[node name="background" type="TextureRect" parent="." unique_id=88932056]
+offset_top = -41.0
+offset_right = 1922.9304
+offset_bottom = 1182.0
+texture = ExtResource("2_w5amy")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=145713516]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -276.0
-offset_top = -116.0
-offset_right = 7874.0
-offset_bottom = 1594.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.05, 0.05)
-theme_override_font_sizes/font_size = 1255
-text = "LEVEL SELECT"
+[node name="ColorRect" type="ColorRect" parent="background" unique_id=503436677]
+layout_mode = 0
+offset_right = 1923.0
+offset_bottom = 1226.0
+color = Color(0, 0, 0, 0.10980392)
+
+[node name="LogoComFundo" type="Sprite2D" parent="." unique_id=204736811]
+texture_filter = 4
+position = Vector2(918.00006, 257)
+scale = Vector2(0.43425006, 0.43425006)
+texture = ExtResource("3_4k368")
+
+[node name="Button Manager" type="Control" parent="." unique_id=55270483]
+layout_mode = 3
+anchor_right = 0.45833334
+anchor_bottom = 0.9324074
+offset_left = 479.0
+offset_top = 5.0
+offset_right = 519.0
+offset_bottom = 45.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Completed_lvl_1" type="ColorRect" parent="." unique_id=747278460]
-offset_left = 211.5
-offset_top = 392.0
-offset_right = 453.37488
-offset_bottom = 832.0
-scale = Vector2(1.5579622, 1.5609951)
-color = Color(0.11372549, 0.70980394, 0.03529412, 1)
+[node name="start" type="TextureButton" parent="Button Manager" unique_id=161687345]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -141.32445
+anchor_top = -76.64038
+anchor_right = -140.53314
+anchor_bottom = -76.191475
+offset_left = 130339.49
+offset_top = 80781.48
+offset_right = 130403.49
+offset_bottom = 80814.48
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("4_g4n2s")
+texture_pressed = ExtResource("5_5cjfv")
+texture_hover = ExtResource("6_05yge")
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Playable_lvl1" type="ColorRect" parent="." unique_id=1742029730]
-offset_left = 211.5
-offset_top = 392.0
-offset_right = 453.37488
-offset_bottom = 832.0
-scale = Vector2(1.5579622, 1.5609951)
-color = Color(0.90286136, 0.12995538, 0.18218237, 1)
+[node name="options" type="TextureButton" parent="Button Manager" unique_id=1061847799]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -141.69667
+anchor_top = -67.6449
+anchor_right = -140.9054
+anchor_bottom = -67.19553
+offset_left = 130681.94
+offset_top = 71515.21
+offset_right = 130745.98
+offset_bottom = 71547.73
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("7_xoybk")
+texture_pressed = ExtResource("8_6asiv")
+texture_hover = ExtResource("9_wmnas")
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Completed_lvl_2" type="ColorRect" parent="." unique_id=456756647]
-offset_left = 767.0
-offset_top = 395.0
-offset_right = 1008.875
-offset_bottom = 835.0
-scale = Vector2(1.5648263, 1.597)
-color = Color(0.11372549, 0.70980394, 0.03529412, 1)
-metadata/_edit_use_anchors_ = true
+[node name="quit" type="TextureButton" parent="Button Manager" unique_id=1401457388]
+layout_mode = 1
+offset_left = 321.0
+offset_top = 843.0
+offset_right = 1113.0
+offset_bottom = 1346.0
+scale = Vector2(0.27, 0.27)
+action_mode = 0
+texture_normal = ExtResource("10_q1006")
+texture_pressed = ExtResource("11_hvu1v")
+texture_hover = ExtResource("12_cds3y")
 
-[node name="Playable_lvl2" type="ColorRect" parent="." unique_id=116311811]
-offset_left = 767.0
-offset_top = 392.0
-offset_right = 1008.875
-offset_bottom = 832.0
-scale = Vector2(1.5648263, 1.597)
-color = Color(0.90286136, 0.12995538, 0.18218237, 1)
-metadata/_edit_use_anchors_ = true
+[node name="inicial transition" parent="." unique_id=1636605980 instance=ExtResource("13_qu1si")]
+visible = false
 
-[node name="Locked_lvl2" type="ColorRect" parent="." unique_id=322980395]
-offset_left = 767.0
-offset_top = 392.0
-offset_right = 1008.875
-offset_bottom = 832.0
-scale = Vector2(1.5648263, 1.595)
-color = Color(0, 0.039215688, 0.10980392, 1)
-metadata/_edit_use_anchors_ = true
+[node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_jq0r3")]
+visible = false
 
-[node name="Completed_lvl_3" type="ColorRect" parent="." unique_id=1341072440]
-offset_left = 1341.0
-offset_top = 392.0
-offset_right = 1582.875
-offset_bottom = 832.0
-scale = Vector2(1.5648263, 1.629)
-color = Color(0.11372549, 0.70980394, 0.03529412, 1)
-metadata/_edit_use_anchors_ = true
+[node name="back5" type="TextureButton" parent="." unique_id=796359102]
+visible = false
+offset_left = 499.0
+offset_top = 340.0
+offset_right = 590.35486
+offset_bottom = 399.0
+texture_normal = ExtResource("5_o44xh")
+texture_pressed = ExtResource("6_t28lr")
+texture_hover = ExtResource("7_5okd7")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Playable_lvl3" type="ColorRect" parent="." unique_id=190049342]
-offset_left = 1341.0
-offset_top = 392.0
-offset_right = 1582.875
-offset_bottom = 832.0
-scale = Vector2(1.5648263, 1.629)
-color = Color(0.90286136, 0.12995538, 0.18218237, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Locked_lvl3" type="ColorRect" parent="." unique_id=1426013767]
-offset_left = 1341.0
-offset_top = 392.0
-offset_right = 1582.875
-offset_bottom = 832.0
-scale = Vector2(1.5648263, 1.629)
-color = Color(0, 0.039215688, 0.10980392, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Lock_lvl2" type="Sprite2D" parent="." unique_id=673309806]
-position = Vector2(960, 720)
-scale = Vector2(0.3980295, 0.41422275)
-texture = ExtResource("3_rbbqw")
-
-[node name="Lock_lvl3" type="Sprite2D" parent="." unique_id=717816009]
-position = Vector2(1536, 720.00006)
-scale = Vector2(0.3754867, 0.3907628)
-texture = ExtResource("3_rbbqw")
-
-[node name="Button" type="Button" parent="." unique_id=1826991966]
-unique_name_in_owner = true
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 188.0
-offset_top = 329.0
-offset_right = 202.03687
-offset_bottom = 671.8572
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(30.06304, 2.2241135)
-size_flags_horizontal = 4
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[node name="Button2" type="Button" parent="." unique_id=435372775]
-unique_name_in_owner = true
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 760.0
-offset_top = 1168.0
-offset_right = 773.78076
-offset_bottom = 1510.8572
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(18.756905, 1.4)
-size_flags_horizontal = 4
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[node name="Button3" type="Button" parent="." unique_id=1594534015]
-unique_name_in_owner = true
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 1744.0
-offset_top = 329.0
-offset_right = 1758.0369
-offset_bottom = 671.8572
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(-30.470373, 2.2121608)
-size_flags_horizontal = 0
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button Manager/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button Manager/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Button Manager/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="back5" to="." method="_on_back_5_pressed"]
+[connection signal="pressed" from="back5" to="options menu" method="_on_back_5_pressed"]
