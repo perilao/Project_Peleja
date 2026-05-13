@@ -1,16 +1,15 @@
 [gd_scene format=3 uid="uid://d25415mo87o4b"]
 
 [ext_resource type="Script" uid="uid://b46p5i4fx7n85" path="res://Scripts/sound_control.gd" id="1_lbq8v"]
-[ext_resource type="AudioStream" uid="uid://dd17ydw2wo01n" path="res://Audio/marreta.mp3" id="2_tx3dv"]
 [ext_resource type="AudioStream" uid="uid://cpm4mkbsotcjj" path="res://Audio/I_cant_sleep_why.mp3" id="3_peth4"]
 [ext_resource type="AudioStream" uid="uid://cus0at0uhnsg" path="res://Audio/tabuaquebrando.wav" id="4_pce7d"]
 [ext_resource type="AudioStream" uid="uid://ntwk170pyg44" path="res://Audio/item.wav" id="5_453nn"]
 
-[node name="SoundControl" type="Node2D" unique_id=3258883]
+[node name="SoundControl" type="Node" unique_id=1252754409]
 script = ExtResource("1_lbq8v")
 
 [node name="marreta" type="AudioStreamPlayer" parent="." unique_id=1265368795]
-stream = ExtResource("2_tx3dv")
+stream = ExtResource("4_pce7d")
 bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1468440968]

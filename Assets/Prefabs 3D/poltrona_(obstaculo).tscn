@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ctsm3lhkr8vih"]
 
-[ext_resource type="Texture2D" uid="uid://cmqk1j7gvawx2" path="res://Assets/3D Assets/Texturas/Textura poltrona 2.png" id="1_11g64"]
+[ext_resource type="Texture2D" uid="uid://b0b036e8uhem7" path="res://Assets/3D Assets/Texturas/Textura poltrona 3.png" id="1_11g64"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmaet"]
 shading_mode = 0

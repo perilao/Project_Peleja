@@ -58,12 +58,18 @@ func _physics_process(delta: float) -> void:
 				elif object.is_in_group("pushable") and cant_grab == false:
 					object.start_push()
 	if hold_object:
-		hold_object.global_position = hand.global_position
-		hold_object.global_rotation = hand.global_rotation + hold_rotation_offset
+		if hold_object.is_in_group("movable"):
+			var forward_offset = transform.basis.z * 1.3
+			hold_object.global_position = global_position + forward_offset + Vector3(0, 0.5, 0)
+			hold_object.global_rotation.y = rotation.y
+		else:
+			hold_object.global_position = hand.global_position
+			hold_object.global_rotation = hand.global_rotation + hold_rotation_offset
 	animation_controller()
 	move_and_slide()
 
 func grab_object(obj):
+	print("pegou em: ", obj.global_position - global_position)
 	hold_object = obj
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2
@@ -75,6 +81,8 @@ func grab_object(obj):
 		if obj.has_method("set_held"):
 			obj.set_held(true)
 		original_rotation = hold_object.global_rotation
+		var forward_offset = transform.basis.z * 1.3
+		obj.global_position = global_position + forward_offset + Vector3(0, 0.5, 0)
 	else:
 		original_position = hold_object.global_position
 		original_rotation = hold_object.global_rotation

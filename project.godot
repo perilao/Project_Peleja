@@ -30,7 +30,7 @@ buses/default_bus_layout="uid://bffy14ltxnwdu"
 
 LevelCore="*uid://dmqsa0gqybgcu"
 PauseMenu="*uid://fcebubk2mvme"
-SoundControl="*uid://b46p5i4fx7n85"
+SoundControl="*uid://d25415mo87o4b"
 
 [display]
 
@@ -38,7 +38,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
