@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://rcoookjdcok0" path="res://Assets/2D Assets/progress bar/marcaçao.png" id="18_thgey"]
 [ext_resource type="Texture2D" uid="uid://diukm3cmbifl" path="res://Assets/3D Assets/Texturas/Textura tabua de madeira.png" id="19_h2cb4"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
-[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
 [ext_resource type="Texture2D" uid="uid://c8fg5r7rgmxsf" path="res://Assets/3D Assets/Texturas/Textura janela.png" id="22_abf53"]
 [ext_resource type="Texture2D" uid="uid://b0b036e8uhem7" path="res://Assets/3D Assets/Texturas/Textura poltrona 3.png" id="28_e5fwq"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
@@ -3083,9 +3083,9 @@ size = Vector3(8.1754, 9.627251, 3.1730957)
 [sub_resource type="BoxShape3D" id="BoxShape3D_af2a1"]
 size = Vector3(7.495056, 2, 3)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_didp7"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_icduq"]
 
-[sub_resource type="GDScript" id="GDScript_2a60c"]
+[sub_resource type="GDScript" id="GDScript_pmaet"]
 script/source = "extends RigidBody3D
 
 #ITEM PROPERTIES
@@ -3123,11 +3123,10 @@ func update_label():
 		label.text = str(uses)
 
 
-func _on_areaitem_3_area_entered(_area: Area3D) -> void:
+func _on_areaitem_3_2_area_entered(_area: Area3D) -> void:
 	mesh.material_overlay = outline_material
 
-
-func _on_areaitem_3_area_exited(_area: Area3D) -> void:
+func _on_areaitem_3_2_area_exited(_area: Area3D) -> void:
 	mesh.material_overlay = null
 "
 
@@ -3198,118 +3197,6 @@ shadow_mesh = SubResource("ArrayMesh_pmoji")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1mwp"]
 albedo_color = Color(0, 0.58431375, 1, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4iphx"]
-material = SubResource("StandardMaterial3D_d1mwp")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d1mwp"]
-size = Vector3(1, 2.3309937, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u1b78"]
-size = Vector3(3, 2, 1.7410278)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ocmlb"]
-
-[sub_resource type="GDScript" id="GDScript_tlxhh"]
-script/source = "extends RigidBody3D
-
-#ITEM PROPERTIES
-@export var item_type: String = \"\"
-@export var uses: int = 3
-@onready var label: Label3D = get_node_or_null(\"Label3D\")
-var was_used := false
-
-#OUTLINE SHADERS
-@export var mesh: MeshInstance3D
-@export var outline_material: Material
-
-func _ready():
-	update_label()
-
-func use_item():
-	#USE ITEM LABEL LOGIC
-	if uses <= 0:
-		return
-	uses -= 1
-	was_used = true
-	update_label()
-	print(\"Usos:\", uses)
-
-func return_use():
-	#RETURN ITEM AND ADD COUNTER
-	uses += 1
-	was_used = false
-	update_label()
-	print(\"Usos:\", uses)
-
-func update_label():
-	#UPDATE THE COUNTER
-	if label != null:
-		label.text = str(uses)
-
-
-func _on_areaitem_3_1_area_entered(_area: Area3D) -> void:
-	mesh.material_overlay = outline_material
-
-func _on_areaitem_3_1_area_exited(_area: Area3D) -> void:
-	mesh.material_overlay = null
-"
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_rxhxl"]
-material = SubResource("StandardMaterial3D_d1mwp")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_h54da"]
-size = Vector3(1, 2.3309937, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fg80b"]
-size = Vector3(3, 2, 2.1188965)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_icduq"]
-
-[sub_resource type="GDScript" id="GDScript_pmaet"]
-script/source = "extends RigidBody3D
-
-#ITEM PROPERTIES
-@export var item_type: String = \"\"
-@export var uses: int = 3
-@onready var label: Label3D = get_node_or_null(\"Label3D\")
-var was_used := false
-
-#OUTLINE SHADERS
-@export var mesh: MeshInstance3D
-@export var outline_material: Material
-
-func _ready():
-	update_label()
-
-func use_item():
-	#USE ITEM LABEL LOGIC
-	if uses <= 0:
-		return
-	uses -= 1
-	was_used = true
-	update_label()
-	print(\"Usos:\", uses)
-
-func return_use():
-	#RETURN ITEM AND ADD COUNTER
-	uses += 1
-	was_used = false
-	update_label()
-	print(\"Usos:\", uses)
-
-func update_label():
-	#UPDATE THE COUNTER
-	if label != null:
-		label.text = str(uses)
-
-
-func _on_areaitem_3_2_area_entered(_area: Area3D) -> void:
-	mesh.material_overlay = outline_material
-
-func _on_areaitem_3_2_area_exited(_area: Area3D) -> void:
-	mesh.material_overlay = null
-"
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x7ktg"]
 material = SubResource("StandardMaterial3D_d1mwp")
@@ -4412,6 +4299,62 @@ mesh = SubResource("ArrayMesh_xbglh")
 transform = Transform3D(9.106262e-09, -0.03811714, 0.06520983, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390068e-09, 1.0371075, 12.080154, -80.949135)
 mesh = SubResource("ArrayMesh_xbglh")
 
+[node name="Telha20" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=712425343]
+transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -96.52662)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha21" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1897399778]
+transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -112.236115)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha22" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=618113939]
+transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -127.549576)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha9" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1956380265]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 8.554834, 12.080154, -94.98241)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha15" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1510893527]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 8.554834, 12.080154, -110.53845)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha19" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=2080223990]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 8.554832, 12.080154, -126.04663)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha16" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1433668232]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 17.100103, 12.080154, -110.53845)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha18" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=212224120]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 17.100101, 12.080154, -126.118195)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha17" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1386806991]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 25.414896, 12.080154, -110.53845)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha10" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1500063951]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 16.745262, 12.080154, -94.98241)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha11" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=278235173]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 24.825579, 12.080154, -94.98241)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha12" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=285941504]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 32.929836, 12.080154, -94.98241)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha13" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1929982766]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 41.098152, 12.080154, -94.98241)
+mesh = SubResource("ArrayMesh_xbglh")
+
+[node name="Telha14" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1585519115]
+transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 48.96885, 12.080154, -94.98241)
+mesh = SubResource("ArrayMesh_xbglh")
+
 [node name="Paredes" type="Node3D" parent="Scenario" unique_id=371332392]
 transform = Transform3D(1.4901161e-08, 0, -0.30000004, 0, 0.29999998, 0, 0.30000004, 0, 1.4901161e-08, -11.333357, 1.5859535, -7.8989654)
 
@@ -4924,7 +4867,7 @@ shape = SubResource("BoxShape3D_wwu6c")
 
 [node name="Item2" type="Node3D" parent="Itens" unique_id=1356729877 groups=["pushable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -0.57078457, 0.28116977, -6.3201814)
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, 2.1022272, 0.28116977, -6.3201814)
 
 [node name="item2_rb" type="RigidBody3D" parent="Itens/Item2" unique_id=931839844 node_paths=PackedStringArray("mesh") groups=["pushable"]]
 unique_name_in_owner = true
@@ -4945,7 +4888,7 @@ mesh = NodePath("meshitem2")
 outline_material = ExtResource("5_n3qit")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item2/item2_rb" unique_id=55412237 groups=["pushable"]]
-transform = Transform3D(0.99999964, 0, -0.0008726645, 0, 1, 0, 0.0008726645, 0, 0.99999964, -0.45584583, 4.588571, -6.795225)
+transform = Transform3D(0.99999964, 0, -0.0008726645, 0, 1, 0, 0.0008726645, 0, 0.99999964, 1.9595251, 4.588571, -6.795225)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -4978,119 +4921,9 @@ shape = SubResource("BoxShape3D_af2a1")
 [node name="push_position" type="Marker3D" parent="Itens/Item2/item2_rb" unique_id=1799462194 groups=["pushable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.358486, 0, 0)
 
-[node name="Item3" type="Node3D" parent="Itens" unique_id=1671405017 groups=["pickable"]]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -12.785716, 0.28116977, -6.334935)
-
-[node name="item3_rb" type="RigidBody3D" parent="Itens/Item3" unique_id=1627086658 node_paths=PackedStringArray("mesh") groups=["pickable"]]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35114, -1.6726398, 0)
-collision_layer = 3
-axis_lock_linear_x = true
-axis_lock_linear_z = true
-physics_material_override = SubResource("PhysicsMaterial_didp7")
-gravity_scale = 15.0
-lock_rotation = true
-freeze = true
-script = SubResource("GDScript_2a60c")
-item_type = "lado"
-uses = 1
-mesh = NodePath("meshitem3")
-outline_material = ExtResource("5_n3qit")
-
-[node name="Label3D" type="Label3D" parent="Itens/Item3/item3_rb" unique_id=431487255 groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.013451, 2.2845871, -6.3621693)
-top_level = true
-pixel_size = 0.03
-offset = Vector2(0, 2)
-billboard = 1
-modulate = Color(0.08627451, 0.08627451, 0.08627451, 1)
-outline_modulate = Color(0, 0, 0, 0)
-text = "5"
-font = ExtResource("12_cud0u")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Itens/Item3/item3_rb/Label3D" unique_id=220304868]
-transform = Transform3D(0.4799998, 0, -0.0004188789, 0, 0.48, 0, 0.0004188789, 0, 0.4799998, -0.15347195, -0.07419753, -0.5246258)
-billboard = 1
-texture = ExtResource("13_bv3xk")
-
-[node name="Cadeira_3" type="MeshInstance3D" parent="Itens/Item3/item3_rb" unique_id=1005717022]
-transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, -0.06760025, 1.0478182, 0.04332161)
-mesh = SubResource("ArrayMesh_fg80b")
-
-[node name="meshitem3" type="MeshInstance3D" parent="Itens/Item3/item3_rb" unique_id=1410532934 groups=["pickable"]]
-unique_name_in_owner = true
-visible = false
-mesh = SubResource("CylinderMesh_4iphx")
-
-[node name="colissionitem3" type="CollisionShape3D" parent="Itens/Item3/item3_rb" unique_id=1770522680 groups=["pickable"]]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
-shape = SubResource("BoxShape3D_d1mwp")
-
-[node name="areaitem3" type="Area3D" parent="Itens/Item3/item3_rb" unique_id=1793492733 groups=["pickable"]]
-unique_name_in_owner = true
-
-[node name="colissionitem3" type="CollisionShape3D" parent="Itens/Item3/item3_rb/areaitem3" unique_id=918366927 groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.084747314)
-shape = SubResource("BoxShape3D_u1b78")
-
-[node name="Item3_1" type="Node3D" parent="Itens" unique_id=1684319482 groups=["pickable"]]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -10.464651, 0.28116977, -1.5667987)
-
-[node name="item3_1_rb" type="RigidBody3D" parent="Itens/Item3_1" unique_id=1578757200 node_paths=PackedStringArray("mesh") groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
-collision_layer = 3
-axis_lock_linear_x = true
-axis_lock_linear_z = true
-physics_material_override = SubResource("PhysicsMaterial_ocmlb")
-gravity_scale = 15.0
-lock_rotation = true
-freeze = true
-script = SubResource("GDScript_tlxhh")
-item_type = "lado"
-uses = 1
-mesh = NodePath("meshitem3_1")
-outline_material = ExtResource("5_n3qit")
-
-[node name="Label3D" type="Label3D" parent="Itens/Item3_1/item3_1_rb" unique_id=1195298961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.413101, 2.2860427, -1.4810257)
-top_level = true
-pixel_size = 0.03
-offset = Vector2(0, 2)
-billboard = 1
-modulate = Color(0.08627451, 0.08627451, 0.08627451, 1)
-outline_modulate = Color(0, 0, 0, 0)
-text = "5"
-font = ExtResource("12_cud0u")
-
-[node name="Sprite3D8" type="Sprite3D" parent="Itens/Item3_1/item3_1_rb/Label3D" unique_id=577858865]
-transform = Transform3D(0.4799998, 0, -0.0004188789, 0, 0.48, 0, 0.0004188789, 0, 0.4799998, 0.05375099, 0.044543028, -0.32283306)
-billboard = 1
-texture = ExtResource("13_bv3xk")
-
-[node name="Cadeira_3_1" type="MeshInstance3D" parent="Itens/Item3_1/item3_1_rb" unique_id=1789135962]
-transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, 0.0584116)
-mesh = SubResource("ArrayMesh_fg80b")
-
-[node name="meshitem3_1" type="MeshInstance3D" parent="Itens/Item3_1/item3_1_rb" unique_id=282101677 groups=["pickable"]]
-visible = false
-mesh = SubResource("CylinderMesh_rxhxl")
-
-[node name="colissionitem3_1" type="CollisionShape3D" parent="Itens/Item3_1/item3_1_rb" unique_id=1455249010 groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
-shape = SubResource("BoxShape3D_h54da")
-
-[node name="areaitem3_1" type="Area3D" parent="Itens/Item3_1/item3_1_rb" unique_id=1790681300 groups=["pickable"]]
-
-[node name="colissionitem3_1" type="CollisionShape3D" parent="Itens/Item3_1/item3_1_rb/areaitem3_1" unique_id=1714947524 groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.036743164)
-shape = SubResource("BoxShape3D_fg80b")
-
 [node name="Item3_2" type="Node3D" parent="Itens" unique_id=380231864 groups=["pickable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -12.423634, 0.28116977, -1.6647596)
+transform = Transform3D(0.11842757, 0, 0.4857725, 0, 0.45, 0, -0.4857725, 0, 0.11842757, -9.890772, 0.28116977, -0.09839344)
 
 [node name="item3_2_rb" type="RigidBody3D" parent="Itens/Item3_2" unique_id=358822844 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -5108,7 +4941,7 @@ mesh = NodePath("Cadeira_3_2")
 outline_material = ExtResource("5_n3qit")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_2/item3_2_rb" unique_id=418884349]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.114323, 2.254107, -1.7242336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7122, 2.254107, -0.45414686)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -5141,9 +4974,115 @@ shape = SubResource("BoxShape3D_164vy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4786377, 0.5, 0.06713104)
 shape = SubResource("BoxShape3D_ocmlb")
 
+[node name="Item3_7" type="Node3D" parent="Itens" unique_id=1209932529 groups=["pickable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.24775964, 0, -0.43429846, 0, 0.45, 0, 0.43429846, 0, 0.24775964, -12.564953, 0.28116977, -5.849979)
+
+[node name="item3_2_rb" type="RigidBody3D" parent="Itens/Item3_7" unique_id=419877404 node_paths=PackedStringArray("mesh") groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_icduq")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_pmaet")
+item_type = "lado"
+uses = 1
+mesh = NodePath("Cadeira_3_2")
+outline_material = ExtResource("5_n3qit")
+
+[node name="Label3D" type="Label3D" parent="Itens/Item3_7/item3_2_rb" unique_id=1143105665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.521317, 2.254107, -6.027589)
+top_level = true
+pixel_size = 0.03
+offset = Vector2(0, 2)
+billboard = 1
+modulate = Color(0.08627451, 0.08627451, 0.08627451, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "5"
+font = ExtResource("12_cud0u")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Itens/Item3_7/item3_2_rb/Label3D" unique_id=1505945647]
+transform = Transform3D(0.4799998, 0, -0.0004188789, 0, 0.48, 0, 0.0004188789, 0, 0.4799998, 0.05608177, 0.07647872, -0.07962513)
+billboard = 1
+texture = ExtResource("13_bv3xk")
+
+[node name="Cadeira_3_2" type="MeshInstance3D" parent="Itens/Item3_7/item3_2_rb" unique_id=1931996442]
+transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.15643883, 1.0478182, 0.0880394)
+mesh = SubResource("ArrayMesh_fg80b")
+
+[node name="meshitem3_2" type="MeshInstance3D" parent="Itens/Item3_7/item3_2_rb" unique_id=1944601958 groups=["pickable"]]
+visible = false
+mesh = SubResource("CylinderMesh_x7ktg")
+
+[node name="colissionitem3_2" type="CollisionShape3D" parent="Itens/Item3_7/item3_2_rb" unique_id=801364386 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("BoxShape3D_164vy")
+
+[node name="areaitem3_2" type="Area3D" parent="Itens/Item3_7/item3_2_rb" unique_id=799463232 groups=["pickable"]]
+
+[node name="colissionitem3_2" type="CollisionShape3D" parent="Itens/Item3_7/item3_2_rb/areaitem3_2" unique_id=896472628 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4786377, 0.5, 0.06713104)
+shape = SubResource("BoxShape3D_ocmlb")
+
+[node name="Item3_6" type="Node3D" parent="Itens" unique_id=596737213 groups=["pickable"]]
+unique_name_in_owner = true
+transform = Transform3D(-0.26748586, 0, 0.422435, 0, 0.45, 0, -0.422435, 0, -0.26748586, -6.7633877, 0.28116977, 0.015811205)
+
+[node name="item3_2_rb" type="RigidBody3D" parent="Itens/Item3_6" unique_id=68607287 node_paths=PackedStringArray("mesh") groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_icduq")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_pmaet")
+item_type = "lado"
+uses = 1
+mesh = NodePath("Cadeira_3_2")
+outline_material = ExtResource("5_n3qit")
+
+[node name="Label3D" type="Label3D" parent="Itens/Item3_6/item3_2_rb" unique_id=1095016734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7534924, 2.254107, -0.70264196)
+top_level = true
+pixel_size = 0.03
+offset = Vector2(0, 2)
+billboard = 1
+modulate = Color(0.08627451, 0.08627451, 0.08627451, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "5"
+font = ExtResource("12_cud0u")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Itens/Item3_6/item3_2_rb/Label3D" unique_id=1167197913]
+transform = Transform3D(0.4799998, 0, -0.0004188789, 0, 0.48, 0, 0.0004188789, 0, 0.4799998, 0.05608177, 0.07647872, -0.07962513)
+billboard = 1
+texture = ExtResource("13_bv3xk")
+
+[node name="Cadeira_3_2" type="MeshInstance3D" parent="Itens/Item3_6/item3_2_rb" unique_id=386032052]
+transform = Transform3D(0.0018618569, 0, 0.00073040364, 0, 0.0022222225, 0, -0.00073040364, 0, 0.0018618569, 0.15643883, 1.0478182, 0.08804035)
+mesh = SubResource("ArrayMesh_fg80b")
+
+[node name="meshitem3_2" type="MeshInstance3D" parent="Itens/Item3_6/item3_2_rb" unique_id=282625127 groups=["pickable"]]
+visible = false
+mesh = SubResource("CylinderMesh_x7ktg")
+
+[node name="colissionitem3_2" type="CollisionShape3D" parent="Itens/Item3_6/item3_2_rb" unique_id=2077491278 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05215454, 0)
+shape = SubResource("BoxShape3D_164vy")
+
+[node name="areaitem3_2" type="Area3D" parent="Itens/Item3_6/item3_2_rb" unique_id=1961078106 groups=["pickable"]]
+
+[node name="colissionitem3_2" type="CollisionShape3D" parent="Itens/Item3_6/item3_2_rb/areaitem3_2" unique_id=1573969019 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4786377, 0.5, 0.06713104)
+shape = SubResource("BoxShape3D_ocmlb")
+
 [node name="Item3_3" type="Node3D" parent="Itens" unique_id=1094631574 groups=["pickable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -14.176407, 0.28116977, -1.6501963)
+transform = Transform3D(0.37476683, 0, 0.3309831, 0, 0.45, 0, -0.3309831, 0, 0.37476683, -12.600509, 0.28116977, 0.0031664371)
 
 [node name="item3_3_rb" type="RigidBody3D" parent="Itens/Item3_3" unique_id=1808130349 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -5161,7 +5100,7 @@ mesh = NodePath("Cadeira_3_3")
 outline_material = ExtResource("5_n3qit")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_3/item3_3_rb" unique_id=453919882]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.918648, 2.2932618, -1.575588)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.565729, 2.2932618, -0.44355392)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -5196,7 +5135,7 @@ shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Item3_4" type="Node3D" parent="Itens" unique_id=406028076 groups=["pickable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -12.241947, 0.28116977, -6.407921)
+transform = Transform3D(0.15357035, 0, -0.47583205, 0, 0.45, 0, 0.47583205, 0, 0.15357035, -9.709085, 0.28116977, -6.1948757)
 
 [node name="item3_3_rb" type="RigidBody3D" parent="Itens/Item3_4" unique_id=1785731807 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -5214,7 +5153,7 @@ mesh = NodePath("Cadeira_3_3")
 outline_material = ExtResource("5_n3qit")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_4/item3_3_rb" unique_id=1718092969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141035, 2.2932618, -6.2810297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.489815, 2.2932618, -5.783926)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -5249,7 +5188,7 @@ shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Item3_5" type="Node3D" parent="Itens" unique_id=387504122 groups=["pickable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 0.5, -10.35977, 0.28116977, -6.407921)
+transform = Transform3D(-0.29793024, 0, -0.40154395, 0, 0.44999996, 0, 0.40154395, 0, -0.29793024, -7.8269076, 0.28116977, -5.7451158)
 
 [node name="item3_3_rb" type="RigidBody3D" parent="Itens/Item3_5" unique_id=1372597505 node_paths=PackedStringArray("mesh") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -5267,7 +5206,7 @@ mesh = NodePath("Cadeira_3_3")
 outline_material = ExtResource("5_n3qit")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item3_5/item3_3_rb" unique_id=1860762475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.258858, 2.2932618, -6.2810297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.678651, 2.2932618, -5.428852)
 top_level = true
 pixel_size = 0.03
 offset = Vector2(0, 2)
@@ -5394,7 +5333,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39146447, 0)
 shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1340857480]
-transform = Transform3D(1, 0, 0, 0, 0.7732429, 0.63411, 0, -0.63411, 0.7732429, -0.32800144, 16.625154, 14.153155)
+transform = Transform3D(1, 0, 0, 0, 0.83004147, 0.55770165, 0, -0.55770165, 0.83004147, -0.32800144, 13.055374, 13.123599)
 
 [node name="Exit_Door" type="StaticBody3D" parent="." unique_id=130820807 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.207879, 0, -3.304131)
@@ -5479,7 +5418,7 @@ mesh = SubResource("ArrayMesh_e5fwq")
 transform = Transform3D(-0.04409018, 0, 0.99902743, 0, 0.99999994, 0, -0.99902743, 0, -0.04409018, 12165.254, 0, -10215.491)
 
 [node name="Mesa (Obstaculo)" parent="Static obstacles" unique_id=865158945 instance=ExtResource("15_k70y7")]
-transform = Transform3D(0.7959385, 0, 0.6053773, 0, 0.99999994, 0, -0.6053773, 0, 0.7959385, -10776.334, 469.36676, 1238.8203)
+transform = Transform3D(0.7959383, 0, 0.60537696, 0, 0.9999996, 0, -0.60537696, 0, 0.7959383, -8090.5537, 469.36667, 572.2539)
 
 [node name="Props" type="Node3D" parent="." unique_id=1871473710]
 
@@ -5573,12 +5512,12 @@ visible = false
 [connection signal="area_exited" from="Itens/Item1/item1_rb/areaitem1" to="Itens/Item1/item1_rb" method="_on_areaitem_1_area_exited"]
 [connection signal="area_entered" from="Itens/Item2/item2_rb/areaitem2" to="Itens/Item2/item2_rb" method="_on_areaitem_2_area_entered"]
 [connection signal="area_exited" from="Itens/Item2/item2_rb/areaitem2" to="Itens/Item2/item2_rb" method="_on_areaitem_2_area_exited"]
-[connection signal="area_entered" from="Itens/Item3/item3_rb/areaitem3" to="Itens/Item3/item3_rb" method="_on_areaitem_3_area_entered"]
-[connection signal="area_exited" from="Itens/Item3/item3_rb/areaitem3" to="Itens/Item3/item3_rb" method="_on_areaitem_3_area_exited"]
-[connection signal="area_entered" from="Itens/Item3_1/item3_1_rb/areaitem3_1" to="Itens/Item3_1/item3_1_rb" method="_on_areaitem_3_1_area_entered"]
-[connection signal="area_exited" from="Itens/Item3_1/item3_1_rb/areaitem3_1" to="Itens/Item3_1/item3_1_rb" method="_on_areaitem_3_1_area_exited"]
 [connection signal="area_entered" from="Itens/Item3_2/item3_2_rb/areaitem3_2" to="Itens/Item3_2/item3_2_rb" method="_on_areaitem_3_2_area_entered"]
 [connection signal="area_exited" from="Itens/Item3_2/item3_2_rb/areaitem3_2" to="Itens/Item3_2/item3_2_rb" method="_on_areaitem_3_2_area_exited"]
+[connection signal="area_entered" from="Itens/Item3_7/item3_2_rb/areaitem3_2" to="Itens/Item3_7/item3_2_rb" method="_on_areaitem_3_2_area_entered"]
+[connection signal="area_exited" from="Itens/Item3_7/item3_2_rb/areaitem3_2" to="Itens/Item3_7/item3_2_rb" method="_on_areaitem_3_2_area_exited"]
+[connection signal="area_entered" from="Itens/Item3_6/item3_2_rb/areaitem3_2" to="Itens/Item3_6/item3_2_rb" method="_on_areaitem_3_2_area_entered"]
+[connection signal="area_exited" from="Itens/Item3_6/item3_2_rb/areaitem3_2" to="Itens/Item3_6/item3_2_rb" method="_on_areaitem_3_2_area_exited"]
 [connection signal="area_entered" from="Itens/Item3_3/item3_3_rb/areaitem3_3" to="Itens/Item3_3/item3_3_rb" method="_on_areaitem_3_3_area_entered"]
 [connection signal="area_exited" from="Itens/Item3_3/item3_3_rb/areaitem3_3" to="Itens/Item3_3/item3_3_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="area_entered" from="Itens/Item3_4/item3_3_rb/areaitem3_3" to="Itens/Item3_4/item3_3_rb" method="_on_areaitem_3_3_area_entered"]
