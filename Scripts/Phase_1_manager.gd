@@ -5,7 +5,7 @@ var paused = false
 @onready var music_level: AudioStreamPlayer3D = $"Audio/Music Level"
 	 
 func _ready() -> void:
-	music_level.play()
+	SoundControl.lvl_1_bgm.play()
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		PauseMenu()

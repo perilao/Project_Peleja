@@ -73,6 +73,7 @@ func grab_object(obj):
 	original_layer = obj.collision_layer
 	obj.collision_layer = 2
 	hold_rotation_offset = obj.global_rotation - hand.global_rotation
+	SoundControl.item_grab.play()
 	if obj.is_in_group("pushable"):
 		obj.start_push()
 		return
@@ -106,7 +107,8 @@ func player_movement(delta):
 	if direction.length() > 0:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		
+		#if !SoundControl.walk.playing:
+			#SoundControl.walk.play()
 		if !lock_rotation:
 			var target_angle_ = atan2(direction.x, direction.z)
 			rotation.y = lerp_angle(rotation.y, target_angle_, ROTATION_SPEED * delta)
@@ -118,11 +120,11 @@ func player_movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		#walk_audio.play()
 
 func release_object(consumed: bool = false):
 	#RELEASE OBJECT TRIGGER
 	if hold_object:
+		SoundControl.item_drop.play()
 		var obj = hold_object
 		if !consumed:
 			if obj.has_method("return_use") and obj.was_used:

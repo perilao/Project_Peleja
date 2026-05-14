@@ -2913,6 +2913,9 @@ func _ready():
 	original_y = global_position.y
 	original_z = global_position.z
 	update_label()
+	await get_tree().process_frame
+	global_position.x = target_position.global_position.x
+	push_complete = true
 
 func _input(event):
 	if event.is_action_pressed(\"ui_grab\"):
@@ -2956,7 +2959,7 @@ func start_return():
 func start_push():
 	if is_being_pushed:
 		return
-	if uses == 1 and is_returning:
+	if uses <= 1 and is_returning:
 		return
 	is_returning = false
 	push_complete = false
@@ -5436,29 +5439,29 @@ offset_right = 1736.4445
 offset_bottom = 337.0
 scale = Vector2(0.325, 0.175)
 size_flags_horizontal = 4
-max_value = 5000.0
+max_value = 3000.0
 texture_under = ExtResource("16_cud0u")
 texture_over = ExtResource("17_bv3xk")
 texture_progress = ExtResource("18_1rgox")
 metadata/_edit_use_anchors_ = true
 
 [node name="Marcaçao" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=311353331]
-position = Vector2(120.930176, 75.082886)
+position = Vector2(116.92326, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
 [node name="Marcaçao2" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=1320977399]
-position = Vector2(244.18604, 75.082886)
+position = Vector2(236.92303, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
 [node name="Marcaçao3" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=259074941]
-position = Vector2(493.02295, 75.082886)
+position = Vector2(397.63867, 75.082886)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
 [node name="Marcaçao4" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=222743620]
-position = Vector2(690.69775, 75.082886)
+position = Vector2(783.0049, 75.082886)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 

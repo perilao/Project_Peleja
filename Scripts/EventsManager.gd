@@ -7,6 +7,7 @@ var original_wait_time: float
 #EVENT
 @export var event_name : String = ""
 @onready var event = get_tree().get_nodes_in_group("event")
+var current_state := ""
 #PLAYER
 @onready var player: CharacterBody3D = $"../../Player"
 var isOnArea = false
@@ -23,6 +24,7 @@ func _ready() -> void:
 	Event_Color = mesh.get_active_material(0).albedo_color
 	animation_player.play("blocked")
 	isOnArea = false
+	SoundControl.item_break.stop()
 	if timer_geral.is_in_group("start_opened"):
 		original_wait_time = timer_geral.wait_time
 		timer_geral.wait_time = event_time
@@ -32,11 +34,17 @@ func _process(_delta):
 	#CHANGE STATE AFTER CERTAIN TIME
 	if timer_geral.time_left <= event_time:
 		#mesh.get_active_material(0).albedo_color = Color.RED
-		if animation_player:
-			animation_player.play("open")
+		if current_state != "open":
+			current_state = "open"
+			if animation_player and animation_player.current_animation != "open":
+				animation_player.play("open")
+				SoundControl.lose.play()
 	if timer_geral.time_left >= event_time and timer_geral.time_left < 25.0:
-		if animation_player:
-			animation_player.play("broken")
+		if current_state != "broken":
+			current_state = "broken"
+			if animation_player and animation_player.current_animation != "broken":
+				animation_player.play("broken") 
+				SoundControl.item_break.play()
 	#INTERACTION OBJECT/EVENT
 	if Input.is_action_just_pressed("ui_interact"):
 		if timer_geral.time_left <= event_time and isOnArea: 
@@ -49,12 +57,15 @@ func _process(_delta):
 					print("Resetado!")
 					player.release_object(true)
 					mesh.get_active_material(0).albedo_color = Event_Color
-					if animation_player:
-						animation_player.play("blocked")
+					if current_state != "blocked":
+						current_state = "blocked"
+						if animation_player:
+							animation_player.play("blocked")
 				else:
 					print("Item errado! Você tem '", object.item_type, "' mas esta porta precisa de '", event_name, "'")
 func _on_timer_geral_timeout() -> void:
-	#PLAYER DEFEAT LOGIC
+	#PLAYER DEFEAT LOGIC 
+	SoundControl.lvl_1_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
 #AREAS
 func _on_area_3d_area_entered(_area: Area3D) -> void:

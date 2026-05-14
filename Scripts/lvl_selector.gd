@@ -11,10 +11,9 @@ extends Node2D
 @onready var lock_lvl_2: Sprite2D = $Lock_lvl2
 @onready var lock_lvl_3: Sprite2D = $Lock_lvl3
 
-
 func _ready() -> void:
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-	
+	SoundControl.menu_bgm.play()
 	if LevelCore.lvl1_completed == true:
 		playable_lvl_1.visible = false
 		lock_lvl_2.visible = false
@@ -38,11 +37,13 @@ func _ready() -> void:
 #BUTTONS
 func _on_button_pressed() -> void:
 	SoundControl.button_click.play()
+	SoundControl.menu_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/Current_Level1.tscn")
 	
 func _on_button_2_pressed() -> void:
 	SoundControl.button_click.play()
 	if LevelCore.lvl1_completed == true:
+		SoundControl.menu_bgm.stop()
 		get_tree().change_scene_to_file("res://Scenes/Backup_level.tscn")
 	else:
 		null
@@ -50,10 +51,12 @@ func _on_button_2_pressed() -> void:
 func _on_button_3_pressed() -> void:
 	SoundControl.button_click.play()
 	if LevelCore.lvl2_completed == true:
+		SoundControl.menu_bgm.stop()
 		get_tree().change_scene_to_file("res://LVL/lvl3.tscn")
 	else:
 		null
 
 func _on_texture_button_pressed() -> void:
 	SoundControl.button_click.play()
+	SoundControl.menu_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/G.U.I/main_menu.tscn")
