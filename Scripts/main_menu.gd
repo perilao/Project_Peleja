@@ -12,9 +12,12 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	SoundControl.button_click.play()
+	SoundControl.menu_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/G.U.I/lvl_selector.tscn")
+	
 func _on_quit_pressed() -> void:
 	SoundControl.button_click.play()
+	SoundControl.menu_bgm.stop()
 	get_tree().quit()
 	
 func _on_options_pressed() -> void:

@@ -16,6 +16,7 @@ func _on_options_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	SoundControl.button_click.play()
+	SoundControl.lvl_1_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/G.U.I/main_menu.tscn")
 
 func _on_back_4_pressed() -> void:

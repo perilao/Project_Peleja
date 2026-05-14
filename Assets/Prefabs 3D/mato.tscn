@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://be3m7dvfa0qgy"]
+
+[ext_resource type="Texture2D" uid="uid://dqbwjipoovmjy" path="res://Assets/3D Assets/Texturas/mato textura.png" id="1_hgo4y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgrug"]
+shading_mode = 0
+albedo_texture = ExtResource("1_hgo4y")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jdvc0"]
+_surfaces = [{
+"aabb": AABB(-2.297821, -0.177682, -2.297821, 4.595642, 1.4217, 4.595642),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAAAAAEAAQAAAAIAAgAAAAMAAgADAAQABAADAAUABAAFAAYABwAHAAgACAAHAAkACQAHAAoACQAKAAsACwAKAAwACwAMAA0ADgAOAA8ADwAOABAAEAAOABEAEAARABIAEgARABMAEgATABQAFQAVABYAFgAVABcAFwAVABgAFwAYABkAGQAYABoAGQAaABsA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("Lm0AALyFAAAUmPsDeIIAANaMZ7/LSwAA7Hb0vHNPAAAzh87+TCgAACl8//9ZKQAAX4FL9wAAAAC8hQAA0JIAAHiC+wPqZwAAy0tnvyhzAABzT/S8EokAAEwozv7LeAAAWSn//9WDAAAAAEv3n34AANCSAABCegAA6mf7A4Z9AAAoc2e/M7QAABKJ9LyLsAAAy3jO/rLXAADVg///pdYAAJ9+S/f//wAAQnoAAC5tAACGffsDFJgAADO0Z7/WjAAAi7D0vOx2AACy187+M4cAAKXW//8pfAAA//9L91+BAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j1eha"]
+_surfaces = [{
+"aabb": AABB(-2.297821, -0.177682, -2.297821, 4.595642, 1.4217, 4.595642),
+"attribute_data": PackedByteArray("MUkAAAAAAADdCSeHlS9dhN0JJ4eVL12EgQ3Sy18gQsyBDdLLXyBCzL0Q//8xSQAAAAAAAN0JJ4eVL12E3Qknh5UvXYSBDdLLXyBCzIEN0stfIELMvRD//zFJAAAAAAAA3Qknh5UvXYTdCSeHlS9dhIEN0stfIELMgQ3Sy18gQsy9EP//MUkAAAAAAADdCSeHlS9dhN0JJ4eVL12EgQ3Sy18gQsyBDdLLXyBCzL0Q//8="),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAAAAAEAAQAAAAIAAgAAAAMABAAFAAYABgAFAAcACAAJAAoACwALAAwADAALAA0ADQALAA4ADwAQABEAEQAQABIAEwAUABUAFgAWABcAFwAWABgAGAAWABkAGgAbABwAHAAbAB0AHgAfACAAIQAhACIAIgAhACMAIwAhACQAJQAmACcAJwAmACgAKQAqACsA"),
+"material": SubResource("StandardMaterial3D_qgrug"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("Lm0AALyFKP4UmPsDeIIW/taMZ7/LS1j+7Hb0vHNPeP7WjGe/y0ss/ux29LxzTyX+M4fO/kwoE/4pfP//WSkI/jOHzv5MKEH9KXz//1kpQf1fgUv3AABB/byFAADQkkzpeIL7A+pnQOnLS2e/KHNv6XNP9LwSiYXpy0tnvyhzreBzT/S8Eomp4Ewozv7LeJvgWSn//9WDlOBMKM7+y3jD0Vkp///Vg8PRAABL959+w9HQkgAAQnpw4epn+wOGfXHhKHNnvzO0buESifS8i7Bt4ShzZ78ztJbUEon0vIuwltTLeM7+steX1NWD//+l1pjUy3jO/rLXvr3Vg///pda+vZ9+S/f//769QnoAAC5t/uuGffsDFJgL7DO0Z7/WjNnri7D0vOx2wesztGe/1oxw44uw9LzsdnXjstfO/jOHhOOl1v//KXyN47LXzv4zh0fWpdb//yl8R9b//0v3X4FH1smDHKPQgxmjsoMjo6SDKKNBhPKtRYTwrVGE661XhOit3oRnv96EZ7/ehGe/Trj4k1i47pMwuBeUHrgqlKO0LZyotCmctbQfnL20GZzzrQSr860Eq/OtBKsV/fx3+vzYd2D9YXiQ/aJ46vxvdt/8X3bB/DF2sPwXdm/6NHFv+jRxb/o0cdrprTLQ6aQy9enIMgfq2TLU4T0u0eE5LsfhLC7C4SYuStLKJUrSyiVK0sol")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jdvc0")
+
+[node name="Mato" type="MeshInstance3D" unique_id=1602384099]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, 0, 0)
+mesh = SubResource("ArrayMesh_j1eha")

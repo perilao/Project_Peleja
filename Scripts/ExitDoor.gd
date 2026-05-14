@@ -12,6 +12,8 @@ var player_in_exit := false
 @export var mesh: MeshInstance3D
 @export var outline_material: Material
 
+func _ready() -> void:
+	SoundControl.exit_remove.play()
 func _process(_delta: float) -> void:
 	#RETURN IF THE BAR IS QUEUE_FREE()
 	if progress_bar == null:
@@ -22,8 +24,10 @@ func _process(_delta: float) -> void:
 		if Input.is_action_pressed("ui_interact"):
 			progress_bar.value += 1
 			player.block_input = true
+			SoundControl.exit_remove.play()
 		#STOP THE BAR PROGRESS
 		if Input.is_action_just_released("ui_interact"):
+			SoundControl.exit_remove.stop()
 			player.block_input = false
 			if progress_bar.value < progress_bar.max_value:
 				if progress_bar.value >= fourth_stage:
@@ -42,6 +46,7 @@ func progress_bar_finished():
 	LevelCore.lvl2_completed = true
 	progress_bar.value = progress_bar.max_value
 	player.block_input = false
+	SoundControl.lvl_1_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/G.U.I/lvl_selector.tscn")
 	
 #AREA ENTERED
