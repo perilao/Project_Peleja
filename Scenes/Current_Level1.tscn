@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b56qpyu1ovvqd" path="res://Assets/3D Assets/Texturas/chão inverso.png" id="3_3vc4b"]
 [ext_resource type="Texture2D" uid="uid://wiwuwa4a4o2q" path="res://Assets/3D Assets/Player/Textura joaquim.png" id="3_bv3xk"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="4_x7y7a"]
+[ext_resource type="PackedScene" uid="uid://be3m7dvfa0qgy" path="res://Assets/Prefabs 3D/mato.tscn" id="5_k70y7"]
 [ext_resource type="Material" uid="uid://drfh00vfi7tq3" path="res://Materials/outline material.tres" id="5_n3qit"]
 [ext_resource type="Texture2D" uid="uid://bkuuwfqprrurt" path="res://Assets/3D Assets/Texturas/Textura porta 1.png" id="6_adlhc"]
 [ext_resource type="Texture2D" uid="uid://drrvy1uu40gyw" path="res://Assets/3D Assets/Texturas/Textura porta 2.png" id="7_thgey"]
@@ -28,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://rcoookjdcok0" path="res://Assets/2D Assets/progress bar/marcaçao.png" id="18_thgey"]
 [ext_resource type="Texture2D" uid="uid://diukm3cmbifl" path="res://Assets/3D Assets/Texturas/Textura tabua de madeira.png" id="19_h2cb4"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
+[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
 [ext_resource type="Texture2D" uid="uid://c8fg5r7rgmxsf" path="res://Assets/3D Assets/Texturas/Textura janela.png" id="22_abf53"]
 [ext_resource type="Texture2D" uid="uid://b0b036e8uhem7" path="res://Assets/3D Assets/Texturas/Textura poltrona 3.png" id="28_e5fwq"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
@@ -2760,6 +2761,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sr73x")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5hao"]
+size = Vector3(6.748657, 3.7839355, 19.861053)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lyd6k"]
 resource_local_to_scene = true
 
@@ -4358,6 +4362,21 @@ mesh = SubResource("ArrayMesh_xbglh")
 transform = Transform3D(9.106262e-09, 0.002710108, 0.06665936, -3.7007436e-16, 0.1833133, -0.0009854883, -0.18333331, 1.346125e-10, 3.3110061e-09, 48.96885, 12.080154, -94.98241)
 mesh = SubResource("ArrayMesh_xbglh")
 
+[node name="Mato" parent="Scenario" unique_id=1602384099 instance=ExtResource("5_k70y7")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, -20.052036, -1.0480964, 8.3688755)
+
+[node name="Mato2" parent="Scenario" unique_id=1947924125 instance=ExtResource("5_k70y7")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, -14.185705, -1.0480964, 11.311293)
+
+[node name="Mato3" parent="Scenario" unique_id=1091543819 instance=ExtResource("5_k70y7")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, -3.765595, -1.0480964, 9.585711)
+
+[node name="Mato4" parent="Scenario" unique_id=1015980015 instance=ExtResource("5_k70y7")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 4.479209, -1.0480964, 13.110611)
+
+[node name="Mato5" parent="Scenario" unique_id=751960364 instance=ExtResource("5_k70y7")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 12.912621, -1.0480964, 9.398239)
+
 [node name="Paredes" type="Node3D" parent="Scenario" unique_id=371332392]
 transform = Transform3D(1.4901161e-08, 0, -0.30000004, 0, 0.29999998, 0, 0.30000004, 0, 1.4901161e-08, -11.333357, 1.5859535, -7.8989654)
 
@@ -4809,6 +4828,10 @@ autoplay = &"blocked"
 [node name="MonteDeTabuas" type="MeshInstance3D" parent="Itens" unique_id=734093756]
 transform = Transform3D(0.185, 0, 0, 0, 0.18500002, 0, 0, 0, 0.155, 15.48129, -0.73082995, 5.616971)
 mesh = SubResource("ArrayMesh_h5yjf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Itens/MonteDeTabuas" unique_id=889594612]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 1.298645, 0.57727027, -0.55858994)
+shape = SubResource("BoxShape3D_j5hao")
 
 [node name="Item1" type="Node3D" parent="Itens" unique_id=184148444 groups=["pickable"]]
 unique_name_in_owner = true
