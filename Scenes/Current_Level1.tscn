@@ -4304,11 +4304,11 @@ transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.
 mesh = SubResource("ArrayMesh_xbglh")
 
 [node name="Telha21" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1897399778]
-transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -112.236115)
+transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -111.86961)
 mesh = SubResource("ArrayMesh_xbglh")
 
 [node name="Telha22" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=618113939]
-transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -127.549576)
+transform = Transform3D(9.106262e-09, -0.03811714, 0.06520982, 0, 0.17932707, 0.01386078, -0.18333331, -1.8932986e-09, 3.2390066e-09, 1.0371094, 12.080154, -127.49979)
 mesh = SubResource("ArrayMesh_xbglh")
 
 [node name="Telha9" type="MeshInstance3D" parent="Scenario/Telhas" unique_id=1956380265]
@@ -5241,7 +5241,7 @@ shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Item_Movable" type="Node3D" parent="Itens" unique_id=881950107 groups=["movable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.38829824, 0, 0.3149992, 0, 0.45, 0, -0.3149992, 0, 0.38829824, 14.448604, 0.28116977, -1.50881)
+transform = Transform3D(0.44549537, 0, 0.22701085, 0, 0.44999996, 0, -0.22701085, 0, 0.44549537, 14.448604, 0.28116977, -0.9862046)
 
 [node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable" unique_id=1186896220 node_paths=PackedStringArray("mesh") groups=["movable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
@@ -5405,7 +5405,7 @@ texture = ExtResource("18_thgey")
 transform = Transform3D(0.00079593866, 0, -0.0006053774, 0, 0.001, 0, 0.0006053774, 0, 0.00079593866, -2.914741, -0.4579672, 2.3841276)
 
 [node name="Poltrona (Obstaculo)" parent="Static obstacles" unique_id=1822714137 instance=ExtResource("16_684ly")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 0.9999998, 0, 2.9802322e-08, 0, 0.9999999, 356.58728, 0, 468.83447)
 
 [node name="Poltrona (Obstaculo)2" parent="Static obstacles" unique_id=1670835853 instance=ExtResource("16_684ly")]
 transform = Transform3D(0.72876537, 0, 0.6847632, 0, 0.99999994, 0, -0.6847632, 0, 0.72876537, 317.18945, 0, 3520.4644)
@@ -5458,8 +5458,7 @@ visible = false
 mesh = SubResource("ArrayMesh_p68j0")
 
 [node name="Cruz" type="MeshInstance3D" parent="Props" unique_id=352260716]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
-visible = false
+transform = Transform3D(-4.2866695e-06, 0, -0.0015797932, 0.00064504537, 0.0010936778, -4.3467785e-06, 0.0007673741, -0.00091933226, -5.1711177e-06, 6.7191668, 0.30993187, 4.909087)
 mesh = SubResource("ArrayMesh_daeh6")
 
 [node name="Saida" type="MeshInstance3D" parent="Props" unique_id=759612438]
@@ -5487,12 +5486,22 @@ visible = false
 mesh = SubResource("ArrayMesh_f60s3")
 
 [node name="CadeiraQuebrada" type="MeshInstance3D" parent="Props" unique_id=117907326]
-transform = Transform3D(-0.08526402, 0, -0.05224985, 0, 0.1, 0, 0.05224985, 0, -0.08526402, -15.133653, -0.5210762, 6.1311936)
+transform = Transform3D(-0.02033075, -0.08510241, 0.04841733, -0.09782468, 0.019737419, -0.006385049, -0.004122503, -0.048662223, -0.08726393, -14.559754, -0.5210762, 0.40471148)
 mesh = SubResource("ArrayMesh_k4ydw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/CadeiraQuebrada" unique_id=1969223293]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/CadeiraQuebrada/StaticBody3D" unique_id=1930710623]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 0.99996066, 0, -5.9604645e-08, 0, 1, -0.57910156, 0.3838439, 1.2943535)
+shape = SubResource("BoxShape3D_be7bx")
+
+[node name="CadeiraQuebrada2" type="MeshInstance3D" parent="Props" unique_id=1826958481]
+transform = Transform3D(0.039895706, 0, -0.09169696, 0, 0.099999994, 0, 0.09169696, 0, 0.039895706, -14.689705, -0.5210762, 5.9988585)
+mesh = SubResource("ArrayMesh_k4ydw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/CadeiraQuebrada2" unique_id=1032306501]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/CadeiraQuebrada2/StaticBody3D" unique_id=1146733181]
 transform = Transform3D(1, 0, 5.9604645e-08, 0, 0.99996066, 0, -5.9604645e-08, 0, 1, -0.57910156, 0.3838439, 1.2943535)
 shape = SubResource("BoxShape3D_be7bx")
 
