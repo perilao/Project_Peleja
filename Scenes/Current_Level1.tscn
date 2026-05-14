@@ -5363,12 +5363,12 @@ texture_progress = ExtResource("18_1rgox")
 metadata/_edit_use_anchors_ = true
 
 [node name="Marcaçao" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=311353331]
-position = Vector2(116.92326, 74.28559)
+position = Vector2(196.92285, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
 [node name="Marcaçao2" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=1320977399]
-position = Vector2(236.92303, 74.28559)
+position = Vector2(21.538086, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 

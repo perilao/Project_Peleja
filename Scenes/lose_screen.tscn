@@ -60,6 +60,7 @@ texture_hover = ExtResource("7_q81v7")
 stretch_mode = 0
 
 [node name="menu" type="TextureButton" parent="." unique_id=1618637967]
+visible = false
 layout_mode = 0
 offset_left = 824.0
 offset_top = 696.0

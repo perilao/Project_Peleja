@@ -16,9 +16,9 @@ config/ninetailsrabbit.interaction_kit_3d/grabbables_collision_layer=7
 [application]
 
 config/name="Projeto Terceiro Periodo - Peleja"
-run/main_scene="uid://bty36mo4in5rp"
+run/main_scene="uid://yph8snnoxdo4"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/image="uid://b4pkv27bvh6pe"
+boot_splash/image="uid://d24w8tu0oxcf5"
 config/icon="res://Assets/2D Assets/test images/icon.svg"
 boot_splash/minimum_display_time=1500
 
