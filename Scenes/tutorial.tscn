@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://b5uwe42nuiq7u"]
+
+[ext_resource type="Script" uid="uid://bbtmtedlda4xi" path="res://Scripts/tutorial.gd" id="1_p1f1o"]
+[ext_resource type="Texture2D" uid="uid://krq5syxsrl5w" path="res://Assets/2D Assets/moldura.png" id="2_ys4pu"]
+[ext_resource type="Texture2D" uid="uid://drsrgcw5f777j" path="res://Assets/Buttons/moldurabotao2.png" id="3_h2ono"]
+[ext_resource type="Texture2D" uid="uid://b014vc7soe7dy" path="res://Assets/2D Assets/buttons/test/pressed.png" id="4_on4kn"]
+[ext_resource type="Texture2D" uid="uid://dq53ip7yb6evy" path="res://Assets/2D Assets/buttons/test/hover.png" id="5_70gml"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="6_8va2t"]
+[ext_resource type="Texture2D" uid="uid://cch38twsv55x" path="res://Assets/2D Assets/Captura de tela 2026-05-14 103205.png" id="7_70gml"]
+[ext_resource type="Texture2D" uid="uid://ck00e02ft06l7" path="res://Assets/2D Assets/Captura de tela 2026-05-14 101449.png" id="7_h2ono"]
+[ext_resource type="Texture2D" uid="uid://cx11iueulj3qg" path="res://Assets/2D Assets/Captura de tela 2026-05-14 101918.png" id="8_on4kn"]
+[ext_resource type="Texture2D" uid="uid://bd58vtlphb8d" path="res://Assets/2D Assets/Captura de tela 2026-05-14 102544.png" id="9_on4kn"]
+
+[node name="Node2D" type="Node2D" unique_id=476768672]
+script = ExtResource("1_p1f1o")
+
+[node name="Moldura" type="Sprite2D" parent="." unique_id=662966890]
+position = Vector2(960, 543.9531)
+scale = Vector2(1.544573, 2.19939)
+texture = ExtResource("2_ys4pu")
+
+[node name="next" type="TextureButton" parent="." unique_id=985910560]
+offset_left = 1608.0
+offset_top = 839.99994
+offset_right = 2613.0
+offset_bottom = 1495.0
+scale = Vector2(0.25297454, 0.24789464)
+texture_normal = ExtResource("3_h2ono")
+texture_pressed = ExtResource("4_on4kn")
+texture_hover = ExtResource("5_70gml")
+
+[node name="Label" type="Label" parent="next" unique_id=1222881698]
+layout_mode = 0
+offset_left = -5850.391
+offset_top = -2807.644
+offset_right = 632.4746
+offset_bottom = -1807.2188
+theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 350
+text = "Os cangaceiros estão tentando entrar, haja rárido antes que consigam"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CapturaDeTela20260514103205" type="Sprite2D" parent="next" unique_id=2091776895]
+position = Vector2(-2529.8987, -903.60944)
+scale = Vector2(4.209268, 4.2092686)
+texture = ExtResource("7_70gml")
+
+[node name="next2" type="TextureButton" parent="." unique_id=205959314]
+visible = false
+offset_left = 1608.0
+offset_top = 839.99994
+offset_right = 2613.0
+offset_bottom = 1495.0
+scale = Vector2(0.25297454, 0.24789464)
+texture_normal = ExtResource("3_h2ono")
+texture_pressed = ExtResource("4_on4kn")
+texture_hover = ExtResource("5_70gml")
+
+[node name="visual" type="Sprite2D" parent="next2" unique_id=407219035]
+position = Vector2(-2593.1465, -1000.42474)
+scale = Vector2(3.9529672, 4.0339723)
+texture = ExtResource("7_h2ono")
+
+[node name="Label" type="Label" parent="next2" unique_id=230512401]
+layout_mode = 0
+offset_left = -5850.391
+offset_top = -2807.644
+offset_right = 632.4746
+offset_bottom = -1807.2188
+theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 350
+text = "Utilize itens da casa para bloquear as entradas"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="next2" unique_id=2085777609]
+layout_mode = 0
+offset_left = -6071.7573
+offset_top = 290.4463
+offset_right = -980.33496
+offset_bottom = 580.8921
+theme_override_colors/font_color = Color(1, 0.16862746, 0.32156864, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 232
+text = "*Eles tem uma quantidade limitada, use com cautela"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="next3" type="TextureButton" parent="." unique_id=143834321]
+visible = false
+offset_left = 1608.0
+offset_top = 839.99994
+offset_right = 2613.0
+offset_bottom = 1495.0
+scale = Vector2(0.25297454, 0.24789464)
+texture_normal = ExtResource("3_h2ono")
+texture_pressed = ExtResource("4_on4kn")
+texture_hover = ExtResource("5_70gml")
+
+[node name="visual" type="Sprite2D" parent="next3" unique_id=73248178]
+position = Vector2(-2561.5227, -968.153)
+scale = Vector2(3.9529672, 4.0339727)
+texture = ExtResource("8_on4kn")
+
+[node name="Label" type="Label" parent="next3" unique_id=54673532]
+layout_mode = 0
+offset_left = -5850.391
+offset_top = -2807.644
+offset_right = 632.4746
+offset_bottom = -1807.2188
+theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 350
+text = "Cada entrada é bloqueada por um item específico"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="next3" unique_id=2053240775]
+layout_mode = 0
+offset_left = -6198.2524
+offset_top = 322.71808
+offset_right = -1897.4243
+offset_bottom = 613.1639
+theme_override_colors/font_color = Color(1, 0.16862746, 0.32156864, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 232
+text = "*Utilize as dicas do nível para descobri-los"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="next4" type="TextureButton" parent="." unique_id=1080879495]
+visible = false
+offset_left = 1608.0
+offset_top = 839.99994
+offset_right = 2613.0
+offset_bottom = 1495.0
+scale = Vector2(0.25297454, 0.24789464)
+texture_normal = ExtResource("3_h2ono")
+texture_pressed = ExtResource("4_on4kn")
+texture_hover = ExtResource("5_70gml")
+
+[node name="Label" type="Label" parent="next4" unique_id=1058782972]
+layout_mode = 0
+offset_left = -5850.391
+offset_top = -2807.644
+offset_right = 632.4746
+offset_bottom = -1807.2188
+theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 350
+text = "Libere o caminho e interaja com a saída barricada para poder fugir!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="visual" type="Sprite2D" parent="next4" unique_id=1827366272]
+position = Vector2(-2564.944, -849.1509)
+scale = Vector2(3.0446987, 3.107091)
+texture = ExtResource("9_on4kn")
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="next2" to="." method="_on_next_2_pressed"]
+[connection signal="pressed" from="next3" to="." method="_on_next_3_pressed"]
+[connection signal="pressed" from="next4" to="." method="_on_next_4_pressed"]

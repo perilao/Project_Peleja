@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://cp18xcsfryfwi"]
 
 [ext_resource type="Script" uid="uid://dpnktxbfdv0sf" path="res://Scripts/lose_screen_manager.gd" id="1_s2rrh"]
+[ext_resource type="Texture2D" uid="uid://krq5syxsrl5w" path="res://Assets/2D Assets/moldura.png" id="2_e455f"]
+[ext_resource type="Texture2D" uid="uid://fka6ca4hiy77" path="res://Assets/2D Assets/fundosemhud.png" id="2_go37l"]
+[ext_resource type="Texture2D" uid="uid://bke4vl33r26w1" path="res://Assets/2D Assets/gameover.png" id="3_nk27f"]
+[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://Shaders/pause_menu.gdshader" id="3_ykjnx"]
+[ext_resource type="Texture2D" uid="uid://bg0ajujornvg1" path="res://Assets/2D Assets/buttons/menu/menunormal.png" id="4_ak4yb"]
+[ext_resource type="Texture2D" uid="uid://b1sy84v2l160j" path="res://Assets/2D Assets/buttons/menu/menuescuro.png" id="5_1oqbe"]
+[ext_resource type="Texture2D" uid="uid://b283nyfbbgieh" path="res://Assets/2D Assets/buttons/reiniciarnormal.png" id="5_ykjnx"]
+[ext_resource type="Texture2D" uid="uid://bmjj453nesxpl" path="res://Assets/2D Assets/buttons/menu/menuclaro.png" id="6_7r1e1"]
+[ext_resource type="Texture2D" uid="uid://6n40e7171yjd" path="res://Assets/2D Assets/buttons/reiniciarescuro.png" id="6_ddyn2"]
+[ext_resource type="Texture2D" uid="uid://dq3n8y7vrx62r" path="res://Assets/2D Assets/buttons/reiniciarclaro.png" id="7_q81v7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddyn2"]
+shader = ExtResource("3_ykjnx")
+shader_parameter/amount = 1.0000000475
 
 [node name="Lose Screen" type="Control" unique_id=1992811942]
 layout_mode = 3
@@ -11,21 +25,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s2rrh")
 
-[node name="Restart" type="Button" parent="." unique_id=1369788742]
-layout_mode = 0
-offset_left = 463.0
-offset_top = 388.0
-offset_right = 795.0
-offset_bottom = 480.0
-text = "Restart"
+[node name="Fundosemhud" type="Sprite2D" parent="." unique_id=560407495]
+position = Vector2(2872, -238)
+texture = ExtResource("2_go37l")
 
-[node name="Label" type="Label" parent="." unique_id=695609068]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1655385428]
+material = SubResource("ShaderMaterial_ddyn2")
 layout_mode = 0
-offset_left = 309.0
-offset_top = 158.0
-offset_right = 971.0
-offset_bottom = 435.0
-theme_override_font_sizes/font_size = 100
-text = "Você Perdeu:("
+offset_left = -104.0
+offset_top = -135.99997
+offset_right = 2794.603
+offset_bottom = 1794.9968
 
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[node name="Moldura" type="Sprite2D" parent="." unique_id=919708517]
+position = Vector2(944, 280)
+scale = Vector2(0.7838258, 0.6752988)
+texture = ExtResource("2_e455f")
+
+[node name="Gameover" type="Sprite2D" parent="." unique_id=521201537]
+position = Vector2(984, 296)
+scale = Vector2(0.6394422, 0.6394422)
+texture = ExtResource("3_nk27f")
+
+[node name="restart" type="TextureButton" parent="." unique_id=1505246342]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 504.0
+offset_right = 3217.3208
+offset_bottom = 2024.0005
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("5_ykjnx")
+texture_pressed = ExtResource("6_ddyn2")
+texture_hover = ExtResource("7_q81v7")
+stretch_mode = 0
+
+[node name="menu" type="TextureButton" parent="." unique_id=1618637967]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 696.0
+offset_right = 3217.3193
+offset_bottom = 2215.9995
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("4_ak4yb")
+texture_pressed = ExtResource("5_1oqbe")
+texture_hover = ExtResource("6_7r1e1")
+stretch_mode = 0
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]

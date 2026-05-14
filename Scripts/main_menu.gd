@@ -31,3 +31,8 @@ func _on_back_5_pressed() -> void:
 	button_manager.visible = true
 	back_5.visible = false
 	options_menu.visible = false
+
+func _on_tutorial_pressed() -> void:
+	SoundControl.button_click.play()
+	SoundControl.menu_bgm.stop()
+	get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
