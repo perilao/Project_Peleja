@@ -47,7 +47,7 @@ func _process(_delta):
 				animation_player.play("open")
 				SoundControl.item_break.play()
 	#QUANDO A BARRICADA SE QUEBRA
-	elif timer_geral.time_left >= event_time and timer_geral.time_left < 40.0:
+	elif timer_geral.time_left >= event_time and timer_geral.time_left < 35.0:
 		if current_state != "broken":
 			current_state = "broken"
 			if animation_player and animation_player.current_animation != "broken":
