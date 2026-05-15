@@ -6,6 +6,9 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	for child in SoundControl.get_children():
+		if child is AudioStreamPlayer:
+			child.stop()
 	SoundControl.menu_bgm.play()
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	get_tree().paused = false

@@ -5816,7 +5816,7 @@ mesh = SubResource("ArrayMesh_k4ydw")
 transform = Transform3D(1, 0, 5.9604645e-08, 0, 0.99996066, 0, -5.9604645e-08, 0, 1, -0.57910156, 0.3838439, 1.2943535)
 shape = SubResource("BoxShape3D_be7bx")
 
-[node name="PauseMenu" parent="." unique_id=1331683831 instance=ExtResource("33_j5hao")]
+[node name="PauseMenuUI" parent="." unique_id=1331683831 instance=ExtResource("33_j5hao")]
 visible = false
 
 [node name="TabuaQuebradaPreta" parent="." unique_id=558300887 instance=ExtResource("35_3vc4b")]

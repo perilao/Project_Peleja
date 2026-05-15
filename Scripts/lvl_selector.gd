@@ -38,7 +38,8 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	SoundControl.button_click.play()
 	SoundControl.menu_bgm.stop()
-	get_tree().change_scene_to_file("res://Scenes/Current_Level1.tscn")
+	var scene = load("res://Scenes/Current_Level1.tscn")
+	get_tree().change_scene_to_packed(scene)
 	
 func _on_button_2_pressed() -> void:
 	SoundControl.button_click.play()

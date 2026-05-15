@@ -26,7 +26,12 @@ var hold_rotation_offset: Vector3
 #ANIMATION
 @onready var animation: AnimationPlayer = $"animações 3/AnimationPlayer"
 
-
+func _ready() -> void:
+	print("Player ready! Stack: ", get_stack())
+	block_input = false
+	lock_z = false
+	lock_rotation = false
+	locked_rotation_y = 0.0
 func _physics_process(delta: float) -> void:
 	#BLOCK PLAYER MOVEMENT
 	if block_input:
