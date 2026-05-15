@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b56qpyu1ovvqd" path="res://Assets/3D Assets/Texturas/chão inverso.png" id="3_3vc4b"]
 [ext_resource type="Texture2D" uid="uid://wiwuwa4a4o2q" path="res://Assets/3D Assets/Player/Textura joaquim.png" id="3_bv3xk"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="4_x7y7a"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/mato.tscn" id="5_k70y7"]
+[ext_resource type="PackedScene" uid="uid://be3m7dvfa0qgy" path="res://Assets/Prefabs 3D/mato.tscn" id="5_k70y7"]
 [ext_resource type="Material" uid="uid://drfh00vfi7tq3" path="res://Materials/outline material.tres" id="5_n3qit"]
 [ext_resource type="Texture2D" uid="uid://bkuuwfqprrurt" path="res://Assets/3D Assets/Texturas/Textura porta 1.png" id="6_adlhc"]
 [ext_resource type="Texture2D" uid="uid://drrvy1uu40gyw" path="res://Assets/3D Assets/Texturas/Textura porta 2.png" id="7_thgey"]
@@ -29,13 +29,13 @@
 [ext_resource type="Texture2D" uid="uid://rcoookjdcok0" path="res://Assets/2D Assets/progress bar/marcaçao.png" id="18_thgey"]
 [ext_resource type="Texture2D" uid="uid://diukm3cmbifl" path="res://Assets/3D Assets/Texturas/Textura tabua de madeira.png" id="19_h2cb4"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
+[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
 [ext_resource type="Texture2D" uid="uid://c8fg5r7rgmxsf" path="res://Assets/3D Assets/Texturas/Textura janela.png" id="22_abf53"]
 [ext_resource type="Texture2D" uid="uid://b0b036e8uhem7" path="res://Assets/3D Assets/Texturas/Textura poltrona 3.png" id="28_e5fwq"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
 [ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="33_j5hao"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_3vc4b"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_e5fwq"]
+[ext_resource type="PackedScene" uid="uid://dew0to42qmc8h" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_3vc4b"]
+[ext_resource type="PackedScene" uid="uid://cckc058w3620r" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_e5fwq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 shading_mode = 0
@@ -1627,6 +1627,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("broken_phase_window:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blocked_phase_window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vilnr"]
 resource_name = "broken"
@@ -1642,9 +1666,84 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blocked_phase_window:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("broken_phase_window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_shu5d"]
 resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("broken_phase_window:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blocked_phase_window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f60s3"]
+resource_name = "open_dangerous"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1699,7 +1798,8 @@ _data = {
 &"RESET": SubResource("Animation_r7lsl"),
 &"blocked": SubResource("Animation_c2huh"),
 &"broken": SubResource("Animation_vilnr"),
-&"open": SubResource("Animation_shu5d")
+&"open": SubResource("Animation_shu5d"),
+&"open_dangerous": SubResource("Animation_f60s3")
 }
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4iphx"]
@@ -2090,6 +2190,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:mesh:surface_1/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_j5hao"]
 resource_name = "blocked"
@@ -2246,13 +2370,114 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:mesh:surface_1/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ffd1f"]
+resource_name = "open_dangerous"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaBarricada:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaQuebradaBarricada:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:mesh:surface_1/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vc4b"]
 _data = {
 &"RESET": SubResource("Animation_0wgr0"),
 &"blocked": SubResource("Animation_j5hao"),
 &"broken": SubResource("Animation_k70y7"),
-&"open": SubResource("Animation_684ly")
+&"open": SubResource("Animation_684ly"),
+&"open_dangerous": SubResource("Animation_ffd1f")
 }
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jgkgd"]
@@ -2632,6 +2857,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1cyru"]
 resource_name = "open_dangerous"
@@ -2685,7 +2922,7 @@ tracks/3/keys = {
 "values": [Color(1, 0.16862746, 0.32156864, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7lsl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5fwq"]
 _data = {
 &"RESET": SubResource("Animation_3vc4b"),
 &"blocked": SubResource("Animation_e5fwq"),
@@ -4775,7 +5012,6 @@ shape = SubResource("BoxShape3D_2a60c")
 
 [node name="DoorAnimation" type="AnimationPlayer" parent="Events/Event_Test1" unique_id=466381979]
 libraries/ = SubResource("AnimationLibrary_3vc4b")
-autoplay = &"open"
 
 [node name="Event_Test2" type="StaticBody3D" parent="Events" unique_id=731781417 node_paths=PackedStringArray("animation_player") groups=["event"]]
 unique_name_in_owner = true
@@ -4816,7 +5052,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021306038, 0, 0.21502686)
 shape = SubResource("BoxShape3D_2a60c")
 
 [node name="Window2Animation" type="AnimationPlayer" parent="Events/Event_Test2" unique_id=901253144]
-libraries/ = SubResource("AnimationLibrary_r7lsl")
+libraries/ = SubResource("AnimationLibrary_e5fwq")
 autoplay = &"blocked"
 
 [node name="Itens" type="Node3D" parent="." unique_id=1727326629]

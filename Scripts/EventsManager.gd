@@ -32,19 +32,28 @@ func _ready() -> void:
 func _process(_delta):
 #CONTADOR
 	#CHANGE STATE AFTER CERTAIN TIME
-	if timer_geral.time_left <= event_time:
-		#mesh.get_active_material(0).albedo_color = Color.RED
+	#3 SEGUNDOS ANTES DO JOGADOR PERDER
+	if timer_geral.time_left <= event_time and timer_geral.time_left < 3.0:
+		if current_state != "open_dangerous":
+			current_state = "open_dangerous"
+			if animation_player and animation_player.current_animation != "open_dangerous":
+				animation_player.play("open_dangerous") 
+				SoundControl.lose.play()
+	#QUANDO A ENTRADA FICA LIVRE
+	elif timer_geral.time_left <= event_time:
 		if current_state != "open":
 			current_state = "open"
 			if animation_player and animation_player.current_animation != "open":
 				animation_player.play("open")
-				SoundControl.lose.play()
-	if timer_geral.time_left >= event_time and timer_geral.time_left < 25.0:
+				SoundControl.item_break.play()
+	#QUANDO A BARRICADA SE QUEBRA
+	elif timer_geral.time_left >= event_time and timer_geral.time_left < 25.0:
 		if current_state != "broken":
 			current_state = "broken"
 			if animation_player and animation_player.current_animation != "broken":
 				animation_player.play("broken") 
 				SoundControl.item_break.play()
+
 	#INTERACTION OBJECT/EVENT
 	if Input.is_action_just_pressed("ui_interact"):
 		if timer_geral.time_left <= event_time and isOnArea: 
