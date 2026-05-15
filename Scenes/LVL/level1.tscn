@@ -4749,13 +4749,13 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.621342, -0.453709, -0.6318865)
 physics_material_override = SubResource("PhysicsMaterial_4iphx")
 script = ExtResource("9_7l1c6")
-event_time = 20.0
+event_time = 45.0
 event_name = "lado"
 outline_material = ExtResource("10_ne4o0")
 animation_player = NodePath("DoorAnimation")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test1" unique_id=364387740 groups=["start_opened"]]
-wait_time = 40.0
+wait_time = 75.0
 one_shot = true
 autostart = true
 
@@ -4792,13 +4792,13 @@ unique_name_in_owner = true
 transform = Transform3D(-0.0136132045, 0, -0.9999073, 0, 1, 0, 0.9999073, 0, -0.0136132045, 16.703907, -0.4537071, -1.0195389)
 physics_material_override = SubResource("PhysicsMaterial_jgkgd")
 script = ExtResource("9_7l1c6")
-event_time = 20.0
+event_time = 45.0
 event_name = "baixo"
 outline_material = ExtResource("10_ne4o0")
 animation_player = NodePath("Window2Animation")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test2" unique_id=586107918]
-wait_time = 30.0
+wait_time = 65.0
 one_shot = true
 autostart = true
 
@@ -4834,13 +4834,13 @@ unique_name_in_owner = true
 transform = Transform3D(0.99963415, 0, -0.027049344, 0, 1, 0, 0.027049344, 0, 0.99963415, -8.016912, -0.4537071, -7.518922)
 physics_material_override = SubResource("PhysicsMaterial_jgkgd")
 script = ExtResource("9_7l1c6")
-event_time = 20.0
+event_time = 45.0
 event_name = "baixo"
 outline_material = ExtResource("10_ne4o0")
 animation_player = NodePath("Window2Animation")
 
 [node name="timer_geral" type="Timer" parent="Events/Event_Test4" unique_id=658845689]
-wait_time = 30.0
+wait_time = 70.0
 one_shot = true
 autostart = true
 
