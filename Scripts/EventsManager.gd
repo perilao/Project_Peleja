@@ -2,6 +2,8 @@ extends StaticBody3D
 
 #TIMER PROPERTIES
 @export var event_time := 4.0
+@export var event_dangerous := 15.0
+@export var event_broken := 40.0
 @onready var timer_geral: Timer = $timer_geral
 var original_wait_time: float
 #EVENT
@@ -33,7 +35,7 @@ func _process(_delta):
 #CONTADOR
 	#CHANGE STATE AFTER CERTAIN TIME
 	#3 SEGUNDOS ANTES DO JOGADOR PERDER
-	if timer_geral.time_left <= event_time and timer_geral.time_left < 15.0:
+	if timer_geral.time_left <= event_time and timer_geral.time_left < event_dangerous:
 		if current_state != "open_dangerous":
 			current_state = "open_dangerous"
 			if animation_player and animation_player.current_animation != "open_dangerous":
@@ -47,7 +49,7 @@ func _process(_delta):
 				animation_player.play("open")
 				SoundControl.item_break.play()
 	#QUANDO A BARRICADA SE QUEBRA
-	elif timer_geral.time_left >= event_time and timer_geral.time_left < 40.0:
+	elif timer_geral.time_left >= event_time and timer_geral.time_left < event_broken:
 		if current_state != "broken":
 			current_state = "broken"
 			if animation_player and animation_player.current_animation != "broken":
@@ -77,9 +79,9 @@ func _on_timer_geral_timeout() -> void:
 	SoundControl.lvl_1_bgm.stop()
 	get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
 #AREAS
-func _on_area_3d_area_entered(_area: Area3D) -> void:
-	isOnArea = true
-	#mesh.material_override = outline_material
-func _on_area_3d_area_exited(_area: Area3D) -> void:
-	isOnArea = false
-	#mesh.material_override = null
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area == player.player_area:
+		isOnArea = true
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area == player.player_area:
+		isOnArea = false

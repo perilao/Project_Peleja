@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bd6ua5olvcjig" path="res://Assets/3D Assets/Texturas/chão 3.png" id="2_6y803"]
 [ext_resource type="Texture2D" uid="uid://b56qpyu1ovvqd" path="res://Assets/3D Assets/Texturas/chão inverso.png" id="3_suqxw"]
 [ext_resource type="Texture2D" uid="uid://bif3e5tvgvtwj" path="res://Assets/3D Assets/Texturas/Textura telha.png" id="4_fpxdy"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/mato.tscn" id="5_uv1om"]
+[ext_resource type="PackedScene" uid="uid://be3m7dvfa0qgy" path="res://Assets/Prefabs 3D/mato.tscn" id="5_uv1om"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="6_1g7bq"]
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="7_7xh8u"]
 [ext_resource type="Texture2D" uid="uid://wiwuwa4a4o2q" path="res://Assets/3D Assets/Player/Textura joaquim.png" id="8_18ouw"]
@@ -31,10 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://lev24p4unyyq" path="res://Assets/3D Assets/Texturas/Textura prateleira.png" id="30_b7as8"]
 [ext_resource type="Texture2D" uid="uid://bo3kqfvgkdhyf" path="res://Assets/3D Assets/Texturas/Textura cantinho de reza.png" id="31_yuwc6"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="32_tpfw0"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="33_opnaa"]
+[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="33_opnaa"]
 [ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="34_t6ojf"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_b54i3"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_y6wb5"]
+[ext_resource type="PackedScene" uid="uid://dew0to42qmc8h" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_b54i3"]
+[ext_resource type="PackedScene" uid="uid://cckc058w3620r" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_y6wb5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 shading_mode = 0
@@ -1499,57 +1499,6 @@ size = Vector3(3.3389893, 1, 2.2557373)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2a60c"]
 size = Vector3(3.4363174, 1, 3.3036194)
 
-[sub_resource type="Animation" id="Animation_0wgr0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PortaBarricada:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PortaQuebradaBarricada:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_j5hao"]
 resource_name = "blocked"
 loop_mode = 1
@@ -1705,24 +1654,127 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:mesh:surface_1/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s6mmw"]
+resource_name = "open_dangerous"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaBarricada:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaQuebradaBarricada:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D:mesh:surface_1/material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vc4b"]
 _data = {
-&"RESET": SubResource("Animation_0wgr0"),
 &"blocked": SubResource("Animation_j5hao"),
 &"broken": SubResource("Animation_k70y7"),
-&"open": SubResource("Animation_684ly")
+&"open": SubResource("Animation_684ly"),
+&"open_dangerous": SubResource("Animation_s6mmw")
 }
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jgkgd"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5hao"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s6mmw"]
+load_path = "res://.godot/imported/Textura janela.png-c30769e26d15bcdbba3184b11b00e29f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeq3j"]
 shading_mode = 0
 albedo_color = Color(1, 0.16862746, 0.32156864, 1)
-albedo_texture = ExtResource("11_em72g")
+albedo_texture = SubResource("CompressedTexture2D_s6mmw")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_abf53"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nddmk"]
 _surfaces = [{
 "aabb": AABB(-0.96, -10.712759, -7.570641, 1.92, 22.800001, 14.800001),
 "format": 34896613377,
@@ -1737,7 +1789,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_adlhc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_o042l"]
 _surfaces = [{
 "aabb": AABB(-0.96, -10.712759, -7.570641, 1.92, 22.800001, 14.800001),
 "attribute_data": PackedByteArray("0FlWgTVVu3xqqrt8aqpWgTVV///QWT36aqr//6ikPfpqqlaBqKRWgTVVu3yZUFaBAAC7fAAAVoGZUD36NVX//8EFPfoAAP//wQVWgQAAVoE2CYYn0Q2GJzYJu3zRDbt8riEgeEkmIHiuIbt8SSa7fGP7bwgc/G8IY/tWgRz8VoHI9rt8Y/u7fMj2//9j+///AADUA5sE1AMAALt8mwS7fNENhidsErt80Q27fGwShicHF+MxohvjMQcXu3yiG7t8Ex35dq4h+XYTHbt8riG7fP////9j+/////9WgWP7VoE2Cbt8mwS7fDYJ1AObBNQDlgHFAk4CxQIAANQDmwTUA7gUcXdxFXF3bBK7fGwSISy4FBIrBxe7fHEVEisHFyEsWhxcMBMdXDBaHLt8Ex27fGqqGIfI9hiHaqr//8j2//+iG9QDWhzUA6Ibu3xaHLt8aqoxDsj2MQ5qqhiHyPYYh5lQu3w1VVaBNVU9+plQ///BBf//AAA9+sj2VoFj+1aByPY9+mP7Pfo1VVaB0Fm7fDVVPfrQWf//qKT//2qqPfo2CSEs0Q0hLNENISxsEiEs0Q35dmwS+XZj+z36//89+g=="),
@@ -1745,7 +1797,7 @@ _surfaces = [{
 "index_count": 228,
 "index_data": PackedByteArray("CwBYAFkAWQBYAAoAWAALAAwADAALAA0ACwBZAA4ADgBZAFoADgBaAFsAWwBaAA8ADgBbABAAEABbAFwAEABcAF0AXQBcABEAEABdABIAEgBdABMAXgAgAF8AXwAgACEAXgBfAGAAYABfAGEAYABhACIAIgBhACMAYgABAAAAAAABAGMAYgAAAGQAAABjAAMAAwBjAAIAZAAAAAUAZAAFAAQABAAFAGUAZQAFAGYAZgAFAAcAZgAHAAYABgAHAGcAZwAHAAgACAAHAAkAFAAVAGgAaAAVAGkAaABpABYAFgBpABcAKAArAGoAagArAGsAagBrAGwAbABrAG0AbABtACoAKgBtACkAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AJAAlACYAJgAlACcAbgBvADUANQBvADQAbwBuADYANgBuADcALAAtAC4ALgAtAC8AMAAxADIAMgAxADMAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AQABBAEIAQwBAAEIARABAAEMAQgBBAEUAQQBGAEUARQBGAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcA"),
 "lods": [0.0036699313, PackedByteArray("AAABAAIAAAACAAMAAQAAAAQABAAAAAUABAAFAAYABgAFAAcABgAHAAgACAAHAAkACgALAAwADAALAA0ACwAKAA4ADgAKAA8ADgAPABAAEAAPABEAEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AIAAhACIAIgAhACMAJAAlACYAJgAlACcAKAApACoAKAArACkALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AQABBAEIAQwBAAEIARABAAEMAQgBBAEUAQQBGAEUARQBGAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcA")],
-"material": SubResource("StandardMaterial3D_j5hao"),
+"material": SubResource("StandardMaterial3D_qeq3j"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -1753,7 +1805,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("///7CNYN/////wAAAAD/////AAD////////7CP//////////AAD/////xPTWDf///////////////8T0su7/////+wj////////7CLLu//8AAAAAAAD//wAA+wjWDf//AAAAAP////8AAPsI/////wAAxPTWDf//AAD//wAA//8AAMT0su7//wAA////////AAD7CLLu//8AAPsI////////AAAAAP//AAAAAAAA/////wAA/////wAAAAD////////7CP///7///wAA////vwAA+wj///+/AAAAAP///7/Op/sIG/D//8N/+wgb8P//zqfE9Bvw///Df8T0G/D//wAAAAAAAP////8AAAAA//8AAP//AAD///////8AAP/////7CNYN//8AAPsI1g3/////xPTWDf//AADE9NYN//8AAP//AAD/v/////////+/AAD//////7//////AAD/v///xPTWDf//AADE9NYN/////8T0su7//wAAxPSy7v/////7CLLu//8AAPsIsu7/////+wj/////AAD7CP////8AAP//////////////////AAD7CP////////sI////////xPSy7v//AADE9LLu//////sIsu7//wAA+wiy7v//zqf7CKkK///Df/sIqQr/////+wjWDf//AAD7CNYN///Df/sIG/D/v86n+wgb8P+/AAD7CP///78AAPsI1g3/v8N/+wipCv+////7CP///7/Op/sIqQr/v///+wjWDf+/w3/E9KkK/7/Op8T0qQr/v8N/xPQb8P+/zqfE9Bvw/7/Df/sIG/D//8N/+wipCv//w3/E9Bvw///Df8T0qQr//8N/+wipCv//zqf7CKkK///Df8T0qQr//86nxPSpCv//zqf7CKkK///Op/sIG/D//86nxPSpCv//zqfE9Bvw//8AAAAA1g3//wAA+wgAAP//AADE9AAA//8AAP//1g3//wAA//+y7v//AADE9P////8AAPsIAAD/////+wgAAP//AADE9AAA/////8T0AAD/////+wgAAP////8AANYN/////8T0AAD////////WDf///////7Lu/////8T0////////AADWDf//AAAAANYN//8AAP//1g3/v//////WDf+/AAD//7Lu/7//////su7/v///xPT/////AADE9P//////v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/9//z//f/8//3//P/9//z//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f////3////9/////f////3//f/9//3//f/9//3//f/9/////f////3////9/////f/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//f/9//3//f/9//3//f////3////9/////f////3//f/8//3//P/9//z//f/8//v//f/7//3/+//9//v//f/7//3/+//9//v//f/7//n////9/////f////3////9//z//f/8//3//P/9//z//f////3////9/////f////3//v/9//7//f/+//3//v/9//z//f/8//3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//v/9//7//f/9//z//f/8/////f////3////9/////f/9//3//f/9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_abf53")
+shadow_mesh = SubResource("ArrayMesh_nddmk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vc4b"]
 shading_mode = 0
@@ -2109,45 +2161,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i12ky")
 
-[sub_resource type="Animation" id="Animation_3vc4b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("broken_phase_window:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("blocked_phase_window:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_e5fwq"]
 resource_name = "blocked"
 loop_mode = 1
@@ -2267,16 +2280,102 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8e5yf"]
+resource_name = "open_dangerous"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("broken_phase_window:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blocked_phase_window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7lsl"]
 _data = {
-&"RESET": SubResource("Animation_3vc4b"),
 &"blocked": SubResource("Animation_e5fwq"),
 &"broken": SubResource("Animation_tekxc"),
-&"open": SubResource("Animation_7p1e7")
+&"open": SubResource("Animation_7p1e7"),
+&"open_dangerous": SubResource("Animation_8e5yf")
 }
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8e5yf"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5qagv"]
+load_path = "res://.godot/imported/Textura janela.png-c30769e26d15bcdbba3184b11b00e29f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwoxf"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_5qagv")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d53i2"]
+_surfaces = [{
+"aabb": AABB(-0.96, -10.712759, -7.570641, 1.92, 22.800001, 14.800001),
+"format": 34896613377,
+"index_count": 228,
+"index_data": PackedByteArray("BwAcAB0AHAAHAAYAAgAcAAYACAACAAYABgAHAAgAHgAcAAIACQACAAgACQAeAAIAHgAFABwAHQAcAAUAAQAFAB4AHQAFAB8AHwAFAAEAAAABAB4AHwABAAAAAAAeAAkAHQAfACAAHwAAACEAIAAfACEAEwAdACAABwAdABMAIAAhAAQAIgAgAAQAEwAgACIABAAhAAMABAADACIAIQASAAMAIQAAABIAAAAHABIAEgAHABMAAwASACMAIgADACMAEgATABUAEwAiABYAFQATABYAIgAjACQAFgAiACQAIwASACUAJAAjACUAJQASABUAJAAlABcAFgAkACYAJgAkABcAFwAlABQAFAAmABcAJQAVABQAJwAmABQAFAAVACcAJgAnABgAFQAWABkAFgAmABoAGgAmABgAGQAWABoAGAAnABsAJwAVABsAGwAaABgAGwAVABkAGQAaABsACgAMAA0ADQAMABAAEAAOAA0ADgAKAA0ADwAOABAADAAKAAgACAAKAAkABwAMAAgACwAKAA4ACgALAAkADwALAA4ACQALAAAAEAARAA8ADAARABAAEQALAA8AEQAMAAcACwARAAAAAAARAAcA"),
+"lods": [0.0036699313, PackedByteArray("AAABAAIAAQAAAAMABAABAAMAAQAFAAIABQABAAQAAgAFAAYABQAHAAYACAACAAYABgAHAAgACQACAAgAAAACAAkACAAKAAkACQALAAAACgALAAkADAAKAAgABwAMAAgACgAMAA0ACwAKAA4ADgAKAA0ADwALAA4AEAAOAA0ADwAOABAADQAMABAAEQALAA8AEAARAA8ADAARABAACwARAAAAEQAMAAcAAAARAAcAAAAHABIAAwAAABIAEgAHABMABwAFABMAAwASABQAEwAFAAQABAADABQAEgATABUAFAASABUAEwAEABYAFQATABYABAAUABcAFgAEABcAFwAUABgAFQAWABkAFgAXABoAGgAXABgAGQAWABoAGAAUABsAFAAVABsAGwAaABgAGwAVABkAGQAaABsA")],
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("///7CNYNAAD//wAAAAAAAP//AAD//wAA/////wAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAP//AAAAAPsI1g0AAAAA+wj//wAA///7CP//AADOp/sIG/AAAM6n+wipCgAAw3/7CBvwAADOp8T0G/AAAM6nxPSpCgAAw3/E9KkKAADDf8T0G/AAAMN/+wipCgAA///E9NYNAAAAAMT01g0AAP///////wAA///E9LLuAAAAAMT0su4AAAAA/////wAAAAD7CP//AAD///sIsu4AAAAA+wiy7gAA///7CP//AAAAAAAA1g0AAAAA+wgAAAAA//8AANYNAAD///sIAAAAAAAAxPQAAAAA///E9AAAAAAAAP//1g0AAP/////WDQAAAAD//7LuAAD/////su4AAAAAxPT//wAA///E9P//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pkjrd"]
 _surfaces = [{
 "aabb": AABB(-0.96, -10.712759, -7.570641, 1.92, 22.800001, 14.800001),
 "attribute_data": PackedByteArray("0FlWgTVVu3xqqrt8aqpWgTVV///QWT36aqr//6ikPfpqqlaBqKRWgTVVu3yZUFaBAAC7fAAAVoGZUD36NVX//8EFPfoAAP//wQVWgQAAVoE2CYYn0Q2GJzYJu3zRDbt8riEgeEkmIHiuIbt8SSa7fGP7bwgc/G8IY/tWgRz8VoHI9rt8Y/u7fMj2//9j+///AADUA5sE1AMAALt8mwS7fNENhidsErt80Q27fGwShicHF+MxohvjMQcXu3yiG7t8Ex35dq4h+XYTHbt8riG7fP////9j+/////9WgWP7VoE2Cbt8mwS7fDYJ1AObBNQDlgHFAk4CxQIAANQDmwTUA7gUcXdxFXF3bBK7fGwSISy4FBIrBxe7fHEVEisHFyEsWhxcMBMdXDBaHLt8Ex27fGqqGIfI9hiHaqr//8j2//+iG9QDWhzUA6Ibu3xaHLt8aqoxDsj2MQ5qqhiHyPYYh5lQu3w1VVaBNVU9+plQ///BBf//AAA9+sj2VoFj+1aByPY9+mP7Pfo1VVaB0Fm7fDVVPfrQWf//qKT//2qqPfo2CSEs0Q0hLNENISxsEiEs0Q35dmwS+XZj+z36//89+g=="),
@@ -2284,7 +2383,7 @@ _surfaces = [{
 "index_count": 228,
 "index_data": PackedByteArray("CwBYAFkAWQBYAAoAWAALAAwADAALAA0ACwBZAA4ADgBZAFoADgBaAFsAWwBaAA8ADgBbABAAEABbAFwAEABcAF0AXQBcABEAEABdABIAEgBdABMAXgAgAF8AXwAgACEAXgBfAGAAYABfAGEAYABhACIAIgBhACMAYgABAAAAAAABAGMAYgAAAGQAAABjAAMAAwBjAAIAZAAAAAUAZAAFAAQABAAFAGUAZQAFAGYAZgAFAAcAZgAHAAYABgAHAGcAZwAHAAgACAAHAAkAFAAVAGgAaAAVAGkAaABpABYAFgBpABcAKAArAGoAagArAGsAagBrAGwAbABrAG0AbABtACoAKgBtACkAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AJAAlACYAJgAlACcAbgBvADUANQBvADQAbwBuADYANgBuADcALAAtAC4ALgAtAC8AMAAxADIAMgAxADMAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AQABBAEIAQwBAAEIARABAAEMAQgBBAEUAQQBGAEUARQBGAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcA"),
 "lods": [0.0036699313, PackedByteArray("AAABAAIAAAACAAMAAQAAAAQABAAAAAUABAAFAAYABgAFAAcABgAHAAgACAAHAAkACgALAAwADAALAA0ACwAKAA4ADgAKAA8ADgAPABAAEAAPABEAEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AIAAhACIAIgAhACMAJAAlACYAJgAlACcAKAApACoAKAArACkALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AQABBAEIAQwBAAEIARABAAEMAQgBBAEUAQQBGAEUARQBGAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcA")],
-"material": SubResource("StandardMaterial3D_j5hao"),
+"material": SubResource("StandardMaterial3D_lwoxf"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -2292,7 +2391,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("///7CNYN/////wAAAAD/////AAD////////7CP//////////AAD/////xPTWDf///////////////8T0su7/////+wj////////7CLLu//8AAAAAAAD//wAA+wjWDf//AAAAAP////8AAPsI/////wAAxPTWDf//AAD//wAA//8AAMT0su7//wAA////////AAD7CLLu//8AAPsI////////AAAAAP//AAAAAAAA/////wAA/////wAAAAD////////7CP///7///wAA////vwAA+wj///+/AAAAAP///7/Op/sIG/D//8N/+wgb8P//zqfE9Bvw///Df8T0G/D//wAAAAAAAP////8AAAAA//8AAP//AAD///////8AAP/////7CNYN//8AAPsI1g3/////xPTWDf//AADE9NYN//8AAP//AAD/v/////////+/AAD//////7//////AAD/v///xPTWDf//AADE9NYN/////8T0su7//wAAxPSy7v/////7CLLu//8AAPsIsu7/////+wj/////AAD7CP////8AAP//////////////////AAD7CP////////sI////////xPSy7v//AADE9LLu//////sIsu7//wAA+wiy7v//zqf7CKkK///Df/sIqQr/////+wjWDf//AAD7CNYN///Df/sIG/D/v86n+wgb8P+/AAD7CP///78AAPsI1g3/v8N/+wipCv+////7CP///7/Op/sIqQr/v///+wjWDf+/w3/E9KkK/7/Op8T0qQr/v8N/xPQb8P+/zqfE9Bvw/7/Df/sIG/D//8N/+wipCv//w3/E9Bvw///Df8T0qQr//8N/+wipCv//zqf7CKkK///Df8T0qQr//86nxPSpCv//zqf7CKkK///Op/sIG/D//86nxPSpCv//zqfE9Bvw//8AAAAA1g3//wAA+wgAAP//AADE9AAA//8AAP//1g3//wAA//+y7v//AADE9P////8AAPsIAAD/////+wgAAP//AADE9AAA/////8T0AAD/////+wgAAP////8AANYN/////8T0AAD////////WDf///////7Lu/////8T0////////AADWDf//AAAAANYN//8AAP//1g3/v//////WDf+/AAD//7Lu/7//////su7/v///xPT/////AADE9P//////v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/9//z//f/8//3//P/9//z//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f////3////9/////f////3//f/9//3//f/9//3//f/9/////f////3////9/////f/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//f/9//3//f/9//3//f////3////9/////f////3//f/8//3//P/9//z//f/8//v//f/7//3/+//9//v//f/7//3/+//9//v//f/7//n////9/////f////3////9//z//f/8//3//P/9//z//f////3////9/////f////3//v/9//7//f/+//3//v/9//z//f/8//3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//v/9//7//f/9//z//f/8/////f////3////9/////f/9//3//f/9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_abf53")
+shadow_mesh = SubResource("ArrayMesh_d53i2")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ha5o5"]
 _surfaces = [{
@@ -2466,12 +2565,64 @@ size = Vector3(3.3389893, 1, 2.2557373)
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5rgk"]
 size = Vector3(3.4363174, 1, 3.3036194)
 
+[sub_resource type="Animation" id="Animation_ha5o5"]
+resource_name = "open_dangerous"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("broken_phase_window:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blocked_phase_window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:mesh:surface_0/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16862746, 0.32156864, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_33swp"]
 _data = {
-&"RESET": SubResource("Animation_3vc4b"),
 &"blocked": SubResource("Animation_e5fwq"),
 &"broken": SubResource("Animation_tekxc"),
-&"open": SubResource("Animation_7p1e7")
+&"open": SubResource("Animation_7p1e7"),
+&"open_dangerous": SubResource("Animation_ha5o5")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aodf2"]
@@ -3459,6 +3610,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_buvuc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5hao"]
+shading_mode = 0
+albedo_color = Color(1, 0.16862746, 0.32156864, 1)
+albedo_texture = ExtResource("11_em72g")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_g0yop"]
 _surfaces = [{
@@ -4737,6 +4893,7 @@ autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test1" unique_id=224152348]
 transform = Transform3D(-0.0009999998, 0, -2.3555347e-10, 0, 0.0014040001, 0, 1.5099577e-10, 0, -0.0015600001, -0.3774004, 1.7423246, 0.027278006)
+visible = false
 mesh = SubResource("ArrayMesh_grqgb")
 
 [node name="PortaBarricada" type="MeshInstance3D" parent="Events/Event_Test1" unique_id=1565689806]
@@ -4751,7 +4908,6 @@ mesh = SubResource("ArrayMesh_v8cr2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test1" unique_id=1159388203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1694946, 0, 0.12445068)
 shape = SubResource("BoxShape3D_didp7")
-disabled = true
 
 [node name="Area3D" type="Area3D" parent="Events/Event_Test1" unique_id=1573260108]
 
@@ -4780,7 +4936,8 @@ autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test2" unique_id=1659080556]
 transform = Transform3D(-5.2453664e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -5.2453664e-09, -0.028049827, 2.2797108, 0.08031845)
-mesh = SubResource("ArrayMesh_adlhc")
+visible = false
+mesh = SubResource("ArrayMesh_o042l")
 
 [node name="broken_phase_window" type="MeshInstance3D" parent="Events/Event_Test2" unique_id=901298898]
 transform = Transform3D(-5.2453664e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -5.2453664e-09, -0.029305816, 2.2806535, 0.046518326)
@@ -4789,7 +4946,6 @@ mesh = SubResource("ArrayMesh_thgey")
 
 [node name="blocked_phase_window" type="MeshInstance3D" parent="Events/Event_Test2" unique_id=838255540]
 transform = Transform3D(-5.2453664e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -5.2453664e-09, -0.02887857, 2.2807071, 0.04689741)
-visible = false
 mesh = SubResource("ArrayMesh_cud0u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Events/Event_Test2" unique_id=1057740147]
@@ -4822,7 +4978,7 @@ autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Events/Event_Test4" unique_id=2142699979]
 transform = Transform3D(-5.2453664e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -5.2453664e-09, -0.028049827, 2.2797108, 0.08031845)
-mesh = SubResource("ArrayMesh_8e5yf")
+mesh = SubResource("ArrayMesh_pkjrd")
 
 [node name="broken_phase_window" type="MeshInstance3D" parent="Events/Event_Test4" unique_id=98695245]
 transform = Transform3D(-5.2453664e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -5.2453664e-09, -0.029305816, 2.2806535, 0.046518326)
