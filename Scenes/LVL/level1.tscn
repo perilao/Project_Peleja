@@ -2709,11 +2709,14 @@ var was_used := false
 @export var outline_material: Material
 @onready var player_area = $\"../../../Player/Area3DPlayer\"
 
+#WOOD PILE
+@export var wood_pile: MeshInstance3D
+
 func _ready():
 	uses = max_uses
 	was_used = false
 	update_label()
-
+	
 func use_item():
 	#USE ITEM LABEL LOGIC
 	if uses <= 0:
@@ -2722,6 +2725,9 @@ func use_item():
 	was_used = true
 	update_label()
 	print(\"Usos:\", uses)
+	if uses <= 0:
+		if is_instance_valid(wood_pile):
+			wood_pile.queue_free()
 
 func return_use():
 	#RETURN ITEM AND ADD COUNTER
@@ -5017,7 +5023,7 @@ shape = SubResource("BoxShape3D_j5hao")
 unique_name_in_owner = true
 transform = Transform3D(0.25429535, 0, 0.43050423, 0, 0.44999996, 0, -0.43050423, 0, 0.25429535, -18.640572, 0.28116977, 13.897684)
 
-[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 node_paths=PackedStringArray("mesh") groups=["pickable"]]
+[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 node_paths=PackedStringArray("mesh", "wood_pile") groups=["pickable"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.006306, -1.6726398, 11.265303)
 collision_layer = 3
@@ -5032,6 +5038,7 @@ item_type = "baixo"
 max_uses = 4
 mesh = NodePath("Tabua")
 outline_material = ExtResource("10_ne4o0")
+wood_pile = NodePath("../../MonteDeTabuas")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item1/item1_rb" unique_id=952430070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2667203, 1.4988205, 5.157515)
@@ -5083,7 +5090,7 @@ shape = SubResource("BoxShape3D_j5hao")
 unique_name_in_owner = true
 transform = Transform3D(-0.15296504, -0.07975885, 0.46770507, 0.06691759, 0.4341398, 0.1132868, -0.4713, 0.0875279, -0.13571325, 13.5760975, -2.1393423, 7.532452)
 
-[node name="item1_rb" type="RigidBody3D" parent="Itens/Item2" unique_id=1417096501 node_paths=PackedStringArray("mesh") groups=["pickable"]]
+[node name="item1_rb" type="RigidBody3D" parent="Itens/Item2" unique_id=1417096501 node_paths=PackedStringArray("mesh", "wood_pile") groups=["pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.006306, -1.6726398, 11.265303)
 collision_layer = 3
 axis_lock_linear_x = true
@@ -5097,6 +5104,7 @@ item_type = "baixo"
 max_uses = 5
 mesh = NodePath("Tabua")
 outline_material = ExtResource("10_ne4o0")
+wood_pile = NodePath("../../MonteDeTabuas2")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item2/item1_rb" unique_id=1480647213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.342783, 2.6686356, -6.404337)

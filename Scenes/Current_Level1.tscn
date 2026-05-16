@@ -3015,6 +3015,8 @@ var was_used := false
 @export var mesh: MeshInstance3D
 @export var outline_material: Material
 @onready var player_area = $\"../../../Player/Area3DPlayer\"
+#WOOD PILE
+@export var wood_pile: MeshInstance3D
 
 func _ready():
 	uses = max_uses
@@ -3029,6 +3031,9 @@ func use_item():
 	was_used = true
 	update_label()
 	print(\"Usos:\", uses)
+	if uses <= 0:
+		if is_instance_valid(wood_pile):
+			wood_pile.queue_free()
 
 func return_use():
 	#RETURN ITEM AND ADD COUNTER
@@ -5073,7 +5078,7 @@ shape = SubResource("BoxShape3D_j5hao")
 unique_name_in_owner = true
 transform = Transform3D(0.25429535, 0, 0.43050423, 0, 0.44999996, 0, -0.43050423, 0, 0.25429535, 2.3730564, 0.28116977, 14.116062)
 
-[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 node_paths=PackedStringArray("mesh") groups=["pickable"]]
+[node name="item1_rb" type="RigidBody3D" parent="Itens/Item1" unique_id=1221392825 node_paths=PackedStringArray("mesh", "wood_pile") groups=["pickable"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.006306, -1.6726398, 11.265303)
 collision_layer = 3
@@ -5088,6 +5093,7 @@ item_type = "baixo"
 max_uses = 9
 mesh = NodePath("Tabua")
 outline_material = ExtResource("5_n3qit")
+wood_pile = NodePath("../../MonteDeTabuas")
 
 [node name="Label3D" type="Label3D" parent="Itens/Item1/item1_rb" unique_id=952430070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.681807, 2.1806471, 5.4213715)
@@ -5143,7 +5149,7 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_esggg")
 item_type = "cima"
-uses = 1
+uses = 7
 current_player_speed = 2
 move_horizontal = true
 mesh = NodePath("meshitem2")
