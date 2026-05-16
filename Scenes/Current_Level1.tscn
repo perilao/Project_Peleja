@@ -3142,6 +3142,7 @@ var return_speed: float = 1.0
 @onready var evento: StaticBody3D = %Event_Test3
 @export var return_start_time: float = 40.0
 @export var return_duration: float = 10.0
+var is_destroying := false
 
 func _ready():
 	freeze = true
@@ -3173,12 +3174,15 @@ func _physics_process(delta):
 		var target = Vector3(original_x, original_y, original_z)
 		global_position = global_position.move_toward(target, return_speed * delta)
 		global_position.y = original_y
-		if global_position.distance_to(target) < 0.1:
+		if global_position.distance_to(target) < 0.1 and !is_destroying:
 			is_returning = false
 			freeze = true
 			push_complete = false
 			player.cant_grab = false
-			use_item()
+			if uses <= 0: 
+				is_destroying = true
+				await get_tree().process_frame
+				queue_free()
 		
 func _process(_delta):
 	if push_complete and !is_returning:
@@ -3196,6 +3200,10 @@ func start_return():
 
 func start_push():
 	if is_being_pushed:
+		return
+	if uses <= 0:
+		return
+	if push_complete and !is_returning:
 		return
 	if uses <= 1 and is_returning:
 		return
@@ -3245,10 +3253,7 @@ func finish_push():
 	timer_geral.start()
 	evento.mesh.get_active_material(0).albedo_color = evento.Event_Color
 	player.player_has_item = false
-	if uses == 1:
-		return
-	else:
-		use_item()
+	use_item()
 func use_item():
 	#USE ITEM LABEL LOGIC
 	if uses <= 0:
@@ -3257,11 +3262,7 @@ func use_item():
 	was_used = true
 	update_label()
 	print(\"Usos:\", uses)
-	
-	if uses <= 0: 
-		player.cant_grab = false
-		await get_tree().process_frame
-		queue_free()
+
 
 func return_use():
 	#RETURN ITEM AND ADD COUNTER
@@ -3272,15 +3273,17 @@ func return_use():
 
 func update_label():
 	#UPDATE THE COUNTER
+	if is_destroying:
+		return
 	if label != null:
 		label.text = str(uses)
 
-func _on_areaitem_2_area_entered(_area: Area3D) -> void:
-	mesh.material_overlay = outline_material
-
-
-func _on_areaitem_2_area_exited(_area: Area3D) -> void:
-	mesh.material_overlay = null
+func _on_areaitem_2_area_entered(area: Area3D) -> void:
+	if area == player.player_area:
+		mesh.material_overlay = outline_material
+func _on_areaitem_2_area_exited(area: Area3D) -> void:
+	if area == player.player_area:
+		mesh.material_overlay = null
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esggg"]
@@ -5140,7 +5143,7 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_esggg")
 item_type = "cima"
-uses = 7
+uses = 1
 current_player_speed = 2
 move_horizontal = true
 mesh = NodePath("meshitem2")
@@ -5153,7 +5156,7 @@ pixel_size = 0.03
 offset = Vector2(0, 2)
 billboard = 1
 modulate = Color(0.08627451, 0.08627451, 0.08627451, 1)
-text = "7"
+text = "0"
 font = ExtResource("12_cud0u")
 
 [node name="Sprite3D" type="Sprite3D" parent="Itens/Item2/item2_rb/Label3D" unique_id=2136752255 groups=["pushable"]]
