@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3mw06h2owico"]
 
-[ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_p1f1o"]
+[ext_resource type="Script" uid="uid://bbtmtedlda4xi" path="res://Scripts/tutorial.gd" id="1_p1f1o"]
 [ext_resource type="Texture2D" uid="uid://krq5syxsrl5w" path="res://Assets/2D Assets/moldura.png" id="2_ys4pu"]
 [ext_resource type="Texture2D" uid="uid://drsrgcw5f777j" path="res://Assets/Buttons/moldurabotao2.png" id="3_h2ono"]
 [ext_resource type="Texture2D" uid="uid://b014vc7soe7dy" path="res://Assets/2D Assets/buttons/test/pressed.png" id="4_on4kn"]
@@ -8,8 +8,10 @@
 [ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="6_8va2t"]
 [ext_resource type="Texture2D" uid="uid://cch38twsv55x" path="res://Assets/2D Assets/Captura de tela 2026-05-14 103205.png" id="7_70gml"]
 [ext_resource type="Texture2D" uid="uid://ck00e02ft06l7" path="res://Assets/2D Assets/Captura de tela 2026-05-14 101449.png" id="7_h2ono"]
+[ext_resource type="Texture2D" uid="uid://u80jf57c3m45" path="res://Assets/2D Assets/UI Controls/espaco.png" id="8_8mnmb"]
 [ext_resource type="Texture2D" uid="uid://cx11iueulj3qg" path="res://Assets/2D Assets/Captura de tela 2026-05-14 101918.png" id="8_on4kn"]
 [ext_resource type="Texture2D" uid="uid://bd58vtlphb8d" path="res://Assets/2D Assets/Captura de tela 2026-05-14 102544.png" id="9_on4kn"]
+[ext_resource type="Texture2D" uid="uid://b5jsx233dvmnh" path="res://Assets/2D Assets/UI Controls/botaoE.png" id="11_koko0"]
 
 [node name="Node2D" type="Node2D" unique_id=476768672]
 script = ExtResource("1_p1f1o")
@@ -58,6 +60,33 @@ texture_normal = ExtResource("3_h2ono")
 texture_pressed = ExtResource("4_on4kn")
 texture_hover = ExtResource("5_70gml")
 
+[node name="Espaco" type="Sprite2D" parent="next2" unique_id=1028692912]
+position = Vector2(-3348.163, 322.71802)
+scale = Vector2(1.0698398, 1.0917631)
+texture = ExtResource("8_8mnmb")
+
+[node name="Label" type="Label" parent="next2/Espaco" unique_id=337055069]
+offset_left = 672.4744
+offset_top = -162.57626
+offset_right = 788.4744
+offset_bottom = -146.20035
+scale = Vector2(23.24, 23.24)
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 13
+text = "para pegar o item"
+
+[node name="Label2" type="Label" parent="next2/Espaco" unique_id=2086486633]
+offset_left = -1489.0505
+offset_top = -162.57626
+offset_right = -1454.0505
+offset_bottom = -146.20035
+scale = Vector2(23.24, 23.24)
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 13
+text = "Aperte"
+
 [node name="visual" type="Sprite2D" parent="next2" unique_id=407219035]
 position = Vector2(-2593.1465, -1000.42474)
 scale = Vector2(3.9529672, 4.0339723)
@@ -66,9 +95,9 @@ texture = ExtResource("7_h2ono")
 [node name="Label" type="Label" parent="next2" unique_id=230512401]
 layout_mode = 0
 offset_left = -5850.391
-offset_top = -2807.644
+offset_top = -2888.3235
 offset_right = 632.4746
-offset_bottom = -1807.2188
+offset_bottom = -1887.8982
 theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 350
@@ -78,10 +107,10 @@ autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="next2" unique_id=2085777609]
 layout_mode = 0
-offset_left = -6071.7573
-offset_top = 290.4463
-offset_right = -980.33496
-offset_bottom = 580.8921
+offset_left = -5166.528
+offset_top = -2202.5483
+offset_right = -75.10547
+offset_bottom = -1912.1025
 theme_override_colors/font_color = Color(1, 0.16862746, 0.32156864, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 232
@@ -108,9 +137,9 @@ texture = ExtResource("8_on4kn")
 [node name="Label" type="Label" parent="next3" unique_id=54673532]
 layout_mode = 0
 offset_left = -5850.391
-offset_top = -2807.644
+offset_top = -2888.3235
 offset_right = 632.4746
-offset_bottom = -1807.2188
+offset_bottom = -1887.8982
 theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 350
@@ -120,16 +149,45 @@ autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="next3" unique_id=2053240775]
 layout_mode = 0
-offset_left = -6198.2524
-offset_top = 322.71808
-offset_right = -1897.4243
-offset_bottom = 613.1639
+offset_left = -4719.843
+offset_top = -2202.5483
+offset_right = -419.01465
+offset_bottom = -1912.1025
 theme_override_colors/font_color = Color(1, 0.16862746, 0.32156864, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 232
 text = "*Utilize as dicas do nível para descobri-los"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="next3" unique_id=858324121]
+layout_mode = 0
+offset_left = -4407.5586
+offset_top = 139.53682
+offset_right = -4372.5586
+offset_bottom = 155.9128
+scale = Vector2(23.24, 23.24)
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 13
+text = "Aperte"
+
+[node name="Label5" type="Label" parent="next3" unique_id=642787404]
+layout_mode = 0
+offset_left = -2842.1836
+offset_top = 141.18916
+offset_right = -2754.1836
+offset_bottom = 157.56514
+scale = Vector2(23.24, 23.24)
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 13
+text = "para usar o item"
+
+[node name="BotaoE" type="Sprite2D" parent="next3" unique_id=1247395899]
+position = Vector2(-3197.9492, 304.92853)
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("11_koko0")
 
 [node name="next4" type="TextureButton" parent="." unique_id=1080879495]
 visible = false
@@ -142,12 +200,41 @@ texture_normal = ExtResource("3_h2ono")
 texture_pressed = ExtResource("4_on4kn")
 texture_hover = ExtResource("5_70gml")
 
+[node name="Label6" type="Label" parent="next4" unique_id=1489532916]
+layout_mode = 0
+offset_left = -4779.1367
+offset_top = 139.53711
+offset_right = -4742.1367
+offset_bottom = 155.91309
+scale = Vector2(23.24, 23.24)
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 13
+text = "Segure"
+
+[node name="Label7" type="Label" parent="next4" unique_id=167872628]
+layout_mode = 0
+offset_left = -3237.4795
+offset_top = 141.18921
+offset_right = -3119.4795
+offset_bottom = 157.56519
+scale = Vector2(23.24, 23.24)
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("6_8va2t")
+theme_override_font_sizes/font_size = 13
+text = "remover as barricadas"
+
+[node name="BotaoE2" type="Sprite2D" parent="next4" unique_id=1580221756]
+position = Vector2(-3569.5278, 304.9287)
+scale = Vector2(0.795, 0.79500014)
+texture = ExtResource("11_koko0")
+
 [node name="Label" type="Label" parent="next4" unique_id=1058782972]
 layout_mode = 0
 offset_left = -5850.391
-offset_top = -2807.644
+offset_top = -2888.3235
 offset_right = 632.4746
-offset_bottom = -1807.2188
+offset_bottom = -1887.8982
 theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 350
@@ -156,7 +243,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="visual" type="Sprite2D" parent="next4" unique_id=1827366272]
-position = Vector2(-2564.944, -849.1509)
+position = Vector2(-2628.723, -1056.9005)
 scale = Vector2(3.0446987, 3.107091)
 texture = ExtResource("9_on4kn")
 

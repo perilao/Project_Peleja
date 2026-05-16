@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://clrfgu18o8ytp" path="res://Assets/2D Assets/buttons/controles/controlesclaro.png" id="8_x37d2"]
 [ext_resource type="Texture2D" uid="uid://d3d8bo0haajnl" path="res://Assets/2D Assets/buttons/créditos/creditosnormal.png" id="9_xjsmc"]
 [ext_resource type="Texture2D" uid="uid://e7s6g1j14wox" path="res://Assets/2D Assets/buttons/créditos/creditosescuro.png" id="10_gyawl"]
-[ext_resource type="Script" path="res://Scripts/audio_control.gd" id="11_mxr4w"]
+[ext_resource type="Script" uid="uid://cw6i8rg2gcpkk" path="res://Scripts/audio_control.gd" id="11_mxr4w"]
 [ext_resource type="Texture2D" uid="uid://b484gkxtgar0c" path="res://Assets/2D Assets/buttons/créditos/creditosclaro.png" id="11_ye2x4"]
 [ext_resource type="Texture2D" uid="uid://cqpw01ui5plsq" path="res://Assets/2D Assets/buttons/salvar/salvarnormal.png" id="13_kq836"]
 [ext_resource type="Texture2D" uid="uid://pknadvuhrs3y" path="res://Assets/2D Assets/buttons/salvar/salvareacuro.png" id="14_2hfgc"]
@@ -58,9 +58,9 @@ script = ExtResource("1_m372f")
 [node name="OptionsPanel" type="Panel" parent="." unique_id=1509714651]
 self_modulate = Color(0, 0, 0, 1)
 offset_left = 479.0
-offset_top = 312.0
+offset_top = 208.0
 offset_right = 1335.0
-offset_bottom = 984.0
+offset_bottom = 880.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4oks2")
 
 [node name="Panel" type="Panel" parent="OptionsPanel" unique_id=806774818]
@@ -76,10 +76,10 @@ material = SubResource("CanvasItemMaterial_m372f")
 layout_mode = 3
 anchor_right = 0.45833334
 anchor_bottom = 0.9324074
-offset_left = 479.0
-offset_top = 312.0
-offset_right = 464.0
-offset_bottom = -23.0
+offset_left = 471.5
+offset_top = 48.0
+offset_right = 471.5
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -155,9 +155,9 @@ visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 472.0
-offset_top = 312.0
+offset_top = 200.0
 offset_right = 1344.0
-offset_bottom = 992.0
+offset_bottom = 880.0
 script = ExtResource("11_mxr4w")
 
 [node name="Label2" type="Label" parent="SoundManager" unique_id=293752702]
@@ -269,9 +269,9 @@ visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 479.0
-offset_top = 5.0
+offset_top = -104.0
 offset_right = 519.0
-offset_bottom = 45.0
+offset_bottom = -64.0
 
 [node name="Label3" type="Label" parent="ControlsManager" unique_id=912289994]
 layout_mode = 0
@@ -286,28 +286,68 @@ theme_override_font_sizes/font_size = 150
 text = "Controles"
 horizontal_alignment = 1
 
+[node name="Label4" type="Label" parent="ControlsManager" unique_id=972488819]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 702.0
+offset_right = 640.0
+offset_bottom = 852.6
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Movimento"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="ControlsManager" unique_id=276042182]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 702.0
+offset_right = 983.0
+offset_bottom = 852.6
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Interagir"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="ControlsManager" unique_id=2011900461]
+layout_mode = 0
+offset_left = 561.0
+offset_top = 702.0
+offset_right = 1374.0
+offset_bottom = 1006.2
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 0.9607843, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("2_mxr4w")
+theme_override_font_sizes/font_size = 150
+text = "Pegar/Soltar
+Item"
+horizontal_alignment = 1
+
 [node name="Controledopeleja" type="Sprite2D" parent="ControlsManager" unique_id=2001892491]
-position = Vector2(417, 563)
+position = Vector2(417, 555)
 scale = Vector2(0.55694765, 0.5569476)
 texture = ExtResource("16_4oks2")
 
 [node name="BotaoE" type="Sprite2D" parent="ControlsManager" unique_id=801253912]
-position = Vector2(441, 811)
+position = Vector2(409, 834)
 scale = Vector2(0.067722544, 0.067722544)
 texture = ExtResource("17_mch1e")
 
 [node name="Espaco" type="Sprite2D" parent="ControlsManager" unique_id=1947641441]
-position = Vector2(664.99994, 819.00006)
+position = Vector2(680.99994, 843)
 scale = Vector2(0.13848406, 0.13848406)
 texture = ExtResource("18_p254p")
 
 [node name="Wsad" type="Sprite2D" parent="ControlsManager" unique_id=1652225193]
-position = Vector2(137.25513, 798.98535)
+position = Vector2(147, 790)
 scale = Vector2(0.18063788, 0.18063788)
 texture = ExtResource("19_63vsv")
 
 [node name="Setaa" type="Sprite2D" parent="ControlsManager" unique_id=1000127115]
-position = Vector2(281, 875.00006)
+position = Vector2(151, 886)
 scale = Vector2(0.1790837, 0.17908372)
 texture = ExtResource("20_6twxh")
 
@@ -316,9 +356,9 @@ visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 592.0
-offset_top = 427.0
+offset_top = 336.0
 offset_right = 1216.0
-offset_bottom = 969.0
+offset_bottom = 878.0
 
 [node name="Label4" type="Label" parent="CreditsManager" unique_id=766277474]
 layout_mode = 0
@@ -357,11 +397,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="back" type="TextureButton" parent="." unique_id=2112502898]
-visible = false
 offset_left = 496.0
-offset_top = 400.00003
+offset_top = 240.0
 offset_right = 1192.2961
-offset_bottom = 785.18506
+offset_bottom = 625.18506
 scale = Vector2(0.135, 0.135)
 texture_normal = ExtResource("21_4oks2")
 texture_pressed = ExtResource("17_ye2x4")
