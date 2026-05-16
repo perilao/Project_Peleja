@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b56qpyu1ovvqd" path="res://Assets/3D Assets/Texturas/chão inverso.png" id="3_3vc4b"]
 [ext_resource type="Texture2D" uid="uid://wiwuwa4a4o2q" path="res://Assets/3D Assets/Player/Textura joaquim.png" id="3_bv3xk"]
 [ext_resource type="Script" uid="uid://di5reuhv8hr58" path="res://Scripts/EventsManager.gd" id="4_x7y7a"]
-[ext_resource type="PackedScene" uid="uid://be3m7dvfa0qgy" path="res://Assets/Prefabs 3D/mato.tscn" id="5_k70y7"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/mato.tscn" id="5_k70y7"]
 [ext_resource type="Material" uid="uid://drfh00vfi7tq3" path="res://Materials/outline material.tres" id="5_n3qit"]
 [ext_resource type="Texture2D" uid="uid://bkuuwfqprrurt" path="res://Assets/3D Assets/Texturas/Textura porta 1.png" id="6_adlhc"]
 [ext_resource type="Texture2D" uid="uid://drrvy1uu40gyw" path="res://Assets/3D Assets/Texturas/Textura porta 2.png" id="7_thgey"]
@@ -29,13 +29,13 @@
 [ext_resource type="Texture2D" uid="uid://rcoookjdcok0" path="res://Assets/2D Assets/progress bar/marcaçao.png" id="18_thgey"]
 [ext_resource type="Texture2D" uid="uid://diukm3cmbifl" path="res://Assets/3D Assets/Texturas/Textura tabua de madeira.png" id="19_h2cb4"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="19_tekxc"]
-[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="21_grqgb"]
 [ext_resource type="Texture2D" uid="uid://c8fg5r7rgmxsf" path="res://Assets/3D Assets/Texturas/Textura janela.png" id="22_abf53"]
 [ext_resource type="Texture2D" uid="uid://b0b036e8uhem7" path="res://Assets/3D Assets/Texturas/Textura poltrona 3.png" id="28_e5fwq"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="29_1rgox"]
 [ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="33_j5hao"]
-[ext_resource type="PackedScene" uid="uid://dew0to42qmc8h" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_3vc4b"]
-[ext_resource type="PackedScene" uid="uid://cckc058w3620r" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_e5fwq"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_3vc4b"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_e5fwq"]
 [ext_resource type="Texture2D" uid="uid://c4yriystuftn" path="res://Assets/3D Assets/Texturas/riscos.png" id="37_e5fwq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
@@ -4942,6 +4942,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.403228, -0.45370805, -6.455
 physics_material_override = SubResource("PhysicsMaterial_2a60c")
 script = ExtResource("4_x7y7a")
 event_time = 30.0
+event_dangerous = 14.0
+event_broken = 35.0
 event_name = "cima"
 outline_material = ExtResource("5_n3qit")
 animation_player = NodePath("Window3Animation")
@@ -4986,6 +4988,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.621342, -0.453709, 3.7000
 physics_material_override = SubResource("PhysicsMaterial_4iphx")
 script = ExtResource("4_x7y7a")
 event_time = 30.0
+event_dangerous = 14.0
+event_broken = 35.0
 event_name = "lado"
 outline_material = ExtResource("5_n3qit")
 animation_player = NodePath("DoorAnimation")
@@ -5028,6 +5032,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036866188, -0.4537071, 6.9
 physics_material_override = SubResource("PhysicsMaterial_jgkgd")
 script = ExtResource("4_x7y7a")
 event_time = 30.0
+event_dangerous = 14.0
+event_broken = 35.0
 event_name = "baixo"
 outline_material = ExtResource("5_n3qit")
 animation_player = NodePath("Window2Animation")
@@ -5696,14 +5702,14 @@ offset_right = 1736.4445
 offset_bottom = 337.0
 scale = Vector2(0.325, 0.175)
 size_flags_horizontal = 4
-max_value = 4000.0
+max_value = 4100.0
 texture_under = ExtResource("16_cud0u")
 texture_over = ExtResource("17_bv3xk")
 texture_progress = ExtResource("18_1rgox")
 metadata/_edit_use_anchors_ = true
 
 [node name="Marcaçao" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=311353331]
-position = Vector2(196.92285, 74.28559)
+position = Vector2(191.923, 74.286)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
@@ -5713,12 +5719,12 @@ scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
 [node name="Marcaçao3" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=259074941]
-position = Vector2(397.63867, 75.082886)
+position = Vector2(387.639, 75.083)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 
 [node name="Marcaçao4" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=222743620]
-position = Vector2(596.92316, 74.28559)
+position = Vector2(582.923, 74.286)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("18_thgey")
 

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://krq5syxsrl5w" path="res://Assets/2D Assets/moldura.png" id="2_e455f"]
 [ext_resource type="Texture2D" uid="uid://fka6ca4hiy77" path="res://Assets/2D Assets/fundosemhud.png" id="2_go37l"]
 [ext_resource type="Texture2D" uid="uid://bke4vl33r26w1" path="res://Assets/2D Assets/gameover.png" id="3_nk27f"]
-[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://Shaders/pause_menu.gdshader" id="3_ykjnx"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="3_ykjnx"]
 [ext_resource type="Texture2D" uid="uid://bg0ajujornvg1" path="res://Assets/2D Assets/buttons/menu/menunormal.png" id="4_ak4yb"]
 [ext_resource type="Texture2D" uid="uid://b1sy84v2l160j" path="res://Assets/2D Assets/buttons/menu/menuescuro.png" id="5_1oqbe"]
 [ext_resource type="Texture2D" uid="uid://b283nyfbbgieh" path="res://Assets/2D Assets/buttons/reiniciarnormal.png" id="5_ykjnx"]
@@ -60,7 +60,6 @@ texture_hover = ExtResource("7_q81v7")
 stretch_mode = 0
 
 [node name="menu" type="TextureButton" parent="." unique_id=1618637967]
-visible = false
 layout_mode = 0
 offset_left = 824.0
 offset_top = 696.0
