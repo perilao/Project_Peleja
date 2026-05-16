@@ -38,14 +38,15 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	SoundControl.button_click.play()
 	SoundControl.menu_bgm.stop()
-	var scene = load("res://Scenes/Current_Level1.tscn")
+	var scene = load("res://Scenes/LVL/level1.tscn")
 	get_tree().change_scene_to_packed(scene)
 	
 func _on_button_2_pressed() -> void:
 	SoundControl.button_click.play()
 	if LevelCore.lvl1_completed == true:
 		SoundControl.menu_bgm.stop()
-		get_tree().change_scene_to_file("res://Scenes/Backup_level.tscn")
+		var scene = load("res://Scenes/Current_Level1.tscn")
+		get_tree().change_scene_to_packed(scene)
 	else:
 		null
 		

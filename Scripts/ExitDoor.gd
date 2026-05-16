@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 
 func progress_bar_finished():
 	#TRIGGER THE EXIT FINAL
-	LevelCore.lvl2_completed = true
+	LevelCore.lvl1_completed = true
 	progress_bar.value = progress_bar.max_value
 	player.block_input = false
 	SoundControl.lvl_1_bgm.stop()
