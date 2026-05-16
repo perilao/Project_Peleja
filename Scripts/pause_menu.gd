@@ -17,7 +17,15 @@ func _on_options_pressed() -> void:
 func _on_menu_pressed() -> void:
 	SoundControl.button_click.play()
 	SoundControl.lvl_1_bgm.stop()
-	get_tree().change_scene_to_file("res://Scenes/G.U.I/main_menu.tscn")
+	for child in SoundControl.get_children():
+		if child is AudioStreamPlayer:
+			child.stop()
+	pause_panel = null
+	back_4 = null
+	options_menu = null
+	get_tree().paused = false
+	var main_menu_scene = load("res://Scenes/G.U.I/main_menu.tscn")
+	get_tree().change_scene_to_packed(main_menu_scene)
 
 func _on_back_4_pressed() -> void:
 	SoundControl.button_click.play()
