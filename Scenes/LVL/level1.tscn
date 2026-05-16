@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bd6ua5olvcjig" path="res://Assets/3D Assets/Texturas/chão 3.png" id="2_6y803"]
 [ext_resource type="Texture2D" uid="uid://b56qpyu1ovvqd" path="res://Assets/3D Assets/Texturas/chão inverso.png" id="3_suqxw"]
 [ext_resource type="Texture2D" uid="uid://bif3e5tvgvtwj" path="res://Assets/3D Assets/Texturas/Textura telha.png" id="4_fpxdy"]
-[ext_resource type="PackedScene" uid="uid://be3m7dvfa0qgy" path="res://Assets/Prefabs 3D/mato.tscn" id="5_uv1om"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/mato.tscn" id="5_uv1om"]
 [ext_resource type="Texture2D" uid="uid://da32h2d2cq1e8" path="res://Assets/3D Assets/Texturas/Tijolos.png" id="6_1g7bq"]
 [ext_resource type="Script" uid="uid://cid6hdjph73dt" path="res://Scripts/PlayerMovement.gd" id="7_7xh8u"]
 [ext_resource type="Texture2D" uid="uid://wiwuwa4a4o2q" path="res://Assets/3D Assets/Player/Textura joaquim.png" id="8_18ouw"]
@@ -31,10 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://lev24p4unyyq" path="res://Assets/3D Assets/Texturas/Textura prateleira.png" id="30_b7as8"]
 [ext_resource type="Texture2D" uid="uid://bo3kqfvgkdhyf" path="res://Assets/3D Assets/Texturas/Textura cantinho de reza.png" id="31_yuwc6"]
 [ext_resource type="Texture2D" uid="uid://cwiftvphbp6wt" path="res://Assets/3D Assets/Texturas/Textura cruz.png" id="32_tpfw0"]
-[ext_resource type="PackedScene" uid="uid://dd4jxxw1eykvu" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="33_opnaa"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/sofa_(obstacle).tscn" id="33_opnaa"]
 [ext_resource type="PackedScene" uid="uid://vrt00gs5s1p1" path="res://Scenes/G.U.I/pause_menu.tscn" id="34_t6ojf"]
-[ext_resource type="PackedScene" uid="uid://dew0to42qmc8h" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_b54i3"]
-[ext_resource type="PackedScene" uid="uid://cckc058w3620r" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_y6wb5"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_preta.tscn" id="35_b54i3"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs 3D/tabua_quebrada_branca.tscn" id="36_y6wb5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgkgd"]
 shading_mode = 0
@@ -4266,7 +4266,7 @@ shadow_mesh = SubResource("ArrayMesh_j5hao")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cpkqv"]
 size = Vector3(0.7267761, 1, 2.7504883)
 
-[node name="Level" type="Node3D" unique_id=216904473]
+[node name="Level2" type="Node3D" unique_id=216904473]
 script = ExtResource("1_d87oc")
 
 [node name="Scenario" type="Node3D" parent="." unique_id=141801175]
@@ -5029,7 +5029,7 @@ lock_rotation = true
 freeze = true
 script = SubResource("GDScript_y4dr7")
 item_type = "baixo"
-max_uses = 4
+max_uses = 5
 mesh = NodePath("Tabua")
 outline_material = ExtResource("10_ne4o0")
 
@@ -5559,7 +5559,7 @@ shape = SubResource("BoxShape3D_g2s1u")
 
 [node name="Item_Movable5" type="Node3D" parent="Itens" unique_id=1178456237 groups=["movable"]]
 unique_name_in_owner = true
-transform = Transform3D(0.42250967, 0, 0.26736793, 0, 0.44999993, 0, -0.26736793, 0, 0.42250967, 10.276607, -0.22421134, -12.240249)
+transform = Transform3D(0.35443506, -0.23186693, 0.2408374, 0.3254251, 0.33346197, -0.0825732, -0.13592024, 0.19375439, 0.4303244, 9.617061, 5.2717776, -11.000013)
 
 [node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable5" unique_id=498188210 node_paths=PackedStringArray("mesh") groups=["movable"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -12.581396, -1.6726398, 7.875865)
@@ -5678,6 +5678,68 @@ shape = SubResource("BoxShape3D_abf53")
 [node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable3/itemMovable_rb" unique_id=1197529456 groups=["movable"]]
 
 [node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable3/itemMovable_rb/areaitemMovable" unique_id=62504188 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39146447, 0)
+shape = SubResource("BoxShape3D_g2s1u")
+
+[node name="Item_Movable4" type="Node3D" parent="Itens" unique_id=376124607 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.027583178, -0.34760123, -0.31633914, 0.4987297, 0.032056298, 0, 0.022534793, -0.28398186, 0.38720733, 9.123238, -0.46202612, -4.4527717)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable4" unique_id=1926456257 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("Banquinho (Movel)2")
+outline_material = ExtResource("10_ne4o0")
+
+[node name="Banquinho (Movel)2" type="MeshInstance3D" parent="Itens/Item_Movable4/itemMovable_rb" unique_id=1818958671]
+transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.009434462, 0.20732057, -0.02155447)
+mesh = SubResource("ArrayMesh_af2a1")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable4/itemMovable_rb" unique_id=605966261 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020599365, -0.016540527, -0.11010742)
+shape = SubResource("BoxShape3D_abf53")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable4/itemMovable_rb" unique_id=1299088267 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable4/itemMovable_rb/areaitemMovable" unique_id=1216759558 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39146447, 0)
+shape = SubResource("BoxShape3D_g2s1u")
+
+[node name="Item_Movable7" type="Node3D" parent="Itens" unique_id=2103481475 groups=["movable"]]
+unique_name_in_owner = true
+transform = Transform3D(0.0708195, 0.36407417, -0.28520626, -0.49250963, 0.07760014, 0, 0.049182337, 0.25284028, 0.41067916, 13.188144, -0.39814085, -3.397331)
+
+[node name="itemMovable_rb" type="RigidBody3D" parent="Itens/Item_Movable7" unique_id=1453480248 node_paths=PackedStringArray("mesh") groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6726398, 0)
+collision_layer = 3
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_rqhku")
+gravity_scale = 15.0
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_cpkqv")
+mesh = NodePath("Banquinho (Movel)2")
+outline_material = ExtResource("10_ne4o0")
+
+[node name="Banquinho (Movel)2" type="MeshInstance3D" parent="Itens/Item_Movable7/itemMovable_rb" unique_id=500315539]
+transform = Transform3D(0.002, 0, 0, 0, 0.0022222225, 0, 0, 0, 0.002, 0.009434462, 0.20732057, -0.02155447)
+mesh = SubResource("ArrayMesh_af2a1")
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable7/itemMovable_rb" unique_id=2017080179 groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020599365, -0.016540527, -0.11010742)
+shape = SubResource("BoxShape3D_abf53")
+
+[node name="areaitemMovable" type="Area3D" parent="Itens/Item_Movable7/itemMovable_rb" unique_id=1605811228 groups=["movable"]]
+
+[node name="colissionitemMovable" type="CollisionShape3D" parent="Itens/Item_Movable7/itemMovable_rb/areaitemMovable" unique_id=840000388 groups=["movable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39146447, 0)
 shape = SubResource("BoxShape3D_g2s1u")
 
@@ -5813,8 +5875,8 @@ transform = Transform3D(0.12538208, 0.045640625, -0.05675618, 0.009996433, 0.101
 [node name="Exit_Door" type="StaticBody3D" parent="." unique_id=905201312 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(-0.0026703286, 0, 0.9999964, 0, 1, 0, -0.9999964, 0, -0.0026703286, 9.5763445, 0, -5.837459)
 script = SubResource("GDScript_h2cb4")
-second_stage = 750
-third_stage = 1500
+second_stage = 800
+third_stage = 1850
 fourth_stage = 3000
 mesh = NodePath("exit_door_mesh")
 outline_material = ExtResource("10_ne4o0")
@@ -5857,17 +5919,18 @@ texture_progress = ExtResource("25_h5iao")
 metadata/_edit_use_anchors_ = true
 
 [node name="Marcaçao" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=555173990]
-position = Vector2(196.92285, 74.28559)
+position = Vector2(212.30785, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("26_76pin")
 
 [node name="Marcaçao2" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=1019962612]
+visible = false
 position = Vector2(21.538086, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("26_76pin")
 
 [node name="Marcaçao3" type="Sprite2D" parent="Exit_Door/ProgressBar" unique_id=697257207]
-position = Vector2(397.63867, 75.082886)
+position = Vector2(476.92316, 74.28559)
 scale = Vector2(0.36999997, 0.68714285)
 texture = ExtResource("26_76pin")
 
@@ -5921,5 +5984,9 @@ shape = SubResource("BoxShape3D_j5hao")
 [connection signal="area_exited" from="Itens/Item_Movable2/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable2/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="area_entered" from="Itens/Item_Movable3/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable3/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
 [connection signal="area_exited" from="Itens/Item_Movable3/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable3/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable4/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable4/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable4/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable4/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
+[connection signal="area_entered" from="Itens/Item_Movable7/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable7/itemMovable_rb" method="_on_areaitem_3_3_area_entered"]
+[connection signal="area_exited" from="Itens/Item_Movable7/itemMovable_rb/areaitemMovable" to="Itens/Item_Movable7/itemMovable_rb" method="_on_areaitem_3_3_area_exited"]
 [connection signal="body_entered" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_entered"]
 [connection signal="body_exited" from="Exit_Door/exit_door_area" to="Exit_Door" method="_on_exit_door_area_body_exited"]
