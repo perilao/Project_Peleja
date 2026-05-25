@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dobodxliy3pd0" path="res://Assets/2D Assets/buttons/jogar/jogarescuro.png" id="5_mt0mm"]
 [ext_resource type="Texture2D" uid="uid://dy0b4773u282b" path="res://Assets/2D Assets/fundosemhud3M2.png" id="6_6u8oi"]
 [ext_resource type="Texture2D" uid="uid://6tgnwehg2jfs" path="res://Assets/2D Assets/buttons/jogar/jogarclaro.png" id="6_xuxnm"]
+[ext_resource type="Script" uid="uid://vt6qu568nnjl" path="res://Scripts/grab_focus_button.gd" id="7_7yksk"]
 [ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="7_wd0pk"]
 [ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="8_aa7ff"]
 [ext_resource type="Texture2D" uid="uid://cle8ns4yxq7xs" path="res://Assets/2D Assets/buttons/opções/opçõesclaro.png" id="9_j5vqt"]
@@ -64,11 +65,14 @@ offset_top = 80781.48
 offset_right = 130403.49
 offset_bottom = 80814.48
 scale = Vector2(0.27, 0.27)
+focus_neighbor_bottom = NodePath("../options")
 action_mode = 0
 texture_normal = ExtResource("4_irs5p")
 texture_pressed = ExtResource("5_mt0mm")
 texture_hover = ExtResource("6_xuxnm")
+texture_focused = ExtResource("6_xuxnm")
 stretch_mode = 0
+script = ExtResource("7_7yksk")
 metadata/_edit_use_anchors_ = true
 
 [node name="options" type="TextureButton" parent="Button Manager" unique_id=1061847799]
@@ -83,10 +87,13 @@ offset_top = 71515.21
 offset_right = 130745.98
 offset_bottom = 71547.73
 scale = Vector2(0.27, 0.27)
+focus_neighbor_top = NodePath("../start")
+focus_neighbor_bottom = NodePath("../quit")
 action_mode = 0
 texture_normal = ExtResource("7_wd0pk")
 texture_pressed = ExtResource("8_aa7ff")
 texture_hover = ExtResource("9_j5vqt")
+texture_focused = ExtResource("9_j5vqt")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
@@ -97,10 +104,13 @@ offset_top = 843.0
 offset_right = 1113.0
 offset_bottom = 1346.0
 scale = Vector2(0.27, 0.27)
+focus_neighbor_top = NodePath("../options")
+focus_neighbor_bottom = NodePath("../tutorial")
 action_mode = 0
 texture_normal = ExtResource("10_7yksk")
 texture_pressed = ExtResource("11_fidfd")
 texture_hover = ExtResource("12_l4reb")
+texture_focused = ExtResource("12_l4reb")
 
 [node name="tutorial" type="TextureButton" parent="Button Manager" unique_id=1148625039]
 layout_mode = 0
@@ -109,9 +119,11 @@ offset_top = 963.0
 offset_right = 538.0
 offset_bottom = 1618.0
 scale = Vector2(0.14588611, 0.14588611)
+focus_neighbor_top = NodePath("../quit")
 texture_normal = ExtResource("13_y3km0")
 texture_pressed = ExtResource("14_7yksk")
 texture_hover = ExtResource("15_fidfd")
+texture_focused = ExtResource("15_fidfd")
 stretch_mode = 0
 
 [node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_mt0mm")]
@@ -126,6 +138,7 @@ offset_bottom = 399.0
 texture_normal = ExtResource("15_aa7ff")
 texture_pressed = ExtResource("16_aa7ff")
 texture_hover = ExtResource("17_j5vqt")
+texture_focused = ExtResource("17_j5vqt")
 ignore_texture_size = true
 stretch_mode = 0
 

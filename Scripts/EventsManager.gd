@@ -81,7 +81,9 @@ func _on_timer_geral_timeout() -> void:
 #AREAS
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area == player.player_area:
+		mesh.material_overlay = outline_material
 		isOnArea = true
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area == player.player_area:
+		mesh.material_overlay = outline_material
 		isOnArea = false

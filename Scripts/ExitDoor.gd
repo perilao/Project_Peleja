@@ -50,9 +50,10 @@ func progress_bar_finished():
 	get_tree().change_scene_to_file("res://Scenes/G.U.I/lvl_selector.tscn")
 	
 #AREA ENTERED
-func _on_exit_door_area_body_entered(_body: Node3D) -> void:
+func _on_exit_door_area_body_entered(area: Area3D) -> void:
 	player_in_exit = true
-	mesh.material_overlay = outline_material
-func _on_exit_door_area_body_exited(_body: Node3D) -> void:
-	player_in_exit = false
-	mesh.material_overlay = null
+	if area == player.player_area:
+		mesh.material_overlay = outline_material
+func _on_exit_door_area_body_exited(area: Area3D) -> void:
+	if area == player.player_area:
+		mesh.material_overlay = null

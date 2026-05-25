@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vrt00gs5s1p1"]
 
 [ext_resource type="Script" uid="uid://fcebubk2mvme" path="res://Scripts/pause_menu.gd" id="1_uwxim"]
-[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_cwg05"]
+[ext_resource type="Shader" uid="uid://dhqkil3hsk0c4" path="res://Shaders/pause_menu.gdshader" id="2_cwg05"]
 [ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="3_le8lw"]
 [ext_resource type="Texture2D" uid="uid://cw3741dktaxle" path="res://Assets/2D Assets/buttons/opções/opcoesnormal.png" id="4_yc0kh"]
 [ext_resource type="Texture2D" uid="uid://inxy14e6s54d" path="res://Assets/2D Assets/buttons/opções/opcoesescuro.png" id="5_ubel8"]
@@ -91,38 +91,47 @@ alignment = 1
 
 [node name="options" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=141334623]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../back4")
+focus_neighbor_bottom = NodePath("../menu")
 texture_normal = ExtResource("4_yc0kh")
 texture_pressed = ExtResource("5_ubel8")
 texture_hover = ExtResource("6_s4ix4")
+texture_focused = ExtResource("6_s4ix4")
 stretch_mode = 0
 
 [node name="menu" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=735275439]
 layout_mode = 2
+focus_neighbor_top = NodePath("../options")
+focus_neighbor_bottom = NodePath("../quit")
 texture_normal = ExtResource("7_k3ok6")
 texture_pressed = ExtResource("8_j4xux")
 texture_hover = ExtResource("9_fabqd")
+texture_focused = ExtResource("9_fabqd")
 stretch_mode = 0
 
 [node name="quit" type="TextureButton" parent="PausePanel/VBoxContainer" unique_id=1185806339]
 layout_mode = 2
+focus_neighbor_top = NodePath("../menu")
 texture_normal = ExtResource("10_ydd0h")
 texture_pressed = ExtResource("11_jtidm")
 texture_hover = ExtResource("12_cx814")
+texture_focused = ExtResource("12_cx814")
 stretch_mode = 0
 
 [node name="options menu" parent="." unique_id=187140479 instance=ExtResource("13_a3rqg")]
 visible = false
 
 [node name="back4" type="TextureButton" parent="." unique_id=1605812270]
-visible = false
 offset_left = 499.0
 offset_top = 340.0
 offset_right = 1528.3267
 offset_bottom = 927.33594
 scale = Vector2(0.09035035, 0.09364314)
+focus_neighbor_bottom = NodePath("../PausePanel/VBoxContainer/options")
 texture_normal = ExtResource("14_yc0kh")
 texture_pressed = ExtResource("15_yc0kh")
 texture_hover = ExtResource("16_ubel8")
+texture_focused = ExtResource("16_ubel8")
 stretch_mode = 0
 
 [connection signal="pressed" from="PausePanel/VBoxContainer/options" to="." method="_on_options_pressed"]
