@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cb2elsycij4lt" path="res://Assets/2D Assets/buttons/voltar/setanormal.png" id="15_aa7ff"]
 [ext_resource type="Texture2D" uid="uid://dq53ip7yb6evy" path="res://Assets/2D Assets/buttons/test/hover.png" id="15_fidfd"]
 [ext_resource type="Texture2D" uid="uid://dtqu7xcgh8iox" path="res://Assets/2D Assets/buttons/voltar/setaescura.png" id="16_aa7ff"]
+[ext_resource type="FontFile" uid="uid://c4vbttdi3elct" path="res://Fonts/xilosa_.ttf" id="17_fidfd"]
 [ext_resource type="Texture2D" uid="uid://4ohgxsn3ous8" path="res://Assets/2D Assets/buttons/voltar/setaclara.png" id="17_j5vqt"]
 
 [node name="main menu" type="CanvasLayer" unique_id=1887178084]
@@ -114,17 +115,28 @@ texture_focused = ExtResource("12_l4reb")
 
 [node name="tutorial" type="TextureButton" parent="Button Manager" unique_id=1148625039]
 layout_mode = 0
-offset_left = -467.0
-offset_top = 963.0
-offset_right = 538.0
-offset_bottom = 1618.0
-scale = Vector2(0.14588611, 0.14588611)
+offset_left = 56.0
+offset_top = 522.0
+offset_right = 1061.55
+offset_bottom = 1177.0
+scale = Vector2(0.251, 0.251)
 focus_neighbor_top = NodePath("../quit")
 texture_normal = ExtResource("13_y3km0")
 texture_pressed = ExtResource("14_7yksk")
 texture_hover = ExtResource("15_fidfd")
 texture_focused = ExtResource("15_fidfd")
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="Button Manager/tutorial" unique_id=1397966261]
+layout_mode = 0
+offset_left = 235.05978
+offset_top = 239.04385
+offset_right = 780.87646
+offset_bottom = 421.77185
+theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_fonts/font = ExtResource("17_fidfd")
+theme_override_font_sizes/font_size = 182
+text = "Tutorial"
 
 [node name="options menu" parent="." unique_id=505198992 instance=ExtResource("14_mt0mm")]
 visible = false

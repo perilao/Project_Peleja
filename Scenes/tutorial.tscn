@@ -40,7 +40,7 @@ offset_bottom = -1807.2188
 theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 350
-text = "Os cangaceiros estão tentando entrar, haja rárido antes que consigam"
+text = "Os cangaceiros estão tentando entrar, haja rápido antes que consigam!"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -129,6 +129,11 @@ texture_normal = ExtResource("3_h2ono")
 texture_pressed = ExtResource("4_on4kn")
 texture_hover = ExtResource("5_70gml")
 
+[node name="Espaco2" type="Sprite2D" parent="next3" unique_id=1794183582]
+position = Vector2(-3296.7744, 314.6501)
+scale = Vector2(1.06984, 1.0917633)
+texture = ExtResource("8_8mnmb")
+
 [node name="visual" type="Sprite2D" parent="next3" unique_id=73248178]
 position = Vector2(-2561.5227, -968.153)
 scale = Vector2(3.9529672, 4.0339727)
@@ -156,16 +161,16 @@ offset_bottom = -1912.1025
 theme_override_colors/font_color = Color(1, 0.16862746, 0.32156864, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 232
-text = "*Utilize as dicas do nível para descobri-los"
+text = "*Utilize as dicas do nível para descobri-las"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="next3" unique_id=858324121]
 layout_mode = 0
-offset_left = -4407.5586
-offset_top = 139.53682
-offset_right = -4372.5586
-offset_bottom = 155.9128
+offset_left = -4779.137
+offset_top = 141.18916
+offset_right = -4744.137
+offset_bottom = 157.56514
 scale = Vector2(23.24, 23.24)
 theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
@@ -174,20 +179,15 @@ text = "Aperte"
 
 [node name="Label5" type="Label" parent="next3" unique_id=642787404]
 layout_mode = 0
-offset_left = -2842.1836
+offset_left = -2628.7231
 offset_top = 141.18916
-offset_right = -2754.1836
+offset_right = -2540.7231
 offset_bottom = 157.56514
 scale = Vector2(23.24, 23.24)
 theme_override_colors/font_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 theme_override_fonts/font = ExtResource("6_8va2t")
 theme_override_font_sizes/font_size = 13
 text = "para usar o item"
-
-[node name="BotaoE" type="Sprite2D" parent="next3" unique_id=1247395899]
-position = Vector2(-3197.9492, 304.92853)
-scale = Vector2(0.795, 0.795)
-texture = ExtResource("11_koko0")
 
 [node name="next4" type="TextureButton" parent="." unique_id=1080879495]
 visible = false
