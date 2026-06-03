@@ -57,7 +57,7 @@ func _process(_delta):
 				SoundControl.item_break.play()
 
 	#INTERACTION OBJECT/EVENT
-	if Input.is_action_just_pressed("ui_grab"):
+	if Input.is_action_just_pressed("ui_interact"):
 		if timer_geral.time_left <= event_time and isOnArea: 
 			var object = player.hold_object
 			if object != null and object.is_in_group("pickable"):
